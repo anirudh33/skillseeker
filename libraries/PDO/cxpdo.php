@@ -92,14 +92,13 @@ class cxpdo extends PDO {
 	 * Supports DISTINCT, FROM, WHERE, GROUP, HAVING, ORDER, LIMIT, JOIN
 	 */
 	function select($data=null, $return=true) {
-
 		//Check the columns
 		$data['columns'] = (empty($data['columns']) ? null : $data['columns']);
 
 		$query = 'SELECT '. $this->column_list($data['columns'])
 		. ' FROM '. $this->table_list($data['tables'])
 		. (!empty($data['joins']) ? $this->join($data['joins']) : '')
-		. (!empty($data['conditions']) ? $this->where_list($data['conditions']) : '')
+		. (!empty($data['conditions']) ? (isset($data['conditions'][1])? $this->where($data['conditions']):$this->where_list($data['conditions'])) : '')
 		. (!empty($data['group']) ? $this->group_by($data['group']) : '')
 		. (!empty($data['order']) ? $this->order_by($data['order']) : '')
 		. (!empty($data['limit']) ? $this->limit($data['limit'], (!empty($data['offset']) ? $data['offset'] : '')) : '');
@@ -108,7 +107,7 @@ class cxpdo extends PDO {
 		return $return ? $this->query($query) : $query;
 	}
 
-
+	//(isset($data['conditions'][1])? $this->where_list($data['conditions']):$this->where($data['conditions']))
 	/**
 	 * Creates a full delete query. Be careful when using this
 	 * -if there are no conditions it will EMPTY the table.
@@ -269,7 +268,16 @@ class cxpdo extends PDO {
 		}
 	}
 
-
+	/**
+	 * New where clause
+	 */
+	function where($condition)
+	{
+		$output=' WHERE ';
+		$output.=$condition[0][0];
+		return $output;
+	}
+	
 	/**
 	 * Creates a WHERE list for use in a query.
 	 */

@@ -8,7 +8,13 @@ $result = $db->insert('mvc', array('title' => 'My First Post', 'desc' => ' DB sy
 
 $data['columns']	= array('posts.id', 'posts.title');
 $data['tables']		= 'posts';
-$data['where']		= array('posts.id' => array('1', '2'));
+//********************************nay one condition form these**************************
+$data['conditions']=array(array('user_id ="17"'),true);
+$data['conditions']=array(array(' (user_id = 17  AND friend_id = 21) AND status = "F" '),true);
+$data['conditions']=array(array('email_primary LIKE "%loo%" '),true);
+$data['conditions']		= array('user_id' => 17);
+
+//*****************************************************************************************
 $data['joins']		= null;
 $data['group_by'] = array('posts.id');
 $data['order_by'] = 'posts.id';
