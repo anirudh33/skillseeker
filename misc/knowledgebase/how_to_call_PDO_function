@@ -1,0 +1,67 @@
+//***********************************for insert***************************// 
+//insert('tableName',array of keys and values)
+$result = $db->insert('mvc', array('title' => 'My First Post', 'desc' => ' DB system'));
+
+
+
+//******************for select***********************************//
+
+$data['columns']	= array('posts.id', 'posts.title');
+$data['tables']		= 'posts';
+$data['where']		= array('posts.id' => array('1', '2'));
+$data['joins']		= null;
+$data['group_by'] = array('posts.id');
+$data['order_by'] = 'posts.id';
+$data['limit']		= 10;
+$data['offset']		= 0;
+$result = $db->select($data);
+
+while($row = $result->fetch(PDO::FETCH_ASSOC)) {
+	print_r($row);
+}
+
+/*
+ * COUNT ROWS
+ */
+$result = $db->count('posts');
+print 'There are '. $result->fetchColumn(). ' rows in the table posts<br />';
+
+
+
+/*
+ * DELETE ROW 3
+ */
+$result = $db->delete('posts', array('id' => 3));
+print 'Deleted Row '. $db->lastInsertId(). '<br />';
+
+
+/*
+ * UPDATE ROW 3 WITH NEW DATA
+ */
+
+$data = array('text' => 'I Went on vacation last week!');
+$where = array('id' => $db->lastInsertId());
+
+$result = $db->update('posts', $data, $where);
+
+print 'Updated row '. $db->lastInsertId(). '<br />';
+
+
+//Add the joins
+$data['joins'][] = array(
+	'table' => 'tags_ref', 
+	'type'	=> 'right',
+	'conditions' => array('posts.id' => 'tags_ref.item_id')
+);
+
+$data['joins'][] = array(
+	'table' => 'tags',  
+	'type'	=> 'left',
+	'conditions' => array('tags_ref.tags_id' => 'tags.id')
+);
+
+
+
+$result = $db->select($data);
+
+
