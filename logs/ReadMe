@@ -1,0 +1,11 @@
+This folder will contain log files
+
+eg 
+ => error log (system error which state the code is wrong)
+ => upload file log
+ => ip log
+ => application log (messeges shown to user on particular day)
+ => login log file
+ => login failure log
+ => log out
+ => currently login file ( it will consists a user unique id as well as a session id,  the session id will be added and on next login the id will be replaced , and at logout the id will be stated to null)

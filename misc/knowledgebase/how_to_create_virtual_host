@@ -1,0 +1,61 @@
+Step 1: On ubuntu 12.04, open Terminal By alt + ctrl + t
+
+step 2 : Now enter command:
+			cd /etc/apache2/sites-available/
+
+step 3 : sudo gedit www.skillseeker.com
+
+Step 4 : Paste the following  code in the file :
+#=========================
+<VirtualHost *:80>
+        ServerAdmin webmaster@localhost
+        ServerName www.skillseeker.com
+        ServerAlias skillseeker.com
+        DocumentRoot /var/www/skillseeker
+        DirectoryIndex index.php
+
+        <Directory /var/www/skillseeker>
+                Options FollowSymLinks MultiViews
+                AllowOverride All
+                Order allow,deny
+                allow from all
+        </Directory>
+
+        ScriptAlias /cgi-bin/ /usr/lib/cgi-bin/
+        <Directory "/usr/lib/cgi-bin">
+                AllowOverride None
+                Options +ExecCGI -MultiViews +SymLinksIfOwnerMatch
+                Order allow,deny
+                Allow from all
+        </Directory>
+
+        ErrorLog /var/log/apache2/error.log
+#        ErrorLog /mnt/logs/apache_logs/bts_error.log
+        # Possible values include: debug, info, notice, warn, error, crit,
+        # alert, emerg.
+        LogLevel warn
+
+#        CustomLog /var/log/apache2/access.log combined
+#       CustomLog /mnt/logs/apache_logs/bts_access.log combined
+        ServerSignature On
+</VirtualHost>
+
+#=========================
+
+Step 5 : Create a host entry by :
+				sudo vi /etc/hosts
+		 Add a line :
+				127.0.0.1	www.skillseeker.com
+
+Step 6 : Run Command 
+			sudo a2ensite www.skillseeker.com
+			
+Step 7 : Run Command
+			sudo service apache2 restart
+
+Step 8 : Open FireFox => edit => preferences => advanced=> settings => No proxy for:
+
+			add there
+			www.skillseeker.com
+
+Congrats you are done now :)
