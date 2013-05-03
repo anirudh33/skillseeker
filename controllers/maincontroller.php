@@ -23,9 +23,9 @@ class mainentrance {
 				echo $_POST['username'];	
 			
 		}
-		if($_REQUEST['action']==" ") 
+		if($_REQUEST['action']=="uploadcsv") 
 		{
-			
+			include_once 'csvController.php';
 		}
 		if($_REQUEST['action']=="")
 		{
