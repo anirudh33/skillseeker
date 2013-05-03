@@ -57,12 +57,6 @@
 				</ul>
 
 			</aside>
-			<!-- content -->
-      <section id="content">
-      <div id="rightcontainer">
-        Put something here according to the functionality...... 
-         </div>
-      </section>
-   </div>
-</div>
-</html>
+			
+       
+        

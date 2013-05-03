@@ -11,10 +11,10 @@ Step 4 : Paste the following  code in the file :
         ServerAdmin webmaster@localhost
         ServerName www.skillseeker.com
         ServerAlias skillseeker.com
-        DocumentRoot /var/www/skillseeker
+        DocumentRoot /var/www/skillseeker/branches/development
         DirectoryIndex index.php
 
-        <Directory /var/www/skillseeker>
+        <Directory /var/www/skillseeker/branches/development>
                 Options FollowSymLinks MultiViews
                 AllowOverride All
                 Order allow,deny
