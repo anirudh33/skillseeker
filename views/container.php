@@ -7,7 +7,7 @@ require_once(SITE_PATH."/views/header.php");
       <div id="rightcontainer">
 
 <?php 
-if($pagename=="main") {
+if($pagename=="MainPage") {
 	require_once(SITE_PATH."/views/MainView.php");
 }?>
 
