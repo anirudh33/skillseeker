@@ -2,13 +2,13 @@
 
 /* Example Config for MYSQL */
 $config = array();
-$config['user'] = 'root';
-$config['pass'] = 'prince';
-$config['name'] = 'mvc';
-$config['host'] = 'localhost';
-$config['type'] = 'mysql';
-$config['port'] = null;
-$config['persistent'] = true;
+$config['DATABSE_USER_NAME'] = 'root';
+$config['DATABSE_PASSWORD'] = 'root';
+$config['DATABASE_NAME'] = 'skillseeker';
+$config['DATABASE_HOST'] = 'localhost';
+$config['DATABASE_TYPE'] = 'mysql';
+$config['DATABASE_PORT'] = null;
+$config['DATABASE_PERSISTENT'] = true;
 
 
 include('PDO/cxpdo.php');

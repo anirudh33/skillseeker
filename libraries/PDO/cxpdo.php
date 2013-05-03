@@ -25,6 +25,12 @@
  * @author		Mohit K. Singh
   *
  ********************************** 80 Columns *********************************
+ *
+ ****************************** Update Log ********************************
+Sr.NO.		Version		Updated by           Updated on          Description
+-------------------------------------------------------------------------
+1            11            Ramandeep Singh    3 may 2010            changes made in config array
+*************************************************************************
  */
 
 
@@ -434,34 +440,34 @@ class db {
         if(!$config) { return; }
         
         //If this install of PHP does NOT have the right driver
-        If(!in_array($config['type'], PDO::getAvailableDrivers())) {
+        If(!in_array($config['DATABASE_TYPE'], PDO::getAvailableDrivers())) {
             //Die because the rest of the site will not work!
-            trigger_error('The PDO Database type <b>'. $config['type']
+            trigger_error('The PDO Database type <b>'. $config['DATABASE_TYPE']
             . '</b> is not supported on this PHP install.', E_USER_ERROR);
         }
         
         
         //Require the class that we are going to use
-        require_once($config['type']. '.php');
+        require_once($config['DATABASE_TYPE']. '.php');
         
         
         try {
         
-            self::$instance = new $config['type']($config['type']. ':'
+            self::$instance = new $config['DATABASE_TYPE']($config['DATABASE_TYPE']. ':'
                                 //If the host name is set
-                                . ($config['host'] ? 'host='. $config['host']. ';' : '')
+                                . ($config['DATABASE_HOST'] ? 'host='. $config['DATABASE_HOST']. ';' : '')
                                 //If the port number is set
-                                . ($config['port'] ? 'port='. $config['port']. ';' : '')
+                                . ($config['DATABASE_PORT'] ? 'port='. $config['DATABASE_PORT']. ';' : '')
                                 //If the database is some other type than SQLite
-                                . ($config['type'] != 'sqlite2' ? 'dbname=' : '')
+                                . ($config['DATABASE_TYPE'] != 'sqlite2' ? 'dbname=' : '')
                                 //Database name
-                                . $config['name'],
+                                . $config['DATABASE_NAME'],
                                 //The Username (if any)
-                                ($config['user'] ? $config['user'] : null),
+                                ($config['DATABSE_USER_NAME'] ? $config['DATABSE_USER_NAME'] : null),
                                 //The Password (if any)
-                                ($config['pass'] ? $config['pass'] : null),
+                                ($config['DATABSE_PASSWORD'] ? $config['DATABSE_PASSWORD'] : null),
                                 //Use a Persistent Connection? http://php.net/manual/en/pdo.connections.php
-                                ($config['persistent'] ? array(PDO::ATTR_PERSISTENT => true) : null));
+                                ($config['DATABASE_PERSISTENT'] ? array(PDO::ATTR_PERSISTENT => true) : null));
             
             //Set the error mode to show warning along with error codes
             self::$instance->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
