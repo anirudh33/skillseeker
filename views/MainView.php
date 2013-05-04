@@ -1,7 +1,6 @@
-
-
+ 
 <div class="container">
-		<h1><a href="#">Online Examination</a></h1>
+		<!--<h1><a href="#">Online Examination</a></h1>
 		<nav>
 		<ul>
 		<li class="current"><a href="#" class="m1">Home Page</a></li>
@@ -14,7 +13,7 @@
 
 		</div>
 		</header>
-		<br/>
+		<br/>--->
 		<div class="container">
 		<!-- aside -->
 		<aside>
@@ -33,15 +32,15 @@
 				<div class="line-separator"></div><br><br>
 				<h2 id="login">Login</h2>
 				<form method="post" action="index.php?controller=MainController&method=login">
-					<label class="homelabel" for="un">Username:</label> <input id="un"
-							class="textinput homelogin" type="text" name="fieldEmail">
+					<label class="homelabel" for="un"><?php echo $lang->USERNAME;?></label> <input id="un"
+							class="textinput homelogin" type="text" name="<?php echo $lang->FIELDEMAIL;?>">
 					<div class="erruser">put your error message here</div>
-					<br /> <label class="homelabel" for="pw">Password:</label> <input
+					<br /> <label class="homelabel" for="pw"><?php echo $lang->PASSWORD;?></label> <input
 						id="pw" class="textinput homelogin" type="password"
-						name="fieldPassword">
+						name="<?php echo $lang->FIELDPASSWORD;?>">
 								<div class="errpass">put your error message here</div>
 					<br /> <input class="submit login" type="submit" value="Log in">
-					<a class="sml" href="#">Forgot password?</a><br><br>
+					<a class="sml" href="#"><?php echo $lang->FORGETPASSWORD;?></a><br><br>
 							<div class="line-separator"></div>
 							</form>
 							<br />

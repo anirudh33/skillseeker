@@ -1,8 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<?php include_once("./libraries/Language.php"); ?>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Header</title>
 <meta charset="utf-8">
 <meta name="description" content="Place your description here">
 <meta name="keywords" content="put, your, keyword, here">
@@ -22,7 +22,7 @@
    <header>
  
       <div class="container">
-          <h1><a href="#">Online Examination</a></h1>
+          <h1><a href="#"><?php echo $lang->USERNAME;?></a></h1>
 				<nav>
 					<ul>
 						<li class="current"><a href="#" class="m1">Home Page</a></li>
@@ -33,7 +33,7 @@
 					</ul>
 				</nav>
 
-			</div>
+		</div>
    </header>
    <br/>
    <div class="container">

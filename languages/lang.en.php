@@ -14,8 +14,18 @@
     *************************************************************************
 
 */
- $langArr=array('USERNAME'=> "User Name"
-
+ $langArr=array('USERNAME'=> "User Name",
+				'FORGETPASSWORD'=>"Forget Password ?",
+				'PASSWORD'=>"Password",
+				'FIELDPASSWORD'=>"fieldPassword",
+				'FIELDEMAIL'=>"fieldEmail",
+				''=>"",
+				''=>"",
+				''=>"",
+				''=>"",
+				''=>"",
+				''=>"",
+				''=>"",
                 );
 ?>
 

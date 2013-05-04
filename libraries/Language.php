@@ -42,9 +42,21 @@ else
 {
 	$langType='en';
 }
-include_once '../languages/lang.'.$langType.".php";
-$lang= new language($langArr);
 
-echo $lang->USERN;
+$workingDir=getcwd();
+$name = basename($workingDir);         
+$name = basename($name, ".php"); 
+if($name=="development"){
+	
+	include_once './languages/lang.'.$langType.".php";
+}
+else 
+{
+	include_once '../languages/lang.'.$langType.".php";
+}
+
+//include_once './languages/lang.'.$langType.".php";
+$lang= new Language($langArr);
+//echo $lang->USERN;
 
 ?>
