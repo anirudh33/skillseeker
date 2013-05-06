@@ -22,6 +22,7 @@ class User extends DBConnection
     private $_id;
     private $_firstName;
     private $_lastName;
+    private $_email;
     private $_userName;
     private $_password;
     private $_timeZoneId;
@@ -37,6 +38,11 @@ class User extends DBConnection
         return $this->_id;
     }
 
+    public function getEmail()
+    {
+    	return $this->_email;
+    }
+    
 	/**
      * @return the $_firstName
      */
@@ -124,7 +130,10 @@ class User extends DBConnection
     {
         $this->_firstName = $_firstName;
     }
-
+    public function setEmail($_email)
+    {
+    	$this->_email = $_email;
+    }
 	/**
      * @param field_type $_lastName
      */
@@ -205,6 +214,14 @@ class User extends DBConnection
         {
             $this->setLastName($values['last_name']);
         }
+        if(array_key_exists('user_name',$values))
+        {
+        	$this->setUserName($values['user_name']);
+        }
+        if(array_key_exists('email_address',$values))
+        {
+        	$this->setEmail($values['email_address']);
+        }
         if(array_key_exists('password',$values))
         {
             $this->setPassword($values['password']);
@@ -229,6 +246,7 @@ class User extends DBConnection
         {
             $this->setUpdatedOn($values['updated_on']);
         }
+        
     
         $userFormArray = array();
     
@@ -252,21 +270,25 @@ class User extends DBConnection
         {
             $userFormArray["password"] = $this->getPassword();
         }
-        if($this->getTimeZoneId() != null)
+        if($this->getEmail() != null)
         {
-            $userFormArray["time_zone_id"] = $this->getTimeZoneId();
+        	$userFormArray["email_address"] = $this->getEmail();
         }
+//         if($this->getTimeZoneId() != null)
+//         {
+//             $userFormArray["time_zone_id"] = $this->getTimeZoneId();
+//         }
         if($this->getCountryId() != null)
         {
             if($type == "INSERT")
             {
                 $data['columns']	= array('id');
                 $data['tables']		= 'country';
-                $data['conditions']=array(array('name ='.$this->getCountryId() ),true);
+                $data['conditions']=array(array('name ="'.$this->getCountryId().'"' ),true);
                 $temp = $this->_db->select($data);
                 
                 $myResult=array();
-                while($row = $result->fetch(PDO::FETCH_ASSOC)) {
+                while($row = $temp->fetch(PDO::FETCH_ASSOC)) {
                     $myResult[]=$row;
                 }
                 if($myResult != null)
@@ -280,11 +302,11 @@ class User extends DBConnection
             {
                 $data['columns']	= array('name');
                 $data['tables']		= 'country';
-                $data['conditions']=array(array('id ='.$this->getCountryId() ),true);
+                $data['conditions']=array(array('id ="'.$this->getCountryId().'"' ),true);
                 $temp = $this->_db->select($data);
             
                 $myResult=array();
-                while($row = $result->fetch(PDO::FETCH_ASSOC)) {
+                while($row = $temp->fetch(PDO::FETCH_ASSOC)) {
                     $myResult[]=$row;
                 }
                 if($myResult != null)
@@ -293,7 +315,48 @@ class User extends DBConnection
                 }
             
             }
+        }        
+       
+        if($this->getTimeZoneId()!= null)
+        {
+        	if($type == "INSERT")
+        	{
+        		$data['columns']	= array('id');
+        		$data['tables']		= 'timezone';
+        		$data['conditions']=array(array('time_zone ="'.$this->getTimeZoneId().'"' ),true);
+        		$temp = $this->_db->select($data);
+        
+        		$myResult=array();
+        		while($row = $temp->fetch(PDO::FETCH_ASSOC)) {
+        			$myResult[]=$row;
+        		}
+        		if($myResult != null)
+        		{
+        			$userFormArray["time_zone_id"] = $myResult[0]['id'];
+        		}
+        
+        	}
+        	
+        	if($type == "SELECT")
+        	{
+        		$data['columns']	= array('name');
+        		$data['tables']		= 'timezone';
+        		$data['conditions']=array(array('id ="'.$this->getTimeZoneId().'"' ),true);
+        		$temp = $this->_db->select($data);
+        
+        		$myResult=array();
+        		while($row = $temp->fetch(PDO::FETCH_ASSOC)) {
+        			$myResult[]=$row;
+        		}
+        		if($myResult != null)
+        		{
+        			$userFormArray["time_zone_id"] = $myResult[0]['name'];
+        		}
+        
+        	}
         }
+        
+        
         if($this->getStatus() != null)
         {
             $userFormArray["status"] = $this->getStatus();
@@ -309,4 +372,13 @@ class User extends DBConnection
     
         return $userFormArray;    
     }
+    
+    function registerUser() {
+    		
+    	$userArray = $this->GenerateArray($_POST, "INSERT");
+    
+    	$result = $this->_db ->insert('users', $userArray);
+    
+    }
+    
 }

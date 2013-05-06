@@ -13,7 +13,7 @@
  * ************************************************************************
  */
 
-require_once 'models/User.php';
+require_once 'models/Registration.php';
 
 class MainController 
 {	
@@ -136,6 +136,9 @@ class MainController
 	/* Called when user submits the registration form */
 	public function registerUser() 
 	{		
+		$userObj = new User();
+		$userObj->registerUser();
+		
 		/*$authObject = new Authenticate ();
 		$authObject->validateRegistration ();
 		$email = $_POST ["email"];
@@ -178,9 +181,9 @@ class MainController
 			//print_r($_POST); die;
 			//$obj = new Registration ();
 			//$obj->newUserRegistration ( $_POST);
-		echo "<pre>";	
-		$obj = new User();
-		$userArray = $obj->GenerateArray($_POST, "INSERT");
+			//print_r($_POST);
+		
+		
 			
 		/*} elseif ($_POST ["usertype"] == "teacher") {
 			$obj = new Registration ();
@@ -209,4 +212,4 @@ class MainController
 		echo '1';
 	}
 }
-?>
+?>+

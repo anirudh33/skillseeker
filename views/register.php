@@ -35,18 +35,16 @@
     			<input id="name" name="last_name" placeholder="lastname" required="" tabindex="1" type="text"> 
     			 
     			<p class="contact"><label for="email">Email</label></p> 
-    			<input id="email" name="email" placeholder="example@domain.com" required="" type="email"> 
+    			<input id="email" name="email_address" placeholder="example@domain.com" required="" type="email"> 
                 
                 <p class="contact"><label for="username">Create a username</label></p> 
-    			<input id="username" name="username" placeholder="username" required="" tabindex="2" type="text"> 
+    			<input id="username" name="user_name" placeholder="username" required="" tabindex="2" type="text"> 
     			 
-    			<p class="contact"><label for="username">Display Name</label></p> 
-    			<input id="username" name="username" placeholder="Choose a display name" required="" tabindex="2" type="text">  
-                
+    			
                 
                
 			    <p class="contact"><label for="time zone">Time Zone</label></p>
-            <select class="select-style gender" name="timezone">
+            <select class="select-style gender" name="time_zone_id">
             <option value="select">time zone</option>
             <option>UTC+05:30 (IST)india</option>
 							<option>UTC+08:00 (HKT)Honkong</option>
@@ -68,7 +66,7 @@
             </select><br><br>
                 
              <p class="contact"><label for="country">Select Country</label></p>
-            <select class="select-style gender" name="country">
+            <select class="select-style gender" name="country_id">
             <option value="select">Country</option>
             <option value="United States">United States</option>
 								<option value="United Kingdom">United Kingdom</option>
