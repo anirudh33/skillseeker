@@ -12,7 +12,7 @@
 session_start();
 
 /* Including all constants to be used */
-require_once '/var/www/skillseeker/branches/development/libraries/constants.php';
+require_once '/var/www/skillseeker/trunk/libraries/constants.php';
 
 /* Requiring all essential files */
 require_once SITE_PATH . '/controllers/MainController.php';
