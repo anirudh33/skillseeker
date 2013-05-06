@@ -11,7 +11,7 @@ Registration form css
 .form input[type="text"] { width: 400px; }
 .form input[type="email"] { width: 400px; }
 .form input[type="password"] { width: 400px; }
-.form label { color: #000; font-weight:bold;font-size: 15px;font-family:verdana,Arial, Helvetica; }
+.form label { color: #000; font-weight:bold;font-size: 15px;font-family:Arial, Helvetica; }
 .form label.month {width: 135px;}
 .form input, textarea { background-color: rgba(255, 255, 255, 0.4); border: 1px solid rgba(122, 192, 0, 0.15); padding: 7px; font-family: Keffeesatz, Arial; color: #4b4b4b; font-size: 14px; -webkit-border-radius: 5px; margin-bottom: 15px; margin-top: -10px; }
 .form input:focus, textarea:focus { border: 1px solid #ff5400; background-color: rgba(255, 255, 255, 1); }

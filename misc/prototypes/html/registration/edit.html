@@ -1,78 +1,79 @@
 <!DOCTYPE html>
 <html>
 <head>
-
-<title>Registration</title>
-<link rel="stylesheet" href="css/ui.css" />
-<script type="text/javascript" src="js/jquery.tools.min.js"></script>
-<script src="js/register.js"></script>
-<script src="js/wufoo.js"></script>
-<link href="css/structure.css" rel="stylesheet">
-<link href="css/form.css" rel="stylesheet">
-
-<script>
-	$(document).ready(function() {
-		$("#datepicker").datepicker();
-	});
-</script>
+<title>Edit Profile</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7; IE=EmulateIE9">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+    <link rel="stylesheet" type="text/css" href="style.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="demo.css" media="all" />
+    
+     <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+ <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+	  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+	   
+	  <script>
+	  $(document).ready(function() {
+	    $("#datepicker").datepicker();
+	  });
+	  </script>
+	  
 </head>
-
-<body id="public">
-	<div id="container" class="ltr">
-
-		<center>
-			<h1 id="">EDIT PROFILE</h1>
-		</center>
-
-		<form id="form69" name="form69" class="wufoo topLabel page"
-			autocomplete="off" enctype="multipart/form-data" method="post"
-			novalidate action="">
-			<ul>
-
-				<li id="foli0" class="notranslate "><label class="desc"
-					id="title0" for="Field0"> Name </label> <span> <input
-						id="Field0" name="First" type="text" class="field text fn"
-						value="" size="8" tabindex="1" /> <label for="Field0">First</label>
-				</span> <span> <input id="Field1" name="Last" type="text"
-						class="field text ln" value="" size="14" tabindex="2" /> <label
-						for="Field1">Last</label>
-				</span></li>
-				<li><label class="desc" id="title0" for="Field0">
-						Create password </label> <span> <input id="Password"
-						name="Password" type="text" class="field text fn" value=""
-						size="20" tabindex="1" />
-				</span></li>
-				<li><label class="desc" id="title0" for="Field0">
-						Confirm password </label> <span> <input id="Password"
-						name="password" type="text" class="field text fn" value=""
-						size="20" tabindex="1" />
-				</span></li>
-				<li id="foli2" class="complex notranslate      "><label
-					class="desc" id="title2" for="Field2">Username<span
-						id="req_2" class="req">*</span>
-				</label>
-					<div>
-						<span class="full addr1"> <input id="Field2" name="Street"
-							type="text" class="field text addr" value="" tabindex="3"
-							required />
-						</span> <span class="full addr2"> <input id="Field3" name="Street"
-							type="text" class="field text addr" value="" tabindex="4" /> <label
-							for="Field3">Address Line 2</label>
-						</span> <span class="left city"> <input id="Field4" name="Field4"
-							type="text" class="field text addr" value="" tabindex="5"
-							required /> <label for="Field4">City</label>
-						</span> <span class="right state"> <input id="Field5" name="State"
-							type="text" class="field text addr" value="" tabindex="6"
-							required /> <label for="Field5">State / Province /
-								Region</label>
-						</span> <span class="left zip"> <input id="Field6" name="Postal"
-							type="text" class="field text addr" value="" maxlength="15"
-							tabindex="7" required /> <label for="Field6">Postal /
-								Zip Code</label>
-						</span> <span class="right country"> <select id="Field7"
-							name="Field7" class="field select addr" tabindex="8">
-								<option value="" selected="selected"></option>
-								<option value="United States">United States</option>
+<body>
+<div class="container">
+			<!-- freshdesignweb top bar -->
+            <div class="freshdesignweb-top">
+                <a href="http://www.freshdesignweb.com" target="_blank">Home</a>
+                <div class="clr"></div>
+            </div><!--/ freshdesignweb top bar -->
+			<header>
+				<h1>EDIT PROFILE</h1>
+            </header>       
+      <div  class="form">
+    		<form id="contactform"> 
+    			<p class="contact"><label for="name">First Name</label></p> 
+    			<input id="name" name="name" placeholder="firstname" required="" tabindex="1" type="text"> 
+    			 
+    			<p class="contact"><label for="name">Last Name</label></p> 
+    			<input id="name" name="name" placeholder="lastname" required="" tabindex="1" type="text"> 
+    			 
+    			<p class="contact"><label for="email">Email</label></p> 
+    			<input id="email" name="email" placeholder="example@domain.com" required="" type="email"> 
+                
+                <p class="contact"><label for="username">Username</label></p> 
+    			<input id="username" name="username" placeholder="username" required="" tabindex="2" type="text"> 
+    			 
+    			<p class="contact"><label for="username">Display Name</label></p> 
+    			<input id="username" name="username" placeholder="Choose a display name" required="" tabindex="2" type="text">  
+                
+                
+               
+			    <p class="contact"><label for="time zone">Time Zone</label></p>
+            <select class="select-style gender" name="timezone">
+            <option value="select">time zone</option>
+            <option>UTC+05:30 (IST)india</option>
+							<option>UTC+08:00 (HKT)Honkong</option>
+							<option>UTC+13:00 — Phoenix Islands)</option>
+							<option>UTC−08:00 — Pitcairn Islands</option>
+							<option>UTC−04:00 (AST) — Labrador</option>
+							<option>UTC−04:00 — northwestern Greenland</option>
+							<option>UTC+05:00 — western Kazakhstan</option>
+							<option>UTC−10:00 — Cook Islands</option>
+							<option>UTC−04:00 (Brasília time −1) — , Mato Grosso do
+								Sul, Rondônia,</option>
+							<option>UTC+06:00 — eastern Kazakhstan</option>
+							<option>UTC+07:00 (Western Indonesian Standard Time)</option>
+							<option>UTC+01:00 (CET) — main territory of Spain</option>
+							<option>UTC−08:00 (Zone 3 or Northwest Zone) — the state
+								of Baja California</option>
+							<option>UTC+08:00 (HKT)</option>
+							<option>UTC−06:00 — Easter Island</option>
+            </select><br><br>
+                
+             <p class="contact"><label for="country">Select Country</label></p>
+            <select class="select-style gender" name="country">
+            <option value="select">Country</option>
+            <option value="United States">United States</option>
 								<option value="United Kingdom">United Kingdom</option>
 								<option value="Australia">Australia</option>
 								<option value="Canada">Canada</option>
@@ -301,73 +302,19 @@
 								<option value="Yemen">Yemen</option>
 								<option value="Zambia">Zambia</option>
 								<option value="Zimbabwe">Zimbabwe</option>
-						</select> <label for="Field7">Country</label>
-						</span>
-					</div></li>
-				<li id="foli0" class="notranslate "><label class="desc"
-					id="title0" for="Field0"> Time Zone </label> <span> <select
-						name="TimeZone"><option>UTC+05:30 (IST)india</option>
-							<option>UTC+08:00 (HKT)Honkong</option>
-							<option>UTC+13:00 — Phoenix Islands)</option>
-							<option>UTC−08:00 — Pitcairn Islands</option>
-							<option>UTC−04:00 (AST) — Labrador</option>
-							<option>UTC−04:00 — northwestern Greenland</option>
-							<option>UTC+05:00 — western Kazakhstan</option>
-							<option>UTC−10:00 — Cook Islands</option>
-							<option>UTC−04:00 (Brasília time −1) — , Mato Grosso do
-								Sul, Rondônia,</option>
-							<option>UTC+06:00 — eastern Kazakhstan</option>
-							<option>UTC+07:00 (Western Indonesian Standard Time)</option>
-							<option>UTC+01:00 (CET) — main territory of Spain</option>
-							<option>UTC−08:00 (Zone 3 or Northwest Zone) — the state
-								of Baja California</option>
-							<option>UTC+08:00 (HKT)</option>
-							<option>UTC−06:00 — Easter Island</option>
-					</select>
-				</span>
-				<li id="foli8" class="phone notranslate leftHalf     "><label
-					class="desc" id="title8" for="Field8"> Phone </label> <span>
-						<input id="Field8" name="Field8" type="tel" class="field text"
-						value="" size="3" maxlength="3" tabindex="9" /> <label
-						for="Field8">###</label>
-				</span> <span class="symbol">-</span> <span> <input id="Field8-1"
-						name="Field8-1" type="tel" class="field text" value="" size="3"
-						maxlength="3" tabindex="10" /> <label for="Field8-1">###</label>
-				</span> <span class="symbol">-</span> <span> <input id="Field8-2"
-						name="Field8-2" type="tel" class="field text" value="" size="4"
-						maxlength="4" tabindex="11" /> <label for="Field8-2">####</label>
-				</span></li>
-				<li id="foli9" class="notranslate rightHalf     "><label
-					class="desc" id="title9" for="Field9"> Email <span
-						id="req_9" class="req">*</span>
-				</label>
-					<div>
-						<input id="Field9" name="Field9" type="email" spellcheck="false"
-							class="field text medium" value="" maxlength="255" tabindex="12"
-							required />
-					</div></li>
-				<li id="foli12" class="date notranslate leftHalf     "><label
-					class="desc" id="title12" for="Field12"> Date of birth </label> <span>
-						<input id="datepicker" />
-				</span></li>
-				<li id="foli10" class="notranslate       "><label class="desc"
-					id="title10" for="Field10"> Gender </label>
-					<div>
-						<select id="Field10" name="Field10" class="field select medium"
-							tabindex="19">
-							<option value="" selected="selected">i am</option>
-							<option value="male">male</option>
-							<option value="female">female</option>
-
-							<option value="other">other</option>
-
-						</select>
-					</div></li>
-
-				</li>
-				<li class="buttons ">
-					<div>
-<p>
+								</select></br>
+             
+             <p class="contact"><label for="currentpassword">Current password</label></p> 
+    			<input type="password" id="currentpassword" name="currentpassword" required="">    
+                
+             <p class="contact"><label for="password">New password</label></p> 
+    			<input type="password" id="password" name="password" required=""> 
+                
+                <p class="contact"><label for="repassword">Confirm your new password</label></p> 
+    			<input type="password" id="repassword" name="repassword" required="">    
+               
+         
+         <p>
 	<img id="siimage" style="border: 1px solid #000; margin-right: 15px"
 		src="captcha/securimage_show.php?sid=<?php echo md5(uniqid()) ?>"
 		alt="CAPTCHA Image" align="left">
@@ -384,20 +331,12 @@
 		align="bottom" border="0"></a><br /> <strong>Enter Code*:</strong><br />
 	<input type="text" name="ct_captcha" size="12" maxlength="8" />
 </p>
-						<input id="saveForm" name="saveForm" class="btTxt submit"
-							type="submit" value="Submit" />
-							
-							
-							
-					</div>
-				</li>
-
-			</ul>
-		</form>
-
-	</div>
-	<!--container-->
-
+         
+         
+            <input class="buttom" name="submit" id="submit" tabindex="5" value="Edit Details" type="submit"> 	 
+   </form> 
+</div>      
+</div>
 
 </body>
 </html>
