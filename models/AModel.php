@@ -28,7 +28,7 @@ class AModel extends DBConnection
         print_r($result);*/
         
         
-        $data['tables']		= 'login';
+        $data['tables']		= 'users';
         //$data['conditions']=array(array('user_name ='),true);
         $result=$this->_db->select($data);
         $myResult=array();
