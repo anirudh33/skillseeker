@@ -13,45 +13,10 @@
  * ************************************************************************
  */
 
-
-require_once  './models/AModel.php';
+require_once 'models/User.php';
 
 class MainController 
-{
-    private $_objAmodel;
-    public function __construct()
-    {
-        $this->_objAmodel=new AModel();
-    }
-    
-
-    
-    public function loginController()
-    {
-        $user_name=$_POST['userName'];
-        $password=$_POST['password'];
-         //validate here
-        $reslut=$this->_objAmodel->AuthenticateUser($user_name,$password);
-        
-    }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+{	
 	 /* Any messages to be shown to user */
 	private $_message = '';
 	
@@ -97,11 +62,10 @@ class MainController
 	
 	 /* Starts login procedure by fetching username, password from POST */
 	public function initiateLogin() {
-	    
 		$authObject = new Authenticate ();
-		var_dump($authObject);
+		
 		/* Validate username password */
-		//$authObject->validateLogin ();
+		$authObject->validateLogin ();
 		
 		/* Getting rid of sql injection */
 		$fieldEmail = mysql_real_escape_string ( $_POST ["fieldEmail"] );
@@ -172,7 +136,7 @@ class MainController
 	/* Called when user submits the registration form */
 	public function registerUser() 
 	{
-		$authObject = new Authenticate ();
+		/*$authObject = new Authenticate ();
 		$authObject->validateRegistration ();
 		$email = $_POST ["email"];
 		$password = $_POST ["password"];
@@ -210,13 +174,19 @@ class MainController
 			$this->setCustomMessage ( "SuccessMessage", "Mail sent," );
 		}		
 		if ($_POST ["usertype"] == "student") {
-			// echo"student";
-			$obj = new Registration ();
-			$obj->newStudentRegistration ( $email, $password, $firstname, $lastname, $phone, $address, $qualification, $gender, $date, $usertype, $status, $profilepicture, $confirm_code );
-		} elseif ($_POST ["usertype"] == "teacher") {
+			// echo"student";*/
+			//print_r($_POST); die;
+			//$obj = new Registration ();
+			//$obj->newUserRegistration ( $_POST);
+		echo "<pre>";	
+		$obj = new User();
+			$userArray = $obj->GenerateArray($_POST, "INSERT");
+			print_r($userArray);
+		/*} elseif ($_POST ["usertype"] == "teacher") {
 			$obj = new Registration ();
 			$obj->newTeacherRegistration ( $email, $password, $firstname, $lastname, $phone, $address, $qualification, $gender, $date, $usertype, $status, $profilepicture, $confirm_code );
 		}		
+	}*/
 	}
 	
 	/* Logs out the user by destroying session */
