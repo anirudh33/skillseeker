@@ -41,12 +41,3 @@ class validate
     
    
 }
-$obj = new validate();
-//$arrat = $obj->validator("ga999", 'alphanumeric#minlength=4#maxlength=25','alphanumeric Required#Enter Password atleast 4 characters long#Password should not be more than 25 characters long');
-$obj->validator("kgfttdjjjj","546", 'datatype=int#minlength=4#maxlength=25','datatype Required#Enter Password atleast 4 characters long#Password should not be more than 25 characters long');
-//$obj->validator("kgfttdjjjj","", 'required','Password Required');
-$obj->validator("gfttdjjj","", 'required','Pord Required');
-$error=$obj->result();
-// echo($error);
-echo("<pre>");
-print_r($error);

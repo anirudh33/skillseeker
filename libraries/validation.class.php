@@ -251,7 +251,17 @@ class validation {
 						
 						break;
 					}
-				
+					
+					case "ftype":{
+						$errorMsg .= $this->validateFileType($postVar, $value, $error);
+						break;
+					}
+					
+					case "fsize":{
+						$errorMsg .= $this->validateFileSize($postVar, $value, $error);
+						break;
+					}
+					
 				case "custom" :
 					{
 						if (! preg_match ( $value, trim ( $postVar ) )) {
@@ -261,6 +271,11 @@ class validation {
 						}
 						break;
 					}
+			default:
+				{
+					echo"you entered a wrong choice";
+					break;
+				}
 			}
 		}
 		
@@ -407,6 +422,161 @@ class validation {
 		}
 		return $errorMsg;
 	}
+	function validateFileType($postVar, $value, $error)
+	{
+		$errorMsg = "";
+		if(isset($value)){
+			$found = strpos($value, ',');
+			if($found === false){
+				$options[0] = $value;
+			}
+			else{
+				$options = explode(",", $value);
+			}
+		}
+	
+		if(is_array($postVar['name'])){
+			$totalFiles = count($postVar['name']);
+	
+			for($i=0; $i < $totalFiles; $i++){
+				if($postVar['name'][$i]){
+					$fileTypeMatch = 0;
+					foreach($options as $id => $type){
+						$typeArray = $this->availableFileTypes($type);
+						if(in_array($postVar['type'][$i], $typeArray)){
+							$fileTypeMatch = 1;
+						}
+						if($fileTypeMatch)	break;
+					}
+	
+					if(!$fileTypeMatch){
+						$errorMsg .= $error." (".$postVar['name'][$i].")<br>";
+					}
+				}
+			}
+		}
+		else {
+			if($postVar['name']){
+				$fileTypeMatch = 0;
+				foreach($options as $id => $type){
+					$typeArray = $this->availableFileTypes($type);
+					if(in_array($postVar['type'], $typeArray)){
+						$fileTypeMatch = 1;
+					}
+					if($fileTypeMatch)  break;
+				}
+	
+				if(!$fileTypeMatch){
+					$errorMsg .= $error." (".$postVar['name'].")<br>";
+				}
+			}
+		}
+	
+		return $errorMsg;
+	}
+	
+	function availableFileTypes($ext)
+	{
+		switch($ext){
+	
+			case "txt":
+				$type[0] = "text/plain";
+				break;
+	
+			case "xml":
+				$type[0] = "text/xml";
+				$type[1] = "application/xml";
+				break;
+	
+			case "csv":
+				$type[0] = "text/x-comma-separated-values";
+				$type[1] = "application/octet-stream";
+				$type[2] = "text/plain";
+				break;
+	
+			case "zip":
+				$type[0] = "application/zip";
+				break;
+	
+			case "tar":
+				$type[0] = "application/x-gzip";
+				break;
+	
+			case "ctar":
+				$type[0] = "application/x-compressed-tar";
+				break;
+	
+			case "pdf":
+				$type[0] = "application/pdf";
+				break;
+	
+			case "doc":
+				$type[0] = "application/msword";
+				$type[1] = "application/octet-stream";
+				break;
+	
+			case "xls":
+				$type[0] = "application/vnd.ms-excel";
+				$type[1] = "application/vnd.oasis.opendocument.spreadsheet";
+				break;
+	
+			case "ppt":
+				$type[0] = "application/vnd.ms-powerpoint";
+				break;
+	
+			case "jpg":
+				$type[0] = "image/jpg";
+				$type[1] = "image/jpeg";
+				$type[2] = "image/pjpeg";
+				break;
+	
+			case "gif":
+				$type[0] = "image/gif";
+				break;
+	
+			case "png":
+				$type[0] = "image/png";
+				break;
+	
+			case "bmp":
+				$type[0] = "image/bmp";
+				break;
+	
+			case "icon":
+				$type[0] = "image/x-ico";
+				break;
+	
+			case "font":
+				$type[0] = "application/x-font-ttf";
+				break;
+		}
+	
+		return $type;
+	}
+	
+	function validateFileSize($postVar, $value, $error)
+	{
+		$errorMsg = "";
+		if(is_array($postVar['name'])){
+			$totalFiles = count($postVar['name']);
+	
+			for($i=0; $i < $totalFiles; $i++){
+				if($postVar['name'][$i]){
+					if($postVar['size'][$i] > $value){
+						$errorMsg .= $error." (".$postVar['name'][$i].")<br>";
+					}
+				}
+			}
+		}
+		else {
+			if($postVar['size'] > $value){
+				$errorMsg .= $error." (".$postVar['name'].")<br>";
+			}
+		}
+	
+		return $errorMsg;
+	}
+	
 	function availablePhoneType($country) {
 		// India
 		$type [0] = '/^[0-9]{6,10}$/';
