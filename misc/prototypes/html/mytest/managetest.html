@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<script src="../js/jquery.tools.min.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<script language="javascript">
+$(document).ready(function()
+		{
+	$("#edittestandcategory").hide();
+		});
+        function showEdit() {
+            $("#edittestandcategory").show();
+        }
+        function hideEdit() {
+            $("#edittestandcategory").hide();
+        }
+        </script>
+       <link rel="stylesheet" href="manage.css" />
+</head>
+<body>
+    <a href="#" onclick="showEdit();">Edit Test And Category</a><br/>
+    <div id="edittestandcategory">
+    <form action="" name="edittestandcategory">
+		<label>Test Name</label><br/>
+		<input type="text" name="managetest_testname" id="managetest_testname" />
+		<br/><select	name="managetest_category">
+		<option>Category</option>
+					</select><br>		
+					<input type="submit" name="edittestandcategorysubmit" value="Submit"/>
+				
+					</form>
+					<a href="#" onclick="hideEdit();">Hide Manage Test</a><br/>
+    
+    </div>
+    
+    
+    <a href="#" onclick="showedit();">Set Random Question</a><br/>
+    
+    
+    
+        <a href="#" onclick="showedit();">Assign This Test</a><br/>
+        <a href="#" onclick="showedit();">Delete This Test</a><br/>
+        
+    
+    
+    
+    
+    
+</body>
+</html>
