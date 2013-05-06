@@ -35,13 +35,17 @@ class validation {
 	 */
 	function validate() {
 		$errorMsg = array ();	//variable store error messages
-		$result = 1;
+		$result =1;
 		
 		for($i = 0; $i < $this->id; $i ++) {
 			$errorMsg [$this->check_vars [$i] ['controler_name']] = "";
 		}
 		
-		for($i = 0; $i < $this->id; $i ++) {
+	for($i = 0; $i < $this->id; $i ++) {
+			if(strlen($errorMsg [$this->check_vars [$i] ['controler_name']]))
+			{
+				continue;
+			}
 			$postVar = $this->check_vars [$i] ['data'];
 			$authType = $this->check_vars [$i] ['authtype'];
 			
