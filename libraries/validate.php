@@ -13,7 +13,8 @@ class validate
     private  $obj;	//Class Object Reference
     private $errorMsg="";
     
-    function __construct(){
+    public function __construct()
+    {
         $this->obj = new validation();
     }
     
@@ -39,31 +40,77 @@ class validate
                 $this->obj->addFields($name,$postVar, $auth[$i], $err[$i]);
             }
         }
-        else{
+        else
+        {
             $this->errorMsg="Programer's error";
-            return $this->errorMsg;
-        }
+            echo $this->errorMsg;
+         }
 
     }
     
-    //return validation result with error messages
-    function result()
+    
+    /**
+     * return validation result with error messages
+     */
+    public function result()
     {
         $this->errorMsg=$this->obj->validate();
         return $this->errorMsg;   
     }
     
-   
+    /**
+     *  Helps prevent XSS attacks
+     */
+    public function encodeXSString($string)
+    {
+    	// Remove dead space.
+    	$string = trim ( $string );
+    		
+    	// Prevent potential Unicode codec problems.
+    	$string = utf8_decode ( $string );
+    		
+    	// HTMLize HTML-specific characters.
+    	$string = htmlentities ( $string, ENT_QUOTES );
+    	$string = str_replace ( "#", "&#35;", $string );
+    	$string = str_replace ( "%", "&#37;", $string );
+    
+    	return $string;
+    }
+    
+    
+    /**
+     * Helps prevent XSS attacks
+     */
+    private function decodeXSString($string) 
+    {
+    	// Remove dead space.
+    	$string = trim ( $string );
+    		
+    	// Prevent potential Unicode codec problems.
+    	$string = utf8_decode ( $string );
+    		
+    	// HTMLize HTML-specific characters.
+    	$string = htmlentities ( $string, ENT_QUOTES );
+    	$string = str_replace ( "&#35;", "#", $string );
+    	$string = str_replace ( "&#37;", "%", $string );
+    	$length = intval ( $length );
+    		
+    	if ($length > 0)
+    	{
+    		$string = substr ( $string, 0, $length );
+    	}
+    	return $string;
+    }
+    
+    
+    /**
+     * prevent sql injection
+     * $param parameter will accept array type
+     */
+    private function preventSQLInjection($string) {
+    	foreach ( $string as $key => $value ) {
+    		$value = mysql_real_escape_string ( $value );
+    	}
+    	return $string;
+    }   
 }
-$obj = new validate();
-//$arrat = $obj->validator("name","ga999", 'alphanumeric#minlength=4#maxlength=25','alphanumeric Required#Enter Password atleast 4 characters long#Password should not be more than 25 characters long');
-// $obj->validator("kgfttdjjjj","546", 'datatype=int#minlength=4#maxlength=25','datatype Required#Enter Password atleast 4 characters long#Password should not be more than 25 characters long');
-//$obj->validator("kgfttdjjjj","", 'required#alphanumeric#minlength=4#maxlength=25','Password Required#alphanumeric Required#Enter Password atleast 4 characters long#Password should not be more than 25 characters long');
-// $obj->validator("controller","value", 'required#','Pord Required');
-//$obj->validator("controller","2010/02/02", 'date=yyyy/mm/dd','date format');
-//$obj->validator("controller","2010/02/02", 'date=yyyy/mm/dd','date format');
-$obj->validator("controller","12345", 'datatype=int,5','data');
-$error=$obj->result();
-// echo($error);
-echo("<pre>");
-print_r($error);
