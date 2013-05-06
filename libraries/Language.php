@@ -2,7 +2,7 @@
 /*
  **************************** Creation Log *******************************
 File Name                   -  lang.php
-Project Name                -  ExamGenerator
+Project Name                -  SkillSeeker
 Description                 -  Class file for start
 Version                     -  1.0
 Created by                  -  Mohit K. Singh
