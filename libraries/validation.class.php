@@ -4,12 +4,10 @@
  * FileName: Validation.class.php Version: 1.0 Author: Keshi Chander Yadav, Tanu Trehan, Manish Date: May 03, 2013
  */
 class validation {
-	/*provides id for each controller*/
 	function validation() {
 		$this->id = 0;
 	}
-	/*creates associative array containing controller name, data value, validation check , error message  */
-	function add_fields($controler_name, $postVar, $authType, $error) {
+	function addFields($controler_name, $postVar, $authType, $error) {
 		$index = $this->id ++;
 		
 		$this->check_vars [$index] ['data'] = $postVar;
@@ -17,7 +15,6 @@ class validation {
 		$this->check_vars [$index] ['error'] = $error;
 		$this->check_vars [$index] ['controler_name'] = $controler_name;
 	}
-	/*contains validation checks in switch case and returns error message */
 	function validate() {
 		$errorMsg = array ();
 		$result = 1;
@@ -233,25 +230,34 @@ class validation {
 				
 				case "datatype" :
 					{
-						if ($value == "int") {							
-							$result = is_int ( $postVar );
+						$limit=explode(',',$value);
+						if ($limit[0] == "int") {	
+							$regexp  = '/^[0-9]{'.$limit[1].'}$/';
+							if (! preg_match ( $regexp, trim ( $postVar ) )) {
+								$length = strlen ( trim ( $postVar ) );
+								if ($length){
+									$errorMsg [$this->check_vars [$i] ['controler_name']] .= $error . "<br>";
+								}
+							}
 						}
-						if ($value == "float") {
-							$result = is_float ( $postVar );
+						if ($limit[0] == "float") {
+							$regexp  = '/^[0-9]{'.$limit[1].'}.[0-9]{'.$limit[2].'}$/';
+							if (! preg_match ( $regexp, trim ( $postVar ) )) {
+								$length = strlen ( trim ( $postVar ) );
+								if ($length){
+									$errorMsg [$this->check_vars [$i] ['controler_name']] .= $error . "<br>";
+								}
+							}
 						}
-						if ($value == "bool") {
+					if ($limit[0] == "bool") {
 							$result = is_bool ( $postVar );
 						}
-						if ($value == "null") {
+					if ($limit[0] == "null") {
 							$result = is_null ( $postVar );
 						}
-						if ($value == "numeric") {
-							$result = is_numeric ( $postVar );
-						}
-						if (!$result) {
+					if (!$result) {
 							$errorMsg [$this->check_vars [$i] ['controler_name']] .= $error . "<br>";
-						}
-						
+						}	
 						break;
 					}
 					
@@ -284,7 +290,6 @@ class validation {
 		
 		return $errorMsg;
 	}
-	/*validates entered date format contains data value, format, error message in parameters and returns error message*/
 	function validateDate($postVar, $value, $error) {$errorMsg = "";
        
         $length = strlen ( trim ( $postVar ) );
@@ -426,9 +431,7 @@ class validation {
             if (! $patternMatch)
                 $errorMsg .= $error . "<br>";
         }
-        return $errorMsg;
-	}
-     /*checks for the file type extensions uploaded and contains data value, allowed extension an error message as parameters and returns erreo message*/
+        return $errorMsg;}
 	function validateFileType($postVar, $value, $error)
 	{
 		$errorMsg = "";
@@ -481,7 +484,7 @@ class validation {
 	
 		return $errorMsg;
 	}
-	/*checks for allowed file extensions contains extension as parameter and returns file type */
+	
 	function availableFileTypes($ext)
 	{
 		switch($ext){
@@ -560,7 +563,7 @@ class validation {
 	
 		return $type;
 	}
-	/* validates file size contains data value, size, error message as parameter and returns error message */
+	
 	function validateFileSize($postVar, $value, $error)
 	{
 		$errorMsg = "";
@@ -583,7 +586,7 @@ class validation {
 	
 		return $errorMsg;
 	}
-	/* checks for the region of phone number and takes country name as parameter then returns the regular expression for validating phone */
+	
  function availablePhoneType($country) {
 
 	switch($country) {

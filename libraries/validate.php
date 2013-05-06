@@ -20,7 +20,7 @@ class validate
         {
             for($i=0;$i<$authLength;$i++)
             {
-                $this->obj->add_fields($name,$postVar, $auth[$i], $err[$i]);
+                $this->obj->addFields($name,$postVar, $auth[$i], $err[$i]);
             }
         }
         else{
@@ -42,7 +42,7 @@ class validate
    
 }
 $obj = new validate();
-//$arrat = $obj->validator("ga999", 'alphanumeric#minlength=4#maxlength=25','alphanumeric Required#Enter Password atleast 4 characters long#Password should not be more than 25 characters long');
+//$arrat = $obj->validator("name","ga999", 'alphanumeric#minlength=4#maxlength=25','alphanumeric Required#Enter Password atleast 4 characters long#Password should not be more than 25 characters long');
 // $obj->validator("kgfttdjjjj","546", 'datatype=int#minlength=4#maxlength=25','datatype Required#Enter Password atleast 4 characters long#Password should not be more than 25 characters long');
 //$obj->validator("kgfttdjjjj","", 'required#alphanumeric#minlength=4#maxlength=25','Password Required#alphanumeric Required#Enter Password atleast 4 characters long#Password should not be more than 25 characters long');
 // $obj->validator("controller","value", 'required#','Pord Required');
