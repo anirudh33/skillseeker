@@ -14,7 +14,7 @@ Sr.NO.		Version		Updated by           Updated on          Description
 *************************************************************************
 
 */
-class User
+class User extends DBConnection
 {
     private $_id;
     private $_firstName;
@@ -188,7 +188,7 @@ class User
 
 
     // values the post value from form
-    public function GenerateArray($values) {
+    public function GenerateArray($values,$type) {
     
         if(in_array($values,'id'))
         {
@@ -255,7 +255,41 @@ class User
         }
         if($this->getCountryId() != null)
         {
-            $userFormArray["country_id"] = $this->getCountryId();
+            if($type == "INSERT")
+            {
+                $data['columns']	= array('id');
+                $data['tables']		= 'country';
+                $data['conditions']=array(array('name ='.$this->getCountryId() ),true);
+                $temp = $this->_db->select($data);
+                
+                $myResult=array();
+                while($row = $result->fetch(PDO::FETCH_ASSOC)) {
+                    $myResult[]=$row;
+                }
+                if($myResult != null)
+                {
+                    $userFormArray["country_id"] = $myResult[0]['id'];
+                }
+                
+            }
+            
+            if($type == "SELECT")
+            {
+                $data['columns']	= array('name');
+                $data['tables']		= 'country';
+                $data['conditions']=array(array('id ='.$this->getCountryId() ),true);
+                $temp = $this->_db->select($data);
+            
+                $myResult=array();
+                while($row = $result->fetch(PDO::FETCH_ASSOC)) {
+                    $myResult[]=$row;
+                }
+                if($myResult != null)
+                {
+                    $userFormArray["country_id"] = $myResult[0]['name'];
+                }
+            
+            }
         }
         if($this->getStatus() != null)
         {
