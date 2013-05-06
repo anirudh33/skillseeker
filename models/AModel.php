@@ -15,40 +15,31 @@
 * 
 * ************************************************************************
 */
-abstract class AModel
+require_once './libraries/DBconnect.php';
+class AModel extends DBConnection
 {
 
-    /**
-     *
-     * @var Holds database instance
-     */
-    protected $db;
-
-    /**
-     * Creating an instance of database
-     */
-    function __construct ()
+    public function AuthenticateUser($user,$pwd)
     {
-        $this->db = DBConnection::Connect();
-    }
-
-    /**
-     *
-     * @param $messageType: Type
-     *            of toast to be displayed which
-     *            can be ErrorMessage, SuccessMessage, NoticeMessage
-     * @param $message: Message
-     *            to be displayed
-     *            Uses toast to show messages to user
-     */
-    public function setCustomMessage ($messageType, $message)
-    {
-        if (isset($_SESSION["$messageType"])) {
-            $_SESSION["$messageType"] .= $message . "<br>";
-        } else {
-            $_SESSION["$messageType"] = $message . "<br>";
+        /*$data['columns']	= array('user_name', 'password');
+        $data['tables']		= 'login';
+        $data['conditions']=array(array('user_name ='.$user),true);
+        $result=$this->_db->select($data);
+        print_r($result);*/
+        
+        
+        $data['tables']		= 'login';
+        //$data['conditions']=array(array('user_name ='),true);
+        $result=$this->_db->select($data);
+        $myResult=array();
+        while($row = $result->fetch(PDO::FETCH_ASSOC)) {
+            $myResult[]=$row;
         }
+        echo "<pre>";
+        print_r($myResult);        
+         
     }
+    
 }
 
 ?>

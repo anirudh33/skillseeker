@@ -13,8 +13,45 @@
  * ************************************************************************
  */
 
+
+require_once  './models/AModel.php';
+
 class MainController 
-{	
+{
+    private $_objAmodel;
+    public function __construct()
+    {
+        $this->_objAmodel=new AModel();
+    }
+    
+
+    
+    public function loginController()
+    {
+        $user_name=$_POST['userName'];
+        $password=$_POST['password'];
+         //validate here
+        $reslut=$this->_objAmodel->AuthenticateUser($user_name,$password);
+        
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 	 /* Any messages to be shown to user */
 	private $_message = '';
 	
@@ -53,10 +90,11 @@ class MainController
 	
 	 /* Starts login procedure by fetching username, password from POST */
 	public function initiateLogin() {
+	    
 		$authObject = new Authenticate ();
-		
+		var_dump($authObject);
 		/* Validate username password */
-		$authObject->validateLogin ();
+		//$authObject->validateLogin ();
 		
 		/* Getting rid of sql injection */
 		$fieldEmail = mysql_real_escape_string ( $_POST ["fieldEmail"] );

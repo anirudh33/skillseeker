@@ -31,13 +31,13 @@
 				<a class="blocklink" href="#">Register free</a></p>
 				<div class="line-separator"></div><br><br>
 				<h2 id="login">Login</h2>
-				<form method="post" action="index.php?controller=MainController&method=login">
+				<form method="post" action="index.php?controller=MainController&method=loginController">
 					<label class="homelabel" for="un"><?php echo $lang->USERNAME;?></label> <input id="un"
-							class="textinput homelogin" type="text" name="<?php echo $lang->FIELDEMAIL;?>">
+							class="textinput homelogin" type="text" name="userName">
 					<div class="erruser">put your error message here</div>
 					<br /> <label class="homelabel" for="pw"><?php echo $lang->PASSWORD;?></label> <input
 						id="pw" class="textinput homelogin" type="password"
-						name="<?php echo $lang->FIELDPASSWORD;?>">
+						name="password">
 								<div class="errpass">put your error message here</div>
 					<br /> <input class="submit login" type="submit" value="Log in">
 					<a class="sml" href="#"><?php echo $lang->FORGETPASSWORD;?></a><br><br>

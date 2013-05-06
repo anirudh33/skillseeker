@@ -9,7 +9,8 @@
  */
 
 /* Starting session  */
-session_start();
+ini_set("display_errors","1");
+//session_start();
 
 /* Including all constants to be used */
 require_once '/var/www/skillseeker/trunk/libraries/constants.php';

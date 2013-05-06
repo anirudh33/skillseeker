@@ -1,19 +1,51 @@
 <?php
 
 /* Example Config for MYSQL */
-$config = array();
-$config['DATABSE_USER_NAME'] = 'root';
-$config['DATABSE_PASSWORD'] = 'root';
-$config['DATABASE_NAME'] = 'careerbook';
-$config['DATABASE_HOST'] = 'localhost';
-$config['DATABASE_TYPE'] = 'mysql';
-$config['DATABASE_PORT'] = null;
-$config['DATABASE_PERSISTENT'] = true;
-
+ini_set("display_errors","1");
 
 include('PDO/cxpdo.php');
+abstract class DBConnection
+{
+    protected $_db;
+    private $_config = array();
+//     $config['DATABSE_USER_NAME'] = 'root';
+//     $config['DATABSE_PASSWORD'] = 'root';
+//     $config['DATABASE_NAME'] = 'skillseeker';
+//     $config['DATABASE_HOST'] = 'localhost';
+//     $config['DATABASE_TYPE'] = 'mysql';
+//     $config['DATABASE_PORT'] = null;
+//     $config['DATABASE_PERSISTENT'] = true;
+    
+    public function __construct ()
+    {
+        $this->_config['DATABSE_USER_NAME'] = 'root';
+        $this->_config['DATABSE_PASSWORD'] = 'root';
+        $this->_config['DATABASE_NAME'] = 'skillseeker';
+        $this->_config['DATABASE_HOST'] = 'localhost';
+        $this->_config['DATABASE_TYPE'] = 'mysql';
+        $this->_config['DATABASE_PORT'] = null;
+        $this->_config['DATABASE_PERSISTENT'] = true;
+        $this->_db = db::instance($this->_config);
+    }
+    
+   /* public function ll()
+    {
+        //$data['columns']	= array('user_name', 'password');
+        $data['tables']		= 'login';
+        //$data['conditions']=array(array('user_name ='),true);
+        $result=$this->_db->select($data);
+        $myResult=array();
+        while($row = $result->fetch(PDO::FETCH_ASSOC)) {
+            $myResult[]=$row;
+        }
+        echo "<pre>";
+        print_r($myResult);
+    }*/
+}
+/*
+$o=new DBConnection();
+$o->ll();*/
 
-$db = db::instance($config);
 /*
 $result = $db->insert('mvc', array('title' => 'My First Post', 'desc' => ' DB system'));
 print 'Created row '. $db->lastInsertId(). ' in the table "mvc"<br />';
@@ -22,10 +54,10 @@ print 'Created row '. $db->lastInsertId(). ' in the table "mvc"<br />';
 $result = $db->insert('mvc', array('title' => 'My Third Post', 'desc' => 'I later'));
 print 'Created row '. $db->lastInsertId(). ' in the table "mvc"<br />';*/
 
-echo "<pre>";
-
-$data['columns']	= array('first_name', 'last_name','email_primary');
-$data['tables']		= 'users';
+/* echo "<pre>";
+//echo "hi";die;
+$data['columns']	= array('user_name', 'password');
+$data['tables']		= 'login';
 //$data['conditions']=array(array('user_id ="17"'),true);
 //$data['conditions']=array(array(' (user_id = 17  AND friend_id = 21) AND status = "F" '),true);
 //$data['conditions']=array(array('email_primary LIKE "%loo%" '),true);
@@ -36,9 +68,14 @@ $data['tables']		= 'users';
 //$data['offset']		= 1;
 $result = $db->select($data);
 
-while($row = $result->fetch(PDO::FETCH_ASSOC)) {
-	print_r($row);
-}
-
+ while($row = $result->fetch(PDO::FETCH_ASSOC)) {
+    if($row['user_name'] == $_POST['fieldEmail'] && $row['password'] == $_POST['fieldPassword'] )
+    {
+        return("1");
+    }
+    
+	
+} 
+//print_r($row); */
 
 ?>

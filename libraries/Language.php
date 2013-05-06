@@ -52,7 +52,7 @@ if($name=="development"){
 }
 else 
 {
-	include_once '../languages/lang.'.$langType.".php";
+	include_once './languages/lang.'.$langType.".php";
 }
 
 //include_once './languages/lang.'.$langType.".php";
