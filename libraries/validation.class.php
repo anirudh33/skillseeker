@@ -1,7 +1,11 @@
 <?php
 
 /*
- * FileName: Validation.class.php Version: 1.0 Author: Keshi Chander Yadav, Tanu Trehan, Manish Date: May 03, 2013
+ * FileName: Validation.class.php 
+ * Version: 1.0 
+ * Author: Keshi Chander Yadav, Tanu Trehan, Manish 
+ * Date: May 03, 2013
+ * Description: Validation class to server side validation
  */
 class validation {
 	function validation() {
@@ -622,7 +626,7 @@ class validation {
     }
 	
 	// Helps prevent XSS attacks
-	private function encodeXSString($string) {
+	function encodeXSString($string) {
 		// Remove dead space.
 		$string = trim ( $string );
 		
@@ -630,14 +634,10 @@ class validation {
 		$string = utf8_decode ( $string );
 		
 		// HTMLize HTML-specific characters.
-		$string = htmlentities ( $string, ENT_NOQUOTES );
+		$string = htmlentities ( $string, ENT_QUOTES );
 		$string = str_replace ( "#", "&#35;", $string );
 		$string = str_replace ( "%", "&#37;", $string );
-		$length = intval ( $length );
-		
-		if ($length > 0) {
-			$string = substr ( $string, 0, $length );
-		}
+
 		return $string;
 	}
 	
@@ -650,7 +650,7 @@ class validation {
 		$string = utf8_decode ( $string );
 		
 		// HTMLize HTML-specific characters.
-		$string = htmlentities ( $string, ENT_NOQUOTES );
+		$string = htmlentities ( $string, ENT_QUOTES );
 		$string = str_replace ( "&#35;", "#", $string );
 		$string = str_replace ( "&#37;", "%", $string );
 		$length = intval ( $length );
