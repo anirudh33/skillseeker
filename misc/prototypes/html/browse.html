@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Upload Files</title>
+<style>
+#submitbtn
+{
+  border: 1px solid #777777;
+  background: #0099CC;
+  color: white;
+  font: bold 21px 'Trebuchet MS';
+  padding: 4px;
+	 width: 115px;
+    height: 40px;
+  cursor: pointer;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+}
+#browse
+{
+	 border: 1px solid #777777;
+  background: #0099CC;
+  color: white;
+  font: bold 21px 'Trebuchet MS';
+  padding: 4px;
+	
+  cursor: pointer;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+}
+
+</style>
+</head>
+<body>
+<form action="#" enctype="multipart/form-data" method="post">
+<p>
+Please specify a file, or a set of files:<br>
+<input type="file" id="browse" name="datafile" size="30">
+</p>
+<div>
+<input type="submit" id="submitbtn" value="upload">
+</div>
+</form>
+</body>
+</html>
