@@ -24,19 +24,23 @@ class validation {
 	function addFields($controler_name, $postVar, $authType, $error) {
 		$index = $this->id ++;
 		
-		$this->check_vars [$index] ['data'] = $postVar;
-		$this->check_vars [$index] ['authtype'] = $authType;
-		$this->check_vars [$index] ['error'] = $error;
-		$this->check_vars [$index] ['controler_name'] = $controler_name;
+		$this->check_vars [$index] ['data'] = $postVar;	//store control field data to be validated 
+		$this->check_vars [$index] ['authtype'] = $authType;	//store type of validation required
+		$this->check_vars [$index] ['error'] = $error;	//store error message for in case of validation failed
+		$this->check_vars [$index] ['controler_name'] = $controler_name; //store error message for in case of validation failed
 	}
 	
-	//function to validate all fields data
+	/*
+	 * Description: function to validate fields common for all
+	 */
 	function validate() {
-		$errorMsg = array ();
+		$errorMsg = array ();	//variable store error messages
 		$result = 1;
+		
 		for($i = 0; $i < $this->id; $i ++) {
 			$errorMsg [$this->check_vars [$i] ['controler_name']] = "";
 		}
+		
 		for($i = 0; $i < $this->id; $i ++) {
 			$postVar = $this->check_vars [$i] ['data'];
 			$authType = $this->check_vars [$i] ['authtype'];
@@ -54,7 +58,7 @@ class validation {
 			}
 			
 			switch ($authType) {
-				
+				//check whether field is required or not
 				case "required" :
 					{
 						if (is_array ( $postVar )) {
@@ -68,11 +72,13 @@ class validation {
 							}
 						} elseif (isset ( $postVar ) && empty ( $postVar )) {
 							$length = strlen ( trim ( $postVar ) );
+							
 							if (! $length) {
 								$errorMsg [$this->check_vars [$i] ['controler_name']] .= $error . "<br>";
 							}
 						} else {
 							$length = strlen ( trim ( $postVar ) );
+							
 							if (! $length) {
 								$errorMsg [$this->check_vars [$i] ['controler_name']] .= $error . "<br>";
 							}
@@ -80,95 +86,111 @@ class validation {
 						break;
 					}
 				
+				//validate field only contains alpha characters only
 				case "alphabets" :
 					{
 						$regexp = '/^[A-za-z]$/';
 						if (! preg_match ( $regexp, trim ( $postVar ) )) {
 							$length = strlen ( trim ( $postVar ) );
+							
 							if ($length)
 								$errorMsg [$this->check_vars [$i] ['controler_name']] .= $error . "<br>";
 						}
-						
 						break;
 					}
 				
+				//validate field only contains alphanumeric characters only
 				case "alphanumeric" :
 					{
 						$regexp = '/^[A-za-z0-9]$/';
 						if (! preg_match ( $regexp, trim ( $postVar ) )) {
 							$length = strlen ( trim ( $postVar ) );
+							
 							if ($length)
 								$errorMsg [$this->check_vars [$i] ['controler_name']] .= $error . "<br>";
 						}
 						break;
 					}
 				
+				//validate field only contains numeric characters only	
 				case "numeric" :
 					{
 						$regexp = '/^[0-9]$/';
 						if (! preg_match ( $regexp, trim ( $postVar ) )) {
 							$length = strlen ( trim ( $postVar ) );
+							
 							if ($length)
 								$errorMsg [$this->check_vars [$i] ['controler_name']] .= $error . "<br>";
 						}
 						break;
 					}
 				
+				//validate field max character limit	
 				case "maxlength" :
 					{
 						$length = strlen ( trim ( $postVar ) );
+						
 						if ($length > $value)
 							$errorMsg [$this->check_vars [$i] ['controler_name']] .= $error . "<br>";
 						
 						break;
 					}
 				
+				//validate field min character limit
 				case "minlength" :
 					{
 						$length = strlen ( trim ( $postVar ) );
+						
 						if ($length < $value && $length != 0)
 							$errorMsg [$this->check_vars [$i] ['controler_name']] .= $error . "<br>";
 						
 						break;
 					}
-				
+
+				//validate username field ...it can contain alphanumeric without any spaces
 				case "username" :
 					{
 						$regexp1 = '/^[0-9]$/';
 						$regexp2 = '/^[a-zA-Z]+[a-zA-Z0-9\.\_]*[a-zA-Z0-9]+$/';
+						
 						if (! preg_match ( $regexp1, trim ( $postVar ) ) && ! preg_match ( $regexp2, trim ( $postVar ) )) {
 							$length = strlen ( trim ( $postVar ) );
+							
 							if ($length)
 								$errorMsg [$this->check_vars [$i] ['controler_name']] .= $error . "<br>";
 						}
 						break;
 					}
 				
+				//checks for script tags
 				case "script" :
 					{
 						$regexp1 = '/(<([^>]+)>)/i';
 						if (! preg_match ( $regexp1, trim ( $postVar ) )) {
 							$length = strlen ( trim ( $postVar ) );
+							
 							if ($length)
 								$errorMsg [$this->check_vars [$i] ['controler_name']] .= $error . "<br>";
 						}
 						break;
 					}
 				
+				//validates form address field
 				case "address" :
 					{
 						$regexp = '/^[a-zA-Z0-9]+.*$/';
 						if (! preg_match ( $regexp, trim ( $postVar ) )) {
 							$length = strlen ( trim ( $postVar ) );
+							
 							if ($length)
 								$errorMsg [$this->check_vars [$i] ['controler_name']] .= $error . "<br>";
 						}
 						break;
 					}
 				
+				//
 				case "phone" :
 					{
-						
 						if (isset ( $value )) {
 							$found = strpos ( $value, ',' );
 							if ($found === false) {
