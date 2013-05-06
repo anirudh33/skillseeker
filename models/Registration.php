@@ -60,7 +60,18 @@ class Registration
     {
         return $this->_timezone;
     }
-
+    public function getCountry()
+    {
+    	return $this->_timezone;
+    }
+    public function getPassword()
+    {
+    	return $this->_timezone;
+    }
+    public function getTimezone()
+    {
+    	return $this->_timezone;
+    }
 	/**
      * @param field_type $_id
      */

@@ -29,10 +29,10 @@
       <div  class="form">
     		<form method="post" id="contactform" action="index.php?controller=MainController&method=registerUser"> 
     			<p class="contact"><label for="name">First Name</label></p> 
-    			<input id="name" name="name" placeholder="firstname" required="" tabindex="1" type="text"> 
+    			<input id="name" name="first_name" placeholder="firstname" required="" tabindex="1" type="text"> 
     			 
     			<p class="contact"><label for="name">Last Name</label></p> 
-    			<input id="name" name="name" placeholder="lastname" required="" tabindex="1" type="text"> 
+    			<input id="name" name="last_name" placeholder="lastname" required="" tabindex="1" type="text"> 
     			 
     			<p class="contact"><label for="email">Email</label></p> 
     			<input id="email" name="email" placeholder="example@domain.com" required="" type="email"> 

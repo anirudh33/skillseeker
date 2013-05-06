@@ -191,41 +191,41 @@ class User extends DBConnection
 
 
     // values the post value from form
-    public function GenerateArray($values,$type) {
-    
-        if(in_array('id',$values))
+    public function GenerateArray($values,$type) {    	
+    	
+        if(array_key_exists('id',$values))
         {
             $this->setId($values['id']);
         }
-        if(in_array('first_name',$values))
+        if(array_key_exists('first_name',$values))
         {
             $this->setFirstName($values['first_name']);
         }
-        if(in_array('last_name',$values))
+        if(array_key_exists('last_name',$values))
         {
             $this->setLastName($values['last_name']);
         }
-        if(in_array('password',$values))
+        if(array_key_exists('password',$values))
         {
             $this->setPassword($values['password']);
         }
-        if(in_array('time_zone_id',$values))
+        if(array_key_exists('time_zone_id',$values))
         {
             $this->setTimeZoneId($values['time_zone_id']);
         }
-        if(in_array('country_id',$values))
+        if(array_key_exists('country_id',$values))
         {
             $this->setCountryId($values['country_id']);
         }
-        if(in_array('status',$values))
+        if(array_key_exists('status',$values))
         {
             $this->setStatus($values['status']);
         }
-        if(in_array('created_on',$values))
+        if(array_key_exists('created_on',$values))
         {
             $this->setCreatedOn($values['created_on']);
         }
-        if(in_array('updated_on',$values))
+        if(array_key_exists('updated_on',$values))
         {
             $this->setUpdatedOn($values['updated_on']);
         }
@@ -307,7 +307,6 @@ class User extends DBConnection
             $userFormArray["updated_on"] = $this->getUpdatedOn();
         }
     
-        return $userFormArray;
-    
+        return $userFormArray;    
     }
 }

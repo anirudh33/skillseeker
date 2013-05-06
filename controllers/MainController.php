@@ -135,7 +135,7 @@ class MainController
 	
 	/* Called when user submits the registration form */
 	public function registerUser() 
-	{
+	{		
 		/*$authObject = new Authenticate ();
 		$authObject->validateRegistration ();
 		$email = $_POST ["email"];
@@ -180,8 +180,8 @@ class MainController
 			//$obj->newUserRegistration ( $_POST);
 		echo "<pre>";	
 		$obj = new User();
-			$userArray = $obj->GenerateArray($_POST, "INSERT");
-			print_r($userArray);
+		$userArray = $obj->GenerateArray($_POST, "INSERT");
+			
 		/*} elseif ($_POST ["usertype"] == "teacher") {
 			$obj = new Registration ();
 			$obj->newTeacherRegistration ( $email, $password, $firstname, $lastname, $phone, $address, $qualification, $gender, $date, $usertype, $status, $profilepicture, $confirm_code );

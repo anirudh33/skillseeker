@@ -19,7 +19,7 @@ abstract class DBConnection
     public function __construct ()
     {
         $this->_config['DATABSE_USER_NAME'] = 'root';
-        $this->_config['DATABSE_PASSWORD'] = 'root';
+        $this->_config['DATABSE_PASSWORD'] = 'anil';
         $this->_config['DATABASE_NAME'] = 'skillseeker';
         $this->_config['DATABASE_HOST'] = 'localhost';
         $this->_config['DATABASE_TYPE'] = 'mysql';
