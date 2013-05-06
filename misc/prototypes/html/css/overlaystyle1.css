@@ -1,0 +1,40 @@
+
+/* the overlayed element */
+.skillseeker_overlay {
+	
+    /* initially overlay is hidden */
+    display:none;
+/*  	overflow: scroll;  */
+
+    /* growing background image */
+/*       background-image:url(../images/shadow.jpeg);   */
+
+    /*
+      width after the growing animation finishes
+      height is automatically calculated
+      */
+    width:640px;
+	/* some padding to layout nested elements nicely  */
+    padding:35px;
+
+    /* a little styling */
+    font-size:11px;
+}
+
+/* default close button positioned on upper right corner */
+.skillseeker_overlay .close {
+    background-image:url(../images/close.png);
+    position:absolute; right:5px; top:5px;
+    cursor:pointer;
+    height:35px;
+    width:35px;
+}
+div.contentWrap {
+    height:700px;
+    overflow-y:auto;
+  }
+/* .contentWrap */
+/* { */
+/* 	overflow: auto; */
+/*     overflow-y: scroll; */
+/* } */
