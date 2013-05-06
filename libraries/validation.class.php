@@ -230,7 +230,7 @@ class validation {
 				
 				case "datatype" :
 					{
-						if ($value == "int") {
+						if ($value == "int") {							
 							$result = is_int ( $postVar );
 						}
 						if ($value == "float") {
@@ -281,147 +281,148 @@ class validation {
 		
 		return $errorMsg;
 	}
-	function validateDate($postVar, $value, $error) {
-		$errorMsg = "";
-		
-		$length = strlen ( trim ( $postVar ) );
-		if ($length) {
-			
-			if (isset ( $value )) {
-				$found = strpos ( $value, ',' );
-				if ($found === false) {
-					$options [0] = $value;
-				} else {
-					$options = explode ( ",", $value );
-				}
-			} else {
-				$options [0] = 'dd-mm-yyyy';
-			}
-			
-			$patternMatch = 0;
-			foreach ( $options as $opt ) {
-				$pos1 = strpos ( $opt, '-' );
-				$pos2 = strpos ( $opt, '/' );
-				$pos3 = strpos ( $opt, '.' );
-				
-				if ($pos1 !== false) {
-					if ($pos1 == 2) {
-						if (strlen ( $opt ) == 8)
-							$regexp = '/^[0-9]{2}[\-][0-9]{2}[\-][0-9]{2}$/';
-						else
-							$regexp = '/^[0-9]{2}[\-][0-9]{2}[\-][0-9]{4}$/';
-					}
-					if ($pos1 == 4)
-						$regexp = '/^[0-9]{4}[\-][0-9]{2}[\-][0-9]{2}$/';
-				}
-				
-				if ($pos2 !== false) {
-					if ($pos2 == 2) {
-						if (strlen ( $opt ) == 8)
-							$regexp = '/^[0-9]{2}[\/][0-9]{2}[\/][0-9]{2}$/';
-						else
-							$regexp = '/^[0-9]{2}[\/][0-9]{2}[\/][0-9]{4}$/';
-					}
-					if ($pos2 == 4)
-						$regexp = '/^[0-9]{4}[\/][0-9]{2}[\/][0-9]{2}$/';
-				}
-				
-				if ($pos3 !== false) {
-					if ($pos3 == 2) {
-						if (strlen ( $opt ) == 8)
-							$regexp = '/^[0-9]{2}[\.][0-9]{2}[\.][0-9]{2}$/';
-						else
-							$regexp = '/^[0-9]{2}[\.][0-9]{2}[\.][0-9]{4}$/';
-					}
-					if ($pos3 == 4)
-						$regexp = '/^[0-9]{4}[\.][0-9]{2}[\.][0-9]{2}$/';
-				}
-				
-				if (preg_match ( $regexp, $postVar )) {
-					$patternMatch = 1;
-					if ((isset ( $pos1 ) && $pos1 == 2) || (isset ( $pos2 ) && $pos2 == 2) || (isset ( $pos3 ) && $pos3 == 2)) {
-						$str1 = substr ( $opt, 0, 2 );
-						$str2 = substr ( $opt, 3, 2 );
-						
-						if ($str1 == 'dd') {
-							$DD = substr ( $postVar, 0, 2 );
-							$MM = substr ( $postVar, 3, 2 );
-							$YY = substr ( $postVar, 6 );
-						}
-						if ($str1 == 'mm') {
-							$MM = substr ( $postVar, 0, 2 );
-							$DD = substr ( $postVar, 3, 2 );
-							$YY = substr ( $postVar, 6 );
-						}
-						if ($str1 == 'yy') {
-							if ($str2 == 'mm') {
-								$YY = substr ( $postVar, 0, 2 );
-								$MM = substr ( $postVar, 3, 2 );
-								$DD = substr ( $postVar, 6 );
-							} else {
-								$MM = substr ( $postVar, 0, 2 );
-								$DD = substr ( $postVar, 3, 2 );
-								$YY = substr ( $postVar, 6 );
-							}
-						}
-					}
-					
-					if ((isset ( $pos1 ) && $pos1 == 4) || (isset ( $pos2 ) && $pos2 == 4) || (isset ( $pos3 ) && $pos3 == 4)) {
-						$str = substr ( $opt, 5, 2 );
-						
-						if ($str == 'dd') {
-							$YY = substr ( $postVar, 0, 4 );
-							$DD = substr ( $postVar, 6, 2 );
-							$MM = substr ( $postVar, 8, 2 );
-						}
-						if ($str == 'mm') {
-							$YY = substr ( $postVar, 0, 4 );
-							$MM = substr ( $postVar, 6, 2 );
-							$DD = substr ( $postVar, 6, 2 );
-						}
-					}
-					
-					if ($DD == 0 || $MM == 0 || $YY == 0) {
-						$errorMsg .= "Invalid Date...<br>";
-					}
-					
-					if ($MM <= 12) {
-						switch ($MM) {
-							case 4 :
-							case 6 :
-							case 9 :
-							case 11 :
-								if ($DD > 30) {
-									$errorMsg .= "Selected month has maximum 30 days.<br>";
-								}
-							default :
-								if ($DD > 31) {
-									$errorMsg .= "Selected month has maximum 31 days.<br>";
-								}
-								break;
-						}
-					}
-					
-					if (($YY % 4) == 0) {
-						if (($MM == 2) && ($DD > 29)) {
-							$errorMsg .= "Invalid days in February for leap year.<br>";
-						}
-					} else {
-						if (($MM == 2) && ($DD > 28)) {
-							$errorMsg .= "Invalid days in February for non leap year.<br>";
-						}
-					}
-				}
-				
-				if ($patternMatch)
-					break;
-			}
-			
-			if (! $patternMatch)
-				$errorMsg .= $error . "<br>";
-		}
-		return $errorMsg;
-	}
+	function validateDate($postVar, $value, $error) {$errorMsg = "";
+       
+        $length = strlen ( trim ( $postVar ) );
+        if ($length) {
+           
+            if (isset ( $value )) {
+                $found = strpos ( $value, ',' );
+                if ($found === false) {
+                    $options [0] = $value;
+                } else {
+                    $options = explode ( ",", $value );
+                }
+            } else {
+                $options [0] = 'dd-mm-yyyy';
+            }
+           
+            $patternMatch = 0;
+            foreach ( $options as $opt ) {
+                $pos1 = strpos ( $opt, '-' );
+                $pos2 = strpos ( $opt, '/' );
+                $pos3 = strpos ( $opt, '.' );
+               
+                if ($pos1 !== false) {
+                    if ($pos1 == 2) {
+                        if (strlen ( $opt ) == 8)
+                            $regexp = '/^[0-9]{2}[\-][0-9]{2}[\-][0-9]{2}$/';
+                        else
+                            $regexp = '/^[0-9]{2}[\-][0-9]{2}[\-][0-9]{4}$/';
+                    }
+                    if ($pos1 == 4)
+                        $regexp = '/^[0-9]{4}[\-][0-9]{2}[\-][0-9]{2}$/';
+
+                }
+               
+                if ($pos2 !== false) {
+                    if ($pos2 == 2) {
+                        if (strlen ( $opt ) == 8)
+                            $regexp = '/^[0-9]{2}[\/][0-9]{2}[\/][0-9]{2}$/';
+                        else
+                            $regexp = '/^[0-9]{2}[\/][0-9]{2}[\/][0-9]{4}$/';
+                    }
+                    if ($pos2 == 4)
+                        $regexp = '/^[0-9]{4}[\/][0-9]{2}[\/][0-9]{2}$/';
+                }
+               
+                if ($pos3 !== false) {
+                    if ($pos3 == 2) {
+                        if (strlen ( $opt ) == 8)
+                            $regexp = '/^[0-9]{2}[\.][0-9]{2}[\.][0-9]{2}$/';
+                        else
+                            $regexp = '/^[0-9]{2}[\.][0-9]{2}[\.][0-9]{4}$/';
+                    }
+                    if ($pos3 == 4)
+                        $regexp = '/^[0-9]{4}[\.][0-9]{2}[\.][0-9]{2}$/';
+                }
+               
+                if (preg_match ( $regexp, $postVar )) {
+                    $patternMatch = 1;
+                    if ((isset ( $pos1 ) && $pos1 == 2) || (isset ( $pos2 ) && $pos2 == 2) || (isset ( $pos3 ) && $pos3 == 2)) {
+                        $str1 = substr ( $opt, 0, 2 );
+                        $str2 = substr ( $opt, 3, 2 );
+                       
+                        if ($str1 == 'dd') {
+                            $DD = substr ( $postVar, 0, 2 );
+                            $MM = substr ( $postVar, 3, 2 );
+                            $YY = substr ( $postVar, 6 );
+                        }
+                        if ($str1 == 'mm') {
+                            $MM = substr ( $postVar, 0, 2 );
+                            $DD = substr ( $postVar, 3, 2 );
+                            $YY = substr ( $postVar, 6 );
+                        }
+                        if ($str1 == 'yy') {
+                            if ($str2 == 'mm') {
+                                $YY = substr ( $postVar, 0, 2 );
+                                $MM = substr ( $postVar, 3, 2 );
+                                $DD = substr ( $postVar, 6 );
+                            } else {
+                                $MM = substr ( $postVar, 0, 2 );
+                                $DD = substr ( $postVar, 3, 2 );
+                                $YY = substr ( $postVar, 6 );
+                            }
+                        }
+                    }
+                   
+                    if ((isset ( $pos1 ) && $pos1 == 4) || (isset ( $pos2 ) && $pos2 == 4) || (isset ( $pos3 ) && $pos3 == 4)) {
+                        $str = substr ( $opt, 5, 2 );
+                       
+                        if ($str == 'dd') {
+                            $YY = substr ( $postVar, 0, 4 );
+                            $DD = substr ( $postVar, 5, 2 );
+                            $MM = substr ( $postVar, 8, 2 );
+                        }
+                        if ($str == 'mm') {
+                            $YY = substr ( $postVar, 0, 4 );
+                            $MM = substr ( $postVar, 5, 2 );
+                            $DD = substr ( $postVar, 8, 2 );
+                        }
+                    }
+                   
+                    if ($DD == 0 || $MM == 0 || $YY == 0) {
+                        $errorMsg .= "Invalid Date...<br>";
+                    }
+                   
+                    if ($MM <= 12) {
+                        switch ($MM) {
+                            case 4 :
+                            case 6 :
+                            case 9 :
+                            case 11 :
+                                if ($DD > 30) {
+                                    $errorMsg .= "Selected month has maximum 30 days.<br>";
+                                }
+                            default :
+                                if ($DD > 31) {
+                                    $errorMsg .= "Selected month has maximum 31 days.<br>";
+                                }
+                                break;
+                        }
+                    } else  {
+                        $errorMsg .= "Selected month more than 12 month.<br>";
+                    }
+                   
+                    if (($YY % 4) == 0) {
+                        if (($MM == 2) && ($DD > 29)) {
+                            $errorMsg .= "Invalid days in February for leap year.<br>";
+                        }
+                    } else {
+                        if (($MM == 2) && ($DD > 28)) {
+                            $errorMsg .= "Invalid days in February for non leap year.<br>";
+                        }
+                    }
+                }
+               
+                if ($patternMatch)
+                    break;
+            }
+           
+            if (! $patternMatch)
+                $errorMsg .= $error . "<br>";
+        }
+        return $errorMsg;}
 	function validateFileType($postVar, $value, $error)
 	{
 		$errorMsg = "";
@@ -577,17 +578,39 @@ class validation {
 		return $errorMsg;
 	}
 	
-	function availablePhoneType($country) {
-		// India
-		$type [0] = '/^[0-9]{6,10}$/';
-		// (+91)[022]111111
-		$type [1] = '/^[\(][\+][0-9]{2}[\)][\[][0-9]{3,5}[\]][0-9]{6,10}$/';
-		// +91022111111
-		$type [2] = '/^[\+][0-9]{2}[0-9]{3,5}[0-9]{6,10}$/';
-		// 91-111111
-		$type [3] = '/^[0-9]{2}[\-][0-9]{6,10}$/';
-		return $type;
+ function availablePhoneType($country) {
+
+	switch($country) {
+
+	case "in": # India
+		$type[0]  = '/^[0-9]{6,10}$/';
+		# (+91)[022]111111
+		$type[1]  = '/^[\(][\+][0-9]{2}[\)][\[][0-9]{3,5}[\]][0-9]{6,10}$/';
+		# +91022111111
+		$type[2]  = '/^[\+][0-9]{2}[0-9]{3,5}[0-9]{6,10}$/';
+		# 91-111111
+		$type[3]  = '/^[0-9]{2}[\-][0-9]{6,10}$/';
+		break;
+
+	case "br": # Brazil
+		$type[0] = '/^([0-9]{2})?(\([0-9]{2})\)([0-9]{3}|[0-9]{4})-[0-9]{4}$/';
+		break;
+
+	case "fr": # France
+		$type[0] = '/^([0-9]{2})?(\([0-9]{2})\)([0-9]{3}|[0-9]{4})-[0-9]{4}$/';
+		break;
+
+	case "us": # US
+		$type[0] = '/^[\(][0-9]{3}[\)][0-9]{3}[\-][0-9]{4}$/';
+		break;
+
+	case "sw": # Swedish
+		$type[0] = '/^(([+][0-9]{2}[ ][1-9][0-9]{0,2}[ ])|([0][0-9]{1,3}[-]))(([0-9]{2}([ ][0-9]{2}){2})|([0-9]{3}([ ][0-9]{3})*([ ][0-9]{2})+))$/';
+		break;
 	}
+
+	return $type;
+    }
 	
 	// Helps prevent XSS attacks
 	private function encodeXSString($string) {
