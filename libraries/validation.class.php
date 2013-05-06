@@ -188,11 +188,12 @@ class validation {
 						break;
 					}
 				
-				//
+				//validates phone field
 				case "phone" :
 					{
 						if (isset ( $value )) {
 							$found = strpos ( $value, ',' );
+							
 							if ($found === false) {
 								$options [0] = $value;
 							} else {
@@ -203,6 +204,7 @@ class validation {
 						$patternMatch = 0;
 						foreach ( $options as $opt ) {
 							$type = $this->availablePhoneType ( $opt );
+							
 							foreach ( $type as $regexp ) {
 								if (preg_match ( $regexp, $postVar )) {
 									$patternMatch = 1;
@@ -214,12 +216,14 @@ class validation {
 						
 						if (! $patternMatch) {
 							$length = strlen ( trim ( $postVar ) );
-							if ($length)
+							if ($length) {
 								$errorMsg [$this->check_vars [$i] ['controler_name']] .= $error . "<br>";
+							}
 						}
 						break;
 					}
 				
+				//validates mobile field	
 				case "mobile" :
 					{
 						$regexp1 = '/^[0-9]{10}$/';
@@ -232,52 +236,64 @@ class validation {
 						
 						if (! preg_match ( $regexp1, trim ( $postVar ) ) && ! preg_match ( $regexp2, trim ( $postVar ) ) && ! preg_match ( $regexp3, trim ( $postVar ) ) && ! preg_match ( $regexp4, trim ( $postVar ) )) {
 							$length = strlen ( trim ( $postVar ) );
+							
 							if ($length)
 								$errorMsg [$this->check_vars [$i] ['controler_name']] .= $error . "<br>";
 						}
 						break;
 					}
 				
+				//validates emial field	
 				case "email" :
 					{
 						$regexp = '/^[A-Za-z]+((\.|\_){1}[a-zA-Z0-9]+)*@([a-zA-Z0-9]+([\-]{1}[a-zA-Z0-9]+)*[\.]{1})+[a-zA-Z]{2,4}$/';
 						if (! preg_match ( $regexp, trim ( $postVar ) )) {
 							$length = strlen ( trim ( $postVar ) );
-							if ($length)
+							
+							if ($length) {
 								$errorMsg [$this->check_vars [$i] ['controler_name']] .= $error . "<br>";
+							}
 						}
 						break;
 					}
 				
+				//validates url field
 				case "url" :
 					{
 						$regexp = '|^http(s)?://[a-z0-9-]+(\.[a-z0-9-]+)*(:[0-9]+)?(/.*)?$|i';
 						if (! preg_match ( $regexp, trim ( $postVar ) )) {
 							$length = strlen ( trim ( $postVar ) );
-							if ($length)
+							
+							if ($length) {
 								$errorMsg [$this->check_vars [$i] ['controler_name']] .= $error . "<br>";
+							}
 						}
 						break;
 					}
 				
+				//validates date field
 				case "date" :
 					{
 						$errorMsg [$this->check_vars [$i] ['controler_name']] .= $this->validateDate ( trim ( $postVar ), $value, $error );
 						break;
 					}
 				
+				//validates datatype of field
 				case "datatype" :
 					{
 						$limit=explode(',',$value);
 						if ($limit[0] == "int") {	
 							$regexp  = '/^[0-9]{'.$limit[1].'}$/';
+							
 							if (! preg_match ( $regexp, trim ( $postVar ) )) {
 								$length = strlen ( trim ( $postVar ) );
+								
 								if ($length){
 									$errorMsg [$this->check_vars [$i] ['controler_name']] .= $error . "<br>";
 								}
 							}
 						}
+						
 						if ($limit[0] == "float") {
 							$regexp  = '/^[0-9]{'.$limit[1].'}.[0-9]{'.$limit[2].'}$/';
 							if (! preg_match ( $regexp, trim ( $postVar ) )) {
@@ -287,12 +303,15 @@ class validation {
 								}
 							}
 						}
+						
 					if ($limit[0] == "bool") {
 							$result = is_bool ( $postVar );
-						}
+					}
+						
 					if ($limit[0] == "null") {
 							$result = is_null ( $postVar );
-						}
+					}
+						
 					if (!$result) {
 							$errorMsg [$this->check_vars [$i] ['controler_name']] .= $error . "<br>";
 						}	
@@ -328,11 +347,12 @@ class validation {
 		
 		return $errorMsg;
 	}
+	
+	//function to validate date field 
 	function validateDate($postVar, $value, $error) {$errorMsg = "";
-       
         $length = strlen ( trim ( $postVar ) );
+        
         if ($length) {
-           
             if (isset ( $value )) {
                 $found = strpos ( $value, ',' );
                 if ($found === false) {
@@ -345,6 +365,7 @@ class validation {
             }
            
             $patternMatch = 0;
+            
             foreach ( $options as $opt ) {
                 $pos1 = strpos ( $opt, '-' );
                 $pos2 = strpos ( $opt, '/' );
@@ -469,7 +490,10 @@ class validation {
             if (! $patternMatch)
                 $errorMsg .= $error . "<br>";
         }
-        return $errorMsg;}
+        return $errorMsg;
+	}
+	
+	//function to validate File type
 	function validateFileType($postVar, $value, $error)
 	{
 		$errorMsg = "";
@@ -523,10 +547,10 @@ class validation {
 		return $errorMsg;
 	}
 	
+	//manage available file type that are valid
 	function availableFileTypes($ext)
 	{
-		switch($ext){
-	
+		switch($ext) {
 			case "txt":
 				$type[0] = "text/plain";
 				break;
@@ -602,6 +626,7 @@ class validation {
 		return $type;
 	}
 	
+	//function to check size of file 
 	function validateFileSize($postVar, $value, $error)
 	{
 		$errorMsg = "";
@@ -624,85 +649,84 @@ class validation {
 	
 		return $errorMsg;
 	}
+
+	 //function to manage availble phone type
+	 function availablePhoneType($country) {
 	
- function availablePhoneType($country) {
-
-	switch($country) {
-
-	case "in": # India
-		$type[0]  = '/^[0-9]{6,10}$/';
-		# (+91)[022]111111
-		$type[1]  = '/^[\(][\+][0-9]{2}[\)][\[][0-9]{3,5}[\]][0-9]{6,10}$/';
-		# +91022111111
-		$type[2]  = '/^[\+][0-9]{2}[0-9]{3,5}[0-9]{6,10}$/';
-		# 91-111111
-		$type[3]  = '/^[0-9]{2}[\-][0-9]{6,10}$/';
-		break;
-
-	case "br": # Brazil
-		$type[0] = '/^([0-9]{2})?(\([0-9]{2})\)([0-9]{3}|[0-9]{4})-[0-9]{4}$/';
-		break;
-
-	case "fr": # France
-		$type[0] = '/^([0-9]{2})?(\([0-9]{2})\)([0-9]{3}|[0-9]{4})-[0-9]{4}$/';
-		break;
-
-	case "us": # US
-		$type[0] = '/^[\(][0-9]{3}[\)][0-9]{3}[\-][0-9]{4}$/';
-		break;
-
-	case "sw": # Swedish
-		$type[0] = '/^(([+][0-9]{2}[ ][1-9][0-9]{0,2}[ ])|([0][0-9]{1,3}[-]))(([0-9]{2}([ ][0-9]{2}){2})|([0-9]{3}([ ][0-9]{3})*([ ][0-9]{2})+))$/';
-		break;
-	}
-
-	return $type;
-    }
+		switch($country) {
 	
-	// Helps prevent XSS attacks
-	function encodeXSString($string) {
-		// Remove dead space.
-		$string = trim ( $string );
-		
-		// Prevent potential Unicode codec problems.
-		$string = utf8_decode ( $string );
-		
-		// HTMLize HTML-specific characters.
-		$string = htmlentities ( $string, ENT_QUOTES );
-		$string = str_replace ( "#", "&#35;", $string );
-		$string = str_replace ( "%", "&#37;", $string );
-
-		return $string;
-	}
+		case "in": # India
+			$type[0]  = '/^[0-9]{6,10}$/';
+			# (+91)[022]111111
+			$type[1]  = '/^[\(][\+][0-9]{2}[\)][\[][0-9]{3,5}[\]][0-9]{6,10}$/';
+			# +91022111111
+			$type[2]  = '/^[\+][0-9]{2}[0-9]{3,5}[0-9]{6,10}$/';
+			# 91-111111
+			$type[3]  = '/^[0-9]{2}[\-][0-9]{6,10}$/';
+			break;
 	
-	// Helps prevent XSS attacks
-	private function decodeXSString($string) {
-		// Remove dead space.
-		$string = trim ( $string );
-		
-		// Prevent potential Unicode codec problems.
-		$string = utf8_decode ( $string );
-		
-		// HTMLize HTML-specific characters.
-		$string = htmlentities ( $string, ENT_QUOTES );
-		$string = str_replace ( "&#35;", "#", $string );
-		$string = str_replace ( "&#37;", "%", $string );
-		$length = intval ( $length );
-		
-		if ($length > 0) {
-			$string = substr ( $string, 0, $length );
+		case "br": # Brazil
+			$type[0] = '/^([0-9]{2})?(\([0-9]{2})\)([0-9]{3}|[0-9]{4})-[0-9]{4}$/';
+			break;
+	
+		case "fr": # France
+			$type[0] = '/^([0-9]{2})?(\([0-9]{2})\)([0-9]{3}|[0-9]{4})-[0-9]{4}$/';
+			break;
+	
+		case "us": # US
+			$type[0] = '/^[\(][0-9]{3}[\)][0-9]{3}[\-][0-9]{4}$/';
+			break;
+	
+		case "sw": # Swedish
+			$type[0] = '/^(([+][0-9]{2}[ ][1-9][0-9]{0,2}[ ])|([0][0-9]{1,3}[-]))(([0-9]{2}([ ][0-9]{2}){2})|([0-9]{3}([ ][0-9]{3})*([ ][0-9]{2})+))$/';
+			break;
 		}
-		return $string;
-	}
 	
-	// prevent sql injection
-	// $param parameter will accept array type
-	private function preventSQLInjection($string) {
-		foreach ( $string as $key => $value ) {
-			$value = mysql_real_escape_string ( $value );
+		return $type;
+	    }
+		
+		// Helps prevent XSS attacks
+		function encodeXSString($string) {
+			// Remove dead space.
+			$string = trim ( $string );
+			
+			// Prevent potential Unicode codec problems.
+			$string = utf8_decode ( $string );
+			
+			// HTMLize HTML-specific characters.
+			$string = htmlentities ( $string, ENT_QUOTES );
+			$string = str_replace ( "#", "&#35;", $string );
+			$string = str_replace ( "%", "&#37;", $string );
+	
+			return $string;
 		}
-		return $string;
-	}
+	
+		// Helps prevent XSS attacks
+		private function decodeXSString($string) {
+			// Remove dead space.
+			$string = trim ( $string );
+			
+			// Prevent potential Unicode codec problems.
+			$string = utf8_decode ( $string );
+			
+			// HTMLize HTML-specific characters.
+			$string = htmlentities ( $string, ENT_QUOTES );
+			$string = str_replace ( "&#35;", "#", $string );
+			$string = str_replace ( "&#37;", "%", $string );
+			$length = intval ( $length );
+			
+			if ($length > 0) {
+				$string = substr ( $string, 0, $length );
+			}
+			return $string;
+		}
+	
+		// prevent sql injection
+		// $param parameter will accept array type
+		private function preventSQLInjection($string) {
+			foreach ( $string as $key => $value ) {
+				$value = mysql_real_escape_string ( $value );
+			}
+			return $string;
+		}
 }
-
-?>
