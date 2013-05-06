@@ -28,7 +28,7 @@
 				safe, backed up and ready to go 24/7. <br> <br> Register
 				free and start creating online tests today.
 
-				<a class="blocklink" href="#">Register free</a></p>
+				<a class="blocklink" href="index.php?controller=MainController&method=onRegisterClick">Register free</a></p>
 				<div class="line-separator"></div><br><br>
 				<h2 id="login">Login</h2>
 				<form method="post" action="index.php?controller=MainController&method=loginController">

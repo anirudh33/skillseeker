@@ -88,6 +88,13 @@ class MainController
 		require_once SITE_PATH."/views/container.php";
 	}
 	
+	public function onRegisterClick()  {
+		$pageName="RegisterPage";
+		
+		require_once SITE_PATH."/views/container.php";
+	}
+	
+	
 	 /* Starts login procedure by fetching username, password from POST */
 	public function initiateLogin() {
 	    

@@ -9,7 +9,18 @@ require_once(SITE_PATH."/views/header.php");
 <?php 
 if($pageName=="MainPage") {
 	require_once(SITE_PATH."/views/MainView.php");
-}?>
+}
+
+elseif ($pageName=="RegisterPage")
+{
+	require_once(SITE_PATH."/views/register.php");
+}
+else 
+{
+	die;
+}
+
+?>
 
 </div>
 </section>

@@ -17,11 +17,11 @@ require_once '/var/www/skillseeker/trunk/libraries/constants.php';
 
 /* Requiring all essential files */
 require_once SITE_PATH . '/controllers/MainController.php';
-
+//echo "i am here";
 /* Method calls from views handled here */
 if (isset ( $_REQUEST ['controller'] )) {
 	
-
+	
 		
 		if (isset ( $_REQUEST ["method"] )) {
 			
