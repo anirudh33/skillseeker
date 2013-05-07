@@ -212,4 +212,3 @@ class MainController
 		echo '1';
 	}
 }
-?>+

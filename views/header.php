@@ -1,5 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<?php include_once("./libraries/Language.php"); ?>
+<?php include_once(SITE_PATH."/libraries/Language.php"); ?>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -7,14 +7,14 @@
 <meta name="description" content="Place your description here">
 <meta name="keywords" content="put, your, keyword, here">
 <meta name="author" content="Templates.com - website templates provider">
-<link rel="stylesheet" href="../assets/css/reset.css" type="text/css" media="all">
-<link rel="stylesheet" href="../assets/css/style.css" type="text/css" media="all">
-<script type="text/javascript" src="../assets/js/jquery-1.4.2.min.js" ></script>
-<script type="text/javascript" src="../assets/js/cufon-yui.js"></script>
-<script type="text/javascript" src="../assets/js/cufon-replace.js"></script>
-<script type="text/javascript" src="../assets/js/Myriad_Pro_300.font.js"></script>
-<script type="text/javascript" src="../assets/js/Myriad_Pro_400.font.js"></script>
-<script type="text/javascript" src="../assets/js/script.js"></script>
+<link rel="stylesheet" href="<?php echo SITE_URL;?>/assets/css/reset.css" type="text/css" media="all">
+<link rel="stylesheet" href="<?php echo SITE_URL;?>/assets/css/style.css" type="text/css" media="all">
+<script type="text/javascript" src="<?php echo SITE_URL;?>/assets/js/jquery-1.4.2.min.js" ></script>
+<script type="text/javascript" src="<?php echo SITE_URL;?>/assets/js/cufon-yui.js"></script>
+<script type="text/javascript" src="<?php echo SITE_URL;?>/assets/js/cufon-replace.js"></script>
+<script type="text/javascript" src="<?php echo SITE_URL;?>/assets/js/Myriad_Pro_300.font.js"></script>
+<script type="text/javascript" src="<?php echo SITE_URL;?>/assets/js/Myriad_Pro_400.font.js"></script>
+<script type="text/javascript" src="<?php echo SITE_URL;?>/assets/js/script.js"></script>
 </head>
 <body id="page1">
 <div class="wrap">

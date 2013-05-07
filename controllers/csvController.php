@@ -1,7 +1,7 @@
 <?php
 require_once './models/csvModel.php';
-echo "<pre>";
-print_r($_FILES);
+//echo "<pre>";
+//print_r($_FILES);
 
 
 

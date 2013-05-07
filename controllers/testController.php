@@ -90,8 +90,8 @@ class testController {
 <?php
 mysql_connect("localhost","root","root")or die("Unable to connect to MySQL");
 mysql_select_db("skillseeker");
-echo "<pre>";
-print_r($_FILES);
+//echo "<pre>";
+//print_r($_FILES);
 
 
 
