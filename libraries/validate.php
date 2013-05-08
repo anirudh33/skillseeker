@@ -5,7 +5,12 @@
 * Author: Keshi Chander Yadav, Tanu Trehan, Manish
 * Date: May 03, 2013
 * Description: Validate class
-*/
+* ***************************** Update Log ********************************
+	Sr.NO.		Version		Updated by           Updated on          Description
+    -------------------------------------------------------------------------
+	 1			1.1			Keshi				08/05/2013			improved result methode
+    *************************************************************************
+ */
 
 require_once('validation.class.php');
 class validate
@@ -30,33 +35,37 @@ class validate
     {
     	
     	if (isset ( $_SERVER ["REQUEST_METHOD"] )) {
+    		if ($_SERVER ['REQUEST_METHOD'] == 'POST') {
+    			$auth=explode('#', $authType);
+    			$err=explode('#', $error);
+    			$authLength=count($auth);
+    			$errLength=count($err);
+    			
+    			if($authLength==$errLength)
+    			{
+    				for($i=0;$i<$authLength;$i++)
+    				{
+    				$this->obj->addFields($name,$postVar, $auth[$i], $err[$i]);
+    				}
+    				return  "here true";
+    			}
+    			else
+    			{
+    			$this->errorMsg="Programer's error";
+    			return $this->errorMsg;
+    			}
+    			 
+    			}
+    	 else {
+         	$this->errorMsg = "Invalid request";
+         	return $this->errorMsg;
+         }
+    		}
     		
-			if ($_SERVER ['REQUEST_METHOD'] != 'POST') {
-				
-				$this->errorMsg = "Invalid request";
-				return $this->errorMsg;
-			}
-		}else {
-			$this->errorMsg = "Invalid request, no request received";
-			return $this->errorMsg;
-		}
-        $auth=explode('#', $authType);
-        $err=explode('#', $error);
-        $authLength=count($auth);
-        $errLength=count($err);
-        
-       if($authLength==$errLength)
-        {
-            for($i=0;$i<$authLength;$i++)
-            {
-                $this->obj->addFields($name,$postVar, $auth[$i], $err[$i]);
-            }
-            return  "here true";
-        }
-        else
-        {
-            $this->errorMsg="Programer's error";
-            echo $this->errorMsg;
+    		
+         else {
+         	$this->errorMsg = "Invalid request, no request received";
+         	return $this->errorMsg;
          }
 
     }
@@ -68,11 +77,24 @@ class validate
     public function result()
     {
         $this->errorMsg=$this->obj->validate();
-        return $this->errorMsg;   
+        $flag =true;
+        //if to set flag to false if any field of form has invalid value
+        if (array_filter( $this->errorMsg,'trim')){
+        	$flag = false;
+        }
+        //if to return TRUE all fields of form are valid 
+        if($flag){
+        	return "true";
+        }
+        //else return errorMsg[] wid all fields as key and error as value respectively! value is null if no error
+        else{
+        	return $this->errorMsg;
+        }   
     }
     
     /**
      *  Helps prevent XSS attacks
+     *  Used for encoding before insertion in database
      */
     public function encodeXSString($string)
     {
@@ -93,6 +115,7 @@ class validate
     
     /**
      * Helps prevent XSS attacks
+     * Used for denoding before displaying information on page
      */
     private function decodeXSString($string) 
     {
@@ -127,10 +150,10 @@ class validate
     	return $string;
     }   
 }
-		$obj = new validate();
+		/* $obj = new validate();
 		$obj->validator('pass#cnfpass','123#123','match','password not match');
 		$error=$obj->result();
-		print_r($error);
+		print_r($error); */
 // 		//$obj->validator("zip","12345", 'datatype=int,5','data');
 // 		var_dump($error);
 // 		if($error==true){

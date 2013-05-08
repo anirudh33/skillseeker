@@ -10,7 +10,7 @@ Created on                  -  May 03, 2013
 ***************************** Update Log ********************************
 Sr.NO.		Version		Updated by           Updated on          Description
 -------------------------------------------------------------------------
-
+1			1.1			Keshi				08/05/2013	changed code from 400 to 404 fr validation result
 *************************************************************************
 
 */
@@ -397,12 +397,7 @@ class User extends DBConnection
         }
 
      $error=$obj->result();
-     $flag = 1;
-      if (array_filter($error,'trim')){
-       $flag = 0;
-      }
-
-        if ($flag==1){
+     if ($error==true){
         return $userFormArray;
         }
         else{

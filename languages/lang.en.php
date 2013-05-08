@@ -10,7 +10,7 @@
 	***************************** Update Log ********************************
 	Sr.NO.		Version		Updated by           Updated on          Description
     -------------------------------------------------------------------------
-	 
+	 1			1.01		Keshi				08/05/2013		added 'INVALID'=>"invalid",
     *************************************************************************
 
 */
@@ -19,7 +19,8 @@
 				'PASSWORD'=>"Password",
 				'FIELDPASSWORD'=>"fieldPassword",
 				'FIELDEMAIL'=>"fieldEmail",
-				'EMAIL'=>"Email id",
+				'INVALID'=>"invalid",
+ 				'EMAIL'=>"Email id",
 				''=>"",
 				''=>"",
 				''=>"",

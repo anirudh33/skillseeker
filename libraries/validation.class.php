@@ -6,6 +6,12 @@
  * Author: Keshi Chander Yadav, Tanu Trehan, Manish 
  * Date: May 03, 2013
  * Description: Validation class to server side validation
+ * ***************************** Update Log ********************************
+	Sr.NO.		Version		Updated by           Updated on          Description
+    -------------------------------------------------------------------------
+	 1			1.1			Keshi				08/05/2013			correction of pregmatch
+ 	 2			1.1			Keshi				08/05/2013			used lang and added comments
+    *************************************************************************
  */
 class validation {
 	// class constructor
@@ -50,7 +56,7 @@ class validation {
 			$authType = $this->check_vars [$i] ['authtype'];
 			
 			if ($this->check_vars [$i] ['error'] == "" || $this->check_vars [$i] ['error'] == " ") {
-				$error = "invalid";
+				$error = $lang->INVALID;
 			} else {
 				$error = $this->check_vars [$i] ['error'];
 			}
@@ -71,20 +77,20 @@ class validation {
 							for($j = 0; $j < $count; $j ++) {
 								$length = strlen ( trim ( $postVar [$j] ) );
 								if (! $length) {
-									$errorMsg [$this->check_vars [$i] ['controler_name']] .= $error . " :File " . ($j + 1) . "<br>";
+									$errorMsg [$this->check_vars [$i] ['controler_name']] .= $error . " :File " . ($j + 1);
 								}
 							}
 						} elseif (isset ( $postVar ) && empty ( $postVar )) {
 							$length = strlen ( trim ( $postVar ) );
 							
 							if (! $length) {
-								$errorMsg [$this->check_vars [$i] ['controler_name']] .= $error . "<br>";
+								$errorMsg [$this->check_vars [$i] ['controler_name']] .= $error ;
 							}
 						} else {
 							$length = strlen ( trim ( $postVar ) );
 							
 							if (! $length) {
-								$errorMsg [$this->check_vars [$i] ['controler_name']] .= $error . "<br>";
+								$errorMsg [$this->check_vars [$i] ['controler_name']] .= $error ;
 							}
 						}
 						break;
@@ -98,7 +104,7 @@ class validation {
 							$length = strlen ( trim ( $postVar ) );
 							
 							if ($length)
-								$errorMsg [$this->check_vars [$i] ['controler_name']] .= $error . "<br>";
+								$errorMsg [$this->check_vars [$i] ['controler_name']] .= $error;
 						}
 						break;
 					}
@@ -111,7 +117,7 @@ class validation {
 							$length = strlen ( trim ( $postVar ) );
 							
 							if ($length)
-								$errorMsg [$this->check_vars [$i] ['controler_name']] .= $error . "<br>";
+								$errorMsg [$this->check_vars [$i] ['controler_name']] .= $error;
 						}
 						break;
 					}
@@ -124,7 +130,7 @@ class validation {
 							$length = strlen ( trim ( $postVar ) );
 							
 							if ($length)
-								$errorMsg [$this->check_vars [$i] ['controler_name']] .= $error . "<br>";
+								$errorMsg [$this->check_vars [$i] ['controler_name']] .= $error;
 						}
 						break;
 					}
@@ -135,7 +141,7 @@ class validation {
 						$length = strlen ( trim ( $postVar ) );
 						
 						if ($length > $value)
-							$errorMsg [$this->check_vars [$i] ['controler_name']] .= $error . "<br>";
+							$errorMsg [$this->check_vars [$i] ['controler_name']] .= $error;
 						
 						break;
 					}
@@ -146,7 +152,7 @@ class validation {
 						$length = strlen ( trim ( $postVar ) );
 						
 						if ($length < $value && $length != 0)
-							$errorMsg [$this->check_vars [$i] ['controler_name']] .= $error . "<br>";
+							$errorMsg [$this->check_vars [$i] ['controler_name']] .= $error;
 						
 						break;
 					}
@@ -161,7 +167,7 @@ class validation {
 							$length = strlen ( trim ( $postVar ) );
 							
 							if ($length)
-								$errorMsg [$this->check_vars [$i] ['controler_name']] .= $error . "<br>";
+								$errorMsg [$this->check_vars [$i] ['controler_name']] .= $error;
 						}
 						break;
 					}
@@ -174,7 +180,7 @@ class validation {
 							$length = strlen ( trim ( $postVar ) );
 							
 							if ($length)
-								$errorMsg [$this->check_vars [$i] ['controler_name']] .= $error . "<br>";
+								$errorMsg [$this->check_vars [$i] ['controler_name']] .= $error;
 						}
 						break;
 					}
@@ -187,7 +193,7 @@ class validation {
 							$length = strlen ( trim ( $postVar ) );
 							
 							if ($length)
-								$errorMsg [$this->check_vars [$i] ['controler_name']] .= $error . "<br>";
+								$errorMsg [$this->check_vars [$i] ['controler_name']] .= $error ;
 						}
 						break;
 					}
@@ -221,7 +227,7 @@ class validation {
 						if (! $patternMatch) {
 							$length = strlen ( trim ( $postVar ) );
 							if ($length) {
-								$errorMsg [$this->check_vars [$i] ['controler_name']] .= $error . "<br>";
+								$errorMsg [$this->check_vars [$i] ['controler_name']] .= $error ;
 							}
 						}
 						break;
@@ -242,7 +248,7 @@ class validation {
 							$length = strlen ( trim ( $postVar ) );
 							
 							if ($length)
-								$errorMsg [$this->check_vars [$i] ['controler_name']] .= $error . "<br>";
+								$errorMsg [$this->check_vars [$i] ['controler_name']] .= $error;
 						}
 						break;
 					}
@@ -255,7 +261,7 @@ class validation {
 							$length = strlen ( trim ( $postVar ) );
 							
 							if ($length) {
-								$errorMsg [$this->check_vars [$i] ['controler_name']] .= $error . "<br>";
+								$errorMsg [$this->check_vars [$i] ['controler_name']] .= $error ;
 							}
 						}
 						break;
@@ -269,7 +275,7 @@ class validation {
 							$length = strlen ( trim ( $postVar ) );
 							
 							if ($length) {
-								$errorMsg [$this->check_vars [$i] ['controler_name']] .= $error . "<br>";
+								$errorMsg [$this->check_vars [$i] ['controler_name']] .= $error ;
 							}
 						}
 						break;
@@ -289,7 +295,7 @@ class validation {
 							$data = explode("#", $postVar);
 							if(count($controlname) == 2 && count($data) == 2) {
 								if($data[0] != $data[1]) {
-									$errorMsg [$this->check_vars [$i] ['controler_name']] .= $error . "<br>";
+									$errorMsg [$this->check_vars [$i] [$data[1]]] .= $error ;
 									break;
 								}
 							}
@@ -306,7 +312,7 @@ class validation {
 								$length = strlen ( trim ( $postVar ) );
 								
 								if ($length){
-									$errorMsg [$this->check_vars [$i] ['controler_name']] .= $error . "<br>";
+									$errorMsg [$this->check_vars [$i] ['controler_name']] .= $error ;
 								}
 							}
 						}
@@ -316,7 +322,7 @@ class validation {
 							if (! preg_match ( $regexp, trim ( $postVar ) )) {
 								$length = strlen ( trim ( $postVar ) );
 								if ($length){
-									$errorMsg [$this->check_vars [$i] ['controler_name']] .= $error . "<br>";
+									$errorMsg [$this->check_vars [$i] ['controler_name']] .= $error;
 								}
 							}
 						}
@@ -330,7 +336,7 @@ class validation {
 					}
 						
 					if (!$result) {
-							$errorMsg [$this->check_vars [$i] ['controler_name']] .= $error . "<br>";
+							$errorMsg [$this->check_vars [$i] ['controler_name']] .= $error ;
 						}	
 						break;
 					}
@@ -350,7 +356,7 @@ class validation {
 						if (! preg_match ( $value, trim ( $postVar ) )) {
 							$length = strlen ( trim ( $postVar ) );
 							if ($length)
-								$errorMsg [$this->check_vars [$i] ['controler_name']] .= $error . "<br>";
+								$errorMsg [$this->check_vars [$i] ['controler_name']] .= $error ;
 						}
 						break;
 					}
@@ -505,7 +511,7 @@ class validation {
             }
            
             if (! $patternMatch)
-                $errorMsg .= $error . "<br>";
+                $errorMsg .= $error ;
         }
         return $errorMsg;
 	}

@@ -493,3 +493,30 @@
 [08-May-2013 04:08:10 UTC] PHP Notice:  Undefined index: questionbank in /var/www/skillseeker/trunk/controllers/testController.php on line 98
 [08-May-2013 04:08:12 UTC] PHP Notice:  Undefined index: questionbank in /var/www/skillseeker/trunk/controllers/testController.php on line 98
 [08-May-2013 04:08:15 UTC] PHP Notice:  Undefined index: questionbank in /var/www/skillseeker/trunk/controllers/testController.php on line 98
+[08-May-2013 06:35:43 UTC] PHP Notice:  Undefined index: questionbank in /var/www/skillseeker/trunk/controllers/testController.php on line 98
+[08-May-2013 06:35:43 UTC] PHP Notice:  SQLSTATE[42000] [1049] Unknown database 'skillseeker' in /var/www/skillseeker/trunk/libraries/PDO/cxpdo.php on line 486
+[08-May-2013 08:36:00 UTC] PHP Notice:  SQLSTATE[42000] [1049] Unknown database 'skillseeker' in /var/www/skillseeker/trunk/libraries/PDO/cxpdo.php on line 487
+[08-May-2013 08:36:05 UTC] PHP Notice:  SQLSTATE[42000] [1049] Unknown database 'skillseeker' in /var/www/skillseeker/trunk/libraries/PDO/cxpdo.php on line 487
+[08-May-2013 08:36:05 UTC] PHP Notice:  SQLSTATE[42000] [1049] Unknown database 'skillseeker' in /var/www/skillseeker/trunk/libraries/PDO/cxpdo.php on line 487
+[08-May-2013 08:42:25 UTC] PHP Notice:  SQLSTATE[42000] [1049] Unknown database 'skillseeker' in /var/www/skillseeker/trunk/libraries/PDO/cxpdo.php on line 487
+[08-May-2013 08:42:25 UTC] PHP Notice:  SQLSTATE[42000] [1049] Unknown database 'skillseeker' in /var/www/skillseeker/trunk/libraries/PDO/cxpdo.php on line 487
+[08-May-2013 08:42:25 UTC] PHP Fatal error:  Call to a member function select() on a non-object in /var/www/skillseeker/trunk/models/User.php on line 314
+[08-May-2013 08:42:57 UTC] PHP Notice:  SQLSTATE[42000] [1049] Unknown database 'skillseeker' in /var/www/skillseeker/trunk/libraries/PDO/cxpdo.php on line 487
+[08-May-2013 08:42:57 UTC] PHP Notice:  SQLSTATE[42000] [1049] Unknown database 'skillseeker' in /var/www/skillseeker/trunk/libraries/PDO/cxpdo.php on line 487
+[08-May-2013 08:43:28 UTC] PHP Notice:  SQLSTATE[42000] [1049] Unknown database 'skillseeker' in /var/www/skillseeker/trunk/libraries/PDO/cxpdo.php on line 487
+[08-May-2013 08:43:28 UTC] PHP Notice:  SQLSTATE[42000] [1049] Unknown database 'skillseeker' in /var/www/skillseeker/trunk/libraries/PDO/cxpdo.php on line 487
+[08-May-2013 08:43:28 UTC] PHP Fatal error:  Call to a member function select() on a non-object in /var/www/skillseeker/trunk/models/User.php on line 314
+[08-May-2013 09:21:22 UTC] PHP Notice:  SQLSTATE[42000] [1049] Unknown database 'skillseeker' in /var/www/skillseeker/trunk/libraries/PDO/cxpdo.php on line 487
+[08-May-2013 09:21:22 UTC] PHP Notice:  SQLSTATE[42000] [1049] Unknown database 'skillseeker' in /var/www/skillseeker/trunk/libraries/PDO/cxpdo.php on line 487
+[08-May-2013 09:21:22 UTC] PHP Fatal error:  Call to a member function select() on a non-object in /var/www/skillseeker/trunk/models/User.php on line 314
+[08-May-2013 09:21:28 UTC] PHP Notice:  SQLSTATE[42000] [1049] Unknown database 'skillseeker' in /var/www/skillseeker/trunk/libraries/PDO/cxpdo.php on line 487
+[08-May-2013 09:21:28 UTC] PHP Notice:  SQLSTATE[42000] [1049] Unknown database 'skillseeker' in /var/www/skillseeker/trunk/libraries/PDO/cxpdo.php on line 487
+[08-May-2013 09:22:09 UTC] PHP Notice:  SQLSTATE[42000] [1049] Unknown database 'skillseeker' in /var/www/skillseeker/trunk/libraries/PDO/cxpdo.php on line 487
+[08-May-2013 09:22:09 UTC] PHP Notice:  SQLSTATE[42000] [1049] Unknown database 'skillseeker' in /var/www/skillseeker/trunk/libraries/PDO/cxpdo.php on line 487
+[08-May-2013 09:22:14 UTC] PHP Notice:  SQLSTATE[42000] [1049] Unknown database 'skillseeker' in /var/www/skillseeker/trunk/libraries/PDO/cxpdo.php on line 487
+[08-May-2013 09:22:14 UTC] PHP Notice:  SQLSTATE[42000] [1049] Unknown database 'skillseeker' in /var/www/skillseeker/trunk/libraries/PDO/cxpdo.php on line 487
+[08-May-2013 09:22:14 UTC] PHP Notice:  SQLSTATE[42000] [1049] Unknown database 'skillseeker' in /var/www/skillseeker/trunk/libraries/PDO/cxpdo.php on line 487
+[08-May-2013 09:22:14 UTC] PHP Notice:  SQLSTATE[42000] [1049] Unknown database 'skillseeker' in /var/www/skillseeker/trunk/libraries/PDO/cxpdo.php on line 487
+[08-May-2013 09:22:41 UTC] PHP Notice:  SQLSTATE[42000] [1049] Unknown database 'skillseeker' in /var/www/skillseeker/trunk/libraries/PDO/cxpdo.php on line 487
+[08-May-2013 09:22:41 UTC] PHP Notice:  SQLSTATE[42000] [1049] Unknown database 'skillseeker' in /var/www/skillseeker/trunk/libraries/PDO/cxpdo.php on line 487
+[08-May-2013 09:22:41 UTC] PHP Fatal error:  Call to a member function select() on a non-object in /var/www/skillseeker/trunk/models/User.php on line 314
