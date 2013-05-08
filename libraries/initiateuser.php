@@ -149,7 +149,7 @@ $_SESSION ["username"] = $this->getUsername ();
 * Usage: Checks for valid login information
 */
 public function login($fieldUsername,$fieldPassword ) {
-    echo "hello";
+   
 //$this->setEmailID ( $fieldEmail );
 $this->setPassword ( $fieldPassword );
 $this->setUsername ( $fieldUsername );

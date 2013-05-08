@@ -17,12 +17,7 @@ $lang = new Language($langArr);
 <?php 
 if($pageName=="MainPage") {
     require_once(SITE_PATH."/views/header.php");
-    ?>
-   <!-- content -->
-      <section id="content">
-      <div id="rightcontainer"> 
-    <?php 
-	require_once(SITE_PATH."/views/MainView.php");
+       require_once(SITE_PATH."/views/MainView.php");
 }
 
 else if ($pageName=="RegisterPage")

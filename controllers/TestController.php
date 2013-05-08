@@ -9,7 +9,13 @@ class TestController {
     
     public function showView($pageName)
     {
-        echo "nbdsvhjgfs";
+        require_once(SITE_PATH."/views/userheader.php");
+    ?>
+    <!-- content -->
+    <section id="content">
+        <div id="rightcontainer">
+        <?php 
+    require_once(SITE_PATH."/views/userpage.php");
     }
 	function upload() 
 	{

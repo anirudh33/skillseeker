@@ -17,7 +17,7 @@
 <script type="text/javascript" src="<?php echo SITE_URL;?>/assets/js/script.js"></script>
 </head>
 <body id="page1">
-<div class="wrap">
+
    <!-- header -->
    <header>
  
@@ -36,32 +36,11 @@
 
 		</div>
    </header>
-   <br/>
-   <div class="container">
-      <!-- aside -->
-			<aside>
-
+  
+   
 			
-				
-				<div class="leftcontainer">  Put here also sth</div>
-			<br><br>	
-				<h3>Categories</h3>
-				<ul class="categories">
-					<li><span><a href="#">Loreum</a></span></li>
-					<li><span><a href="#">Loreum Info</a></span></li>
-					<li><span><a href="#">Loreum</a></span></li>
-					<li><span><a href="#">Loreum</a></span></li>
-					<li><span><a href="#">Loreum</a></span></li>
-					<li><span><a href="#">Loreum Information</a></span></li>
-					<li><span><a href="#">Loreum</a></span></li>
-					<li class="last"><span><a href="#">Loreum</a></span></li>
-				</ul>
-
-			</aside>
-			</div>
-			</div>
-			</body>
-			</html>
+			
+			
 			
 			
        

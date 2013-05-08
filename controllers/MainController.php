@@ -29,7 +29,7 @@ class MainController
     
     /* Starts login procedure by fetching username, password from POST */
     public function handleLogin() {
-         echo "hi";
+         
         //$authObject = new Authenticate ();
         //var_dump($authObject);
         /* Validate username password */
@@ -128,10 +128,9 @@ class MainController
 	 */
 	public function showUserPanel() 
 	{
-	    echo "<pre>";
-	    print_r($_SESSION);
+	    
 		$controllerName = ucfirst ( $_SESSION ["userType"] ) . "Controller";
-		echo $controllerName;
+		
 		$objController = new $controllerName ();
 		
 		$objController->process ();
