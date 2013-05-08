@@ -1,9 +1,10 @@
 
 <body>
 <?php require_once '/var/www/skillseeker/trunk/libraries/constants.php'; ?>
+<?php require_once  '/var/www/skillseeker/trunk/libraries/Language.php';?>
 <form action="<?php echo SITE_URL?>/index.php?controller=TestController&method=upload" enctype="multipart/form-data" method="post">
 <p>
-Please specify a file, or a set of files:<br>
+<?php echo $lang->SPECIFIYFILE?><br>
 <input type="file" id="browse" name="questionbank" size="30">
 </p>
 <div>
@@ -11,7 +12,8 @@ Please specify a file, or a set of files:<br>
 <div>
 <?php 
 if(isset($_REQUEST['cid'])) {
-	echo "Errors in csv file";
+	echo $lang->ERROR1;
+	//echo "Errors in csv file";
 	echo $_REQUEST['cid'];
 }
 ?>

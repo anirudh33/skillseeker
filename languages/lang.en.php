@@ -21,12 +21,12 @@
 				'FIELDEMAIL'=>"fieldEmail",
 				'INVALID'=>"invalid",
  				'EMAIL'=>"Email id",
-				''=>"",
-				''=>"",
-				''=>"",
-				''=>"",
-				''=>"",
-				''=>"",
+				'SPECIFIYFILE'=>"Please specify a file, or a set of files:",
+				'ERROR1'=>"Errors in csv file",
+				'ERROR2'=>"<br/> Option count is less than three in row",
+				'ERROR3'=>"Please specify correct option as per type(True/False) in row ",
+				'ERROR4'=>"Type(True/False) have other than true/false in their option in row ",
+				'ERROR5'=>"<br/> Invaild ques type in row",
                 );
 ?>
 
