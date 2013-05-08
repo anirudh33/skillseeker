@@ -2,6 +2,15 @@
 require_once './models/csvModel.php';
 class TestController {
 	
+    public function process()
+    {
+        $this->showView("UserMainPage");
+    }
+    
+    public function showView($pageName)
+    {
+        echo "nbdsvhjgfs";
+    }
 	function upload() 
 	{
 

@@ -13,8 +13,8 @@
 * 2 1.0 Anirudh Pandita March 08, 2013 Paths set
 * ***************************************************************************
 */
-
-class InitiateUser extends AModel {
+require_once './libraries/DBconnect.php';
+class InitiateUser extends DBConnection {
     
 /**
 * @var unknown
@@ -132,10 +132,10 @@ private function setUsername($username) {
 * for further usage
 */
 private function setSession() {
-//$_SESSION ["userID"] = $this->getUserID ();
+$_SESSION ["userType"] = "test";
 
 $_SESSION ["username"] = $this->getUsername ();
-$_SESSION ["password"] = $this->getPassword ();
+//$_SESSION ["password"] = $this->getPassword ();
 //$_SESSION ["email"] = $this->getEmailID ();
 }
 
@@ -156,7 +156,7 @@ $this->setUsername ( $fieldUsername );
 
 if ($this->exists ( $this->encryptPassword ( $this->getPassword () ) , $this->getUsername ()) == 1) {
 $this->setSession ();
-echo "me";die;
+//echo "me";die;
 return 1;
 
 } else {
@@ -193,7 +193,7 @@ private function fetchUser($username, $password) {
         
         $data['tables']		= 'users';
         $data['columns']	= array('user_name', 'password');
-        $data['conditions']=array(array('user_name ='.$this->getUsername ()),true);
+        $data['conditions']=array(array('user_name ="'.$this->getUsername ().'"'),true);
         $result=$this->_db->select($data);
         $myResult=array();
         while($row = $result->fetch(PDO::FETCH_ASSOC)) {
