@@ -16,6 +16,7 @@ Sr.NO.		Version		Updated by           Updated on          Description
 */
 
 require_once 'libraries/DBconnect.php';
+require_once 'libraries/validate.php';
 
 class User extends DBConnection
 {
@@ -201,29 +202,54 @@ class User extends DBConnection
 
     // values the post value from form
     public function GenerateArray($values,$type) {    	
-    	
+    	$obj = new validate();
         if(array_key_exists('id',$values))
         {
             $this->setId($values['id']);
         }
         if(array_key_exists('first_name',$values))
         {
+            //echo $values['first_name'];
+            
+            $obj->validator("first_name",$values['first_name'], 'required#alphabets','FirstName Required#LastName should only contain alphabets');
+            
+            $error=$obj->result();
+            //print_r($error);
             $this->setFirstName($values['first_name']);
         }
         if(array_key_exists('last_name',$values))
         {
+            //$obj = new validate();
+            $obj->validator("last_name",$values['last_name'], 'required#alphabets','LastName Required#LastName should only contain alphabets');
+          
+            
             $this->setLastName($values['last_name']);
         }
         if(array_key_exists('user_name',$values))
         {
+               //$obj = new validate();
+            $obj->validator("user_name",$values['user_name'], 'required#username#minlength=4#maxlength=25','UserName Required#UserName should start with an alphabet#UserName atleast 4 characters long#UserName should not be more than 25 characters long');
+            
+            //$error=$obj->result();
+            //print_r($error);
         	$this->setUserName($values['user_name']);
         }
         if(array_key_exists('email_address',$values))
-        {
+        { 
+          //$obj = new validate();
+            $obj->validator("email_address",$values['email_address'], 'required#email','Email Required#Email Please enter valid email address');
+            
+            //$error=$obj->result();
+            //print_r($error);
         	$this->setEmail($values['email_address']);
         }
         if(array_key_exists('password',$values))
         {
+            //$obj = new validate();
+            $obj->validator("password",$values['password'], 'required#minlength=8#maxlength=25','Password Required#Password atleast 8 characters long#Password should not be more than 25 characters long');
+            
+            //$error=$obj->result();
+            //print_r($error);
             $this->setPassword($values['password']);
         }
         if(array_key_exists('time_zone_id',$values))
@@ -369,15 +395,28 @@ class User extends DBConnection
         {
             $userFormArray["updated_on"] = $this->getUpdatedOn();
         }
-    
-        return $userFormArray;    
+
+     $error=$obj->result();
+     $flag = 1;
+      if (array_filter($error,'trim')){
+       $flag = 0;
+      }
+
+        if ($flag==1){
+        return $userFormArray;
+        }
+        else{
+         return $error;
+        }  
     }
     
     function registerUser() {
     		
     	$userArray = $this->GenerateArray($_POST, "INSERT");
-    
+        print_r($userArray);die; 
     	$result = $this->_db ->insert('users', $userArray);
+         
+        
     
     }
     
