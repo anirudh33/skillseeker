@@ -339,7 +339,12 @@ background:#717171;
 border-bottom:1px solid #D3D3D3;
 
 }
-
+.aTagManageTest
+{
+	color:#008cc4; 
+	outline:none;
+	
+}
 /*----- txt, links, lines, titles -----*/
 a {
 	color:#ff7b01; 
