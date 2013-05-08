@@ -77,10 +77,10 @@ else{
 
 				<h3>Categories</h3>
 				<ul class="categories">
-				<li><span><a href="#">Loreum</a></span></li>
-				<li><span><a href="#">Loreum Info</a></span></li>
-				<li><span><a href="#">Loreum</a></span></li>
-				<li><span><a href="#">Loreum</a></span></li>
+				<li><span><a href="index.php?controller=MainController&method=handleAddCategory">ADD</a></span></li>
+				<li><span><a href="index.php?controller=MainController&method=handleUpdateCategory">UPDATE</a></span></li>
+				<li><span><a href="index.php?controller=MainController&method=handleDeleteCategory">DELETE</a></span></li>
+				<li><span><a href="index.php?controller=MainController&method=handleDisplayCategory">DISPLAY</a></span></li>
 				<li><span><a href="#">Loreum</a></span></li>
 				<li><span><a href="#">Loreum Information</a></span></li>
 						<li><span><a href="#">Loreum</a></span></li>
