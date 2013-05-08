@@ -22,7 +22,8 @@
    <header>
  
       <div class="container">
-          <h1><a href="#"><?php echo $lang->USERNAME;?></a></h1>
+      
+           <h1><a href="#"></a></h1>
 				<nav>
 					<ul>
 						<li class="current"><a href="#" class="m1">Home Page</a></li>

@@ -14,7 +14,7 @@ Sr.NO.		Version		Updated by           Updated on          Description
 *************************************************************************
 
 */
-session_start();
+
 class Language {
 
 	private $_lang;          //store user selected language array
@@ -42,21 +42,12 @@ else
 {
 	$langType='en';
 }
+require_once SITE_PATH.'/languages/lang.'.$langType.".php";
 
-$workingDir=getcwd();
-$name = basename($workingDir);         
-$name = basename($name, ".php"); 
-if($name=="development"){
-	
-	include_once './languages/lang.'.$langType.".php";
-}
-else 
-{
-	include_once './languages/lang.'.$langType.".php";
-}
 
 //include_once './languages/lang.'.$langType.".php";
-$lang= new Language($langArr);
-//echo $lang->USERN;
+$lang = new Language($langArr);
 
+//echo '<pre>';
+//print_r($lang);
 ?>

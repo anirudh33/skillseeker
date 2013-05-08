@@ -15,8 +15,44 @@
 
 require_once 'models/Registration.php';
 
+require_once  SITE_PATH.'/models/AModel.php';
+
 class MainController 
-{	
+{
+    private $_objAmodel;
+    public function __construct()
+    {
+        $this->_objAmodel=new AModel();
+    }
+    
+
+    
+    public function loginController()
+    {
+        $user_name=$_POST['userName'];
+        $password=$_POST['password'];
+         //validate here
+        $result=$this->_objAmodel->AuthenticateUser($user_name,$password);
+        if($result=="1")
+        {
+            $_SESSION['User']=$_POST['userName'];
+            $_SESSION['Password']=$_POST['password'];
+            
+            //$fileName="./temp/"
+            
+            
+            $this->showView("userPage");
+        }
+        else if($result=="2")
+        {
+            header("Location:http://www.skillseeker.com?msg1=error");
+        }
+        else {
+            header("Location:http://www.skillseeker.com?msg=error");
+        }
+        
+    }    
+    
 	 /* Any messages to be shown to user */
 	private $_message = '';
 	
@@ -47,10 +83,9 @@ class MainController
 	}
 	
 	 /* Shows Home page */
-	public function showView() {
+	public function showView($pageName="MainPage") {
 		//$lang = Language::getinstance ();
-		$pageName="MainPage";
-		require_once SITE_PATH."/views/container.php";
+	    require_once SITE_PATH."/views/container.php";
 	}
 	
 	public function onRegisterClick()  {
@@ -62,10 +97,11 @@ class MainController
 	
 	 /* Starts login procedure by fetching username, password from POST */
 	public function initiateLogin() {
+	    
 		$authObject = new Authenticate ();
-		
+		var_dump($authObject);
 		/* Validate username password */
-		$authObject->validateLogin ();
+		//$authObject->validateLogin ();
 		
 		/* Getting rid of sql injection */
 		$fieldEmail = mysql_real_escape_string ( $_POST ["fieldEmail"] );
@@ -187,12 +223,15 @@ class MainController
 			
 		/*} elseif ($_POST ["usertype"] == "teacher") {
 			$obj = new Registration ();
+			$obj->newStudentRegistration ( $email, $password, $firstname, $lastname, $phone, $address, $qualification, $gender, $date, $usertype, $status, $profilepicture, $confirm_code );
+		} elseif ($_POST ["usertype"] == "teacher") {
+			$obj = new Registration ();
 			$obj->newTeacherRegistration ( $email, $password, $firstname, $lastname, $phone, $address, $qualification, $gender, $date, $usertype, $status, $profilepicture, $confirm_code );
 		}		
-	}*/
 	}
 	
 	/* Logs out the user by destroying session */
+}
 	public function logout() 
 	{
 		if (file_exists ( $_SESSION ["DOMAIN_PATH"] . "/assets/images/Views/profilepics/adminprofile" . $_SESSION ['userID'] . ".jpeg" ) or file_exists ( $_SESSION ["DOMAIN_PATH"] . "/assets/images/Views/profilepics/studentprofile" . $_SESSION ['userID'] . ".jpeg" ) or file_exists ( $_SESSION ["DOMAIN_PATH"] . "/assets/images/Views/profilepics/teacherprofile" . $_SESSION ['userID'] . ".jpeg" )) {

@@ -1,4 +1,32 @@
- 
+<?php 
+if(isset($_SESSION['User']))
+{
+    header("Location:header.php");
+}
+else{
+?>
+ <script>
+ $(document).ready(function() {
+	 $(".erruser").hide();
+	 $(".errpass").hide();
+	 
+ <?php 
+ if(isset($_REQUEST['msg']))
+ {
+     ?>
+	 $(".erruser").show();
+	 <?php 
+ }
+ else if(isset($_REQUEST['msg1']))
+ {
+     ?>
+     $(".errpass").show();
+     <?php
+ }
+ unset($_REQUEST['msg']);
+ ?>
+ });
+ </script>
 <div class="container">
 		<!--<h1><a href="#">Online Examination</a></h1>
 		<nav>
@@ -32,13 +60,13 @@
 				<div class="line-separator"></div><br><br>
 				<h2 id="login">Login</h2>
 				<form method="post" action="index.php?controller=MainController&method=loginController">
-					<label class="homelabel" for="un"><?php echo $lang->USERNAME;?></label> <input id="un"
+					<label class="homelabel" for="un"><?php if(isset($lang)) {echo $lang->USERNAME;}?></label> <input id="un"
 							class="textinput homelogin" type="text" name="userName">
-					<div class="erruser">put your error message here</div>
+					<div class="erruser">Please enter valid Username</div>
 					<br /> <label class="homelabel" for="pw"><?php echo $lang->PASSWORD;?></label> <input
 						id="pw" class="textinput homelogin" type="password"
 						name="password">
-								<div class="errpass">put your error message here</div>
+								<div class="errpass">Please enter valid Password</div>
 					<br /> <input class="submit login" type="submit" value="Log in">
 					<a class="sml" href="#"><?php echo $lang->FORGETPASSWORD;?></a><br><br>
 							<div class="line-separator"></div>
@@ -91,3 +119,4 @@
 										</div>
 									
 										
+<?php } ?>

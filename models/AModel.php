@@ -21,8 +21,8 @@ class AModel extends DBConnection
 
     public function AuthenticateUser($user,$pwd)
     {
-        /*$data['columns']	= array('user_name', 'password');
-        $data['tables']		= 'login';
+        
+        /*$data['tables']		= 'login';
         $data['conditions']=array(array('user_name ='.$user),true);
         $result=$this->_db->select($data);
         print_r($result);*/
@@ -35,8 +35,22 @@ class AModel extends DBConnection
         while($row = $result->fetch(PDO::FETCH_ASSOC)) {
             $myResult[]=$row;
         }
-        echo "<pre>";
-        print_r($myResult);        
+        
+        if(!empty($myResult))    
+        {   
+            if(md5($myResult[0]['password']) === md5($pwd))
+            {
+                return("1");
+            }
+            else 
+            {
+                return("2");
+            }
+        }
+        else 
+        {
+            return("0");
+            }
          
     }
     
