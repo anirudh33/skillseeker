@@ -1,7 +1,7 @@
 
 <body>
 <?php require_once '/var/www/skillseeker/trunk/libraries/constants.php'; ?>
-<form action="<?php echo SITE_URL?>/index.php?controller=testController&method=upload" enctype="multipart/form-data" method="post">
+<form action="<?php echo SITE_URL?>/index.php?controller=TestController&method=upload" enctype="multipart/form-data" method="post">
 <p>
 Please specify a file, or a set of files:<br>
 <input type="file" id="browse" name="questionbank" size="30">
