@@ -59,7 +59,7 @@ else{
 				<a class="blocklink" href="index.php?controller=MainController&method=onRegisterClick">Register free</a></p>
 				<div class="line-separator"></div><br><br>
 				<h2 id="login">Login</h2>
-				<form method="post" action="index.php?controller=MainController&method=loginController">
+				<form method="post" action="index.php?controller=MainController&method=handleLogin">
 					<label class="homelabel" for="un"><?php if(isset($lang)) {echo $lang->USERNAME;}?></label> <input id="un"
 							class="textinput homelogin" type="text" name="userName">
 					<div class="erruser">Please enter valid Username</div>

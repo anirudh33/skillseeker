@@ -18,40 +18,9 @@
 require_once './libraries/DBconnect.php';
 class AModel extends DBConnection
 {
-
-    public function AuthenticateUser($user,$pwd)
+    public function __construct()
     {
-        
-        /*$data['tables']		= 'login';
-        $data['conditions']=array(array('user_name ='.$user),true);
-        $result=$this->_db->select($data);
-        print_r($result);*/
-        
-        
-        $data['tables']		= 'users';
-        //$data['conditions']=array(array('user_name ='),true);
-        $result=$this->_db->select($data);
-        $myResult=array();
-        while($row = $result->fetch(PDO::FETCH_ASSOC)) {
-            $myResult[]=$row;
-        }
-        
-        if(!empty($myResult))    
-        {   
-            if(md5($myResult[0]['password']) === md5($pwd))
-            {
-                return("1");
-            }
-            else 
-            {
-                return("2");
-            }
-        }
-        else 
-        {
-            return("0");
-            }
-         
+        //$this->_db
     }
     public function uniqueUserName($userName)
     {

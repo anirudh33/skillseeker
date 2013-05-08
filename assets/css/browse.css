@@ -1,0 +1,25 @@
+#submitbtn
+{
+  border: 1px solid #777777;
+  background: #0099CC;
+  color: white;
+  font: bold 21px 'Trebuchet MS';
+  padding: 4px;
+	 width: 115px;
+    height: 40px;
+  cursor: pointer;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+}
+#browse
+{
+	 border: 1px solid #777777;
+  background: #0099CC;
+  color: white;
+  font: bold 21px 'Trebuchet MS';
+  padding: 4px;
+	
+  cursor: pointer;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+}

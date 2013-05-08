@@ -43,92 +43,7 @@ google.setOnLoadCallback(load);
 <body id="page1">
 <div class="wrap">
    <!-- header -->
-   <header>
- 
-      <div class="container">
-          <h1><a href="#">Online Examination</a></h1>
-				
-					
-						
-							<ul class="sf-menu" id="example">
-								<li class="current">
-									<a href="followed.html">Home</a>
-									<ul>
-										<li>
-											<a href="followed.html">Pricing</a>
-										</li>
-										<li>
-											<a href="followed.html">FAQ</a>
-										</li>
-										<li>
-											<a href="followed.html">Contact Us</a>
-										</li>
-									
-					
-					
-									</ul>
-									</li>
-									
-							<li class="current">
-									<a href="followed.html">Test</a>
-									<ul>
-										<li>
-											<a href="followed.html">Categories</a>
-										</li>
-										<li>
-											<a href="followed.html">Question Bank</a>
-										</li>
-										<li>
-											<a href="followed.html">My Test</a>
-										</li>
-										<li>
-											<a href="followed.html">Certificates</a>
-										</li>
-									
-					
-					
-									</ul>
-									</li>
-							<li class="current">
-									<a href="followed.html">Assign</a>
-									<ul>
-										<li>
-											<a href="followed.html">Assign</a>
-										</li>
-										<li>
-											<a href="followed.html">View Assign Test</a>
-										</li>
-										
-									
-					
-					
-									</ul>
-									</li>
-			
-				`		<li class="current">
-									<a href="followed.html">Result</a>
-									<ul>
-										<li>
-											<a href="followed.html">By Test</a>
-										</li>
-										<li>
-											<a href="followed.html">Search User</a>
-										</li>
-										
-									
-					
-					
-									</ul>
-									</li>
-									<li class="current">
-									<a href="index.php?controller=MainController&method=logout">Logout</a>
-									
-									</li>
-			
-		</ul>
-	
-			</div>
-   </header>
+   
    <br/>
    <div class="container">
       <!-- aside -->
@@ -144,7 +59,7 @@ google.setOnLoadCallback(load);
 <div id="feedControl">Loading...</div>
 </div>
 
-			</aside>
+			
 			<!-- content -->
       <section id="content">
       <div><?php echo "hello ";echo ucfirst($_SESSION['User']);?></div>

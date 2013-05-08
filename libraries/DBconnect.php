@@ -6,7 +6,7 @@ ini_set("display_errors","1");
 include('PDO/cxpdo.php');
 abstract class DBConnection
 {
-    protected $_db;
+    public $_db;
     private $_config = array();
 //     $config['DATABSE_USER_NAME'] = 'root';
 //     $config['DATABSE_PASSWORD'] = 'root';

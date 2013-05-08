@@ -16,6 +16,7 @@
 require_once 'models/Registration.php';
 
 require_once  SITE_PATH.'/models/AModel.php';
+require_once  SITE_PATH.'/libraries/initiateuser.php';
 
 class MainController 
 {
@@ -25,7 +26,27 @@ class MainController
         $this->_objAmodel=new AModel();
     }
     
-
+    /* Starts login procedure by fetching username, password from POST */
+    public function handleLogin() {
+         echo "hi";
+        //$authObject = new Authenticate ();
+        //var_dump($authObject);
+        /* Validate username password */
+        //$authObject->validateLogin ();
+    
+        /* Getting rid of sql injection */
+        $username = mysql_real_escape_string ( $_POST ["userName"] );
+        $password = mysql_real_escape_string ( $_POST ["password"] );
+        $objInitiateUser = new InitiateUser ();
+        $this->setAuthenticationStatus (
+            $objInitiateUser->login ( $username, $password) );
+    
+        if ($this->getAuthenticationStatus () == 1) {
+            /* Visitor date, ip, email logged */
+            $authObject->logIP ();
+            $this->showUserPanel ();
+        }
+    }
     
     public function loginController()
     {
@@ -33,25 +54,27 @@ class MainController
         $password=$_POST['password'];
          //validate here
         $result=$this->_objAmodel->AuthenticateUser($user_name,$password);
-        if($result=="1")
+        //echo "<pre>";
+        //print_r($result);
+        if(!empty($result))
         {
-            $_SESSION['User']=$_POST['userName'];
-            $_SESSION['Password']=$_POST['password'];
-            
-            $objSecurity=new Security();
-            $objSecurity->logSessionId($user_name);
-            //$fileName="./temp/"
-            
-            
-            $this->showView("userPage");
+            if(md5($result[0]['password']) === md5($password))
+            {
+                
+                   $_SESSION['User']=$_POST['userName'];
+                   $_SESSION['Password']=$_POST['password'];
+                    $this->showView("userPage");
+            }
+            else
+            {
+                //header("Location:http://www.skillseeker.com?msg1=error");
+            }
         }
-        else if($result=="2")
+        else
         {
-            header("Location:http://www.skillseeker.com?msg1=error");
+           //header("Location:http://www.skillseeker.com?msg=error");
         }
-        else {
-            header("Location:http://www.skillseeker.com?msg=error");
-        }
+        
         
     }    
     
@@ -97,27 +120,7 @@ class MainController
 	}
 	
 	
-	 /* Starts login procedure by fetching username, password from POST */
-	public function initiateLogin() {
-	    
-		$authObject = new Authenticate ();
-		var_dump($authObject);
-		/* Validate username password */
-		//$authObject->validateLogin ();
-		
-		/* Getting rid of sql injection */
-		$fieldEmail = mysql_real_escape_string ( $_POST ["fieldEmail"] );
-		$fieldPassword = mysql_real_escape_string ( $_POST ["fieldPassword"] );		
-		$objInitiateUser = new InitiateUser ();		
-		$this->setAuthenticationStatus ( 
-				$objInitiateUser->login ( $fieldEmail, $fieldPassword ) );
-		
-		if ($this->getAuthenticationStatus () == 1) {
-			/* Visitor date, ip, email logged */
-			$authObject->logIP ();
-			$this->showUserPanel ();
-		}
-	}
+	
 	
 	/*
 	 * Shows respective User Panel (Admin/Test taker/Test creator) depending on user type logged in

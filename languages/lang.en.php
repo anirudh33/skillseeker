@@ -19,7 +19,7 @@
 				'PASSWORD'=>"Password",
 				'FIELDPASSWORD'=>"fieldPassword",
 				'FIELDEMAIL'=>"fieldEmail",
-				''=>"",
+				'EMAIL'=>"Email id",
 				''=>"",
 				''=>"",
 				''=>"",
