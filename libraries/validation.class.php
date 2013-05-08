@@ -41,7 +41,7 @@ class validation {
 			$errorMsg [$this->check_vars [$i] ['controler_name']] = "";
 		}
 		
-	for($i = 0; $i < $this->id; $i ++) {
+		for($i = 0; $i < $this->id; $i ++) {
 			if(strlen($errorMsg [$this->check_vars [$i] ['controler_name']]))
 			{
 				continue;
@@ -93,7 +93,7 @@ class validation {
 				//validate field only contains alpha characters only
 				case "alphabets" :
 					{
-						$regexp = '/^[A-za-z]$/';
+						$regexp = '/^[A-za-z]*$/';
 						if (! preg_match ( $regexp, trim ( $postVar ) )) {
 							$length = strlen ( trim ( $postVar ) );
 							
@@ -106,7 +106,7 @@ class validation {
 				//validate field only contains alphanumeric characters only
 				case "alphanumeric" :
 					{
-						$regexp = '/^[A-za-z0-9]$/';
+						$regexp = '/^[A-za-z0-9]*$/';
 						if (! preg_match ( $regexp, trim ( $postVar ) )) {
 							$length = strlen ( trim ( $postVar ) );
 							
@@ -119,7 +119,7 @@ class validation {
 				//validate field only contains numeric characters only	
 				case "numeric" :
 					{
-						$regexp = '/^[0-9]$/';
+						$regexp = '/^[0-9]*$/';
 						if (! preg_match ( $regexp, trim ( $postVar ) )) {
 							$length = strlen ( trim ( $postVar ) );
 							
