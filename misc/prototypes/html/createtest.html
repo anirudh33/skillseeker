@@ -1,6 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<link rel="stylesheet" href="css/style.css" />
 <script
 	src='http://localhost/skillseeker/trunk/misc/prototypes/html/js/jquery.tools.min.js'></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -10,26 +11,15 @@
 $("#ques1").show();
         }
         function addRow() {
-$("#ques").append('<tr><td><textarea rows="1" cols="10"></textarea></td><td><input type="radio" name="qoption[]"/></td><td><textarea  rows="1" cols="10" ></textarea> </td><td><a href="#"><img src="/var/www/skillseeker/trunk/misc/prototypes/html/images/delete1.png" height="34px" alt="halo"/></a></td></tr>');
+$("#ques").append('<tr><td><textarea rows="1" cols="10"></textarea></td><td><input type="radio" name="qoption[]"/></td><td><textarea  rows="1" cols="10" ></textarea> </td><td><a href="#"><img src="images/delete1.png" height="34px" alt="halo"/></a></td></tr>');
 
         }
         function addMore() { 
         	$("#more").show();
         	        }
         </script>
-        <style type="text/css">
-        .btn
-        {
-	        border:1px solid #7777777;
-        	background: #0099CC;
-        	color: white;
-        	font: bold 15 px 'Trebuchet MS';
-        	padding: 4px;
-        	cursor: pointer;
-        }
-        </style>
 </head>
-<body>
+<body id="createtestbody">
 <div></div>
 
 <h2>Create Test</h2>

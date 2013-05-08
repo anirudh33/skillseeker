@@ -36,7 +36,7 @@ html,
 body { 
 	height:100%;
 }
- #submitbtn
+ .btn
         {
 	border:1px solid #7777777;
         	background: #0099CC;
@@ -45,9 +45,10 @@ body {
         	padding: 4px;
         	cursor: pointer;
         }
-#bygrouptable
+
+#createtestbody
 {
-	
+	background:#f1f1f1; width:570px; margin:0 auto; padding-left:90px; padding-top:20px;
 }
 #browse
 {
