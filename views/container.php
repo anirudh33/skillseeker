@@ -13,8 +13,8 @@ $lang = new Language ( $langArr );
 
 <?php 
 if($pageName=="MainPage") {
-    require_once(SITE_PATH."/views/header.php");
-       require_once(SITE_PATH."/views/MainView.php");
+//     require_once(SITE_PATH."/views/header.php");
+       require_once(SITE_PATH."/views/homepage.php");
 }
 
 else if ($pageName=="RegisterPage")

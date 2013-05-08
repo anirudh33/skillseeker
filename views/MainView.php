@@ -23,6 +23,12 @@ if (isset($_SESSION['User'])) {
     ?>
  });
  </script>
+ 
+ 
+ 
+ 
+ 
+ 
 
 <div class="container">
 	<!-- aside -->

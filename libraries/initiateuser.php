@@ -161,7 +161,7 @@ return 1;
 
 } else {
 $msg = "Login Failed username or password does not exist";
-$this->setCustomMessage ( "ErrorMessage", $msg );
+//$this->setCustomMessage ( "ErrorMessage", $msg );
 header ( "Location:" . $_SESSION ["DOMAIN_PATH"] . "/index.php?msg=$msg" );	
 }	
 }
@@ -204,7 +204,7 @@ private function fetchUser($username, $password) {
             if(md5($myResult[0]['password']) === md5($password))
             {
         
-                return "true";
+                return 1;
             }
             else
             {
@@ -213,7 +213,7 @@ private function fetchUser($username, $password) {
         }
         else
         {
-            return "false";
+            return 0;
         }
         return $myResult;
 }	
