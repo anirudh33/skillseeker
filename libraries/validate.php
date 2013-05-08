@@ -127,8 +127,10 @@ class validate
     	return $string;
     }   
 }
-// 		$obj = new validate();
-// 		$error=$obj->validator('first_name','first89name','required#alphanumeric#minlength=4#maxlength=25','Username Required#alphanumeric Required#Enter Username atleast 4 characters long#Username should not be more than 25 characters long');
+		$obj = new validate();
+		$obj->validator('pass#cnfpass','123#123','match','password not match');
+		$error=$obj->result();
+		print_r($error);
 // 		//$obj->validator("zip","12345", 'datatype=int,5','data');
 // 		var_dump($error);
 // 		if($error==true){

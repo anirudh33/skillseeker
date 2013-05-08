@@ -24,8 +24,6 @@ require_once SITE_PATH . '/controllers/testController.php';
 //echo "i am here";
 /* Method calls from views handled here */
 if (isset ( $_REQUEST ['controller'] )) {
-	
-	
 		
 		if (isset ( $_REQUEST ["method"] )) {
 			
@@ -33,7 +31,6 @@ if (isset ( $_REQUEST ['controller'] )) {
 			$object = new $_REQUEST ["controller"] ();
 			
 			if (method_exists ( $object, $_REQUEST ["method"] )) {
-
 				
 				$object->$_REQUEST ["method"] ();
 			}
