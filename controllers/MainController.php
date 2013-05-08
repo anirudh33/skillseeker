@@ -1,4 +1,5 @@
 <?php
+
 /*
  * *************************** Creation Log ******************************* 
  * File Name 	- MainController.php 
@@ -78,7 +79,31 @@ class MainController
         
         
     }    
+    public function handleassignTest()
+    {
+    	
     
+    	require_once './models/Assign.php';
+    	$_objCategory = new Assign();
+    	
+    	if(method_exists($_objCategory,'AssignTest'))
+    	{
+    		$returnValue = $_objCategory->AssignTest(); // call the addCategory of Category.php
+    		if($returnValue )
+    		{
+    			die("Test assigned Sucessfully.");
+    		}
+    		else
+    		{
+    			die("Test not assigned.Check it out.");
+    		}
+    	}
+    	else
+    	{
+    		die("Method ". $methodName." doesn't exist ");
+    	}
+    }
+      
 	 /* Any messages to be shown to user */
 	private $_message = '';
 	
@@ -119,7 +144,11 @@ class MainController
 		
 		require_once SITE_PATH."/views/container.php";
 	}
+	public function onAssigntestClick()  {
+		$pageName="AssignTest";
 	
+		require_once SITE_PATH."/views/container.php";
+	}
 	
 	
 	

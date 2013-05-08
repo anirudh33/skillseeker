@@ -54,6 +54,19 @@ class AModel extends DBConnection
     	
     }
     
+    
+   /* public function assignTest()
+    {
+    	$data['tables']		= 'test';
+    	$data['columns']	= array('id', 'name');
+    	$result=$this->_db->select($data);
+    	$myResult=array();
+    	while($row = $result->fetch(PDO::FETCH_ASSOC)) {
+    		$myResult[]=$row;
+    	}
+    	return $myResult;
+     }
+    */
 }
 
 ?>

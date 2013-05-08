@@ -17,12 +17,20 @@ if($pageName=="MainPage") {
        require_once(SITE_PATH."/views/MainView.php");
 }
 
-else if ($pageName == "RegisterPage") {
-	
-	require_once (SITE_PATH . "/views/register.php");
-} else if ($pageName == "userPage") {
-	require_once (SITE_PATH . "/views/userheader.php");
-	?>
+else if ($pageName=="RegisterPage")
+{
+    
+	require_once(SITE_PATH."/views/register.php");
+}
+else if ($pageName=="AssignTest")
+{
+
+	require_once(SITE_PATH."/views/assigntest.php");
+}
+else if ($pageName=="userPage")
+{
+    require_once(SITE_PATH."/views/userheader.php");
+    ?>
     <!-- content -->
 		<section id="content">
 			<div id="rightcontainer">
