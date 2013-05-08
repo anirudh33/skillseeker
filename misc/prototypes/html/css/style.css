@@ -45,7 +45,10 @@ body {
         	padding: 4px;
         	cursor: pointer;
         }
-        
+#bygrouptable
+{
+	
+}
 #browse
 {
 	background-color:#ADD8E6;
@@ -64,16 +67,51 @@ body {
 	background:#f1f1f1; width:570px; margin:0 auto; padding-left:90px; padding-top:20px;
 }
 
+#bygroupbody
+{
+	background:#f1f1f1; width:570px; margin:0 auto; padding-left:90px; padding-top:20px;
+}
+
+
+.bytest{
+	color: black;
+	font-weight: bold;
+}
+.bytest1{
+    border: 1px solid #D0D2D2;
+    color: #4D4D4D;
+    font-size: 1.125em;
+    font-weight: bold;
+}
+.bycenter
+{
+	text-align: center;
+	width: 150px;
+}
+.byth
+{                  
+	width: 340px;
+}
+.recentresult{
+	background-color: #AACCBB;
+	font-weight: bold;
+	font-size: large;
+	width: 40%;
+}
+
 /* Global Structure ============================================================= */
 
-.container {
+.container 
+{
 	margin:0 auto;
-	width:940px;
+	width:940px; 
 	overflow:hidden;
 	font-size:.875em;
 	padding-bottom:176px;
 }
-
+.follow{
+	font-size:.75em;
+}
 	/* Header */
 	header {
 		background:url(../images/header-bg.jpg) no-repeat center top;
@@ -452,12 +490,13 @@ header nav {
 		text-transform:uppercase;
 		padding-right:1px;
 		background:url(../images/divider.gif) repeat-y right top;
-	}
+}
 	header nav ul li.last {
 		background:none;
 		padding:0;
-	}
-		header nav ul li a {
+}
+		header nav ul li a
+{
 			color:#454545;
 			text-decoration:none;
 			display:block;
@@ -466,11 +505,12 @@ header nav {
 			padding:18px 0 20px 0;
 			background-repeat:no-repeat;
 			background-position:left top;
-		}
+}
 		header nav ul li.current a,
 		header nav ul li a:hover {
 			color:#008cc4;
-		}
+		
+}
 		header nav ul li a.m1 {
 			width:186px;
 		}
