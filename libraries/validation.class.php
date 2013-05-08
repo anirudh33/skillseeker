@@ -295,7 +295,7 @@ class validation {
 							$data = explode("#", $postVar);
 							if(count($controlname) == 2 && count($data) == 2) {
 								if($data[0] != $data[1]) {
-									$errorMsg [$this->check_vars [$i] [$data[1]]] .= $error ;
+									$errorMsg [$this->check_vars [$i] ['controler_name']] .= $error ;
 									break;
 								}
 							}
