@@ -174,7 +174,9 @@ class MainController
 	/* Called when user submits the registration form */
 	public function registerUser() 
 	{		
+
 		$userObj = new User();
+		
 		$userObj->registerUser();
 		
 		/*$authObject = new Authenticate ();
@@ -251,5 +253,5 @@ class MainController
 		unset ( $_SESSION ["ErrorMessage"] );
 		unset ( $_SESSION ["NoticeMessage"] );
 		echo '1';
-	}
+	}	
 }

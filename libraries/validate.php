@@ -28,6 +28,18 @@ class validate
 	 */
     function validator($name,$postVar=" ", $authType, $error)
     {
+    	
+    	if (isset ( $_SERVER ["REQUEST_METHOD"] )) {
+    		
+			if ($_SERVER ['REQUEST_METHOD'] != 'POST') {
+				
+				$this->errorMsg = "Invalid request";
+				return $this->errorMsg;
+			}
+		}else {
+			$this->errorMsg = "Invalid request, no request received";
+			return $this->errorMsg;
+		}
         $auth=explode('#', $authType);
         $err=explode('#', $error);
         $authLength=count($auth);
@@ -39,6 +51,7 @@ class validate
             {
                 $this->obj->addFields($name,$postVar, $auth[$i], $err[$i]);
             }
+            return  "here true";
         }
         else
         {
@@ -114,3 +127,28 @@ class validate
     	return $string;
     }   
 }
+// 		$obj = new validate();
+// 		$error=$obj->validator('first_name','first89name','required#alphanumeric#minlength=4#maxlength=25','Username Required#alphanumeric Required#Enter Username atleast 4 characters long#Username should not be more than 25 characters long');
+// 		//$obj->validator("zip","12345", 'datatype=int,5','data');
+// 		var_dump($error);
+// 		if($error==true){
+// 		$error=$obj->result();
+// 		}
+
+// 		print_r($error);
+
+
+
+/* public function checkValidation()
+{
+	echo "i am here";
+	$obj = new validate();
+	$c=$obj->validator("Username","raj42", 'required#alphanumeric#minlength=4#maxlength=25','Username Required#alphanumeric Required#Enter Username atleast 4 characters long#Username should not be more than 25 characters long');
+	//$c=$obj->validator("zip","12345", 'datatype=int,5','data');
+	if($c==true){
+		$error=$obj->result();
+		print_r($error);
+	}else {
+		echo $c;
+	}
+} */
