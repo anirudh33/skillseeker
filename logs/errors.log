@@ -488,3 +488,8 @@
 [08-May-2013 03:14:36 UTC] PHP Notice:  Undefined index: questionbank in /var/www/skillseeker/trunk/controllers/testController.php on line 98
 [08-May-2013 03:14:38 UTC] PHP Notice:  Undefined index: questionbank in /var/www/skillseeker/trunk/controllers/testController.php on line 98
 [08-May-2013 03:14:53 UTC] PHP Notice:  Undefined index: questionbank in /var/www/skillseeker/trunk/controllers/testController.php on line 98
+[08-May-2013 04:07:59 UTC] PHP Notice:  Undefined index: questionbank in /var/www/skillseeker/trunk/controllers/testController.php on line 98
+[08-May-2013 04:07:59 UTC] PHP Notice:  Undefined index: questionbank in /var/www/skillseeker/trunk/controllers/testController.php on line 98
+[08-May-2013 04:08:10 UTC] PHP Notice:  Undefined index: questionbank in /var/www/skillseeker/trunk/controllers/testController.php on line 98
+[08-May-2013 04:08:12 UTC] PHP Notice:  Undefined index: questionbank in /var/www/skillseeker/trunk/controllers/testController.php on line 98
+[08-May-2013 04:08:15 UTC] PHP Notice:  Undefined index: questionbank in /var/www/skillseeker/trunk/controllers/testController.php on line 98

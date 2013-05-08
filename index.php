@@ -17,6 +17,7 @@ require_once '/var/www/skillseeker/trunk/libraries/constants.php';
 
 /* Requiring all essential files */
 require_once SITE_PATH . '/libraries/Language.php';
+require_once SITE_PATH . '/libraries/Security.php';
 //echo "====".$lang->USERNAME;
 require_once SITE_PATH . '/controllers/MainController.php';
 require_once SITE_PATH . '/controllers/testController.php';

@@ -22,37 +22,36 @@ class Security
     public function secureMultiLogin($userLoginId)
     {
         $SID=$_COOKIE['PHPSESSID'];
-        $fileName="../temp/userLogin.txt";
-        if($data=file_get_contents($fileName))
-        {
-            $data = substr($data, 0, -1);
-            $userArray=explode(',',$data);
-            if(array_key_exists($userLoginId,$userArray))
-            {
-                if($userArray[$userLoginId]!=md5($SID))
-                {
-                    unset($_SESSION);
-                    session_destroy();
-                    header ( "location:www.skillseeker.com" );	
-                    die ();
-                }
-                
-            }
-            else 
-            {
-                unset($_SESSION);
-                session_destroy();
-                header ( "location:www.skillseeker.com" );	//multiple login save
-                die ();
-            }
-        }
-        else
-        {
-            unset($_SESSION);
-            session_destroy();
-            header ( "location:www.skillseeker.com" );
-            die ();
-        }
+        $fileName="./temp/".$userLoginId.".txt";
+	     if($data=file_get_contents($fileName))
+			{
+				if($data != md5($SID))
+					{
+					unset($_SESSION);
+					session_destroy();
+					header ( "location:./index.php" );	//multiple login save
+					die ();
+					}
+			}
+			else
+			{
+				unset($_SESSION);
+				session_destroy();
+				header ( "location:./index.php" );
+				die ();
+			}
+    }
+    
+    public function logSessionId($userLoginId)
+    {
+    	$SID=$_COOKIE['PHPSESSID'];
+    	$fileName="./temp/".$userLoginId.".txt";
+    	if (file_exists($fileName)) {
+    		unlink($fileName);
+    	}
+    	$file=fopen($fileName,"a");	//mutiple login save
+    	fwrite($file,md5($SID));
+    	fclose($file);
     }
     
     

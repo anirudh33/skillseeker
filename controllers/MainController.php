@@ -38,6 +38,8 @@ class MainController
             $_SESSION['User']=$_POST['userName'];
             $_SESSION['Password']=$_POST['password'];
             
+            $objSecurity=new Security();
+            $objSecurity->logSessionId($user_name);
             //$fileName="./temp/"
             
             
