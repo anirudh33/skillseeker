@@ -36,8 +36,33 @@ html,
 body { 
 	height:100%;
 }
+ #submitbtn
+        {
+	border:1px solid #7777777;
+        	background: #0099CC;
+        	color: white;
+        	font: bold 15 px 'Trebuchet MS';
+        	padding: 4px;
+        	cursor: pointer;
+        }
+        
+#browse
+{
+	background-color:#ADD8E6;
+}
+#browsebody
+{
+	background:#f1f1f1; width:570px; margin:0 auto; padding-left:90px; padding-top:20px;
+}
+#onebyonebody
+{
+	background:#f1f1f1; width:570px; margin:0 auto; padding-left:90px; padding-top:20px;
+}
 
-
+#addquestionbody
+{
+	background:#f1f1f1; width:570px; margin:0 auto; padding-left:90px; padding-top:20px;
+}
 
 /* Global Structure ============================================================= */
 
@@ -84,7 +109,6 @@ body {
 			height:121px;
 			padding:0;
 		}
-
 
 
 
@@ -366,11 +390,16 @@ h1 {
  		background:url(../images/images.jpeg) no-repeat left top; 
 		
 	}
+	
+
+
+
 h2 {
 	font-size:24px;
 	line-height:1.2em;
 	text-transform:uppercase;
 	margin-bottom:20px;
+			color:#008cc4;
 }
 	h2 span {
 		color:#8d8d8d;

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <title>Registration</title>
 	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7; IE=EmulateIE9">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -15,7 +16,15 @@
 	  <script>
 	  $(document).ready(function() {
 	    $("#datepicker").datepicker();
+	    $("#errorfirst").css("display","none");
+	    $("#errorlast").css("display","none");
+	    $("#erroremail").css("display","none");
+	    $("#errorusername").css("display","none");
+	    $("#errordisplayname").css("display","none");
+	    $("#errorrepass").css("display","none");
+	    $("#errorpass").css("display","none");
 	  });
+	  
 	  </script>
 	  
 </head>
@@ -23,33 +32,38 @@
 <div class="container">
 			<!-- freshdesignweb top bar -->
             <div class="freshdesignweb-top">
-                <a href="http://www.freshdesignweb.com" target="_blank">Home</a>
+                
                 <div class="clr"></div>
-            </div><!--/ freshdesignweb top bar -->
+            </div>
 			<header>
 				<h1>Registration Form </h1>
             </header>       
       <div  class="form">
     		<form id="contactform"> 
     			<p class="contact"><label for="name">First Name</label></p> 
-    			<input id="name" name="name" placeholder="firstname" required="" tabindex="1" type="text"> 
+    			<input id="name" name="name" placeholder="firstname"  required="" tabindex="1" type="text" autocomplete="off"> 
+    			<div id="errorfirst">your error message here</div>
     			 
     			<p class="contact"><label for="name">Last Name</label></p> 
-    			<input id="name" name="name" placeholder="lastname" required="" tabindex="1" type="text"> 
+    			<input id="name" name="name" placeholder="lastname" required="" tabindex="1" type="text" autocomplete="off">
+    			<div id="errorlast">your error message here</div> 
     			 
     			<p class="contact"><label for="email">Email</label></p> 
-    			<input id="email" name="email" placeholder="example@domain.com" required="" type="email"> 
+    			<input id="email" name="email" placeholder="example@domain.com" required="" type="email" autocomplete="off"> 
+                <div id="erroremail">your error message here</div>
                 
                 <p class="contact"><label for="username">Create a username</label></p> 
-    			<input id="username" name="username" placeholder="username" required="" tabindex="2" type="text"> 
-    			 
+    			<input id="username" name="username" placeholder="username" required="" tabindex="2" type="text" autocomplete="off">  
+    			  <div id="errorusername">your error message here</div>
+    			  
     			<p class="contact"><label for="username">Display Name</label></p> 
-    			<input id="username" name="username" placeholder="Choose a display name" required="" tabindex="2" type="text">  
+    			<input id="username" name="username" placeholder="Choose a display name" required="" tabindex="2" type="text" autocomplete="off">
+    			 <div id="errordisplayname">your error message here</div>  
                 
                 
                
 			    <p class="contact"><label for="time zone">Time Zone</label></p>
-            <select class="select-style gender" name="timezone">
+            <select class="select-style gender" name="timezone" autocomplete="off">
             <option value="select">time zone</option>
             <option>UTC+05:30 (IST)india</option>
 							<option>UTC+08:00 (HKT)Honkong</option>
@@ -71,7 +85,7 @@
             </select><br><br>
                 
              <p class="contact"><label for="country">Select Country</label></p>
-            <select class="select-style gender" name="country">
+            <select class="select-style gender" name="country" autocomplete="off">
             <option value="select">Country</option>
             <option value="United States">United States</option>
 								<option value="United Kingdom">United Kingdom</option>
@@ -305,15 +319,17 @@
 								</select></br>
                 
              <p class="contact"><label for="password">Create a password</label></p> 
-    			<input type="password" id="password" name="password" required=""> 
-                
+    			<input type="password" id="password" name="password" required="" autocomplete="off"> 
+    			  <div id="errorpass">your error message here</div>
+    		                
                 <p class="contact"><label for="repassword">Confirm your password</label></p> 
-    			<input type="password" id="repassword" name="repassword" required="">    
+    			<input type="password" id="repassword" name="repassword" required="" autocomplete="off">
+    			  <div id="errorrepass">your error message here</div>    
                
          
          <p>
 	<img id="siimage" style="border: 1px solid #000; margin-right: 15px"
-		src="captcha/securimage_show.php?sid=<?php echo md5(uniqid()) ?>"
+		src="../captcha/securimage_show.php?sid=<?php echo md5(uniqid()) ?>"
 		alt="CAPTCHA Image" align="left">
 	<object type="application/x-shockwave-flash"
 		data="captcha/securimage_play.swf?bgcol=#ffffff&amp;icon_file=captcha/images/audio_icon.png&amp;audio_file=captcha/securimage_play.php"
@@ -323,14 +339,14 @@
 	</object>
 	&nbsp; <a tabindex="-1" style="border-style: none;" href="#"
 		title="Refresh Image"
-		onclick="document.getElementById('siimage').src = 'captcha/securimage_show.php?sid=' + Math.random(); this.blur(); return false"><img
-		src="captcha/images/refresh.png" alt="Reload Image" onclick="this.blur()"
-		align="bottom" border="0"></a><br /> <strong>Enter Code*:</strong><br />
-	<input type="text" name="ct_captcha" size="12" maxlength="8" />
+		onclick="document.getElementById('siimage').src = '../captcha/securimage_show.php?sid=' + Math.random(); this.blur(); return false"><img
+		src="../captcha/images/refresh.png" alt="Reload Image" onclick="this.blur()"
+		align="bottom" border="0"></a><br /> <strong>Enter Code*:</strong><br /><br><br>
+	<input type="text" name="ct_captcha" size="12" maxlength="8" id="captext"  autocomplete="off"/>
 </p>
          
          
-            <input class="buttom" name="submit" id="submit" tabindex="5" value="Sign me up!" type="submit"> 	 
+            <input class="buttom" name="submit" id="submit" tabindex="5" value="Sign me up!" type="submit" autocomplete="off"> 	 
    </form> 
 </div>      
 </div>
