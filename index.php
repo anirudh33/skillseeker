@@ -13,7 +13,7 @@ ini_set("display_errors","1");
 session_start();
 
 /* Including all constants to be used */
-require_once '/var/www/skillseeker/trunk/libraries/constants.php';
+require_once getcwd().'/libraries/constants.php';
 
 /* Requiring all essential files */
 require_once SITE_PATH . '/libraries/Language.php';
