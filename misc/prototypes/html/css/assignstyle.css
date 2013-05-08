@@ -1,0 +1,42 @@
+.bytest{
+	color: black;
+	font-weight: bold;
+}
+.bytest1{
+    border: 1px solid #D0D2D2;
+    color: #4D4D4D;
+    font-size: 1.125em;
+    font-weight: bold;
+}
+.assignbyth
+{
+	text-align: center;
+	width: 50px;
+	height: 30px;
+}
+.assignth
+{
+	width: 340px;
+	height: 30px;
+}
+.recentresult{
+	background-color: #AACCBB;
+	font-weight: bold;
+	font-size: large;
+	width: 40%;
+}
+.assigntesttr
+{
+	font-size: large;
+/* 	margin-top: 50px; */
+ 	
+}
+.assigntesttd
+{
+	font-size: medium;
+	margin-left: 50px;
+}
+.assigntesttrt
+{
+	height: 50px; 
+}
