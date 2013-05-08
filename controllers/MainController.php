@@ -173,7 +173,8 @@ class MainController
 	
 	/* Called when user submits the registration form */
 	public function registerUser() 
-	{		
+	{	
+		//print_r($_POST); die;	
 
 		$userObj = new User();
 		
@@ -327,6 +328,27 @@ class MainController
 		else
 		{
 			echo " Method ". $methodName." doesn't exist ";
+		}
+	}
+	
+	public function uniqueUserNameCheck()
+	{
+		if(isset($_POST['text']))
+		{
+			$objAmodel = new AModel();
+			$userUniqueName = $objAmodel->uniqueUserName($_POST['text']);
+			//print_r($userUniqueName); die;
+			if($userUniqueName == 1)
+			{
+				echo ("true");
+				die;
+	
+			}
+			else
+			{
+				echo ("false");
+				die;
+			}
 		}
 	}
 	

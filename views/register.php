@@ -38,7 +38,7 @@
     			<input id="email" name="email_address" placeholder="example@domain.com" required="" type="email"> 
                 
                 <p class="contact"><label for="username">Create a username</label></p> 
-    			<input id="username" name="user_name" placeholder="username" required="" tabindex="2" type="text"> 
+    			<input id="username" id="username" name="user_name" placeholder="username" required="" tabindex="2" type="text"> 
     			 
     			
                 
@@ -320,10 +320,11 @@
 		title="Refresh Image"
 		onclick="document.getElementById('siimage').src = './assets/captcha/securimage_show.php?sid=' + Math.random(); this.blur(); return false"><img
 		src="./assets/captcha/images/refresh.png" alt="Reload Image" onclick="this.blur()"
-		align="bottom" border="0"></a><br /> <strong>Enter Code*:</strong><br />
-	<input type="text" name="captcha" size="12" maxlength="8" />
+		align="bottom" border="0"></a><br /> <strong>Enter Code*:</strong><br /><br/>
+	<input type="text" id="captchaText" name="captcha" size="12" maxlength="8" /><br/>
+	<div id="result"></div>
 </p>
-         
+     <br/>    
          
             <input class="button" name="submit" id="submit" tabindex="5"  type="submit"> 	 
    </form> 
@@ -332,3 +333,38 @@
 
 </body>
 </html>
+<script>
+$("#captchaText").blur(captchaCheck);
+$("#username").blur(userNameCheck);
+function captchaCheck()
+{
+	var Number1 = $("#captchaText").val();
+	
+	$.ajax({
+	      url: "./assets/captcha/securimage_show.php",
+	      type: "post",
+	      data: "number="+Number1,
+	      success: function(data){
+	          
+	           $("#result").html(data);
+	      },
+	      
+	    }); 
+}
+
+function userNameCheck()
+{
+	var text = $("#username").val();
+	$.post('index.php?controller=MainController&method=uniqueUserNameCheck',{"text":text},function(data){
+ 		//alert(data);
+		if(data="true")
+		{
+            
+			$("#contactform").submit(false);
+			
+		}
+ 		
+		});
+
+}
+</script>
