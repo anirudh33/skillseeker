@@ -291,9 +291,8 @@ class validation {
 				//validates password match
 				case "match" :
 						{
-							$controlname = explode("#",$this->check_vars [$i] ['controler_name']);
 							$data = explode("#", $postVar);
-							if(count($controlname) == 2 && count($data) == 2) {
+							if(count($data) == 2) {
 								if($data[0] != $data[1]) {
 									$errorMsg [$this->check_vars [$i] ['controler_name']] .= $error ;
 									break;
