@@ -3,8 +3,12 @@ Options +FollowSymLInks
 
 RewriteEngine on
 
-RewriteRule ^aa.html$ index.php?method=onRegisterClick&controller=MainController
-RewriteRule ^bb.anirudh$ index.php?method=aaa&controller=MainController
+#URL Rewriting
+
+#Add rules for all functions here
+RewriteRule ^register$ index.php?method=onRegisterClick&controller=MainController
+RewriteRule ^test$ index.php?method=startTest&controller=TestController
+
 #Error logging on
 php_flag display_startup_errors on
 php_flag display_errors on
