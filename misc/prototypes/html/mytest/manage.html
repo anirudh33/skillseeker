@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Manage Test</title>
+<meta charset="utf-8">
+<meta name="description" content="Place your description here">
+<meta name="keywords" content="put, your, keyword, here">
+<meta name="author" content="Templates.com - website templates provider">
+<link rel="stylesheet" href="../css/reset.css" type="text/css" media="all">
+<link rel="stylesheet" href="../css/style.css" type="text/css" media="all">
+<link rel="stylesheet" href="../css/superfish.css" media="screen">
+<link rel="stylesheet" href="../css/newsfeed.css" media="screen">
+<link rel="stylesheet" href="./manage.css" />
+<script type="text/javascript" src="../js/jquery-1.4.2.min.js" ></script>
+<script type="text/javascript" src="../js/Myriad_Pro_300.font.js"></script>
+<script type="text/javascript" src="../js/Myriad_Pro_400.font.js"></script>
+<script type="text/javascript" src="../js/script.js"></script>
+
+
+<script src="js/jquery-1.9.1.min.js"></script>
+<script src="js/hoverIntent.js"></script>
+<script src="js/superfish.js"></script>
+<script src="js/menubar.js"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script language="javascript">
+$(document).ready(function()
+		{
+	$("#edittestandcategory").hide();
+	$("#setRandom").hide();
+	$("#option1Settings").hide();
+	$("#option2Settings").hide();
+	$("#assignTest").hide();
+	$("#deleteTest").hide();
+		});
+		function show(abc)
+		{
+			//alert(abc);
+			$('#'+abc).toggle();
+		}
+		
+        </script>
+       
+
+</head>
+
+<body id="page1">
+<div class="wrap">
+   <!-- header -->
+   <header>
+ 
+      <div class="container">
+          <h1><a href="#">Online Examination</a></h1>
+						<ul class="sf-menu" id="example">
+								<li class="current">
+									<a href="followed.html">Home</a>
+									<ul>
+										<li>
+											<a href="followed.html">Pricing</a>
+										</li>
+										<li>
+											<a href="followed.html">FAQ</a>
+										</li>
+										<li>
+											<a href="followed.html">Contact Us</a>
+										</li></ul>
+									</li>
+							<li class="current">
+									<a href="followed.html">Test</a>
+									<ul>
+										<li>
+											<a href="followed.html">Categories</a>
+										</li>
+										<li>
+											<a href="followed.html">Question Bank</a>
+										</li>
+										<li>
+											<a href="followed.html">My Test</a>
+										</li>
+										<li>
+											<a href="followed.html">Certificates</a>
+										</li>
+									</ul>
+									</li>
+							<li class="current">
+									<a href="followed.html">Assign</a>
+									<ul>
+										<li>
+											<a href="followed.html">Assign</a>
+										</li>
+										<li>
+											<a href="followed.html">View Assign Test</a>
+										</li>
+							</ul>
+									</li>
+				`		<li class="current">
+									<a href="followed.html">Result</a>
+									<ul>
+										<li>
+											<a href="followed.html">By Test</a>
+										</li>
+										<li>
+											<a href="followed.html">Search User</a>
+										</li>
+							</ul>
+									</li>
+		</ul>
+			</div>
+   </header>
+   <br/>
+   <div class="container">
+      <!-- aside -->
+			<aside>
+			<br />
+				<br />
+			<h3>Categories</h3>
+				<div id="body">
+</div>
+			</aside>
+			<!-- content -->
+      <section id="content">
+        
+<div id="manageTestContainerDiv">
+<h3>Edit Test And Category</h3>
+    <a class="aTagManageTest" href="#" onclick=show("edittestandcategory");>Edit Test And Category</a><br/>
+    <div id="edittestandcategory">
+    <form action="" name="edittestandcategory">
+		<label>Test Name</label><br/>
+		<input type="text" name="managetest_testname" id="managetest_testname" />
+		<br/><label>Choose the Category</label><br>
+		<select	name="managetest_category">
+		
+		<option>Choose Category</option>
+		</select><br>		
+	    <input type="submit" name="edittestandcategorysubmit" value="Submit"/>
+		</form>
+		
+    </div>
+    <h3>Random Questions</h3>
+    Use this setting when you want questions to be randomly chosen from your Question bank each time the test is taken.<br> 
+ <a class="aTagManageTest" href="#" onclick=show("setRandom");>Set Random Question</a><br/>
+   
+    <div id="setRandom">
+    Random question settings are optional. Do not add Static questions to this test if you want all questions to be randomly chosen each time it is taken.
+As the questions selected for this test will change each time the test is taken, Total points available cannot be calculated in advance.
+Note: If you add questions to this test yourself manually (referred to as Static questions) they will not be used again when ClassMarker selects random questions from your question bank.
+Use either Option 1 or Option 2, not both.
+	<h3>Option 1</h3>
+
+Select the total number of questions randomly chosen from selected categories.
+Questions will display in random order irrespective of their categories<br/>
+
+	    <a href="#" onclick=show("option1Settings");>View Option1 Settings</a><br/>
+	
+	<div id="option1Settings">
+	<label>Total no of questions</label>
+	<input type="text" name="totalQuestions"/><br>
+	<label>From Categories<br>Here all the categories will be shown with checkboxes</label>
+	
+	
+	</div>
+	<h3>Option 2</h3>
+
+Select a specific number of questions per category to be randomly chosen.
+Allows ordering and grouping questions by category.<br>
+	<a href="#" onclick=show("option2Settings");>View Option2 Settings</a><br/>
+	
+	<div id="option2Settings">
+	<label>No. questions per category<br>
+	Here all the categories will be shown with the respective textboxes to choose total no of questions per category.
+	</label>
+	</div>
+    
+    </div>
+    
+    <h3>Assign Test</h3>
+        <a class="aTagManageTest" href="#" onclick=show("assignTest");>Assign This Test</a><br/>
+        <div id="assignTest">
+        Once you've finished creating your test you need to Assign your test either to a registered user group, or by creating a direct link / embed code. This enables the test to be taken by your users.
+You can come back at anytime to edit this test via the Tests section, even after you have assigned it, and changes will take effect immediately.<br>
+        <input type="button" name="assignTestButton" value="Assign Test"/>
+        </div>
+   
+        <h3>Delete Test</h3>
+        <a class="aTagManageTest" href="#" onclick=show("deleteTest");>Delete This Test</a><br/>
+        <div id="deleteTest">
+        <label>Test Name:</label><br>
+        Deleting this test is permanent. If the test is currently assigned to any group, it will not be deleted. First remove the test from your groups via the Assign section.<br>
+        <input type="button" name="deleteTestButton" value="Delete Test"/>
+        </div>
+    
+    </div>
+      </section>
+   </div>
+</div>
+footer
+<footer>
+   <div class="container">
+      <div class="inside">
+         <div class="wrapper">
+      
+            <div class="aligncenter"><h5><span>Website designed by</span> </h5><a rel="nofollow" href="http://www.osscube.com" class="new_window">OSSCube.com</a><br>
+         
+          </div>
+         </div>
+      </div>
+   </div>
+</footer>
+</body>
+</html>
