@@ -21,14 +21,10 @@ class csvModel extends DBConnection
 	}
 	public function insert($table,$coloumn)
 	{
-	
-		//$data['columns']	= $coloumn;
 		$data['tables']		= $table;
 		$temp = $this->_db->insert($data['tables'],$coloumn);
 		
-		$myResult=array();
-		
-			
+		$myResult=array();		
 	}
 
 }

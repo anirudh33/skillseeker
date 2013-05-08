@@ -42,7 +42,7 @@ class testController {
 									if(empty($opt3)&&empty($opt4)&&empty($opt5)) {
 										$error.="<br/> Option count is less than three in row .".$row;
 										echo $error;
-										break;
+										continue;
 									}
 								}
 								else if($type=="true/false") {
@@ -51,12 +51,12 @@ class testController {
 									if(!empty($opt3)&&!empty($opt4)&&!empty($opt5)) {
 										$error.="Please specify correct option as per type(True/False) in row .".$row;
 										echo $error;
-										break;
+										continue;
 									}
 									if($opt1!="true"||$opt1="false"||$opt2!="true"||$opt3="false") {
 										$error.="Type(True/False) have other than true/false in their option in row .".$row;
 										echo $error;
-										break;
+										continue;
 									}
 								}
 								else {
@@ -82,10 +82,14 @@ class testController {
 		 					$objcsvModel->insert("options",$condition);
 		 					$condition=array('name'=>$opt3,'question_id'=>$qid,'created_on'=>date('Y-m-d h:i:s', time()));
 		 					$objcsvModel->insert("options",$condition);
+		 					if(!empty($opt4)) {
 		 					$condition=array('name'=>$opt4,'question_id'=>$qid,'created_on'=>date('Y-m-d h:i:s', time()));
 		 					$objcsvModel->insert("options",$condition);
+		 					}
+		 					if(!empty($opt5)) {
 		 					$condition=array('name'=>$opt5,'question_id'=>$qid,'created_on'=>date('Y-m-d h:i:s', time()));
 		 					$objcsvModel->insert("options",$condition);
+		 					}
 							
 						}
 						else {
@@ -98,13 +102,11 @@ class testController {
 		}	
 		if($error!="") 
 		{
-			header("Location:");
+			// site_path/upload.html
+			header("Location:".SITE_URL."/views/upload.php?cid=$error");
 		}
 
 	}
 	
 }
-
-
-
 ?>

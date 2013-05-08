@@ -22,7 +22,7 @@ php_value error_log  /var/www/skillseeker/trunk/logs/errors.log
   Deny from all
 </filesMatch>
 
-<FilesMatch "index.php|error.php|securimage_show.php">
+<FilesMatch "index.php|error.php|securimage_show.php|upload.php">
     Order Allow,Deny
     Allow from all
 </FilesMatch>

@@ -9,7 +9,12 @@ Please specify a file, or a set of files:<br>
 <div>
 <input type="submit" id="submitbtn" value="upload">
 <div>
-
+<?php 
+if(isset($_REQUEST['cid'])) {
+	echo "Errors in csv file";
+	echo $_REQUEST['cid'];
+}
+?>
 </div>
 </div>
 </form>
