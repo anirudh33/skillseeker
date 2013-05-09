@@ -12,7 +12,7 @@ $lang = new Language ( $langArr );
 
 
 <?php 
-if($pageName=="MainPage" && !isset($_SESSION['username'])) {
+if($pageName=="MainPage" ) {
 //     require_once(SITE_PATH."/views/header.php");
        require_once(SITE_PATH."/views/homepage.php");
 }

@@ -27,7 +27,8 @@
 </head>
 <?php
 if (isset($_SESSION['username'])) {
-    header("Location:index.php?controller=TestController&method=process");
+	require_once(SITE_PATH."/views/userheader.php");
+   // header("Location:index.php?controller=TestController&method=process");
 } else {
     ?>
 <script>
