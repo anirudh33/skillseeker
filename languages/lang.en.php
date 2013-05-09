@@ -11,6 +11,7 @@
 	Sr.NO.		Version		Updated by           Updated on          Description
     -------------------------------------------------------------------------
 	 1			1.01		Keshi				08/05/2013		added 'INVALID'=>"invalid",
+	 2			1.0			Avni Jain			09/05/2013		added constants for Upload.php,testController.php
     *************************************************************************
 
 */
@@ -27,6 +28,17 @@
 				'ERROR3'=>"Please specify correct option as per type(True/False) in row ",
 				'ERROR4'=>"Type(True/False) have other than true/false in their option in row ",
 				'ERROR5'=>"<br/> Invaild ques type in row",
+				'ERROR6'=>"Only a Csv File can be uploaded",
+				'ERROR7'=>"Answer field in invaild in row",
+				'ERROR8'=>"Invaild Number of arguments in Csv",
+				''=>"",
+				''=>"",
+				''=>"",
+				''=>"",
+				''=>"",
+				''=>"",
+				''=>"",
+				''=>""
                 );
 ?>
 
