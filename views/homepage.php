@@ -80,7 +80,9 @@ if (isset($_SESSION['username'])) {
 					safe, backed up and ready to go 24/7. <br> <br> Register
 					free and start creating online tests today.
 				
-				<a class="blocklink" href="#">Register free</a></p>
+				<a class="blocklink"
+				href="index.php?controller=MainController&method=onRegisterClick">Register
+				free</a></p>
 				<div class="line-separator"></div><br><br>
 				<h2 id="login">Login</h2>
 				<form method="post"
@@ -104,10 +106,14 @@ if (isset($_SESSION['username'])) {
 
 				<h3>Categories</h3>
 				<ul class="categories">
-					<li><span><a href="#">Loreum</a></span></li>
-					<li><span><a href="#">Loreum Info</a></span></li>
-					<li><span><a href="#">Loreum</a></span></li>
-					<li><span><a href="#">Loreum</a></span></li>
+					<li><span><a
+							href="index.php?controller=MainController&method=handleAddCategory">ADD</a></span></li>
+					<li><span><a
+							href="index.php?controller=MainController&method=handleUpdateCategory">UPDATE</a></span></li>
+					<li><span><a
+							href="index.php?controller=MainController&method=handleDeleteCategory">DELETE</a></span></li>
+					<li><span><a
+							href="index.php?controller=MainController&method=handleDisplayCategory">DISPLAY</a></span></li>
 					<li><span><a href="#">Loreum</a></span></li>
 					<li><span><a href="#">Loreum Information</a></span></li>
 					<li><span><a href="#">Loreum</a></span></li>

@@ -20,6 +20,7 @@ class AModel extends DBConnection
 {
     public function __construct()
     {
+    	parent::__construct();
         //$this->_db
     }
     public function uniqueUserName($userName)

@@ -1,13 +1,8 @@
-Options -Indexes
-Options +FollowSymLInks
 
-RewriteEngine on
 
 #URL Rewriting
 
 #Add rules for all functions here
-RewriteRule ^register$ index.php?method=onRegisterClick&controller=MainController
-RewriteRule ^test$ index.php?method=startTest&controller=TestController
 
 #Error logging on
 php_flag display_startup_errors on
@@ -17,12 +12,4 @@ php_flag log_errors on
 php_value error_log  /var/www/skillseeker/trunk/logs/errors.log
 
 ## PROTECT FILES ###
-<filesMatch ".(htaccess|htpasswd|ini|phps|fla|psd|log|sh|php)$">
-  Order Allow,Deny
-  Deny from all
-</filesMatch>
 
-<FilesMatch "index.php|error.php|securimage_show.php|upload.php">
-    Order Allow,Deny
-    Allow from all
-</FilesMatch>

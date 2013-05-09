@@ -8,9 +8,9 @@
     <link rel="stylesheet" type="text/css" href="./assets/css/captcha.css" media="all" />
     <link rel="stylesheet" type="text/css" href="./assets/css/demo.css" media="all" />
     
-     <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
-	  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+<!--      <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/> -->
+ <script type="text/javascript" src="<?php echo SITE_URL;?>/assets/js/jquery-1.4.2.min.js" ></script>
+<!-- 	  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script> -->
 	   
 	  <script>
 	  $(document).ready(function() {
@@ -38,7 +38,7 @@
     			<input id="email" name="email_address" placeholder="example@domain.com" required="" type="email"> 
                 
                 <p class="contact"><label for="username">Create a username</label></p> 
-    			<input id="username" id="username" name="user_name" placeholder="username" required="" tabindex="2" type="text"> 
+    			<input id="username"  name="user_name" placeholder="username" required="" tabindex="2" type="text"> 
     			 
     			
                 
@@ -357,10 +357,10 @@ function userNameCheck()
 	var text = $("#username").val();
 	$.post('index.php?controller=MainController&method=uniqueUserNameCheck',{"text":text},function(data){
  		//alert(data);
-		if(data="true")
+		if(data.trim()=="true")
 		{
-            
-			$("#contactform").submit(false);
+            $("#username").val("");
+			//$("#contactform").submit(false);
 			
 		}
  		

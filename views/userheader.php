@@ -22,19 +22,19 @@
 		<script src="<?php echo SITE_URL;?>/assets/js/superfish.js"></script>
 		<script src="<?php echo SITE_URL;?>/assets/js/menubar.js"></script>
 		
-		<script type="text/javascript" src="https://www.google.com/jsapi"></script>
-<script src="http://www.google.com/uds/solutions/dynamicfeed/gfdynamicfeedcontrol.js"
-type="text/javascript"></script>
+<!-- 		<script type="text/javascript" src="https://www.google.com/jsapi"></script> -->
+<!-- <script src="http://www.google.com/uds/solutions/dynamicfeed/gfdynamicfeedcontrol.js" -->
+<!-- type="text/javascript"></script> -->
 
 
 <script type="text/javascript">
-function load() {
+/*function load() {
 var feed ="http://feeds.bbci.co.uk/news/world/rss.xml";
 new GFdynamicFeedControl(feed, "feedControl");
 
 }
 google.load("feeds", "1");
-google.setOnLoadCallback(load);
+google.setOnLoadCallback(load);*/
 </script>
 </head>
 <body id="page1">

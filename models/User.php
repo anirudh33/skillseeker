@@ -156,7 +156,7 @@ class User extends DBConnection
      */
     public function setPassword($_password)
     {
-        $this->_password = $_password;
+        $this->_password = md5($_password);
     }
 
 	/**
@@ -408,7 +408,7 @@ class User extends DBConnection
     function registerUser() {
     		
     	$userArray = $this->GenerateArray($_POST, "INSERT");
-        print_r($userArray);die; 
+        //print_r($userArray);die; 
     	$result = $this->_db ->insert('users', $userArray);
          
         

@@ -12,6 +12,12 @@
 require_once  '/var/www/skillseeker/trunk/libraries/Language.php';
 require_once './models/csvModel.php';
 class testController {
+	
+	
+	public function process()
+	{
+		require_once(SITE_PATH."/views/userheader.php");
+	}
 	/********** This function is responsible for uploading csv file onto database.
 	It returns error message to the view page in case of inappropriate format in csv file in any line*************/ 
 	function upload() 
@@ -41,7 +47,7 @@ class testController {
 					{
 						$num = count($data);
 						if($num==9) {
-								$id=htmlentities(($data[8]);
+								$id=htmlentities($data[8]);
 								$ques=htmlentities($data[0]);
 								$opt1=htmlentities($data[1]);
 								$opt2=htmlentities($data[2]);

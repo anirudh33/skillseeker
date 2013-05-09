@@ -41,7 +41,7 @@ class testController {
 					{
 						$num = count($data);
 						if($num==9) {
-								$id=htmlentities(($data[8]);
+								$id=htmlentities($data[8]);
 								$ques=htmlentities($data[0]);
 								$opt1=htmlentities($data[1]);
 								$opt2=htmlentities($data[2]);
