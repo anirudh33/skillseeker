@@ -27,6 +27,8 @@
 </head>
 <?php
 if (isset($_SESSION['username'])) {
+	$objSecurity=new Security();
+	$objSecurity->secureMultiLogin($_SESSION['username']);
 	require_once(SITE_PATH."/views/userheader.php");
    // header("Location:index.php?controller=TestController&method=process");
 } else {

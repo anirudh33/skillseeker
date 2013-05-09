@@ -22,7 +22,7 @@ class Security
     public function secureMultiLogin($userLoginId)
     {
         $SID=$_COOKIE['PHPSESSID'];
-        $fileName="./temp/".$userLoginId.".txt";
+        $fileName="./tmp/".$userLoginId.".txt";
 	     if($data=file_get_contents($fileName))
 			{
 				if($data != md5($SID))
@@ -45,7 +45,7 @@ class Security
     public function logSessionId($userLoginId)
     {
     	$SID=$_COOKIE['PHPSESSID'];
-    	$fileName="./temp/".$userLoginId.".txt";
+    	$fileName="./tmp/".$userLoginId.".txt";
     	if (file_exists($fileName)) {
     		unlink($fileName);
     	}

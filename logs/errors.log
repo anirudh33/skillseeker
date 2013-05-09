@@ -520,3 +520,92 @@
 [08-May-2013 09:22:41 UTC] PHP Notice:  SQLSTATE[42000] [1049] Unknown database 'skillseeker' in /var/www/skillseeker/trunk/libraries/PDO/cxpdo.php on line 487
 [08-May-2013 09:22:41 UTC] PHP Notice:  SQLSTATE[42000] [1049] Unknown database 'skillseeker' in /var/www/skillseeker/trunk/libraries/PDO/cxpdo.php on line 487
 [08-May-2013 09:22:41 UTC] PHP Fatal error:  Call to a member function select() on a non-object in /var/www/skillseeker/trunk/models/User.php on line 314
+[09-May-2013 16:02:36 UTC] PHP Notice:  Undefined index: PHPSESSID in /var/www/skillseeker/trunk/libraries/Security.php on line 47
+[09-May-2013 16:02:36 UTC] PHP Warning:  fopen(./temp/MohitSingh.txt) [<a href='function.fopen'>function.fopen</a>]: failed to open stream: No such file or directory in /var/www/skillseeker/trunk/libraries/Security.php on line 52
+[09-May-2013 16:02:36 UTC] PHP Warning:  fwrite() expects parameter 1 to be resource, boolean given in /var/www/skillseeker/trunk/libraries/Security.php on line 53
+[09-May-2013 16:02:36 UTC] PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in /var/www/skillseeker/trunk/libraries/Security.php on line 54
+[09-May-2013 16:03:25 UTC] PHP Notice:  Undefined index: DOMAIN_PATH in /var/www/skillseeker/trunk/controllers/MainController.php on line 279
+[09-May-2013 16:03:25 UTC] PHP Notice:  Undefined index: userID in /var/www/skillseeker/trunk/controllers/MainController.php on line 279
+[09-May-2013 16:03:25 UTC] PHP Notice:  Undefined index: DOMAIN_PATH in /var/www/skillseeker/trunk/controllers/MainController.php on line 279
+[09-May-2013 16:03:25 UTC] PHP Notice:  Undefined index: userID in /var/www/skillseeker/trunk/controllers/MainController.php on line 279
+[09-May-2013 16:03:25 UTC] PHP Notice:  Undefined index: DOMAIN_PATH in /var/www/skillseeker/trunk/controllers/MainController.php on line 279
+[09-May-2013 16:03:25 UTC] PHP Notice:  Undefined index: userID in /var/www/skillseeker/trunk/controllers/MainController.php on line 279
+[09-May-2013 16:03:25 UTC] PHP Notice:  Undefined index: DOMAIN_PATH in /var/www/skillseeker/trunk/controllers/MainController.php on line 285
+[09-May-2013 16:04:51 UTC] PHP Warning:  fopen(./temp/MohitSingh.txt) [<a href='function.fopen'>function.fopen</a>]: failed to open stream: No such file or directory in /var/www/skillseeker/trunk/libraries/Security.php on line 52
+[09-May-2013 16:04:51 UTC] PHP Warning:  fwrite() expects parameter 1 to be resource, boolean given in /var/www/skillseeker/trunk/libraries/Security.php on line 53
+[09-May-2013 16:04:51 UTC] PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in /var/www/skillseeker/trunk/libraries/Security.php on line 54
+[09-May-2013 16:05:22 UTC] PHP Notice:  Undefined index: DOMAIN_PATH in /var/www/skillseeker/trunk/controllers/MainController.php on line 279
+[09-May-2013 16:05:22 UTC] PHP Notice:  Undefined index: userID in /var/www/skillseeker/trunk/controllers/MainController.php on line 279
+[09-May-2013 16:05:22 UTC] PHP Notice:  Undefined index: DOMAIN_PATH in /var/www/skillseeker/trunk/controllers/MainController.php on line 279
+[09-May-2013 16:05:22 UTC] PHP Notice:  Undefined index: userID in /var/www/skillseeker/trunk/controllers/MainController.php on line 279
+[09-May-2013 16:05:22 UTC] PHP Notice:  Undefined index: DOMAIN_PATH in /var/www/skillseeker/trunk/controllers/MainController.php on line 279
+[09-May-2013 16:05:22 UTC] PHP Notice:  Undefined index: userID in /var/www/skillseeker/trunk/controllers/MainController.php on line 279
+[09-May-2013 16:05:22 UTC] PHP Notice:  Undefined index: DOMAIN_PATH in /var/www/skillseeker/trunk/controllers/MainController.php on line 285
+[09-May-2013 16:05:58 UTC] PHP Warning:  fopen(../temp/MohitSingh.txt) [<a href='function.fopen'>function.fopen</a>]: failed to open stream: No such file or directory in /var/www/skillseeker/trunk/libraries/Security.php on line 52
+[09-May-2013 16:05:58 UTC] PHP Warning:  fwrite() expects parameter 1 to be resource, boolean given in /var/www/skillseeker/trunk/libraries/Security.php on line 53
+[09-May-2013 16:05:58 UTC] PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in /var/www/skillseeker/trunk/libraries/Security.php on line 54
+[09-May-2013 16:06:50 UTC] PHP Notice:  Undefined index: DOMAIN_PATH in /var/www/skillseeker/trunk/controllers/MainController.php on line 279
+[09-May-2013 16:06:50 UTC] PHP Notice:  Undefined index: userID in /var/www/skillseeker/trunk/controllers/MainController.php on line 279
+[09-May-2013 16:06:50 UTC] PHP Notice:  Undefined index: DOMAIN_PATH in /var/www/skillseeker/trunk/controllers/MainController.php on line 279
+[09-May-2013 16:06:50 UTC] PHP Notice:  Undefined index: userID in /var/www/skillseeker/trunk/controllers/MainController.php on line 279
+[09-May-2013 16:06:50 UTC] PHP Notice:  Undefined index: DOMAIN_PATH in /var/www/skillseeker/trunk/controllers/MainController.php on line 279
+[09-May-2013 16:06:50 UTC] PHP Notice:  Undefined index: userID in /var/www/skillseeker/trunk/controllers/MainController.php on line 279
+[09-May-2013 16:06:50 UTC] PHP Notice:  Undefined index: DOMAIN_PATH in /var/www/skillseeker/trunk/controllers/MainController.php on line 285
+[09-May-2013 16:07:41 UTC] PHP Notice:  Undefined index: DOMAIN_PATH in /var/www/skillseeker/trunk/controllers/MainController.php on line 279
+[09-May-2013 16:07:41 UTC] PHP Notice:  Undefined index: userID in /var/www/skillseeker/trunk/controllers/MainController.php on line 279
+[09-May-2013 16:07:41 UTC] PHP Notice:  Undefined index: DOMAIN_PATH in /var/www/skillseeker/trunk/controllers/MainController.php on line 279
+[09-May-2013 16:07:41 UTC] PHP Notice:  Undefined index: userID in /var/www/skillseeker/trunk/controllers/MainController.php on line 279
+[09-May-2013 16:07:41 UTC] PHP Notice:  Undefined index: DOMAIN_PATH in /var/www/skillseeker/trunk/controllers/MainController.php on line 279
+[09-May-2013 16:07:41 UTC] PHP Notice:  Undefined index: userID in /var/www/skillseeker/trunk/controllers/MainController.php on line 279
+[09-May-2013 16:07:41 UTC] PHP Notice:  Undefined index: DOMAIN_PATH in /var/www/skillseeker/trunk/controllers/MainController.php on line 285
+[09-May-2013 16:08:55 UTC] PHP Notice:  Undefined index: userName in /var/www/skillseeker/trunk/controllers/MainController.php on line 40
+[09-May-2013 16:08:55 UTC] PHP Notice:  Undefined index: password in /var/www/skillseeker/trunk/controllers/MainController.php on line 41
+[09-May-2013 16:08:56 UTC] PHP Notice:  Undefined index: DOMAIN_PATH in /var/www/skillseeker/trunk/libraries/initiateuser.php on line 165
+[09-May-2013 16:12:44 UTC] PHP Notice:  Undefined index: DOMAIN_PATH in /var/www/skillseeker/trunk/controllers/MainController.php on line 279
+[09-May-2013 16:12:44 UTC] PHP Notice:  Undefined index: userID in /var/www/skillseeker/trunk/controllers/MainController.php on line 279
+[09-May-2013 16:12:44 UTC] PHP Notice:  Undefined index: DOMAIN_PATH in /var/www/skillseeker/trunk/controllers/MainController.php on line 279
+[09-May-2013 16:12:44 UTC] PHP Notice:  Undefined index: userID in /var/www/skillseeker/trunk/controllers/MainController.php on line 279
+[09-May-2013 16:12:44 UTC] PHP Notice:  Undefined index: DOMAIN_PATH in /var/www/skillseeker/trunk/controllers/MainController.php on line 279
+[09-May-2013 16:12:44 UTC] PHP Notice:  Undefined index: userID in /var/www/skillseeker/trunk/controllers/MainController.php on line 279
+[09-May-2013 16:12:44 UTC] PHP Notice:  Undefined index: DOMAIN_PATH in /var/www/skillseeker/trunk/controllers/MainController.php on line 285
+[09-May-2013 16:17:10 UTC] PHP Notice:  Undefined index: DOMAIN_PATH in /var/www/skillseeker/trunk/controllers/MainController.php on line 279
+[09-May-2013 16:17:10 UTC] PHP Notice:  Undefined index: userID in /var/www/skillseeker/trunk/controllers/MainController.php on line 279
+[09-May-2013 16:17:10 UTC] PHP Notice:  Undefined index: DOMAIN_PATH in /var/www/skillseeker/trunk/controllers/MainController.php on line 279
+[09-May-2013 16:17:10 UTC] PHP Notice:  Undefined index: userID in /var/www/skillseeker/trunk/controllers/MainController.php on line 279
+[09-May-2013 16:17:10 UTC] PHP Notice:  Undefined index: DOMAIN_PATH in /var/www/skillseeker/trunk/controllers/MainController.php on line 279
+[09-May-2013 16:17:10 UTC] PHP Notice:  Undefined index: userID in /var/www/skillseeker/trunk/controllers/MainController.php on line 279
+[09-May-2013 16:17:10 UTC] PHP Notice:  Undefined index: DOMAIN_PATH in /var/www/skillseeker/trunk/controllers/MainController.php on line 286
+[09-May-2013 16:17:39 UTC] PHP Notice:  Undefined index: DOMAIN_PATH in /var/www/skillseeker/trunk/controllers/MainController.php on line 279
+[09-May-2013 16:17:39 UTC] PHP Notice:  Undefined index: userID in /var/www/skillseeker/trunk/controllers/MainController.php on line 279
+[09-May-2013 16:17:39 UTC] PHP Notice:  Undefined index: DOMAIN_PATH in /var/www/skillseeker/trunk/controllers/MainController.php on line 279
+[09-May-2013 16:17:39 UTC] PHP Notice:  Undefined index: userID in /var/www/skillseeker/trunk/controllers/MainController.php on line 279
+[09-May-2013 16:17:39 UTC] PHP Notice:  Undefined index: DOMAIN_PATH in /var/www/skillseeker/trunk/controllers/MainController.php on line 279
+[09-May-2013 16:17:39 UTC] PHP Notice:  Undefined index: userID in /var/www/skillseeker/trunk/controllers/MainController.php on line 279
+[09-May-2013 16:17:39 UTC] PHP Notice:  Undefined index: DOMAIN_PATH in /var/www/skillseeker/trunk/controllers/MainController.php on line 286
+[09-May-2013 16:20:46 UTC] PHP Notice:  Undefined index: DOMAIN_PATH in /var/www/skillseeker/trunk/controllers/MainController.php on line 279
+[09-May-2013 16:20:46 UTC] PHP Notice:  Undefined index: userID in /var/www/skillseeker/trunk/controllers/MainController.php on line 279
+[09-May-2013 16:20:46 UTC] PHP Notice:  Undefined index: DOMAIN_PATH in /var/www/skillseeker/trunk/controllers/MainController.php on line 279
+[09-May-2013 16:20:46 UTC] PHP Notice:  Undefined index: userID in /var/www/skillseeker/trunk/controllers/MainController.php on line 279
+[09-May-2013 16:20:46 UTC] PHP Notice:  Undefined index: DOMAIN_PATH in /var/www/skillseeker/trunk/controllers/MainController.php on line 279
+[09-May-2013 16:20:46 UTC] PHP Notice:  Undefined index: userID in /var/www/skillseeker/trunk/controllers/MainController.php on line 279
+[09-May-2013 16:20:46 UTC] PHP Notice:  Undefined index: DOMAIN_PATH in /var/www/skillseeker/trunk/controllers/MainController.php on line 285
+[09-May-2013 16:20:46 UTC] PHP Warning:  unlink(/tmp/MohitSingh.txt) [<a href='function.unlink'>function.unlink</a>]: No such file or directory in /var/www/skillseeker/trunk/controllers/MainController.php on line 285
+[09-May-2013 16:20:46 UTC] PHP Notice:  Undefined index: DOMAIN_PATH in /var/www/skillseeker/trunk/controllers/MainController.php on line 287
+[09-May-2013 16:21:13 UTC] PHP Notice:  Undefined index: DOMAIN_PATH in /var/www/skillseeker/trunk/controllers/MainController.php on line 279
+[09-May-2013 16:21:13 UTC] PHP Notice:  Undefined index: userID in /var/www/skillseeker/trunk/controllers/MainController.php on line 279
+[09-May-2013 16:21:13 UTC] PHP Notice:  Undefined index: DOMAIN_PATH in /var/www/skillseeker/trunk/controllers/MainController.php on line 279
+[09-May-2013 16:21:13 UTC] PHP Notice:  Undefined index: userID in /var/www/skillseeker/trunk/controllers/MainController.php on line 279
+[09-May-2013 16:21:13 UTC] PHP Notice:  Undefined index: DOMAIN_PATH in /var/www/skillseeker/trunk/controllers/MainController.php on line 279
+[09-May-2013 16:21:13 UTC] PHP Notice:  Undefined index: userID in /var/www/skillseeker/trunk/controllers/MainController.php on line 279
+[09-May-2013 16:21:13 UTC] PHP Notice:  Undefined index: DOMAIN_PATH in /var/www/skillseeker/trunk/controllers/MainController.php on line 285
+[09-May-2013 16:21:13 UTC] PHP Warning:  unlink(/tmp/MohitSingh.txt) [<a href='function.unlink'>function.unlink</a>]: No such file or directory in /var/www/skillseeker/trunk/controllers/MainController.php on line 285
+[09-May-2013 16:21:13 UTC] PHP Notice:  Undefined index: DOMAIN_PATH in /var/www/skillseeker/trunk/controllers/MainController.php on line 287
+[09-May-2013 16:22:27 UTC] PHP Notice:  Undefined index: DOMAIN_PATH in /var/www/skillseeker/trunk/controllers/MainController.php on line 279
+[09-May-2013 16:22:27 UTC] PHP Notice:  Undefined index: userID in /var/www/skillseeker/trunk/controllers/MainController.php on line 279
+[09-May-2013 16:22:27 UTC] PHP Notice:  Undefined index: DOMAIN_PATH in /var/www/skillseeker/trunk/controllers/MainController.php on line 279
+[09-May-2013 16:22:27 UTC] PHP Notice:  Undefined index: userID in /var/www/skillseeker/trunk/controllers/MainController.php on line 279
+[09-May-2013 16:22:27 UTC] PHP Notice:  Undefined index: DOMAIN_PATH in /var/www/skillseeker/trunk/controllers/MainController.php on line 279
+[09-May-2013 16:22:27 UTC] PHP Notice:  Undefined index: userID in /var/www/skillseeker/trunk/controllers/MainController.php on line 279
+[09-May-2013 16:22:27 UTC] PHP Notice:  Undefined index: DOMAIN_PATH in /var/www/skillseeker/trunk/controllers/MainController.php on line 287
+[09-May-2013 16:22:27 UTC] PHP Warning:  file_get_contents(./tmp/MohitSingh.txt) [<a href='function.file-get-contents'>function.file-get-contents</a>]: failed to open stream: No such file or directory in /var/www/skillseeker/trunk/libraries/Security.php on line 26
+[09-May-2013 16:22:27 UTC] PHP Warning:  session_destroy() [<a href='function.session-destroy'>function.session-destroy</a>]: Trying to destroy uninitialized session in /var/www/skillseeker/trunk/libraries/Security.php on line 39

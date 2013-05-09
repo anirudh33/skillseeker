@@ -46,6 +46,8 @@ class MainController
         if ($this->getAuthenticationStatus () == 1) {
             /* Visitor date, ip, email logged */
             //$authObject->logIP ();
+            $objSecurity= new Security();
+            $objSecurity->logSessionId($username);
             $this->showUserPanel ();
         }
     }
@@ -278,7 +280,9 @@ class MainController
 			unlink ( $_SESSION ["DOMAIN_PATH"] . "/assets/images/Views/profilepics/adminprofile" . $_SESSION ['userID'] . ".jpeg" );
 			unlink ( $_SESSION ["DOMAIN_PATH"] . "/assets/images/Views/profilepics/studentprofile" . $_SESSION ['userID'] . ".jpeg" );
 			unlink ( $_SESSION ["DOMAIN_PATH"] . "/assets/images/Views/profilepics/teacherprofile" . $_SESSION ['userID'] . ".jpeg" );
+			
 		}
+		unlink ("./tmp/" . $_SESSION ['username'] . ".txt" );
 		session_destroy ();
 		header ( "Location:" . $_SESSION ["DOMAIN_PATH"] . "/index.php" );
 	}
