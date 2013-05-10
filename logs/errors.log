@@ -636,3 +636,5 @@
 [10-May-2013 07:26:57 UTC] PHP Notice:  Undefined index: DOMAIN_PATH in /var/www/skillseeker/trunk/libraries/initiateuser.php on line 165
 [10-May-2013 07:27:02 UTC] PHP Notice:  Undefined index: DOMAIN_PATH in /var/www/skillseeker/trunk/libraries/initiateuser.php on line 165
 [10-May-2013 07:32:47 UTC] PHP Notice:  Undefined index: DOMAIN_PATH in /var/www/skillseeker/trunk/controllers/MainController.php on line 142
+[10-May-2013 10:15:46 UTC] PHP Warning:  PDO::query() [<a href='pdo.query'>pdo.query</a>]: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '*) VALUES ()' at line 1 in /var/www/skillseeker/trunk/libraries/PDO/cxpdo.php on line 62
+[10-May-2013 10:15:46 UTC] PHP Warning:  file_get_contents(./tmp/priya1.khatnani.txt) [<a href='function.file-get-contents'>function.file-get-contents</a>]: failed to open stream: No such file or directory in /var/www/skillseeker/trunk/libraries/Security.php on line 26

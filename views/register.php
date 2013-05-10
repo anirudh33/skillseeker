@@ -11,8 +11,8 @@
     <script type="text/javascript" src="../assets/js/jquery-1.9.1.js"></script>
      <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
  	
-	  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
-	   <script type="text/javascript" src="../assets/js/registerUser.js"></script>
+	   <script src="http://cdn.jquerytools.org/1.2.7/full/jquery.tools.min.js"></script>
+          <script src="<?php echo SITE_URL?>/assets/js/validate.js"></script>
 	  <script>
 	  $(document).ready(function() {
 	    $("#datepicker").datepicker();
@@ -28,19 +28,19 @@
 				<h1>Registration Form </h1>
             </header>       
       <div  class="form">
-    		<form method="post" id="contactform" action="index.php?controller=MainController&method=handleRegister"> 
+    		<form method="post" id="myform" action="index.php?controller=MainController&method=handleRegister"> 
     			<p class="contact"><label for="name">First Name</label></p> 
-    			<input id="name" name="first_name" placeholder="firstname" required="" tabindex="1" type="text"> 
+    			<input id="name" name="first_name" placeholder="firstname" required="required" tabindex="1" type="text"> 
     			 
     			<p class="contact"><label for="name">Last Name</label></p> 
-    			<input id="name" name="last_name" placeholder="lastname" required="" tabindex="1" type="text"> 
+    			<input id="name" name="last_name" placeholder="lastname" required="required" tabindex="1" type="text"> 
     			 
     			<p class="contact"><label for="email">Email</label></p> 
-    			<input id="email" name="email_address" placeholder="example@domain.com" required="" type="email"> 
-                	
+    			<input id="email" name="email_address" placeholder="example@domain.com"  type="email"> 
+                
                 <p class="contact"><label for="username">Create a username</label></p> 
-    			<input id="username" name="user_name" placeholder="username" required="" tabindex="2" type="text"> 
-    			 <div id="userresult"></div>
+    			<input id="username"  name="user_name" placeholder="username" required="required" tabindex="2" type="text" minlength="4" maxlength="25"> 
+    			 
     			
                 
                
@@ -301,14 +301,14 @@
 								</select></br>
                 
              <p class="contact"><label for="password">Create a password</label></p> 
-    			<input type="password" id="password" name="password" required=""> 
+    			<input type="password" id="password" name="password" required="required" minlength="8" maxlength="25"> 
                 
                 <p class="contact"><label for="repassword">Confirm your password</label></p> 
-    			<input type="password" id="repassword" name="repassword" required="">    
+    			<input type="password" id="repassword" name="repassword" required="required" data-equals="password" >    
                
          
          <p>
-	<img id="siimage" style="border: 1px solid #000; margin-right: 15px"
+        <img id="siimage" style="border: 1px solid #000; margin-right: 15px"
 		src="./assets/captcha/securimage_show.php?sid=<?php echo md5(uniqid()) ?>"
 		alt="CAPTCHA Image" align="left">
 	<object type="application/x-shockwave-flash"
