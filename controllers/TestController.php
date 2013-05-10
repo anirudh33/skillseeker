@@ -24,7 +24,7 @@ class TestController {
 	}
 	public function process()
 	{
-		require_once(SITE_PATH."/views/userheader.php");
+		require_once(SITE_PATH."/views/userpage.php");
 	}
 	/* 
 	 * 
@@ -235,7 +235,7 @@ class TestController {
 							continue;
 						}
 					}
-					$row++; //incrementing the number of rows
+					$row; //incrementing the number of rows
 				}
 			}
 		}
@@ -249,6 +249,59 @@ class TestController {
 		}
 
 	}
+	function selectCategory() {
+	    $coloumn=array("name","id");
+	    $condition=array("1","1");
+	    $objcsvModel=new csvModel();
+	    $result=$objcsvModel->select("category",$coloumn,$condition);
+	    //$cname=$result[0]['name'];
+	    //$cid=$result[0]['id'];
+	    $a ="";
+	
+	    for($i =0 ; $i< count($result) ;$i ++)
+	    {
+	    $a.="<option value='".$result[$i]['id']."'>".$result[$i]['name'] ."</option>";
+        }
+	        die($a);
+	        //print_r($a);die;
+	        //die($a);
+	}
+	function createQues() {
+	            echo "<pre>";
+	            print_r($_POST);
+	            $objcsvModel=new csvModel();
+	            $opArray=$_POST['opt'];
+	            if(!in_array("on",$opArray)) {
+	                    header("Location:".SITE_URL."/views/createtest.php?cid='plz check value'");
+	                }
+	                if($_POST['questype']=="objective") {
+	                        $quesType=2;
+	                    }
+	                    else {
+	                            $quesType=1;
+	                        }
+	                        for($i=0;$i<count($_POST['opt']);$i) {
+	                               if($_POST['opt'][$i]=="on") {
+	                                       $ans=$_POST['opt'][$i-1];
+	                                   }
+	                                  }
+	                                  $condition=array('category_id'=>$_POST['category'],'question_name'=>$_POST['question'],'answer'=>$ans,'question_type'=>$quesType,'status'=>'1','created_on'=>date('Y-m-d h:i:s', time()));
+	                                  $objcsvModel->insert("question_bank",$condition);
+	                                  $coloumn=array("id");
+	                                  $condition=array("question_name",$_POST['question']);
+	                                  $result=$objcsvModel->select("question_bank",$coloumn,$condition);
+	                        
+	                                  $qid=$result[0]['id'];
+	                        
+	                                  for($i=0;$i<count($_POST['opt']);$i) {
+	                                          if($_POST['opt'][$i]!="on") {
+	                                                 $condition=array('name'=>$_POST['opt'][$i],'question_id'=>$qid,'created_on'=>date('Y-m-d h:i:s', time()));
+	                                                  $objcsvModel->insert("options",$condition);
+	                                              }
+	                                          }
+	                                          header("Location:".SITE_URL."/views/createtest.php?cid='Your question has been saved'");
+	                                    }
+	
 	
 }
 ?>
