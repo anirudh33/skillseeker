@@ -34,13 +34,9 @@ else if ($pageName=="category")
 }
 else if ($pageName=="userPage")
 {
-    require_once(SITE_PATH."/views/userheader.php");
-    ?>
-    <!-- content -->
-		<section id="content">
-			<div id="rightcontainer">
-        <?php
-	// require_once(SITE_PATH."/views/userpage.php");
+    require_once(SITE_PATH."/views/userpage.php");
+   
+   
 } else {
 	die ();
 }

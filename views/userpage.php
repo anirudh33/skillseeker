@@ -6,16 +6,16 @@
 <meta name="description" content="Place your description here">
 <meta name="keywords" content="put, your, keyword, here">
 <meta name="author" content="Templates.com - website templates provider">
-<link rel="stylesheet" href="css/reset.css" type="text/css" media="all">
-<link rel="stylesheet" href="css/style.css" type="text/css" media="all">
-<link rel="stylesheet" href="css/superfish.css" media="screen">
-<link rel="stylesheet" href="css/newsfeed.css" media="screen">
-<script type="text/javascript" src="js/jquery-1.4.2.min.js" ></script>
-<script type="text/javascript" src="js/cufon-yui.js"></script>
-<script type="text/javascript" src="js/cufon-replace.js"></script>
-<script type="text/javascript" src="js/Myriad_Pro_300.font.js"></script>
-<script type="text/javascript" src="js/Myriad_Pro_400.font.js"></script>
-<script type="text/javascript" src="js/script.js"></script>
+<link rel="stylesheet" href="<?php echo SITE_URL;?>/assets/css/reset.css" type="text/css" media="all">
+<link rel="stylesheet" href="<?php echo SITE_URL;?>/assets/css/style.css" type="text/css" media="all">
+<link rel="stylesheet" href="<?php echo SITE_URL;?>/assets/css/superfish.css" media="screen">
+<link rel="stylesheet" href="<?php echo SITE_URL;?>/assets/css/newsfeed.css" media="screen">
+<script type="text/javascript" src="<?php echo SITE_URL;?>/assets/js/jquery-1.4.2.min.js" ></script>
+<script type="text/javascript" src="<?php echo SITE_URL;?>/assets/js/cufon-yui.js"></script>
+<script type="text/javascript" src="<?php echo SITE_URL;?>/assets/js/cufon-replace.js"></script>
+<script type="text/javascript" src="<?php echo SITE_URL;?>/assets/js/Myriad_Pro_300.font.js"></script>
+<script type="text/javascript" src="<?php echo SITE_URL;?>/assets/js/Myriad_Pro_400.font.js"></script>
+<script type="text/javascript" src="<?php echo SITE_URL;?>/assets/js/script.js"></script>
 
 
 <script src="js/jquery-1.9.1.min.js"></script>
@@ -43,9 +43,91 @@ google.setOnLoadCallback(load);
 <body id="page1">
 <div class="wrap">
    <!-- header -->
-   
+   <header>
+ 
+      <div class="container">
+          <h1><a href="#">Online Examination</a></h1>
+				
+					
+						
+							<ul class="sf-menu" id="example">
+								<li class="current">
+									<a href="followed.html">Home</a>
+									<ul class="follow">
+										<li>
+											<a href="followed.html">Pricing</a>
+										</li>
+										<li>
+											<a href="followed.html">FAQ</a>
+										</li>
+										<li>
+											<a href="followed.html">Contact Us</a>
+										</li>
+									</ul>
+									</li>
+							<li class="current">
+									<a href="followed.html">Test</a>
+									<ul class="follow">
+										<li>
+											<a href="followed.html">Categories</a>
+										</li>
+										<li>
+											<a href="followed.html">Question Bank</a>
+										</li>
+										<li>
+											<a href="followed.html">My Test</a>
+										</li>
+										<li>
+											<a href="followed.html">Certificates</a>
+										</li>
+										<li>
+											<a href="followed.html">Create Test</a>
+										</li>
+									
+					
+					
+									</ul>
+									</li>
+							<li class="current">
+									<a href="followed.html">Assign</a>
+									<ul class="follow">
+										<li>
+											<a href="followed.html">Assign</a>
+										</li>
+										<li>
+											<a href="followed.html">View Assign Test</a>
+										</li>
+										
+									
+					
+					
+									</ul>
+									</li>
+			
+						<li class="current">
+									<a href="followed.html">Result</a>
+									<ul class="follow">
+										<li>
+											<a href="followed.html">By Test</a>
+										</li>
+										<li>
+											<a href="followed.html">Search User</a>
+										</li>
+										
+									
+					
+					
+									</ul>
+									</li>
+			
+		</ul>
+	
+			</div>
+   </header>
    <br/>
    <div class="container">
+   
+  
       <!-- aside -->
 			<aside>
 
@@ -59,15 +141,20 @@ google.setOnLoadCallback(load);
 <div id="feedControl">Loading...</div>
 </div>
 
-			
+			</aside>
 			<!-- content -->
-      <section id="content">
-      <div><?php echo "hello ";echo ucfirst($_SESSION['User']);?></div>
+			 <section id="content">
          <div id="banner">
             <h2>Professional <span>Online Examination <span>Since 2013</span></span></h2>
-         </div><div class="ic"></div>
+         </div><div class="ic"></div></section>
+				
+			<br><br>
+<!--       <section id="content"> -->
+<!--          <div id="banner"> -->
+<!--             <h2>Professional <span>Online Examination <span>Since 2013</span></span></h2> -->
+<!--          </div><div class="ic"></div> -->
         
-      </section>
+<!--       </section> -->
    </div>
 </div>
 footer

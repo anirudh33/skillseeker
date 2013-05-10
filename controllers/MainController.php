@@ -40,15 +40,18 @@ class MainController
         $username = mysql_real_escape_string ( $_POST ["userName"] );
         $password = mysql_real_escape_string ( $_POST ["password"] );
         $objInitiateUser = new InitiateUser ();
-        $this->setAuthenticationStatus (
-            $objInitiateUser->login ( $username, $password) );
-    
-        if ($this->getAuthenticationStatus () == 1) {
+        $a=$objInitiateUser->login ( $username, $password) ;
+    //echo $a;die;
+        if ($a == 1) {
             /* Visitor date, ip, email logged */
             //$authObject->logIP ();
             $objSecurity= new Security();
             $objSecurity->logSessionId($username);
-            $this->showUserPanel ();
+            
+            $this->showView ("userPage");
+        }
+        else {
+            require_once(SITE_PATH);
         }
     }
     
@@ -65,6 +68,7 @@ class MainController
 	
 	 /* Gets the value of variable private $_authenticationStatus */
 	public function getAuthenticationStatus() {
+	    echo $this->_authenticationStatus;
 		return $this->_authenticationStatus;
 	}
 	

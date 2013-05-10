@@ -199,23 +199,26 @@ private function fetchUser($username, $password) {
         while($row = $result->fetch(PDO::FETCH_ASSOC)) {
             $myResult[]=$row;
         }
+        //print_r($myResult);
         if(!empty($myResult))
         {
-            if(md5($myResult[0]['password']) === md5($password))
-            {
-        
-                return 1;
-            }
-            else
+            
+            if($myResult[0]['password'] == $password)
             {
                 
+                return 1;
             }
+            else {
+                return 0;
+            }
+           
         }
         else
         {
+           
             return 0;
         }
-        return $myResult;
+        //return $myResult;
 }	
 
 /**
@@ -250,7 +253,7 @@ return true;
 * Usage: Converts the password to encrypted one
 */
 private function encryptPassword($password) {	
-return md5($password);	
+    return md5($password);	
 }	
 
 /**

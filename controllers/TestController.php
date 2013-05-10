@@ -16,10 +16,7 @@ class TestController {
 	
 	public function process()
 	{
-		$objSecurity=new Security();
-		$objSecurity->secureMultiLogin($_SESSION['username']);
-		$this->showView("userPage");
-		//require_once(SITE_PATH."/views/userheader.php");
+		require_once(SITE_PATH."/views/userpage.php");
 	}
 	/* 
 	 * 
@@ -181,7 +178,23 @@ class TestController {
 		}
 
 	}
-	
+    function selectCategory() {
+        $coloumn=array("name","id");
+        $condition=array("1","1");
+        $objcsvModel=new csvModel();
+        $result=$objcsvModel->select("category",$coloumn,$condition);
+        //$cname=$result[0]['name'];
+        //$cid=$result[0]['id'];
+       $a ="";
+        
+        for($i =0 ; $i< count($result) ;$i ++)
+        {
+            $a.="<option value='".$result[$i]['id']."'>".$result[$i]['name'] ."</option>";
+        }
+        die($a);
+        //print_r($a);die;
+        //die($a);
+    }	
 	public function showView($pageName="userPage") {
 		//$lang = Language::getinstance ();
 		
