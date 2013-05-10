@@ -1,4 +1,7 @@
 <?php
+require_once './libraries/EncryptionDecryption.php';
+require_once './libraries/Mail.php';
+
 
 /*
     **************************** Creation Log *******************************
@@ -39,6 +42,15 @@ class TestController {
 		 
 		if(method_exists($_objCategory,'AssignTest'))
 		{
+			/*Next 4 lines are used for creating hashed link url*/
+			   
+			$obj_EncryptionDecryption= new EncryptionDecryption();
+			$id=$obj_EncryptionDecryption->encode($this->getTest_id());
+			$time=$obj_EncryptionDecryption->encode($this->getStart_time());
+			$test_link="http://www.skillseeker.com/online-test/start/?id=".$id."&time=".$time;
+			$_POST['test_link']=$test_link; 
+			
+			
 			$returnValue = $_objCategory->AssignTest(); // call the addCategory of Category.php
 			if($returnValue )
 			{
@@ -65,6 +77,16 @@ class TestController {
 			
 		if(method_exists($_objCategory,'assignLink'))
 		{
+			
+			$mailer = new Mailer();
+			$email_array=explode(",",$_POST['emails']);
+			$count=count($email_array);
+			for($i=0;$i<$count;$i++)
+			{
+					$mailer->sendMail($email_array[$i],$this->getTest_link());
+			
+			}
+			
 			$returnValue = $_objCategory->assignLink(); // call the addCategory of Category.php
 			if($returnValue )
 			{

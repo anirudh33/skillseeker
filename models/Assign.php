@@ -1,7 +1,5 @@
 <?php
 require_once './libraries/DBconnect.php';
-require_once './libraries/EncryptionDecryption.php';
-require_once './libraries/Mail.php';
 class Assign extends DBConnection {
 	
 		private $_id;
@@ -248,7 +246,7 @@ class Assign extends DBConnection {
 	public function AssignTest()
 	{
 		$this->setTest_id("1");
-    	$this->setAdmin_result_type('admin_view_type');
+    	$this->setAdmin_result_type($_POST['admin_view_type']);
     	$this->setGo_back($_POST['go_back']);
     	$this->setInstruction($_POST['instruction']);
     	$this->setLink_expiration_time($_POST['expire_time']);
@@ -259,12 +257,7 @@ class Assign extends DBConnection {
     	$this->setStatus('A');
     	$this->setTest_duration($_POST['test_duration']);
     	$this->setUser_result_type('user_result_type');
-    	/*Next 4 lines are used for creating hashed link url*/
-    	$obj_EncryptionDecryption= new EncryptionDecryption();
-    	$id=$obj_EncryptionDecryption->encode($this->getTest_id());
-    	$time=$obj_EncryptionDecryption->encode($this->getStart_time());
-    	$test_link="http://www.skillseeker.com/online-test/start/?id=".$id."&time=".$time;
-    	$this->setTest_link($test_link);
+    	$this->setTest_link($_POST['test_link']);
 		
 		 $data['tables'] = 'test_details';
 		 $insertValue = array('test_id'=>$this->getTest_id(),
@@ -301,7 +294,7 @@ class Assign extends DBConnection {
 	public function assignLink()
 	{
 		
-		$mailer = new Mailer();
+		
 		$this->setTest_link($_POST['link']);
 		$email_array=explode(",",$_POST['emails']);
 		$data['tables'] = 'assign_details';
@@ -312,8 +305,7 @@ class Assign extends DBConnection {
 		 		'email_address'=>$email_array[$i],'status'=>'1',
 		 		'created_on'=>date('Y-m-d h:i:s', time()));
 		 $this->_db->insert($data['tables'],$insertValue);
-		 $mailer->sendMail($email_array[$i],$this->getTest_link());
-		 }
+	 }
 		return true;
 			
 	}
