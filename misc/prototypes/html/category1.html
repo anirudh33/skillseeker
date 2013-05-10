@@ -1,0 +1,57 @@
+<html>
+<head>
+<link rel="stylesheet" href="css/style.css" />
+<script	src='http://localhost/skillseeker/trunk/misc/prototypes/html/js/jquery.tools.min.js'></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Category</title>
+<script language="javascript">
+$(document).ready(function()
+		{
+	$("#createNewCategoryDiv").hide();
+	$("#showEditDiv").hide();
+	$("#showDeleteDiv").hide();
+		});
+function show(abc)
+{
+	$('#'+abc).toggle();
+	}
+
+
+</script>
+</head>
+<body>
+<div id="categoryContainerDiv">
+<div id="createNewCategoryDiv">
+<h3>Add new category</h3>
+<label>Category name:</label>
+<form id="newCategoryNameForm">
+<input type="text" name="newCategoryName"/><br>
+<input type="submit" name="nameSubmit" value="Submit"> 
+</form>
+</div>
+<div id="showEditDiv">
+<label>Edit Category</label>
+<form id="categoryEditNameForm">
+<input type="text" name="categoryEditName"/><br>
+</form>
+</div>
+<div id="showDeleteDiv">
+<label>Delete Category</label>
+<input type="button" name="categoryDeleteButton" value="Delete">
+
+</div>
+
+<h3>Manage categories</h3>
+<div id="manageCategory" style="Border:2px solid red; width:600px;height:300px;">
+<h4>PHP</h4>
+<a href="#" onclick=show("showEditDiv");>Show Edit</a>
+<a href="#" onclick=show("showDeleteDiv");>Show Delete</a>
+</div>
+<div id="createTestDiv" style="Border:2px solid red; width:600px;">
+<h3>Create new category</h3>
+<a href="#" onclick=show("createNewCategoryDiv");>Create New category</a>
+</div>
+</div>
+
+</body>
+</html>
