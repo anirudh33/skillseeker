@@ -19,6 +19,17 @@ require_once 'models/User.php';
 class Registration extends DBConnection
 {
 	
+	public function registerUser($data)
+	{
+		
+	
+		$registrationObj = new User();
+		
+		$userArray = $registrationObj->GenerateArray($data, "INSERT");
+		
+		$result = $this->_db ->insert('users', $userArray);
+		 
+	}
 	
 }
    

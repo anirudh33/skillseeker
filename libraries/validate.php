@@ -80,17 +80,16 @@ class validate
         $flag =true;
         //if to set flag to false if any field of form has invalid value
         if (array_filter( $this->errorMsg,'trim')){
-        	$flag = false;
+            $flag = false;
         }
-        //if to return TRUE all fields of form are valid 
+        //if to return TRUE all fields of form are valid
         if($flag){
-        	return "true";
+            return false;
         }
         //else return errorMsg[] wid all fields as key and error as value respectively! value is null if no error
         else{
-        	return $this->errorMsg;
-        }   
-    }
+            return $this->errorMsg;
+        }   }
     
     /**
      *  Helps prevent XSS attacks

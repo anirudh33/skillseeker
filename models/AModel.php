@@ -36,9 +36,10 @@ class AModel extends DBConnection
     		$myResult[] = $row['user_name'];
     		$i++;
     	}
+    	
     	if($myResult != null)
     	{
-
+    		
     	
     		if(in_array($userName, array_values($myResult)))
     		{
@@ -47,6 +48,7 @@ class AModel extends DBConnection
     			
     		}
     		else {
+    			
     			return 0;
     			
     		}

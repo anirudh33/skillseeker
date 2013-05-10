@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <title>Registration</title>
 	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7; IE=EmulateIE9">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
     <link rel="stylesheet" type="text/css" href="./assets/css/captcha.css" media="all" />
     <link rel="stylesheet" type="text/css" href="./assets/css/demo.css" media="all" />
-    
-<!--      <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/> -->
- <script type="text/javascript" src="<?php echo SITE_URL;?>/assets/js/jquery-1.4.2.min.js" ></script>
-<!-- 	  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script> -->
-	   
+    <script type="text/javascript" src="../assets/js/jquery-1.9.1.js"></script>
+     <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+ 	
+	  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+	   <script type="text/javascript" src="../assets/js/registerUser.js"></script>
 	  <script>
 	  $(document).ready(function() {
 	    $("#datepicker").datepicker();
@@ -27,7 +28,7 @@
 				<h1>Registration Form </h1>
             </header>       
       <div  class="form">
-    		<form method="post" id="contactform" action="index.php?controller=MainController&method=registerUser"> 
+    		<form method="post" id="contactform" action="index.php?controller=MainController&method=handleRegister"> 
     			<p class="contact"><label for="name">First Name</label></p> 
     			<input id="name" name="first_name" placeholder="firstname" required="" tabindex="1" type="text"> 
     			 
@@ -36,10 +37,10 @@
     			 
     			<p class="contact"><label for="email">Email</label></p> 
     			<input id="email" name="email_address" placeholder="example@domain.com" required="" type="email"> 
-                
+                	
                 <p class="contact"><label for="username">Create a username</label></p> 
-    			<input id="username"  name="user_name" placeholder="username" required="" tabindex="2" type="text"> 
-    			 
+    			<input id="username" name="user_name" placeholder="username" required="" tabindex="2" type="text"> 
+    			 <div id="userresult"></div>
     			
                 
                
@@ -317,54 +318,19 @@
 			value="captcha/securimage_play.swf?bgcol=#ffffff&amp;icon_file=./assets/captcha/images/audio_icon.png&amp;audio_file=./assets/captcha/securimage_play.php" />
 	</object>
 	&nbsp; <a tabindex="-1" style="border-style: none;" href="#"
-		title="Refresh Image"
+		title="Refresh Image" id ="register_captcha"
 		onclick="document.getElementById('siimage').src = './assets/captcha/securimage_show.php?sid=' + Math.random(); this.blur(); return false"><img
-		src="./assets/captcha/images/refresh.png" alt="Reload Image" onclick="this.blur()"
+		src="./assets/captcha/images/refresh.png" alt="Reload Image"
 		align="bottom" border="0"></a><br /> <strong>Enter Code*:</strong><br /><br/>
-	<input type="text" id="captchaText" name="captcha" size="12" maxlength="8" /><br/>
+	<input type="text" id="captchaText" name="captcha" size="12" maxlength="8" required=""/><br/>
 	<div id="result"></div>
 </p>
      <br/>    
          
-            <input class="button" name="submit" id="submit" tabindex="5"  type="submit"> 	 
+            <input  name="submit" id="submit" tabindex="5"  type="submit"> 	 
    </form> 
 </div>      
 </div>
 
 </body>
 </html>
-<script>
-$("#captchaText").blur(captchaCheck);
-$("#username").blur(userNameCheck);
-function captchaCheck()
-{
-	var Number1 = $("#captchaText").val();
-	
-	$.ajax({
-	      url: "./assets/captcha/securimage_show.php",
-	      type: "post",
-	      data: "number="+Number1,
-	      success: function(data){
-	          
-	           $("#result").html(data);
-	      },
-	      
-	    }); 
-}
-
-function userNameCheck()
-{
-	var text = $("#username").val();
-	$.post('index.php?controller=MainController&method=uniqueUserNameCheck',{"text":text},function(data){
- 		//alert(data);
-		if(data.trim()=="true")
-		{
-            $("#username").val("");
-			//$("#contactform").submit(false);
-			
-		}
- 		
-		});
-
-}
-</script>

@@ -130,13 +130,10 @@ class MainController
 
 	
 	/* Called when user submits the registration form */
-	public function registerUser() 
+	public function handleRegister() 
 	{	
-		//print_r($_POST); die;	
-
-		$userObj = new User();
 		
-		$userObj->registerUser();
+		$userObj = new Registration();
 	}
 
 	public function logout() 

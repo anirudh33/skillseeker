@@ -14,7 +14,7 @@ abstract class DBConnection
 //     $config['DATABASE_HOST'] = 'localhost';
 //     $config['DATABASE_TYPE'] = 'mysql';
 //     $config['DATABASE_PORT'] = null;
-//     $config['DATABASE_PERSISTENT'] = true;
+//     $config['DATABASE_PERSISTENT'] = true
     
     public function __construct ()
     {

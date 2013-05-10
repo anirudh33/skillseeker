@@ -211,11 +211,17 @@ class User extends DBConnection
         {
             //echo $values['first_name'];
             
-            $obj->validator("first_name",$values['first_name'], 'required#alphabets','FirstName Required#LastName should only contain alphabets');
+            $obj->validator("first_name",$values['first_name'], 'required#alphabets','FirstName Required#FirstName should only contain alphabets');
             
-            $error=$obj->result();
-            //print_r($error);
+          //  $error=$obj->result();
+            
+          //  if(isset($error))
+           // {
+             // print_r($error); die;
+          // }
+          // else {
             $this->setFirstName($values['first_name']);
+          //  }
         }
         if(array_key_exists('last_name',$values))
         {
@@ -252,6 +258,21 @@ class User extends DBConnection
             //print_r($error);
             $this->setPassword($values['password']);
         }
+        
+        if(array_key_exists('repassword',$values))
+        {
+        	//$obj = new validate();
+        	$s=$values['password']."#".$values['repassword'];
+        	$obj->validator("repassword",$s , 'match#','Password doesnot match#password');
+        
+        	//$error=$obj->result();
+        	//print_r($error);
+        	//$this->setPassword($values['password']);
+        }
+        
+        
+        
+        
         if(array_key_exists('time_zone_id',$values))
         {
             $this->setTimeZoneId($values['time_zone_id']);
@@ -397,22 +418,19 @@ class User extends DBConnection
         }
 
      $error=$obj->result();
-     if ($error==true){
-        return $userFormArray;
+    
+     if ($error==false){
+     	
+       return $userFormArray;
         }
         else{
-         return $error;
+        echo "<pre>";
+        print_r($error);
+        die;
+       
         }  
     }
     
-    function registerUser() {
-    		
-    	$userArray = $this->GenerateArray($_POST, "INSERT");
-        //print_r($userArray);die; 
-    	$result = $this->_db ->insert('users', $userArray);
-         
-        
     
-    }
     
 }
