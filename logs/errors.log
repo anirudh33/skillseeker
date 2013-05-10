@@ -609,3 +609,30 @@
 [09-May-2013 16:22:27 UTC] PHP Notice:  Undefined index: DOMAIN_PATH in /var/www/skillseeker/trunk/controllers/MainController.php on line 287
 [09-May-2013 16:22:27 UTC] PHP Warning:  file_get_contents(./tmp/MohitSingh.txt) [<a href='function.file-get-contents'>function.file-get-contents</a>]: failed to open stream: No such file or directory in /var/www/skillseeker/trunk/libraries/Security.php on line 26
 [09-May-2013 16:22:27 UTC] PHP Warning:  session_destroy() [<a href='function.session-destroy'>function.session-destroy</a>]: Trying to destroy uninitialized session in /var/www/skillseeker/trunk/libraries/Security.php on line 39
+[10-May-2013 06:07:41 UTC] PHP Notice:  Undefined index: userName in /var/www/skillseeker/trunk/controllers/MainController.php on line 40
+[10-May-2013 06:07:41 UTC] PHP Notice:  Undefined index: password in /var/www/skillseeker/trunk/controllers/MainController.php on line 41
+[10-May-2013 06:07:41 UTC] PHP Notice:  Undefined index: DOMAIN_PATH in /var/www/skillseeker/trunk/libraries/initiateuser.php on line 165
+[10-May-2013 06:07:59 UTC] PHP Notice:  Undefined index: DOMAIN_PATH in /var/www/skillseeker/trunk/controllers/MainController.php on line 165
+[10-May-2013 06:07:59 UTC] PHP Warning:  file_get_contents(./tmp/MohitSingh.txt) [<a href='function.file-get-contents'>function.file-get-contents</a>]: failed to open stream: No such file or directory in /var/www/skillseeker/trunk/libraries/Security.php on line 26
+[10-May-2013 06:07:59 UTC] PHP Warning:  session_destroy() [<a href='function.session-destroy'>function.session-destroy</a>]: Trying to destroy uninitialized session in /var/www/skillseeker/trunk/libraries/Security.php on line 39
+[10-May-2013 06:08:03 UTC] PHP Notice:  Undefined index: DOMAIN_PATH in /var/www/skillseeker/trunk/libraries/initiateuser.php on line 165
+[10-May-2013 06:08:34 UTC] PHP Notice:  Undefined index: userName in /var/www/skillseeker/trunk/controllers/MainController.php on line 40
+[10-May-2013 06:08:34 UTC] PHP Notice:  Undefined index: password in /var/www/skillseeker/trunk/controllers/MainController.php on line 41
+[10-May-2013 06:08:34 UTC] PHP Notice:  Undefined index: DOMAIN_PATH in /var/www/skillseeker/trunk/libraries/initiateuser.php on line 165
+[10-May-2013 06:11:10 UTC] PHP Notice:  Undefined index: DOMAIN_PATH in /var/www/skillseeker/trunk/controllers/MainController.php on line 165
+[10-May-2013 06:11:10 UTC] PHP Warning:  file_get_contents(./tmp/MohitSingh.txt) [<a href='function.file-get-contents'>function.file-get-contents</a>]: failed to open stream: No such file or directory in /var/www/skillseeker/trunk/libraries/Security.php on line 26
+[10-May-2013 06:11:10 UTC] PHP Warning:  session_destroy() [<a href='function.session-destroy'>function.session-destroy</a>]: Trying to destroy uninitialized session in /var/www/skillseeker/trunk/libraries/Security.php on line 39
+[10-May-2013 06:53:20 UTC] PHP Notice:  Undefined index: DOMAIN_PATH in /var/www/skillseeker/trunk/libraries/initiateuser.php on line 165
+[10-May-2013 07:04:12 UTC] PHP Notice:  Undefined index: DOMAIN_PATH in /var/www/skillseeker/trunk/controllers/MainController.php on line 142
+[10-May-2013 07:04:12 UTC] PHP Warning:  file_get_contents(./tmp/amber.txt) [<a href='function.file-get-contents'>function.file-get-contents</a>]: failed to open stream: No such file or directory in /var/www/skillseeker/trunk/libraries/Security.php on line 26
+[10-May-2013 07:04:12 UTC] PHP Warning:  session_destroy() [<a href='function.session-destroy'>function.session-destroy</a>]: Trying to destroy uninitialized session in /var/www/skillseeker/trunk/libraries/Security.php on line 39
+[10-May-2013 07:04:28 UTC] PHP Notice:  Undefined index: username in /var/www/skillseeker/trunk/controllers/MainController.php on line 140
+[10-May-2013 07:04:28 UTC] PHP Warning:  unlink(./tmp/.txt) [<a href='function.unlink'>function.unlink</a>]: No such file or directory in /var/www/skillseeker/trunk/controllers/MainController.php on line 140
+[10-May-2013 07:04:28 UTC] PHP Notice:  Undefined index: DOMAIN_PATH in /var/www/skillseeker/trunk/controllers/MainController.php on line 142
+[10-May-2013 07:07:02 UTC] PHP Notice:  Undefined index: DOMAIN_PATH in /var/www/skillseeker/trunk/controllers/MainController.php on line 142
+[10-May-2013 07:07:02 UTC] PHP Warning:  file_get_contents(./tmp/amber.txt) [<a href='function.file-get-contents'>function.file-get-contents</a>]: failed to open stream: No such file or directory in /var/www/skillseeker/trunk/libraries/Security.php on line 26
+[10-May-2013 07:07:02 UTC] PHP Warning:  session_destroy() [<a href='function.session-destroy'>function.session-destroy</a>]: Trying to destroy uninitialized session in /var/www/skillseeker/trunk/libraries/Security.php on line 39
+[10-May-2013 07:26:49 UTC] PHP Notice:  Undefined index: DOMAIN_PATH in /var/www/skillseeker/trunk/controllers/MainController.php on line 142
+[10-May-2013 07:26:57 UTC] PHP Notice:  Undefined index: DOMAIN_PATH in /var/www/skillseeker/trunk/libraries/initiateuser.php on line 165
+[10-May-2013 07:27:02 UTC] PHP Notice:  Undefined index: DOMAIN_PATH in /var/www/skillseeker/trunk/libraries/initiateuser.php on line 165
+[10-May-2013 07:32:47 UTC] PHP Notice:  Undefined index: DOMAIN_PATH in /var/www/skillseeker/trunk/controllers/MainController.php on line 142

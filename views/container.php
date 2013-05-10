@@ -27,6 +27,11 @@ else if ($pageName=="AssignTest")
 
 	require_once(SITE_PATH."/views/assigntest.php");
 }
+else if ($pageName=="category")
+{
+
+	require_once(SITE_PATH."/views/category.php");
+}
 else if ($pageName=="userPage")
 {
     require_once(SITE_PATH."/views/userheader.php");

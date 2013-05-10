@@ -16,7 +16,10 @@ class TestController {
 	
 	public function process()
 	{
-		require_once(SITE_PATH."/views/userheader.php");
+		$objSecurity=new Security();
+		$objSecurity->secureMultiLogin($_SESSION['username']);
+		$this->showView("userPage");
+		//require_once(SITE_PATH."/views/userheader.php");
 	}
 	/* 
 	 * 
@@ -24,6 +27,7 @@ class TestController {
 	 * This function is responsible to save setting  for a test in database.
 	 * These settings are useful when test is started.
 	*/
+
 	
 	public function handleassignTest()
 	{
@@ -176,6 +180,12 @@ class TestController {
 			header("Location:".SITE_URL."/views/upload.php?cid=$error");
 		}
 
+	}
+	
+	public function showView($pageName="userPage") {
+		//$lang = Language::getinstance ();
+		
+		require_once SITE_PATH."/views/container.php";
 	}
 	
 }

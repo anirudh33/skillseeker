@@ -108,12 +108,12 @@ class MainController
 	 */
 	public function showUserPanel() 
 	{
-	    
-		/*$controllerName = ucfirst ( $_SESSION ["userType"] ) . "Controller";
+	    //echo"jghjhgjh";
+		$controllerName = ucfirst ( $_SESSION ["userType"] ) . "Controller";
 		print $controllerName;
 		$objController = new $controllerName ();
 		
-		$objController->process ();*/
+		$objController->process ();
 	}
 	
 	 /* Change language called on clicking the desired language on mainview */
