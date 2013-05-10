@@ -1,4 +1,18 @@
 <?php
+/*
+ **************************** Creation Log *******************************
+File Name                   -  EncryptionDecryption.php
+Project Name                -  skillseeker
+Description                 -  Encryption Decryption Model
+Version                     -  1.0
+Created by                  -  Ramandeep Singh
+Created on                  -  May 10, 2013
+***************************** Update Log ********************************
+Sr.NO.		Version		Updated by           Updated on          Description
+-------------------------------------------------------------------------
+
+*************************************************************************
+**/
 class EncryptionDecryption
 {
     private $skey;
