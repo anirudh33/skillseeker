@@ -19,6 +19,9 @@ $('#Registeruser').hide();
 	 $( "#datepicker" ).datepicker();
 	 $('#basicExample').timepicker();
 	 $('#basicExample1').timepicker();
+	 $( "#format" ).change(function() {
+			$( "#datepicker" ).datepicker( "option", "dateFormat", $( this ).val() );
+	 });
 	 
 	 
    });
@@ -81,7 +84,13 @@ put your code to show Registered user groups
 <tr><td ><input type="checkbox"/>Email Address</td></tr>
 <tr ></tr>
 <tr><td><h3>Test Availability</h3></td></tr>
-<tr><td>Date:<br/><input type="text" id="datepicker" /></td></tr>
+<tr><td>Date:<br/><input type="text" id="datepicker" /><br/>
+<p>Format options:<br />
+	<select id="format">
+	<option value="null" selected="selected">select</option>
+		<option value="yy-mm-dd">ISO 8601 - yy-mm-dd</option>
+		</select>
+</p></td></tr>
 <tr></tr>
 <tr><td>
 Start Time:<br><input id="basicExample" type="text" class="time" /></td><td>End Time:<input id="basicExample1" type="text" class="time" /></td></tr>
