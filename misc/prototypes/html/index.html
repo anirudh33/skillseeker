@@ -14,16 +14,13 @@
 <script type="text/javascript" src="js/Myriad_Pro_300.font.js"></script>
 <script type="text/javascript" src="js/Myriad_Pro_400.font.js"></script>
 <script type="text/javascript" src="js/script.js"></script>
-<!--[if lt IE 7]>
-     <link rel="stylesheet" href="css/ie/ie6.css" type="text/css" media="screen">
-     <script type="text/javascript" src="js/ie_png.js"></script>
-     <script type="text/javascript">
-        ie_png.fix('.png, footer, header nav ul li a, .nav-bg, .list li img');
-     </script>
-<![endif]-->
-<!--[if lt IE 9]>
-  	<script type="text/javascript" src="js/html5.js"></script>
-  <![endif]-->
+<script type="text/javascript">
+function loadpage(abc)
+{
+	$('#inside').load(abc);
+	}
+</script>
+
 </head>
 <body id="page1">
 <div class="wrap">
@@ -35,9 +32,9 @@
 				<nav>
 					<ul>
 						<li class="current"><a href="#" class="m1">Home Page</a></li>
-						<li><a href="#" class="m2">About Us</a></li>
-						<li><a href="#" class="m2">FAQs</a></li>
-						<li><a href="#" class="m4">Contact Us</a></li>
+						<li><a href="#" class="m2" onclick="loadpage('aboutus.html');">About Us</a></li>
+						<li><a href="#" class="m2" onclick="loadpage('faq.html');">FAQ</a></li>
+						<li><a href="#" class="m4" onclick="loadpage('contactus.html');">Contact Us</a></li>
 
 					</ul>
 				</nav>
@@ -96,7 +93,7 @@
          <div id="banner">
             <h2>Professional <span>Online Examination <span>Since 2013</span></span></h2>
          </div><div class="ic"></div>
-         <div class="inside">
+         <div class="inside" id="inside">
             <h2>Recent <span>Articles</span></h2>
             <ul class="list">
                <li><span><img src="images/icon1.png"></span>

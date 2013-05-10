@@ -19,7 +19,7 @@ function addcategory()
 	}
 	function categorycancel()
 	{
-		categorymessageshow();
+		editcategory1();
 	}
 function editcategory1()
 {
@@ -56,6 +56,7 @@ function editcategory1()
 <body id="categorybody">
 <h2>Manage categories</h2>
 <div id="categorymessagedefault">
+
 <input type="text" value="category"  readonly="readonly"/>
 </div>
 <div id="categorymessage">
@@ -66,7 +67,7 @@ function editcategory1()
 </div>
 <div id="edit"><a href="#" onclick="editcategory()">Edit</a></div>
 <div id="delete"><a href="#" onclick="deletecategory()">Delete</a></div>
-<div id="showeditdelete"><a href="#" onclick="showedit()">show edit</a>|<a href="#" onclick="showdelete()">show delete</a></div>
+<div id="showeditdelete"><a href="#" onclick="showedit()"><br/><br/>show edit</a>|<a href="#" onclick="showdelete()">show delete</a></div>
 <div>
 <a href="#" onclick="addcategory()">create new category</a>
 </div>
