@@ -8,7 +8,17 @@
 	position: relative;
 }
 .sf-menu ul {
-	position: absolute;
+	position: absolute; 
+	background-color : #CFDEF5;
+	display: none;
+	top: 100%;
+	left: 0;
+	z-index: 99;
+}
+.follow ul
+{
+	position: absolute; 
+	background-color : #CFDEF5;
 	display: none;
 	top: 100%;
 	left: 0;
