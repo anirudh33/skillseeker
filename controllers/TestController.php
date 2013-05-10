@@ -11,7 +11,7 @@
 
 require_once  '/var/www/skillseeker/trunk/libraries/Language.php';
 require_once './models/csvModel.php';
-class testController {
+class TestController {
 	
 	
 	public function process()

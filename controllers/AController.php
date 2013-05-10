@@ -183,19 +183,7 @@ abstract class AController
      */
     public function logout ()
     {
-        if (file_exists($_SESSION["DOMAIN_PATH"] . 
-                "/assets/images/Views/profilepics/adminprofile" . 
-            $_SESSION['userID'] . ".jpeg") or 
-            file_exists($_SESSION["DOMAIN_PATH"] . 
-                "/assets/images/Views/profilepics/studentprofile" .
-            $_SESSION['userID'] . ".jpeg") or 
-            file_exists($_SESSION["DOMAIN_PATH"] . 
-                "/assets/images/Views/profilepics/teacherprofile" . 
-            $_SESSION['userID'] . ".jpeg")) {
-            unlink($_SESSION["DOMAIN_PATH"] . "/assets/images/Views/profilepics/adminprofile" . $_SESSION['userID'] . ".jpeg");
-            unlink($_SESSION["DOMAIN_PATH"] . "/assets/images/Views/profilepics/studentprofile" . $_SESSION['userID'] . ".jpeg");
-            unlink($_SESSION["DOMAIN_PATH"] . "/assets/images/Views/profilepics/teacherprofile" . $_SESSION['userID'] . ".jpeg");
-        }
+
         session_destroy();
         header("Location:" . $_SESSION["DOMAIN_PATH"] . "/index.php");
     }

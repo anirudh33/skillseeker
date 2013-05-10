@@ -52,35 +52,7 @@ class MainController
         }
     }
     
-    public function loginController()
-    {
-        $user_name=$_POST['userName'];
-        $password=$_POST['password'];
-         //validate here
-        $result=$this->_objAmodel->AuthenticateUser($user_name,$password);
-        //echo "<pre>";
-        //print_r($result);
-        if(!empty($result))
-        {
-            if(md5($result[0]['password']) === md5($password))
-            {
-                
-                   $_SESSION['User']=$_POST['userName'];
-                   $_SESSION['Password']=$_POST['password'];
-                    $this->showView("userPage");
-            }
-            else
-            {
-                //header("Location:http://www.skillseeker.com?msg1=error");
-            }
-        }
-        else
-        {
-           //header("Location:http://www.skillseeker.com?msg=error");
-        }
-        
-        
-    }    
+   
     public function handleassignTest()
     {
     	
@@ -174,39 +146,7 @@ class MainController
 		
 		$objInitiateUser->setLanguage ( $_REQUEST ["language"] );
 	}
-	
-	
-	/* Checks if emailid exists in database*/
-	public function ajaxEmailExists() 
-	{
-		if (isset ( $_POST ['email'] )) {
-			$email = $_POST ['email'];
-			$obj1 = new Registration ();
-			$verify = $obj1->verifyEmail ( $email );
-			if ($verify) {
-				echo "Email already Exists";				
-			}
-		}
-	}
-	
-	/* Sets toast messages to be displayed*/
-	public function setCustomMessage($messageType, $message) 
-	{
-		if (isset ( $_SESSION ["$messageType"] )) {
-			$_SESSION ["$messageType"] .= $message . "<br>";
-		} else {
-			$_SESSION ["$messageType"] = $message . "<br>";
-		}
-	}
-	
-	/*confirms activation of new user*/
-	public function confirm ()
-	{
-		$email = $_GET['email'];
-		$pass = $_GET['passkey'];
-		$obj = new Registration();
-		$obj->confirmEmail($email, $pass);
-	}
+
 	
 	/* Called when user submits the registration form */
 	public function registerUser() 
@@ -216,84 +156,15 @@ class MainController
 		$userObj = new User();
 		
 		$userObj->registerUser();
-		
-		/*$authObject = new Authenticate ();
-		$authObject->validateRegistration ();
-		$email = $_POST ["email"];
-		$password = $_POST ["password"];
-		$firstname = $_POST ["firstname"];
-		$lastname = $_POST ["lastname"];
-		$phone = $_POST ["phone"];
-		$address = $_POST ["address"];
-		$qualification = $_POST ["qualification"];
-		$gender = $_POST ["gender"];
-		$date = $_POST ["date"];
-		$usertype = $_POST ["usertype"];
-		$status = '2';
-		$profilepicture = addslashes ( file_get_contents ( $_FILES ["profilepicture"] ["tmp_name"] ) );
-		$confirm_code = md5 ( uniqid ( rand () ) );
-		
-		$message = "http://localhost/ulearn/branches/development/index.php?method=confirm&controller=Main&passkey=$confirm_code&email=$email";
-		
-		$mail = new PHPMailer ();
-		$mail->IsSMTP (); // enable SMTP
-		$mail->SMTPDebug = 0; // debugging: 1 = errors and messages, 2 = messages only
-		$mail->SMTPAuth = true; // authentication enabled
-		$mail->SMTPSecure = 'ssl'; // secure transfer enabled REQUIRED for GMail
-		$mail->Host = 'smtp.gmail.com';
-		$mail->Port = 465;
-		$mail->Username = "ulearnoss@gmail.com";
-		$mail->Password = "root@osscube.com";
-		$mail->Subject = "Confirmation Mail from Ulearn";
-		$mail->Body = $message;
-		$mail->AddAddress ( $email );
-		
-		
-		if (! $mail->Send ()) {			
-			$this->setCustomMessage ( "ErrorMessage", "Mail Not Sent" );
-		} else {
-			$this->setCustomMessage ( "SuccessMessage", "Mail sent," );
-		}		
-		if ($_POST ["usertype"] == "student") {
-			// echo"student";*/
-			//print_r($_POST); die;
-			//$obj = new Registration ();
-			//$obj->newUserRegistration ( $_POST);
-			//print_r($_POST);
-		
-		
-			
-		/*} elseif ($_POST ["usertype"] == "teacher") {
-			$obj = new Registration ();
-			$obj->newStudentRegistration ( $email, $password, $firstname, $lastname, $phone, $address, $qualification, $gender, $date, $usertype, $status, $profilepicture, $confirm_code );
-		} elseif ($_POST ["usertype"] == "teacher") {
-			$obj = new Registration ();
-			$obj->newTeacherRegistration ( $email, $password, $firstname, $lastname, $phone, $address, $qualification, $gender, $date, $usertype, $status, $profilepicture, $confirm_code );
-		}		
 	}
-	
-	/* Logs out the user by destroying session */
-}
+
 	public function logout() 
 	{
-		if (file_exists ( $_SESSION ["DOMAIN_PATH"] . "/assets/images/Views/profilepics/adminprofile" . $_SESSION ['userID'] . ".jpeg" ) or file_exists ( $_SESSION ["DOMAIN_PATH"] . "/assets/images/Views/profilepics/studentprofile" . $_SESSION ['userID'] . ".jpeg" ) or file_exists ( $_SESSION ["DOMAIN_PATH"] . "/assets/images/Views/profilepics/teacherprofile" . $_SESSION ['userID'] . ".jpeg" )) {
-			unlink ( $_SESSION ["DOMAIN_PATH"] . "/assets/images/Views/profilepics/adminprofile" . $_SESSION ['userID'] . ".jpeg" );
-			unlink ( $_SESSION ["DOMAIN_PATH"] . "/assets/images/Views/profilepics/studentprofile" . $_SESSION ['userID'] . ".jpeg" );
-			unlink ( $_SESSION ["DOMAIN_PATH"] . "/assets/images/Views/profilepics/teacherprofile" . $_SESSION ['userID'] . ".jpeg" );
-			
-		}
 		unlink ("./tmp/" . $_SESSION ['username'] . ".txt" );
 		session_destroy ();
 		header ( "Location:" . $_SESSION ["DOMAIN_PATH"] . "/index.php" );
 	}
-	/* Messages session variables unset */
-	public function unsetMessages() 
-	{
-		unset ( $_SESSION ["SuccessMessage"] );
-		unset ( $_SESSION ["ErrorMessage"] );
-		unset ( $_SESSION ["NoticeMessage"] );
-		echo '1';
-	}	
+	
 	
 	// added by sanchit
 	
