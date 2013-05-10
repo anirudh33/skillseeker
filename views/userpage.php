@@ -29,6 +29,34 @@ type="text/javascript"></script>
 
 
 <script type="text/javascript">
+
+function openPage(str)
+{
+	
+	$.ajax({
+        type: "POST",
+        url: 'index.php?controller=TestController&method=loadView&page='+str,
+        //data: $("#idForm").serialize(), // serializes the form's elements.
+        success: function(data)
+        {
+        	$('#content').html(' ');
+            $('#content').html(data);
+            //alert(data); // show response from the php script.
+        }
+      });
+   /*  $.post('index.php',{'controller':'TestController','method':'loadview'},function(data,status){
+            if(status == "success")
+            {
+                $('#content').html(' ');
+                $('#content').html(data);
+            }
+            if(status == "error")
+            {
+                $('#content').html('<h1>NO Page Found</h1>');
+            }
+        }); */
+}
+
 function load() {
 var feed ="http://feeds.bbci.co.uk/news/world/rss.xml";
 new GFdynamicFeedControl(feed, "feedControl");
@@ -75,8 +103,8 @@ google.setOnLoadCallback(load);
 										<li>
 											<a href="followed.html">Question Bank</a>
 											<ul>
-							<li><a href="javascript:void(0)" onclick="views/createtest.php">Add questions one by one</a></li>
-							<li><a href="views/upload.php">Add questions in bulk</a></li>
+							<li><a href="javascript:void(0)" onclick="openPage('/views/createtest.php')">Add questions one by one</a></li>
+							<li><a href="javascript:void(0)" onclick="openPage('/views/upload.php')">Add questions in bulk</a></li>
 							
 						</ul>
 											

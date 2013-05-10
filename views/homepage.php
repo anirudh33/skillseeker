@@ -29,8 +29,10 @@
 if (isset($_SESSION['username'])) {
 	$objSecurity=new Security();
 	$objSecurity->secureMultiLogin($_SESSION['username']);
-	//require_once(SITE_PATH."/views/userpage.php");
-    header("Location:index.php?controller=TestController&method=process");
+	if(!isset($_REQUEST['page']))
+	{
+	    header("Location:index.php?controller=TestController&method=process");
+	}
 } else {
     ?>
 <script>

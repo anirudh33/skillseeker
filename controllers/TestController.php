@@ -14,7 +14,11 @@ require_once  '/var/www/skillseeker/trunk/libraries/Language.php';
 require_once './models/csvModel.php';
 class TestController {
 	
-	
+	public function loadView()
+	{
+	   // print_r($_REQUEST);die;
+	    require_once(SITE_PATH.$_REQUEST['page']);
+	}
 	public function process()
 	{
 		require_once(SITE_PATH."/views/userheader.php");
