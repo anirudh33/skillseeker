@@ -133,7 +133,9 @@ class MainController
 	public function handleRegister() 
 	{	
 		
-		$userObj = new Registration();
+			$userObj = new Registration();
+		
+			$userObj->registerUser($_POST);
 	}
 
 	public function logout() 
