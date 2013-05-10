@@ -1,5 +1,6 @@
 <?php
 require_once './libraries/DBconnect.php';
+require_once './libraries/EncryptionDecryption.php';
 class Assign extends DBConnection {
 	
 		private $_id;
@@ -256,12 +257,13 @@ class Assign extends DBConnection {
     	$this->setStart_time($_POST['start_time']);
     	$this->setStatus('A');
     	$this->setTest_duration($_POST['test_duration']);
-    	//$this->setTest_link($_POST['name']);
     	$this->setUser_result_type('user_result_type');
-     	
-    	
-    	
-    	$test_link="http://www.skillseeker.com/online-test/start/?quiz=amm5180d24b8d881";
+    	/*Next 4 lines are used for creating hashed link url*/
+    	$obj_EncryptionDecryption= new EncryptionDecryption();
+    	$id=$obj_EncryptionDecryption->encode($this->getTest_id());
+    	$time=$obj_EncryptionDecryption->encode($this->getStart_time());
+    	$test_link="http://www.skillseeker.com/online-test/start/?id=".$id."&time=".$time;
+    	$this->setTest_link($test_link);
 		
 		 $data['tables'] = 'test_details';
 		 $insertValue = array('test_id'=>$this->getTest_id(),
@@ -281,30 +283,6 @@ class Assign extends DBConnection {
 		 $this->_db->insert($data['tables'],$insertValue);
 		 return "true";
 	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 }
 
