@@ -245,21 +245,21 @@ class Assign extends DBConnection {
 
 	public function AssignTest()
 	{
-		$_POST['name']="#123";
+		
 		 
 		$this->setTest_id("1");
-    	$this->setAdmin_result_type("1");
-    	$this->setGo_back($_POST['name']);
-    	$this->setInstruction($_POST['name']);
-    	$this->setLink_expiration_time($_POST['name']);
-    	$this->setPassing_marks($_POST['name']);
-    	$this->setPer_page_question($_POST['name']);
-    	$this->setQuestion_order($_POST['name']);
-    	$this->setStart_time($_POST['name']);
+    	$this->setAdmin_result_type('admin_view_type');
+    	$this->setGo_back($_POST['go_back']);
+    	$this->setInstruction($_POST['instruction']);
+    	$this->setLink_expiration_time($_POST['expire_time']);
+    	$this->setPassing_marks($_POST['passing_marks']);
+    	$this->setPer_page_question($_POST['number_of_question']);
+    	$this->setQuestion_order($_POST['random']);
+    	$this->setStart_time($_POST['start_time']);
     	$this->setStatus('A');
-    	$this->setTest_duration($_POST['name']);
+    	$this->setTest_duration($_POST['test_duration']);
     	//$this->setTest_link($_POST['name']);
-    	$this->setUser_result_type("1");
+    	$this->setUser_result_type('user_result_type');
      	
     	
     	

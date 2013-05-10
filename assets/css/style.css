@@ -23,7 +23,7 @@ time {
 
 /* Global properties ======================================================== */
 body { 
-	
+	background:#fff; 
 	font-family:Arial, Helvetica, sans-serif;
 	font-size:100%; 
 	line-height:1em;
@@ -36,19 +36,92 @@ html,
 body { 
 	height:100%;
 }
+ .btn
+        {
+	border:1px solid #7777777;
+        	background: #0099CC;
+        	color: white;
+        	font: bold 15 px 'Trebuchet MS';
+        	padding: 4px;
+        	cursor: pointer;
+        }
+
+#createtestbody
+{
+	background:#f1f1f1; width:570px; margin:0 auto; padding-left:90px; padding-top:20px;
+}
+#categorybody
+{
+	background:#f1f1f1; width:570px; margin:0 auto; padding-left:90px; padding-top:20px;
+}
+#browse
+{
+	background-color:#ADD8E6;
+}
+#browsebody
+{
+	background:#f1f1f1; width:570px; margin:0 auto; padding-left:90px; padding-top:20px;
+}
+
+#assigntestbody
+{
+	background:#f1f1f1; width:570px; margin:0 auto; padding-left:90px; padding-top:20px;
+}
+#onebyonebody
+{
+	background:#f1f1f1; width:570px; margin:0 auto; padding-left:90px; padding-top:20px;
+}
+
+#addquestionbody
+{
+	background:#f1f1f1; width:570px; margin:0 auto; padding-left:90px; padding-top:20px;
+}
+
+#bygroupbody
+{
+	background:#f1f1f1; width:570px; margin:0 auto; padding-left:90px; padding-top:20px;
+}
 
 
+.bytest{
+	color: black;
+	font-weight: bold;
+}
+.bytest1{
+    border: 1px solid #D0D2D2;
+    color: #4D4D4D;
+    font-size: 1.125em;
+    font-weight: bold;
+}
+.bycenter
+{
+	text-align: center;
+	width: 150px;
+}
+.byth
+{                  
+	width: 340px;
+}
+.recentresult{
+	background-color: #AACCBB;
+	font-weight: bold;
+	font-size: large;
+	width: 40%;
+}
 
 /* Global Structure ============================================================= */
 
-.container {
+.container 
+{
 	margin:0 auto;
-	width:940px;
+	width:940px; 
 	overflow:hidden;
 	font-size:.875em;
 	padding-bottom:176px;
 }
-
+.follow{
+	font-size:.75em;
+}
 	/* Header */
 	header {
 		background:url(../images/header-bg.jpg) no-repeat center top;
@@ -84,7 +157,6 @@ body {
 			height:121px;
 			padding:0;
 		}
-
 
 
 
@@ -339,7 +411,12 @@ background:#717171;
 border-bottom:1px solid #D3D3D3;
 
 }
-
+.aTagManageTest
+{
+	color:#008cc4; 
+	outline:none;
+	
+}
 /*----- txt, links, lines, titles -----*/
 a {
 	color:#ff7b01; 
@@ -361,11 +438,16 @@ h1 {
  		background:url(../images/images.jpeg) no-repeat left top; 
 		
 	}
+	
+
+
+
 h2 {
 	font-size:24px;
 	line-height:1.2em;
 	text-transform:uppercase;
 	margin-bottom:20px;
+			color:#008cc4;
 }
 	h2 span {
 		color:#8d8d8d;
@@ -418,12 +500,13 @@ header nav {
 		text-transform:uppercase;
 		padding-right:1px;
 		background:url(../images/divider.gif) repeat-y right top;
-	}
+}
 	header nav ul li.last {
 		background:none;
 		padding:0;
-	}
-		header nav ul li a {
+}
+		header nav ul li a
+{
 			color:#454545;
 			text-decoration:none;
 			display:block;
@@ -432,11 +515,12 @@ header nav {
 			padding:18px 0 20px 0;
 			background-repeat:no-repeat;
 			background-position:left top;
-		}
+}
 		header nav ul li.current a,
 		header nav ul li a:hover {
 			color:#008cc4;
-		}
+		
+}
 		header nav ul li a.m1 {
 			width:186px;
 		}

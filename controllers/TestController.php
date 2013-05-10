@@ -18,6 +18,42 @@ class TestController {
 	{
 		require_once(SITE_PATH."/views/userheader.php");
 	}
+	/* 
+	 * 
+	 * created by-------Mohit Gupta
+	 * This function is responsible to save setting  for a test in database.
+	 * These settings are useful when test is started.
+	*/
+	
+	public function handleassignTest()
+	{
+		 
+	
+		require_once './models/Assign.php';
+		$_objCategory = new Assign();
+		 
+		if(method_exists($_objCategory,'AssignTest'))
+		{
+			$returnValue = $_objCategory->AssignTest(); // call the addCategory of Category.php
+			if($returnValue )
+			{
+				die("Test assigned Sucessfully.");
+			}
+			else
+			{
+				die("Test not assigned.Check it out.");
+			}
+		}
+		else
+		{
+			die("Method ". $methodName." doesn't exist ");
+		}
+	}
+	
+	
+	
+	
+	
 	/********** This function is responsible for uploading csv file onto database.
 	It returns error message to the view page in case of inappropriate format in csv file in any line*************/ 
 	function upload() 
