@@ -70,9 +70,16 @@ google.setOnLoadCallback(load);
 									<ul class="follow">
 										<li>
 											<a href="followed.html">Categories</a>
+											
 										</li>
 										<li>
 											<a href="followed.html">Question Bank</a>
+											<ul>
+							<li><a href="javascript:void(0)" onclick="views/createtest.php">Add questions one by one</a></li>
+							<li><a href="views/upload.php">Add questions in bulk</a></li>
+							
+						</ul>
+											
 										</li>
 										<li>
 											<a href="followed.html">My Test</a>
@@ -88,11 +95,23 @@ google.setOnLoadCallback(load);
 					
 									</ul>
 									</li>
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
 							<li class="current">
 									<a href="followed.html">Assign</a>
 									<ul class="follow">
 										<li>
 											<a href="followed.html">Assign</a>
+											
 										</li>
 										<li>
 											<a href="followed.html">View Assign Test</a>

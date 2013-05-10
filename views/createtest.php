@@ -7,7 +7,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Create Test</title>
 <script language="javascript">
+var i=0;
 $(document).ready(function() {
+	
 	$('#category').load('../index.php?controller=TestController&method=selectCategory', function(data) {
 		$("#category").html($.trim(data));
 		
@@ -29,21 +31,22 @@ $(document).ready(function() {
 
         }
         function addRow() {
-$("#ques").append('<tr><td><textarea rows="1" name="opt[]" cols="10"></textarea></td><td><input type="radio" name="qoption[]"/></td><td><a href="javascript:void(0)" onclick="removerow()"><img src="../assets/images/delete1.png" height="34px" alt="halo"/></a></td></tr>');
+            i ++;
+$("#ques").append('<div id='+i+'><tr><td><textarea rows="1" name="opt[]" cols="10"></textarea></td><td><input type="radio" name="opt[]"/></td><td><a href="javascript:void(0)" onclick="removerow()"><img src="../assets/images/delete1.png" height="34px" alt="halo"/></a></td></tr></div>');
 
         }
         function addMore() { 
         	$("#more").show();
         	        }
-        function removerow() { 
-        	
+        function removerow(i) { 
+        	alert(i);
         	        }
        
         </script>
 </head>
 <body id="createtestbody">
 <div></div>
-
+<form action="../index.php?controller=TestController&method=createQues" method="post">
 <h2>Create Test</h2>
 Name:<br/> 
 <input type="text" name="name" id="name" size="10"><br/>
@@ -68,7 +71,7 @@ Category <select name="category" id="category">
 		
 		<tr>
 			<td>Question Type</td>
-			<td><select><option>multiple choice</option>
+			<td><select name="questype"><option>multiple choice</option>
 					    <option>true/false</option>
 					    <option>Quiz/Practicle</option>
 					    </select></td>
@@ -92,6 +95,6 @@ Category <select name="category" id="category">
 	<INPUT type="submit" class="btn" value="submit" />
 	<INPUT type="button" class="btn" value="Add More Questions" onclick="addMore()" />
 	</div>
-	
+	<?php if(isset($_REQUEST['cid'])) echo $_REQUEST['cid'];?>
 </body>
 </html>

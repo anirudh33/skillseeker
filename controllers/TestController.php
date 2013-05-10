@@ -18,43 +18,6 @@ class TestController {
 	{
 		require_once(SITE_PATH."/views/userpage.php");
 	}
-	/* 
-	 * 
-	 * created by-------Mohit Gupta
-	 * This function is responsible to save setting  for a test in database.
-	 * These settings are useful when test is started.
-	*/
-
-	
-	public function handleassignTest()
-	{
-		 
-	
-		require_once './models/Assign.php';
-		$_objCategory = new Assign();
-		 
-		if(method_exists($_objCategory,'AssignTest'))
-		{
-			$returnValue = $_objCategory->AssignTest(); // call the addCategory of Category.php
-			if($returnValue )
-			{
-				die("Test assigned Sucessfully.");
-			}
-			else
-			{
-				die("Test not assigned.Check it out.");
-			}
-		}
-		else
-		{
-			die("Method ". $methodName." doesn't exist ");
-		}
-	}
-	
-	
-	
-	
-	
 	/********** This function is responsible for uploading csv file onto database.
 	It returns error message to the view page in case of inappropriate format in csv file in any line*************/ 
 	function upload() 
@@ -195,11 +158,40 @@ class TestController {
         //print_r($a);die;
         //die($a);
     }	
-	public function showView($pageName="userPage") {
-		//$lang = Language::getinstance ();
-		
-		require_once SITE_PATH."/views/container.php";
-	}
-	
+    function createQues() {
+        echo "<pre>";
+        print_r($_POST);
+        $objcsvModel=new csvModel();
+        $opArray=$_POST['opt'];
+        if(!in_array("on",$opArray)) {
+            header("Location:".SITE_URL."/views/createtest.php?cid='plz check value'");
+        }
+        if($_POST['questype']=="objective") {
+            $quesType=2;
+        }
+        else {
+            $quesType=1;
+        }
+        for($i=0;$i<count($_POST['opt']);$i++) {
+           if($_POST['opt'][$i]=="on") {
+               $ans=$_POST['opt'][$i-1];
+           } 
+          }
+          $condition=array('category_id'=>$_POST['category'],'question_name'=>$_POST['question'],'answer'=>$ans,'question_type'=>$quesType,'status'=>'1','created_on'=>date('Y-m-d h:i:s', time()));
+          $objcsvModel->insert("question_bank",$condition);
+          $coloumn=array("id");
+          $condition=array("question_name",$_POST['question']);
+          $result=$objcsvModel->select("question_bank",$coloumn,$condition);
+          
+          $qid=$result[0]['id'];
+          
+          for($i=0;$i<count($_POST['opt']);$i++) {
+              if($_POST['opt'][$i]!="on") {
+                 $condition=array('name'=>$_POST['opt'][$i],'question_id'=>$qid,'created_on'=>date('Y-m-d h:i:s', time()));
+                  $objcsvModel->insert("options",$condition);
+              }
+          }
+          header("Location:".SITE_URL."/views/createtest.php?cid='Your question has been saved'");
+    }
 }
 ?>

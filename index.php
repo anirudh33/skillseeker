@@ -29,7 +29,7 @@ if (isset ( $_REQUEST ['controller'] )) {
 			
 			// Creating object of controller to initiate the process
 			$object = new $_REQUEST ["controller"] ();
-			
+			//print $_REQUEST ["method"];die;
 			if (method_exists ( $object, $_REQUEST ["method"] )) {
 				
 				$object->$_REQUEST ["method"] ();
