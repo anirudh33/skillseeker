@@ -1,4 +1,5 @@
 <?php
+
 /*
     **************************** Creation Log *******************************
     File Name                   -  lang.en.php
@@ -16,8 +17,89 @@ class TestController {
 	
 	public function process()
 	{
-		require_once(SITE_PATH."/views/userpage.php");
+		require_once(SITE_PATH."/views/userheader.php");
 	}
+	/* 
+	 * 
+	 * created by-------Mohit Gupta
+	 * This function is responsible to save setting  for a test in database.
+	 * These settings are useful when test is started.
+	*/
+	
+	public function handleassignTest()
+	{
+		 
+	
+		require_once './models/Assign.php';
+		$_objCategory = new Assign();
+		 
+		if(method_exists($_objCategory,'AssignTest'))
+		{
+			$returnValue = $_objCategory->AssignTest(); // call the addCategory of Category.php
+			if($returnValue )
+			{
+				die("Test assigned Sucessfully.");
+			}
+			else
+			{
+				die("Test not assigned.Check it out.");
+			}
+		}
+		else
+		{
+			die("Method ". $methodName." doesn't exist ");
+		}
+	}
+	
+	
+	public function handleassignLink()
+	{
+			
+	
+		require_once './models/Assign.php';
+		$_objCategory = new Assign();
+			
+		if(method_exists($_objCategory,'assignLink'))
+		{
+			$returnValue = $_objCategory->assignLink(); // call the addCategory of Category.php
+			if($returnValue )
+			{
+				die("Link assigned Sucessfully.");
+			}
+			else
+			{
+				die("Link not assigned.Check it out.");
+			}
+		}
+		else
+		{
+			die("Method ". $methodName." doesn't exist ");
+		}
+	}
+	
+	public function handleFetchLink()
+	{	
+		$value=$_REQUEST['test_id'];
+		require_once './models/Assign.php';
+		$_objCategory = new Assign();
+			
+		if(method_exists($_objCategory,'fetchLink'))
+		{
+			$returnValue = $_objCategory->fetchLink($value);
+			if($returnValue )
+			{
+				die($returnValue['test_link']);
+			}
+		}
+		else
+		{
+			die("Method ". $methodName." doesn't exist ");
+		}
+	}
+	
+	
+	
+	
 	/********** This function is responsible for uploading csv file onto database.
 	It returns error message to the view page in case of inappropriate format in csv file in any line*************/ 
 	function upload() 
@@ -141,57 +223,6 @@ class TestController {
 		}
 
 	}
-    function selectCategory() {
-        $coloumn=array("name","id");
-        $condition=array("1","1");
-        $objcsvModel=new csvModel();
-        $result=$objcsvModel->select("category",$coloumn,$condition);
-        //$cname=$result[0]['name'];
-        //$cid=$result[0]['id'];
-       $a ="";
-        
-        for($i =0 ; $i< count($result) ;$i ++)
-        {
-            $a.="<option value='".$result[$i]['id']."'>".$result[$i]['name'] ."</option>";
-        }
-        die($a);
-        //print_r($a);die;
-        //die($a);
-    }	
-    function createQues() {
-        echo "<pre>";
-        print_r($_POST);
-        $objcsvModel=new csvModel();
-        $opArray=$_POST['opt'];
-        if(!in_array("on",$opArray)) {
-            header("Location:".SITE_URL."/views/createtest.php?cid='plz check value'");
-        }
-        if($_POST['questype']=="objective") {
-            $quesType=2;
-        }
-        else {
-            $quesType=1;
-        }
-        for($i=0;$i<count($_POST['opt']);$i++) {
-           if($_POST['opt'][$i]=="on") {
-               $ans=$_POST['opt'][$i-1];
-           } 
-          }
-          $condition=array('category_id'=>$_POST['category'],'question_name'=>$_POST['question'],'answer'=>$ans,'question_type'=>$quesType,'status'=>'1','created_on'=>date('Y-m-d h:i:s', time()));
-          $objcsvModel->insert("question_bank",$condition);
-          $coloumn=array("id");
-          $condition=array("question_name",$_POST['question']);
-          $result=$objcsvModel->select("question_bank",$coloumn,$condition);
-          
-          $qid=$result[0]['id'];
-          
-          for($i=0;$i<count($_POST['opt']);$i++) {
-              if($_POST['opt'][$i]!="on") {
-                 $condition=array('name'=>$_POST['opt'][$i],'question_id'=>$qid,'created_on'=>date('Y-m-d h:i:s', time()));
-                  $objcsvModel->insert("options",$condition);
-              }
-          }
-          header("Location:".SITE_URL."/views/createtest.php?cid='Your question has been saved'");
-    }
+	
 }
 ?>

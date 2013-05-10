@@ -1,6 +1,7 @@
 <?php
 require_once './libraries/DBconnect.php';
 require_once './libraries/EncryptionDecryption.php';
+require_once './libraries/Mail.php';
 class Assign extends DBConnection {
 	
 		private $_id;
@@ -278,12 +279,46 @@ class Assign extends DBConnection {
 		 		'per_page_question'=>$this->getPer_page_question(),
 		 		'question_order'=>$this->getQuestion_order(),
 		 		'status'=>$this->getStatus(),
-		 		'test_link'=>$test_link,
+		 		'test_link'=>$this->getTest_link(),
 		 		'created_on'=>date('Y-m-d h:i:s', time()));
 		 $this->_db->insert($data['tables'],$insertValue);
 		 return "true";
 	}
 
+	public function fetchLink($test_id)
+	{
+		$this->setTest_id($test_id);
+		$data['columns']	= array('test_link');
+		$data['tables'] = 'test_details';
+		$data['conditions']=array(array('test_id ="'.$this->getTest_id().'"'),true);
+		$result=$this->_db->select($data);
+		$row=$result->fetch(PDO::FETCH_ASSOC);
+		return $row;
+		 
+	}
+	
+
+	public function assignLink()
+	{
+		
+		$mailer = new Mailer();
+		$this->setTest_link($_POST['link']);
+		$email_array=explode(",",$_POST['emails']);
+		$data['tables'] = 'assign_details';
+		 $count=count($email_array);
+		 for($i=0;$i<$count;$i++)
+		 {
+		 $insertValue = array('link'=>$this->getTest_link(),
+		 		'email_address'=>$email_array[$i],'status'=>'1',
+		 		'created_on'=>date('Y-m-d h:i:s', time()));
+		 $this->_db->insert($data['tables'],$insertValue);
+		 $mailer->sendMail($email_array[$i],$this->getTest_link());
+		 }
+		return true;
+			
+	}
+	
+	
 }
 
 ?>
