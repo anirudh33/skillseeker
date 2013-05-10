@@ -5,9 +5,10 @@
 <title>Registration</title>
 <link rel="stylesheet" href="css/style.css" />
 <script type="text/javascript" src="js/jquery.tools.min.js"></script>
-
-
-
+<link rel="stylesheet" href="css/ui.css" />
+<script type="text/javascript" src="js/register.js"></script>
+ <script type="text/javascript" src="js/jquery.timepicker.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/jquery.timepicker.css" />
 
 <script>
 $(document).ready(function()
@@ -15,6 +16,9 @@ $(document).ready(function()
 $('#Registeruser').hide();
 	 $('#Directlink').hide();
 	 $('#Directlink1').hide();
+	 $( "#datepicker" ).datepicker();
+	 $('#basicExample').timepicker();
+	 $('#basicExample1').timepicker();
 	 
 	 
    });
@@ -77,8 +81,10 @@ put your code to show Registered user groups
 <tr><td ><input type="checkbox"/>Email Address</td></tr>
 <tr ></tr>
 <tr><td><h3>Test Availability</h3></td></tr>
+<tr><td>Date:<br/><input type="text" id="datepicker" /></td></tr>
+<tr></tr>
 <tr><td>
-Start Time:<br><input type="datetime" /></td><td>End Time:<input type="datetime" /></td></tr>
+Start Time:<br><input id="basicExample" type="text" class="time" /></td><td>End Time:<input id="basicExample1" type="text" class="time" /></td></tr>
 <tr ></tr>
 <tr><td><h3>Choose what user will see after completion</h3></td></tr>
 <tr ><td><input type="radio" name="name[]">No score, questions or feedback</td></tr>
