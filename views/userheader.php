@@ -70,7 +70,7 @@ google.setOnLoadCallback(load);*/
 									<a href="followed.html">Test</a>
 									<ul>
 										<li>
-											<a href="followed.html">Categories</a>
+											<a href="index.php?controller=TestController&method=handleCategory">Categories</a>
 										</li>
 										<li>
 											<a href="followed.html">Question Bank</a>

@@ -27,8 +27,7 @@
 </head>
 <?php
 if (isset($_SESSION['username'])) {
-	$objSecurity=new Security();
-	$objSecurity->secureMultiLogin($_SESSION['username']);
+
 	if(!isset($_REQUEST['page']))
 	{
 	    header("Location:index.php?controller=TestController&method=process");
@@ -156,7 +155,6 @@ if (isset($_SESSION['username'])) {
       </section>
    </div>
 </div>
-footer
 <footer>
    <div class="container">
       <div class="inside">

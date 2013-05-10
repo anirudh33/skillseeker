@@ -192,7 +192,7 @@ private function fetchUser($username, $password) {
         
         
         $data['tables']		= 'users';
-        $data['columns']	= array('user_name', 'password');
+        $data['columns']	= array('id','user_name', 'password');
         $data['conditions']=array(array('user_name ="'.$this->getUsername ().'"'),true);
         $result=$this->_db->select($data);
         $myResult=array();
@@ -205,7 +205,7 @@ private function fetchUser($username, $password) {
             
             if($myResult[0]['password'] == $password)
             {
-                
+            	$_SESSION['userId']=$myResult[0]['id'];            	
                 return 1;
             }
             else {

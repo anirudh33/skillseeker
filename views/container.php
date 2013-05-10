@@ -47,6 +47,6 @@ else if ($pageName=="userPage")
 		</section>
 	</div>
 	</div>
-<?php
-require_once (SITE_PATH . "/views/footer.php");
-?>
+ <?php
+// require_once (SITE_PATH . "/views/footer.php");
+ ?>

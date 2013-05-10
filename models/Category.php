@@ -111,9 +111,9 @@ class Category extends DBConnection
             //$this->setStatus('A');
             //$status = $this->getStatus();
 	   
-	    $userId = 2;
+	    $userId = 4;
             $status = 'A';
-	    $data['columns'] = array('name');
+	    	$data['columns'] = array('name');
             $data['tables'] = 'category';
             $data['conditions'] = array(array('user_id = '.$userId.' And status ="'.$status.'"'),true);
             $result = $this->_db->select($data);
@@ -122,32 +122,28 @@ class Category extends DBConnection
             {
                 $myResult[] = $row;
             }
-	    echo "<pre>";
-	    print_r($myResult);
-            
             if(count($myResult) > 0)
             {
                 return $myResult;
             }
             else
             {
-                return("No category in database yet");
+                return;
             }
         }
 	 
 	/* function addCategory to add the category in database */
 	public function addCategory()
 	{
-           
-            // $this->setName($_POST['name']);
-            // $categoryName = $this->getName();
-            // $this->setUserId($_SESSION['userId']);
-            // $userId = $this->getUserId();
-            //$this->setStatus('A');
-            //$status = $this->getStatus();
-	    $categoryName="c#";
-	    $userId = 2;
-        $status = "A";
+            $this->setName($_POST['categoryName']);
+            $categoryName = $this->getName();
+            $this->setUserId($_SESSION['userId']);
+            $userId = $this->getUserId();
+            $this->setStatus('A');
+            $status = $this->getStatus();
+	    //$categoryName="c#";
+	    //$userId = 2;
+        //$status = "A";
 	    $data['columns'] = array('name');
             $data['tables'] = 'category';
             $data['conditions'] = array(array('name ="'.$categoryName.'" And user_id = '.$userId.' And status ="'.$status.'"'),true);
@@ -157,9 +153,6 @@ class Category extends DBConnection
             {
                 $myResult[]=$row;
             }
-	    echo "<pre>";
-	    print_r($myResult);
-		 
 	    if(count($myResult) > 0)
             {
 	 	return "error";
