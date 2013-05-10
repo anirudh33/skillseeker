@@ -245,8 +245,6 @@ class Assign extends DBConnection {
 
 	public function AssignTest()
 	{
-		
-		 
 		$this->setTest_id("1");
     	$this->setAdmin_result_type('admin_view_type');
     	$this->setGo_back($_POST['go_back']);

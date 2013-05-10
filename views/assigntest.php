@@ -77,28 +77,28 @@ put your code to show Registered user groups
 <a href="#" onclick="createLink()">Create New Direct link</a>
 </div>
 <div id="Directlink1">
-<form action="#">
+<form action="#" id="assigntestform">
 <table  style="border:1px solid;border-color:black">
 <tr ></tr>
 <tr><td><h3>Choose what admin will see after completion:</h3></td></tr>
-<tr><td ><input type="radio" name="admin_view_type">off</td></tr>
-<tr><td ><input type="radio" name="admin_view_type">Email score only</td></tr>
-<tr><td ><input type="radio" name="admin_view_type">Email score, and incorrectly answered questions only</td></tr>
-<tr><td ><input type="radio" name="admin_view_type">Email score, and all answered questions</td></tr>
+<tr><td ><input type="radio" name="admin_view_type" value="1">off</td></tr>
+<tr><td ><input type="radio" name="admin_view_type" value="2">Email score only</td></tr>
+<tr><td ><input type="radio" name="admin_view_type" value="3">Email score, and incorrectly answered questions only</td></tr>
+<tr><td ><input type="radio" name="admin_view_type" value="4">Email score, and all answered questions</td></tr>
 <tr ></tr>
 <tr><td><h3>Test Availability</h3></td></tr>
 <tr><td>
 Start Time:<br><input type="datetime" name="start_time"/></td><td> Link Expiration Time:<input type="datetime" name="expire_time" /></td></tr>
 <tr ></tr>
 <tr><td><h3>Choose what user will see after completion</h3></td></tr>
-<tr ><td><input type="radio" name="user_result_type">No score, questions or feedback</td></tr>
-<tr ><td><input type="radio" name="user_result_type">Score only</td></tr>
-<tr ><td><input type="radio" name="user_result_type">Score, questions and chosen answers</td></tr>
-<tr ><td><input type="radio" name="user_result_type">Score, questions, chosen answers and show correct answers</td></tr>
+<tr ><td><input type="radio" name="user_result_type" value="1">No score, questions or feedback</td></tr>
+<tr ><td><input type="radio" name="user_result_type" value="2">Score only</td></tr>
+<tr ><td><input type="radio" name="user_result_type" value="3">Score, questions and chosen answers</td></tr>
+<tr ><td><input type="radio" name="user_result_type" value="4">Score, questions, chosen answers and show correct answers</td></tr>
 <tr ></tr>
 <tr><td><h3>Give questions in random order</h3></td></tr>
-<tr ><td><input type="radio" name="random">Off</td></tr>
-<tr ><td><input type="radio" name="random">On</td></tr>
+<tr ><td><input type="radio" name="random" value="S">Off</td></tr>
+<tr ><td><input type="radio" name="random" value="R">On</td></tr>
 <tr ></tr>
 <tr><td><h3>Number of questions to be displayed per page</h3></td></tr>
 <tr><td><select name="number_of_question">
@@ -119,14 +119,14 @@ Start Time:<br><input type="datetime" name="start_time"/></td><td> Link Expirati
 <tr><td><h3>Test Duration</h3></td><td><input type="number"  name="test_duration"> </td></tr>
 <tr ></tr>
 <tr><td><h3>Allow users to go back during test</h3></td></tr>
-<tr ><td><input type="radio" name="go_back">Off</td></tr>
-<tr ><td><input type="radio" name="go_back">On</td></tr>
+<tr ><td><input type="radio" name="go_back" value="0">Off</td></tr>
+<tr ><td><input type="radio" name="go_back" value="1">On</td></tr>
 <tr ></tr>
 <tr><td><h3>Set The Passing Marks</h3></td><td><input type="number" name="passing_marks" > </td></tr>
 <tr ></tr>
 <tr><td><h3>Show 'Brief test settings' before each test starts</h3></td></tr>
-<tr ><td><input type="radio" name="instruction">Off</td></tr>
-<tr ><td><input type="radio" name="instruction">On</td></tr><tr ></tr>
+<tr ><td><input type="radio" name="instruction" value="0">Off</td></tr>
+<tr ><td><input type="radio" name="instruction" value="1">On</td></tr><tr ></tr>
 <tr><td><input type="button" value="save" class="btn" onclick="assignTest()"></td></tr>
 </table>
 
