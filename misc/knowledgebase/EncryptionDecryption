@@ -1,0 +1,21 @@
+how to use
+
+require once the class
+
+then following code
+$obj = new EncryptionDecryption();
+$a=123;//test number
+$b="2013-05-10 10:36:35";// test start time
+$tmp = $obj->encode($a.'@'.$b);
+//$tmp = $obj->decode('hello');
+
+
+echo $tmp;
+
+$tmp1 = $obj->decode($tmp);
+
+echo "</br>".$tmp1;
+
+
+
+NOTE : plz use the stated format as being defined earlier in $a and $b with seprated by '@'
