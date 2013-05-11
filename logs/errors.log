@@ -638,3 +638,123 @@
 [10-May-2013 07:32:47 UTC] PHP Notice:  Undefined index: DOMAIN_PATH in /var/www/skillseeker/trunk/controllers/MainController.php on line 142
 [10-May-2013 10:15:46 UTC] PHP Warning:  PDO::query() [<a href='pdo.query'>pdo.query</a>]: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '*) VALUES ()' at line 1 in /var/www/skillseeker/trunk/libraries/PDO/cxpdo.php on line 62
 [10-May-2013 10:15:46 UTC] PHP Warning:  file_get_contents(./tmp/priya1.khatnani.txt) [<a href='function.file-get-contents'>function.file-get-contents</a>]: failed to open stream: No such file or directory in /var/www/skillseeker/trunk/libraries/Security.php on line 26
+[11-May-2013 20:45:03] PHP Fatal error:  Class 'AddTest' not found in /var/www/skillseeker/trunk/index.php on line 31
+[11-May-2013 20:45:04] PHP Fatal error:  Class 'AddTest' not found in /var/www/skillseeker/trunk/index.php on line 31
+[11-May-2013 20:45:04] PHP Fatal error:  Class 'AddTest' not found in /var/www/skillseeker/trunk/index.php on line 31
+[11-May-2013 20:45:07] PHP Fatal error:  Class 'AddTest' not found in /var/www/skillseeker/trunk/index.php on line 31
+[11-May-2013 20:45:07] PHP Fatal error:  Class 'AddTest' not found in /var/www/skillseeker/trunk/index.php on line 31
+[11-May-2013 20:45:08] PHP Fatal error:  Class 'AddTest' not found in /var/www/skillseeker/trunk/index.php on line 31
+[11-May-2013 20:45:09] PHP Fatal error:  Class 'AddTest' not found in /var/www/skillseeker/trunk/index.php on line 31
+[11-May-2013 20:45:18] PHP Fatal error:  Class 'AddTest' not found in /var/www/skillseeker/trunk/index.php on line 31
+[11-May-2013 20:45:48] PHP Fatal error:  Class 'AddTest' not found in /var/www/skillseeker/trunk/index.php on line 31
+[11-May-2013 20:59:20] PHP Warning:  require_once(/var/www/skillseeker/trunk/views/createTest.php) [<a href='function.require-once'>function.require-once</a>]: failed to open stream: No such file or directory in /var/www/skillseeker/trunk/controllers/createTestController.php on line 223
+[11-May-2013 20:59:20] PHP Fatal error:  require_once() [<a href='function.require'>function.require</a>]: Failed opening required '/var/www/skillseeker/trunk/views/createTest.php' (include_path='.:/usr/share/php:/usr/share/pear') in /var/www/skillseeker/trunk/controllers/createTestController.php on line 223
+[11-May-2013 21:01:00] PHP Warning:  array_filter() expects parameter 1 to be array, boolean given in /var/www/skillseeker/trunk/controllers/createTestController.php on line 36
+[11-May-2013 22:34:36] PHP Warning:  require_once(/var/www/skillseeker/trunk/views/createttest.php) [<a href='function.require-once'>function.require-once</a>]: failed to open stream: No such file or directory in /var/www/skillseeker/trunk/controllers/createTestController.php on line 223
+[11-May-2013 22:34:36] PHP Fatal error:  require_once() [<a href='function.require'>function.require</a>]: Failed opening required '/var/www/skillseeker/trunk/views/createttest.php' (include_path='.:/usr/share/php:/usr/share/pear') in /var/www/skillseeker/trunk/controllers/createTestController.php on line 223
+[11-May-2013 22:36:14] PHP Warning:  require_once(/var/www/skillseeker/trunk/views/createttest.php) [<a href='function.require-once'>function.require-once</a>]: failed to open stream: No such file or directory in /var/www/skillseeker/trunk/controllers/createTestController.php on line 223
+[11-May-2013 22:36:14] PHP Fatal error:  require_once() [<a href='function.require'>function.require</a>]: Failed opening required '/var/www/skillseeker/trunk/views/createttest.php' (include_path='.:/usr/share/php:/usr/share/pear') in /var/www/skillseeker/trunk/controllers/createTestController.php on line 223
+[11-May-2013 22:38:27] PHP Warning:  require_once(/var/www/skillseeker/trunk/views/createttest.php) [<a href='function.require-once'>function.require-once</a>]: failed to open stream: No such file or directory in /var/www/skillseeker/trunk/controllers/createTestController.php on line 223
+[11-May-2013 22:38:27] PHP Fatal error:  require_once() [<a href='function.require'>function.require</a>]: Failed opening required '/var/www/skillseeker/trunk/views/createttest.php' (include_path='.:/usr/share/php:/usr/share/pear') in /var/www/skillseeker/trunk/controllers/createTestController.php on line 223
+[11-May-2013 22:39:42] PHP Warning:  require_once(../views/createttest.php) [<a href='function.require-once'>function.require-once</a>]: failed to open stream: No such file or directory in /var/www/skillseeker/trunk/controllers/createTestController.php on line 223
+[11-May-2013 22:39:42] PHP Fatal error:  require_once() [<a href='function.require'>function.require</a>]: Failed opening required '../views/createttest.php' (include_path='.:/usr/share/php:/usr/share/pear') in /var/www/skillseeker/trunk/controllers/createTestController.php on line 223
+[11-May-2013 22:41:30] PHP Warning:  require_once(/var/www/skillseeker/trunk/views/createttest.php) [<a href='function.require-once'>function.require-once</a>]: failed to open stream: No such file or directory in /var/www/skillseeker/trunk/controllers/createTestController.php on line 223
+[11-May-2013 22:41:30] PHP Fatal error:  require_once() [<a href='function.require'>function.require</a>]: Failed opening required '/var/www/skillseeker/trunk/views/createttest.php' (include_path='.:/usr/share/php:/usr/share/pear') in /var/www/skillseeker/trunk/controllers/createTestController.php on line 223
+[11-May-2013 22:41:50] PHP Warning:  require_once(/var/www/skillseeker/trunk/views/createttest.php) [<a href='function.require-once'>function.require-once</a>]: failed to open stream: No such file or directory in /var/www/skillseeker/trunk/controllers/createTestController.php on line 223
+[11-May-2013 22:41:50] PHP Fatal error:  require_once() [<a href='function.require'>function.require</a>]: Failed opening required '/var/www/skillseeker/trunk/views/createttest.php' (include_path='.:/usr/share/php:/usr/share/pear') in /var/www/skillseeker/trunk/controllers/createTestController.php on line 223
+[11-May-2013 22:56:24] PHP Notice:  Undefined index: categoryId in /var/www/skillseeker/trunk/controllers/createTestController.php on line 148
+[11-May-2013 22:56:24] PHP Notice:  Undefined index: testId in /var/www/skillseeker/trunk/controllers/createTestController.php on line 149
+[11-May-2013 22:56:24] PHP Notice:  Undefined index: random2 in /var/www/skillseeker/trunk/controllers/createTestController.php on line 177
+[11-May-2013 22:56:24] PHP Warning:  Invalid argument supplied for foreach() in /var/www/skillseeker/trunk/controllers/createTestController.php on line 177
+[11-May-2013 22:56:25] PHP Notice:  Undefined index: random2 in /var/www/skillseeker/trunk/controllers/createTestController.php on line 185
+[11-May-2013 22:56:25] PHP Warning:  Invalid argument supplied for foreach() in /var/www/skillseeker/trunk/controllers/createTestController.php on line 185
+[11-May-2013 22:58:09] PHP Notice:  Undefined index: categoryId in /var/www/skillseeker/trunk/controllers/createTestController.php on line 148
+[11-May-2013 22:58:09] PHP Notice:  Undefined index: testId in /var/www/skillseeker/trunk/controllers/createTestController.php on line 149
+[11-May-2013 22:58:09] PHP Notice:  Undefined index: random2 in /var/www/skillseeker/trunk/controllers/createTestController.php on line 177
+[11-May-2013 22:58:09] PHP Warning:  Invalid argument supplied for foreach() in /var/www/skillseeker/trunk/controllers/createTestController.php on line 177
+[11-May-2013 22:58:09] PHP Notice:  Undefined index: random2 in /var/www/skillseeker/trunk/controllers/createTestController.php on line 185
+[11-May-2013 22:58:09] PHP Warning:  Invalid argument supplied for foreach() in /var/www/skillseeker/trunk/controllers/createTestController.php on line 185
+[11-May-2013 22:58:30] PHP Notice:  Undefined index: categoryId in /var/www/skillseeker/trunk/controllers/createTestController.php on line 148
+[11-May-2013 22:58:30] PHP Notice:  Undefined index: testId in /var/www/skillseeker/trunk/controllers/createTestController.php on line 149
+[11-May-2013 22:58:30] PHP Notice:  Undefined index: random2 in /var/www/skillseeker/trunk/controllers/createTestController.php on line 177
+[11-May-2013 22:58:30] PHP Warning:  Invalid argument supplied for foreach() in /var/www/skillseeker/trunk/controllers/createTestController.php on line 177
+[11-May-2013 22:58:30] PHP Notice:  Undefined index: random2 in /var/www/skillseeker/trunk/controllers/createTestController.php on line 185
+[11-May-2013 22:58:30] PHP Warning:  Invalid argument supplied for foreach() in /var/www/skillseeker/trunk/controllers/createTestController.php on line 185
+[11-May-2013 22:58:32] PHP Notice:  Undefined index: categoryId in /var/www/skillseeker/trunk/controllers/createTestController.php on line 148
+[11-May-2013 22:58:32] PHP Notice:  Undefined index: testId in /var/www/skillseeker/trunk/controllers/createTestController.php on line 149
+[11-May-2013 22:58:32] PHP Notice:  Undefined index: random2 in /var/www/skillseeker/trunk/controllers/createTestController.php on line 177
+[11-May-2013 22:58:32] PHP Warning:  Invalid argument supplied for foreach() in /var/www/skillseeker/trunk/controllers/createTestController.php on line 177
+[11-May-2013 22:58:32] PHP Notice:  Undefined index: random2 in /var/www/skillseeker/trunk/controllers/createTestController.php on line 185
+[11-May-2013 22:58:32] PHP Warning:  Invalid argument supplied for foreach() in /var/www/skillseeker/trunk/controllers/createTestController.php on line 185
+[11-May-2013 22:58:33] PHP Notice:  Undefined index: categoryId in /var/www/skillseeker/trunk/controllers/createTestController.php on line 148
+[11-May-2013 22:58:33] PHP Notice:  Undefined index: testId in /var/www/skillseeker/trunk/controllers/createTestController.php on line 149
+[11-May-2013 22:58:33] PHP Notice:  Undefined index: random2 in /var/www/skillseeker/trunk/controllers/createTestController.php on line 177
+[11-May-2013 22:58:33] PHP Warning:  Invalid argument supplied for foreach() in /var/www/skillseeker/trunk/controllers/createTestController.php on line 177
+[11-May-2013 22:58:33] PHP Notice:  Undefined index: random2 in /var/www/skillseeker/trunk/controllers/createTestController.php on line 185
+[11-May-2013 22:58:33] PHP Warning:  Invalid argument supplied for foreach() in /var/www/skillseeker/trunk/controllers/createTestController.php on line 185
+[11-May-2013 22:58:34] PHP Notice:  Undefined index: categoryId in /var/www/skillseeker/trunk/controllers/createTestController.php on line 148
+[11-May-2013 22:58:34] PHP Notice:  Undefined index: testId in /var/www/skillseeker/trunk/controllers/createTestController.php on line 149
+[11-May-2013 22:58:34] PHP Notice:  Undefined index: random2 in /var/www/skillseeker/trunk/controllers/createTestController.php on line 177
+[11-May-2013 22:58:34] PHP Warning:  Invalid argument supplied for foreach() in /var/www/skillseeker/trunk/controllers/createTestController.php on line 177
+[11-May-2013 22:58:34] PHP Notice:  Undefined index: random2 in /var/www/skillseeker/trunk/controllers/createTestController.php on line 185
+[11-May-2013 22:58:34] PHP Warning:  Invalid argument supplied for foreach() in /var/www/skillseeker/trunk/controllers/createTestController.php on line 185
+[11-May-2013 22:58:39] PHP Notice:  Undefined index: categoryId in /var/www/skillseeker/trunk/controllers/createTestController.php on line 148
+[11-May-2013 22:58:39] PHP Notice:  Undefined index: testId in /var/www/skillseeker/trunk/controllers/createTestController.php on line 149
+[11-May-2013 22:58:39] PHP Notice:  Undefined index: random2 in /var/www/skillseeker/trunk/controllers/createTestController.php on line 177
+[11-May-2013 22:58:39] PHP Warning:  Invalid argument supplied for foreach() in /var/www/skillseeker/trunk/controllers/createTestController.php on line 177
+[11-May-2013 22:58:39] PHP Notice:  Undefined index: random2 in /var/www/skillseeker/trunk/controllers/createTestController.php on line 185
+[11-May-2013 22:58:39] PHP Warning:  Invalid argument supplied for foreach() in /var/www/skillseeker/trunk/controllers/createTestController.php on line 185
+[11-May-2013 23:02:47] PHP Notice:  Undefined index: categoryId in /var/www/skillseeker/trunk/controllers/createTestController.php on line 148
+[11-May-2013 23:02:47] PHP Notice:  Undefined index: testId in /var/www/skillseeker/trunk/controllers/createTestController.php on line 149
+[11-May-2013 23:02:47] PHP Notice:  Undefined index: random2 in /var/www/skillseeker/trunk/controllers/createTestController.php on line 177
+[11-May-2013 23:02:47] PHP Warning:  Invalid argument supplied for foreach() in /var/www/skillseeker/trunk/controllers/createTestController.php on line 177
+[11-May-2013 23:02:47] PHP Notice:  Undefined index: random2 in /var/www/skillseeker/trunk/controllers/createTestController.php on line 185
+[11-May-2013 23:02:47] PHP Warning:  Invalid argument supplied for foreach() in /var/www/skillseeker/trunk/controllers/createTestController.php on line 185
+[11-May-2013 23:04:48] PHP Notice:  Undefined index: categoryId in /var/www/skillseeker/trunk/controllers/createTestController.php on line 148
+[11-May-2013 23:04:48] PHP Notice:  Undefined index: testId in /var/www/skillseeker/trunk/controllers/createTestController.php on line 149
+[11-May-2013 23:04:48] PHP Notice:  Undefined index: random2 in /var/www/skillseeker/trunk/controllers/createTestController.php on line 177
+[11-May-2013 23:04:48] PHP Warning:  Invalid argument supplied for foreach() in /var/www/skillseeker/trunk/controllers/createTestController.php on line 177
+[11-May-2013 23:04:48] PHP Notice:  Undefined index: random2 in /var/www/skillseeker/trunk/controllers/createTestController.php on line 185
+[11-May-2013 23:04:48] PHP Warning:  Invalid argument supplied for foreach() in /var/www/skillseeker/trunk/controllers/createTestController.php on line 185
+[11-May-2013 23:06:56] PHP Notice:  Undefined index: categoryId in /var/www/skillseeker/trunk/controllers/createTestController.php on line 148
+[11-May-2013 23:06:56] PHP Notice:  Undefined index: testId in /var/www/skillseeker/trunk/controllers/createTestController.php on line 149
+[11-May-2013 23:06:56] PHP Notice:  Undefined index: random2 in /var/www/skillseeker/trunk/controllers/createTestController.php on line 177
+[11-May-2013 23:06:56] PHP Warning:  Invalid argument supplied for foreach() in /var/www/skillseeker/trunk/controllers/createTestController.php on line 177
+[11-May-2013 23:06:56] PHP Notice:  Undefined index: random2 in /var/www/skillseeker/trunk/controllers/createTestController.php on line 185
+[11-May-2013 23:06:56] PHP Warning:  Invalid argument supplied for foreach() in /var/www/skillseeker/trunk/controllers/createTestController.php on line 185
+[11-May-2013 23:07:02] PHP Notice:  Undefined index: categoryId in /var/www/skillseeker/trunk/controllers/createTestController.php on line 148
+[11-May-2013 23:07:02] PHP Notice:  Undefined index: testId in /var/www/skillseeker/trunk/controllers/createTestController.php on line 149
+[11-May-2013 23:07:02] PHP Notice:  Undefined index: random2 in /var/www/skillseeker/trunk/controllers/createTestController.php on line 177
+[11-May-2013 23:07:02] PHP Warning:  Invalid argument supplied for foreach() in /var/www/skillseeker/trunk/controllers/createTestController.php on line 177
+[11-May-2013 23:07:02] PHP Notice:  Undefined index: random2 in /var/www/skillseeker/trunk/controllers/createTestController.php on line 185
+[11-May-2013 23:07:02] PHP Warning:  Invalid argument supplied for foreach() in /var/www/skillseeker/trunk/controllers/createTestController.php on line 185
+[11-May-2013 23:07:25] PHP Notice:  Undefined index: categoryId in /var/www/skillseeker/trunk/controllers/createTestController.php on line 148
+[11-May-2013 23:07:25] PHP Notice:  Undefined index: testId in /var/www/skillseeker/trunk/controllers/createTestController.php on line 149
+[11-May-2013 23:07:25] PHP Notice:  Undefined index: random2 in /var/www/skillseeker/trunk/controllers/createTestController.php on line 177
+[11-May-2013 23:07:25] PHP Warning:  Invalid argument supplied for foreach() in /var/www/skillseeker/trunk/controllers/createTestController.php on line 177
+[11-May-2013 23:07:25] PHP Notice:  Undefined index: random2 in /var/www/skillseeker/trunk/controllers/createTestController.php on line 185
+[11-May-2013 23:07:25] PHP Warning:  Invalid argument supplied for foreach() in /var/www/skillseeker/trunk/controllers/createTestController.php on line 185
+[11-May-2013 23:07:31] PHP Notice:  Undefined index: categoryId in /var/www/skillseeker/trunk/controllers/createTestController.php on line 148
+[11-May-2013 23:07:31] PHP Notice:  Undefined index: testId in /var/www/skillseeker/trunk/controllers/createTestController.php on line 149
+[11-May-2013 23:07:31] PHP Notice:  Undefined index: random2 in /var/www/skillseeker/trunk/controllers/createTestController.php on line 177
+[11-May-2013 23:07:31] PHP Warning:  Invalid argument supplied for foreach() in /var/www/skillseeker/trunk/controllers/createTestController.php on line 177
+[11-May-2013 23:07:31] PHP Notice:  Undefined index: random2 in /var/www/skillseeker/trunk/controllers/createTestController.php on line 185
+[11-May-2013 23:07:31] PHP Warning:  Invalid argument supplied for foreach() in /var/www/skillseeker/trunk/controllers/createTestController.php on line 185
+[11-May-2013 23:09:24] PHP Notice:  Undefined index: testName in /var/www/skillseeker/trunk/controllers/createTestController.php on line 147
+[11-May-2013 23:09:24] PHP Notice:  Undefined index: categoryId in /var/www/skillseeker/trunk/controllers/createTestController.php on line 148
+[11-May-2013 23:09:24] PHP Notice:  Undefined index: testId in /var/www/skillseeker/trunk/controllers/createTestController.php on line 149
+[11-May-2013 23:09:24] PHP Notice:  Undefined index: random2 in /var/www/skillseeker/trunk/controllers/createTestController.php on line 177
+[11-May-2013 23:09:24] PHP Warning:  Invalid argument supplied for foreach() in /var/www/skillseeker/trunk/controllers/createTestController.php on line 177
+[11-May-2013 23:09:24] PHP Notice:  Undefined index: random2 in /var/www/skillseeker/trunk/controllers/createTestController.php on line 185
+[11-May-2013 23:09:24] PHP Warning:  Invalid argument supplied for foreach() in /var/www/skillseeker/trunk/controllers/createTestController.php on line 185
+[11-May-2013 23:15:49] PHP Notice:  Undefined index: testName in /var/www/skillseeker/trunk/controllers/createTestController.php on line 147
+[11-May-2013 23:15:49] PHP Notice:  Undefined index: categoryId in /var/www/skillseeker/trunk/controllers/createTestController.php on line 148
+[11-May-2013 23:15:49] PHP Notice:  Undefined index: testId in /var/www/skillseeker/trunk/controllers/createTestController.php on line 149
+[11-May-2013 23:15:49] PHP Notice:  Undefined index: random2 in /var/www/skillseeker/trunk/controllers/createTestController.php on line 177
+[11-May-2013 23:15:49] PHP Warning:  Invalid argument supplied for foreach() in /var/www/skillseeker/trunk/controllers/createTestController.php on line 177
+[11-May-2013 23:15:49] PHP Notice:  Undefined index: random2 in /var/www/skillseeker/trunk/controllers/createTestController.php on line 185
+[11-May-2013 23:15:49] PHP Warning:  Invalid argument supplied for foreach() in /var/www/skillseeker/trunk/controllers/createTestController.php on line 185
+[11-May-2013 23:24:35] PHP Notice:  Undefined index: categories1 in /var/www/skillseeker/trunk/controllers/createTestController.php on line 160
+[11-May-2013 23:24:35] PHP Warning:  Division by zero in /var/www/skillseeker/trunk/controllers/createTestController.php on line 161
+[11-May-2013 23:24:35] PHP Warning:  Division by zero in /var/www/skillseeker/trunk/controllers/createTestController.php on line 162
+[11-May-2013 23:28:00] PHP Warning:  array_filter() expects parameter 1 to be array, boolean given in /var/www/skillseeker/trunk/controllers/createTestController.php on line 36

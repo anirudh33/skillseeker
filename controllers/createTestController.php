@@ -148,7 +148,7 @@ class AddTest
 		$testCategoryId=$_POST['categoryId'];
 		$this->_obj->setId($_REQUEST['testId']);
 		$userId=1;
-		// $testDuration=$_POST['testDuration'];
+// 		$testDuration=$_POST['testDuration'];
 		if(!empty($_POST['random1'])){
 			$totalNoOfquestion=$_POST['random1'];
 			$this->_obj->setName($testName);
@@ -166,7 +166,7 @@ class AddTest
 					
 				$this->_obj->setCategoryId($_POST['categories1'][$i]);
 				$this->_obj->setNoOfQuestions($noOfQues);
-// 				$this->_obj->addTestCategories();
+				$this->_obj->addTestCategories();
 			}
 		
 		
@@ -186,12 +186,12 @@ class AddTest
 					{
 					$this->_obj->setCategoryId($_POST['categories2'][$key]);
 					$this->_obj->setNoOfQuestions($values);
-// 					$this->_obj->addTestCategories();
+					$this->_obj->addTestCategories();
 				}
 		
 				}
 				
-				header('location:./views/createtest.php');
+// 				header('location:./views/createtest.php');
 		
 		
 	}
@@ -217,5 +217,13 @@ class AddTest
 	{    
 		$this->_obj->setId($_REQUEST['testId']);
 		$this->_obj->removeTest();
+	}
+	public function createTestView()
+	{
+		require_once  SITE_PATH.'/views/createtest.php';
+	}
+	public function editTestView()
+	{
+		require_once  SITE_PATH.'/views/managetest.php';
 	}
 }

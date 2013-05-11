@@ -20,6 +20,7 @@ require_once SITE_PATH . '/libraries/Language.php';
 require_once SITE_PATH . '/libraries/Security.php';
 //echo "====".$lang->USERNAME;
 require_once SITE_PATH . '/controllers/MainController.php';
+require_once SITE_PATH . '/controllers/createTestController.php';
 require_once SITE_PATH . '/controllers/TestController.php';
 //echo "i am here";
 /* Method calls from views handled here */
@@ -37,11 +38,12 @@ if (isset ( $_REQUEST ['controller'] )) {
 
 	}
 }
-
+else{
 /* Showing the main view */
 $object = new MainController ();
 
 $object->showView();
+}
 
 ?>
 
