@@ -1,20 +1,27 @@
 <?php
+/*
+ **************************** Creation Log *******************************
+File Name                   -  TestController.php
+Project Name                -  SkillSeeker
+Description                 -  Controller File For test
+Version                     -  1.0
+Created by                  -  Avni Jain
+Created on                  -  May 7, 2013
+***************************** Update Log ********************************
+Sr.NO.		Version		Updated by           Updated on          Description
+1            1.0        Mohit Gupta        	 May 10, 2013        Added Link Manipulation Methods
+2            1.0        Prateek Saini        May 11, 2013        Added Methods for Taking Test 
+-------------------------------------------------------------------------
+*/
 require_once './libraries/EncryptionDecryption.php';
 require_once './libraries/Mail.php';
 
 
-/*
-    **************************** Creation Log *******************************
-    File Name                   -  lang.en.php
-    Project Name                -  ExamGenerator
-    Description                 -  Controller File For test
-    Version                     -  1.0
-    Created by                  -  Avni Jain 
-    Created on                  -  May 03, 2013
-*/
-
 require_once  '/var/www/skillseeker/trunk/libraries/Language.php';
 require_once './models/csvModel.php';
+require_once  SITE_PATH.'/models/createTestModel.php';
+require_once  SITE_PATH.'/models/UserTestResult.php';
+
 class TestController {
 	
 	public function loadView()
@@ -267,41 +274,148 @@ class TestController {
 	        //die($a);
 	}
 	function createQues() {
-	            echo "<pre>";
-	            print_r($_POST);
-	            $objcsvModel=new csvModel();
-	            $opArray=$_POST['opt'];
-	            if(!in_array("on",$opArray)) {
-	                    header("Location:".SITE_URL."/views/createtest.php?cid='plz check value'");
-	                }
-	                if($_POST['questype']=="objective") {
-	                        $quesType=2;
-	                    }
-	                    else {
-	                            $quesType=1;
-	                        }
-	                        for($i=0;$i<count($_POST['opt']);$i) {
-	                               if($_POST['opt'][$i]=="on") {
-	                                       $ans=$_POST['opt'][$i-1];
-	                                   }
-	                                  }
-	                                  $condition=array('category_id'=>$_POST['category'],'question_name'=>$_POST['question'],'answer'=>$ans,'question_type'=>$quesType,'status'=>'1','created_on'=>date('Y-m-d h:i:s', time()));
-	                                  $objcsvModel->insert("question_bank",$condition);
-	                                  $coloumn=array("id");
-	                                  $condition=array("question_name",$_POST['question']);
-	                                  $result=$objcsvModel->select("question_bank",$coloumn,$condition);
-	                        
-	                                  $qid=$result[0]['id'];
-	                        
-	                                  for($i=0;$i<count($_POST['opt']);$i) {
-	                                          if($_POST['opt'][$i]!="on") {
-	                                                 $condition=array('name'=>$_POST['opt'][$i],'question_id'=>$qid,'created_on'=>date('Y-m-d h:i:s', time()));
-	                                                  $objcsvModel->insert("options",$condition);
-	                                              }
-	                                          }
-	                                          header("Location:".SITE_URL."/views/createtest.php?cid='Your question has been saved'");
-	                                    }
-	
-	
+		echo "<pre>";
+		print_r ( $_POST );
+		$objcsvModel = new csvModel ();
+		$opArray = $_POST ['opt'];
+		if (! in_array ( "on", $opArray )) {
+			header ( "Location:" . SITE_URL . "/views/createtest.php?cid='plz check value'" );
+		}
+		if ($_POST ['questype'] == "objective") {
+			$quesType = 2;
+		} else {
+			$quesType = 1;
+		}
+		for($i = 0; $i < count ( $_POST ['opt'] ); $i) {
+			if ($_POST ['opt'] [$i] == "on") {
+				$ans = $_POST ['opt'] [$i - 1];
+			}
+		}
+		$condition = array ('category_id' => $_POST ['category'], 'question_name' => $_POST ['question'], 'answer' => $ans, 'question_type' => $quesType, 'status' => '1', 'created_on' => date ( 'Y-m-d h:i:s', time () ) );
+		$objcsvModel->insert ( "question_bank", $condition );
+		$coloumn = array ("id" );
+		$condition = array ("question_name", $_POST ['question'] );
+		$result = $objcsvModel->select ( "question_bank", $coloumn, $condition );
+		
+		$qid = $result [0] ['id'];
+		
+		for($i = 0; $i < count ( $_POST ['opt'] ); $i) {
+			if ($_POST ['opt'] [$i] != "on") {
+				$condition = array ('name' => $_POST ['opt'] [$i], 'question_id' => $qid, 'created_on' => date ( 'Y-m-d h:i:s', time () ) );
+				$objcsvModel->insert ( "options", $condition );
+			}
+		}
+		header ( "Location:" . SITE_URL . "/views/createtest.php?cid='Your question has been saved'" );
+	}
+    
+     /**
+     * *** This function will be called after user click on start test ****
+     */
+    public function takeTest() {
+        $objcsvModel = new csvModel ();
+        $objUserTestResult = new UserTestResult();
+        
+        $_POST ['firstName'] = 'firstName';
+        $objUserTestResult->setFirstName($_POST ['firstName']);
+        $_POST ['lastName'] = 'lastName';
+        $objUserTestResult->setLastName($_POST ['lastName']);
+        $_POST ['email'] = 'test@1234.com';
+        $objUserTestResult->setEmailAddress($_POST ['email']);
+
+        echo "<pre/>";
+/* This section of code will verify user eligibility
+ * {
+ * 		$coloumn = array("link");
+ * 		$condition=array("email_address = \"$_POST[email]\"");
+ * 		//print_r($condition);
+ * 		//die;
+ * 		$result = $objcsvModel->fetchData("assign_details",$coloumn,$condition);
+ *      if($link == $result['link'] ){
+ *      }
+ * }
+ */
+        $testId = 1;
+        $objUserTestResult->setTestId($testId);
+        $objcreateTestModel = new CreateTest();
+        
+        /* This will fetch all the categories and their question from DB*/
+        $result = $objcreateTestModel->fetchTestQuestionCategories($testId);
+        
+        $objcreateTestModel->setId($testId);        
+        
+        $totalQuestion = $objcreateTestModel->noOfQuestion();
+        $questionCount = 0;
+        $category = array();
+        $categoryQuestionsCount = array();
+        $questions = array();
+        $userQuestions = array();
+        $userQuestionsID = array();
+        $userQuestionsAnswers = array();
+        
+        /* Count the number of questions */
+        foreach($result as $key => $value){
+            $category[] = $value['category_id'];
+            $categoryQuestionsCount[] = $value['no_of_questions'];
+            $questionCount += $value['no_of_questions'];
+        }
+        
+        //print($totalQuestion);
+        
+                
+        if($totalQuestion == $questionCount){
+            $column = array("id","question_name","answer");
+            $inColumn = array("id","name");
+            
+            
+            foreach($category as $key => $value){
+                $condition = array("category_id = $value");
+                $tempQuestions = $objcsvModel->fetchData('question_bank', $column, $condition);
+                
+                foreach($tempQuestions as $inKey => $inValue){
+                    $inCondition = array("question_id = $inValue[id]");
+                    $tempOptions = $objcsvModel->fetchData("options", $inColumn, $inCondition);
+                    shuffle($tempOptions);                    
+                    $tempQuestions[$inKey] += array("options" => $tempOptions); 
+                }
+                
+                shuffle($tempQuestions);
+                $questions[] = $tempQuestions;
+            }
+            
+            foreach($questions as $key => $value ){
+                $userQuestions[] = array_rand($value,$categoryQuestionsCount[$key]);
+            }
+            
+            
+            
+//            $condition = array("category_id = $category[0]");
+//            $questions = $objcsvModel->fetchData('question_bank', $column, $condition);
+
+            foreach($userQuestions as $key => $value){
+                foreach($value as $inKey => $inValue){
+                    $userQuestionsID[] = $questions[$key][$inValue]['id'];
+                    $userQuestionsAnswers[] = $questions[$key][$inValue]['answer'];
+                }
+            }
+            if(count($userQuestionsID) == $totalQuestion){
+                $objUserTestResult->setQuestions( implode(',', $userQuestionsID) );
+                $objUserTestResult->setCorrectAnswers(implode(',', $userQuestionsAnswers));
+                $dateTime = new DateTime();
+                $objUserTestResult->setCreatedOn($dateTime->format("Y-m-d G:i:s"));
+            }
+            $objUserTestResult->insertIntoTest();
+            
+//            print_r($userQuestions);
+//            print_r($userQuestionsID);
+//            print_r($userQuestionsAnswers);
+//            print_r($questions);
+//           print_r($category);
+//           print_r($categoryQuestions);
+//            echo "yes";
+        }
+        
+		print_r($result);
+//		print($questionCount);
+		die;
+	}
 }
-?>

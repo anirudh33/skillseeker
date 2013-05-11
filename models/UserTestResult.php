@@ -10,11 +10,12 @@ Created on                  -  May 10, 2013
 ***************************** Update Log ********************************
 Sr.NO.		Version		Updated by           Updated on          Description
 -------------------------------------------------------------------------
-
+1            1.0        Prateek Saini        May 11, 2013        Added Methods for Taking Test 
 *************************************************************************
 
 */
-class UserTestResult
+require_once './libraries/DBconnect.php';
+class UserTestResult extends DBConnection
 {
     private $_id;
     private $_firstName;
@@ -451,7 +452,20 @@ class UserTestResult
         
         return $userResultArray;
     }
-       
+    
+    public function insertIntoTest(){
+        $insertData = array();        
+        $insertData['first_name'] = $this->getFirstName();
+        $insertData['last_name'] = $this->getLastName();
+        $insertData['email_address'] = $this->getEmailAddress();
+        $insertData['test_id'] = $this->getTestId();
+        $insertData['questions'] = $this->getQuestions();
+        $insertData['correct_answers'] = $this->getCorrectAnswers();
+        $insertData['created_on'] = $this->getCreatedOn();
+//        $insertData[''] =
+        print_r($insertData);
+//         die;
+        $this->_db->insert('user_test_result',$insertData);
+    }
 }
-
 ?>

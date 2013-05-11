@@ -40,7 +40,15 @@ class csvModel extends DBConnection
 		
 		$myResult=array();		
 	}
-
+	public function fetchData($table,$column,$condition)
+	{
+		$data['columns']	= $column;
+		$data['tables']		= $table;
+		$data['conditions'] = array($condition,true);
+		
+		$temp = $this->_db->select($data);		
+		return $temp->fetchAll(PDO::FETCH_ASSOC);
+		
+	}
 }
-
 ?>
