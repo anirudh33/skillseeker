@@ -2,6 +2,33 @@
 <html>
 
 <script language="javascript">
+function submitCreateTest()
+{
+	 $.ajax({
+
+
+         type: "POST",
+         url: "../index.php?controller=AddTest&method=addTestController",                  //the script to call to get data          
+         data: $("#createTest").serialize(),                        //you can insert url argumnets here to pass to api.php for example "id=5&parent=6"
+
+               
+       
+           success: function(data){
+        
+
+
+        
+               
+           },
+           complete: function () {
+         
+           },
+           error: function(){
+               
+           }
+      });
+	
+}
 function showOptions()
 {
 	$("#setRandom").show();
@@ -158,8 +185,7 @@ $("#ques").append('<tr><td><textarea rows="1" cols="10"></textarea></td><td><inp
 	<div id="Alltests"></div>
 
 	<h2>Create Test</h2>
-	<form action="../index.php?controller=AddTest&method=addTestController"
-		method='post'>
+	<form action="#" method='post' id="createTest">
 		Name:<br /> <input type="text" name="testName" id="testName" size="10"
 			onblur="uniqueTestName();"><br /> <br /> Category <select
 			name="categoryId" id="categoryId">
@@ -249,7 +275,7 @@ Questions will display in random order irrespective of their categories<br/>
 			</table>
 			<div id="more" style="display: none;">Add Ajax code here to add more
 				question</div>
-			<INPUT type="submit" class="btn" value="submit" /> <INPUT
+			<INPUT type="button" class="btn" value="submit" onclick="submitCreateTest();" /> <INPUT
 				type="button" class="btn" value="Add More Questions"
 				onclick="addMore()" />
 		</div>
