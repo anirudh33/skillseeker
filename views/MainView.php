@@ -23,7 +23,49 @@ if (isset($_SESSION['User'])) {
     ?>
  });
  </script>
+ <body id="page1">
+<div class="wrap">
+   <!-- header -->
+   <header>
+   
+ <div class="header">
+<img id="osscube" src="<?php echo SITE_URL;?>"/assets/images/osscube.png">
+
  
+  <div class="header1">
+  <a href="#"><img id="icons" src="images/fbicon.png"></a>
+  <a href="#"><img id="icons" src="images/stumble.png"></a>
+    <a href="#"><img id="icons" src="images/twittericon.png"></a>
+     <a href="#"><img id="icons" src="images/linkedin.png"></a>
+     
+      
+     <div class="header2"><h3><a href="#">Hi,User</a>&nbsp;&nbsp;
+     <a href="#"><img id="icons" src="images/settings.png"></a>&nbsp;&nbsp;
+      <a href="#">Logout</a></h3>
+     </div>
+     
+   
+ </div >
+
+
+  </div>
+ 
+      <div class="container">
+          <h1><a href="#">Online Examination</a></h1>
+				<nav>
+					<ul>
+						<li class="current"><a href="" class="m1">Home Page</a></li>
+						<li><a href="#" class="m2" onclick="loadpage('aboutus.html');">About Us</a></li>
+						<li><a href="#" class="m2" onclick="loadpage('faq.html');">FAQ</a></li>
+						<li><a href="#" class="m4" onclick="loadpage('contactus.html');">Contact Us</a></li>
+						<li><a href="#" class="m4" onclick="loadpage('helpus.html');">Help</a></li>
+
+					</ul>
+				</nav>
+
+			</div>
+   </header>
+   <br/>
  
  
  
@@ -125,6 +167,24 @@ if (isset($_SESSION['User'])) {
 		</div>
 	</section>
 </div>
+</div>
+</div>
 
+<footer>
+   <div class="container">
+      <div class="inside">
+         <div class="wrapper">
+      
+            <div class="aligncenter"><h5><span>Website designed by</span> </h5><a rel="nofollow" href="http://www.osscube.com" class="new_window">OSSCube.com</a><br>
+         
+          </div>
+         </div>
+      </div>
+   </div>
+</footer>
+
+<script type="text/javascript"> Cufon.now(); </script>
+</body>
+</html>
 
 <?php } ?>
