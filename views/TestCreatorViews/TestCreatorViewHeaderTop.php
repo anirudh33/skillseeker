@@ -182,7 +182,7 @@ function showTests()
 
 function openPage(str)
 {
-	
+	if(str=="/views/upload.php") {
 	$.ajax({
         type: "POST",
         url: 'index.php?controller=TestController&method=handleUpload',
@@ -205,6 +205,20 @@ function openPage(str)
                 $('#content').html('<h1>NO Page Found</h1>');
             }
         }); */
+	}
+	else {
+		$.ajax({
+	        type: "POST",
+	        url: 'index.php?controller=TestController&method=handleQuesUpload',
+	        //data: $("#idForm").serialize(), // serializes the form's elements.
+	        success: function(data)
+	        {
+	        	$('#content').html(' ');
+	            $('#content').html(data);
+	            //alert(data); // show response from the php script.
+	        }
+	      });
+	}
 }
 
 function load() {
