@@ -35,8 +35,8 @@ en: 'Please supply a valid time',
 fi: 'Virheellinen aika'
 });
     $("#myform").validator({
-position: 'top left',
-offset: [-12, 0],
+position: 'bottom left',
+offset: [-2, 0],
 message: '<div><em/></div>' 
 });
 });

@@ -8,7 +8,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
 
      <link rel="stylesheet" type="text/css" href="../assets/css/style.css" media="all" />
-
+<link rel="stylesheet" type="text/css" href="../assets/css/register.css" media="all" />
     <script type="text/javascript" src="../assets/js/jquery-1.9.1.js"></script>
      <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
  	 <script type="text/javascript" src="../assets/js/registerUser.js"></script>
@@ -17,14 +17,16 @@
 	  <script>
 
 	  $(document).ready(function() {
-	    $("#datepicker").datepicker();
-	    $("#errorfirstname").css("display","none");
+			
+	  
+	    $("#errorfirstname").hide();
 	    $("#errorlastname").css("display","none");
 	    $("#erroremail").css("display","none");
 	    $("#errorusername").css("display","none");
 	    $("#errordisplayname").css("display","none");
 	    $("#errorrepass").css("display","none");
 	    $("#errorpass").css("display","none");
+	    $("#datepicker").datepicker();
 	  });
 	  
 	  </script>
@@ -34,10 +36,7 @@
 <body>
 <div class="container">
 			<!-- freshdesignweb top bar -->
-             <div class="freshdesignweb-top">
-                
-                <div class="clr"></div>
-            </div>
+            
 			<header>
 				<h1>Registration Form </h1>
             </header>       
@@ -45,20 +44,20 @@
     		<form method="post" id="myform" action="index.php?controller=MainController&method=handleRegister"> 
     			<p class="contact"><label for="name">First Name</label></p> 
     			<input id="name" name="first_name" placeholder="firstname" required="required" tabindex="1" type="text" autocomplete="off"> 
-    			 <div id="errorfirstname">your error message here</div>
+    			 <div id="errorfirstname"> fgthgfhjgy</div><br/><br/>
     			 
     			 
     			<p class="contact"><label for="name">Last Name</label></p> 
     			<input id="name" name="last_name" placeholder="lastname" autocomplete="off" required="required" tabindex="1" type="text"> 
-    			  <div id="errorlastname">your error message here</div>
+    			  <div id="errorlastname"></div><br/><br/>
     			  
     			<p class="contact"><label for="email">Email</label></p> 
     			<input id="email" name="email_address" placeholder="example@domain.com"  type="email"> 
-                 <div id="erroremail">your error message here</div>
+                 <div id="erroremail"></div><br/><br/>
                  
                 <p class="contact"><label for="username">Create a username</label></p> 
     			<input id="username"  name="user_name" placeholder="username" required="required" tabindex="2" type="text" minlength="4" maxlength="25"> 
-    			  <div id="errorusername">your error message here</div>
+    			  <div id="errorusername"></div><br/><br/>
     			  
     			 <div id="userresult"></div>
                 
@@ -83,7 +82,7 @@
 								of Baja California</option>
 							<option>UTC+08:00 (HKT)</option>
 							<option>UTC−06:00 — Easter Island</option>
-            </select><br><br>
+            </select><br/><br/>
                 
              <p class="contact"><label for="country">Select Country</label></p>
             <select class="select-style gender" name="country_id" autocomplete="off">
@@ -321,11 +320,11 @@
                 
              <p class="contact"><label for="password">Create a password</label></p> 
     			<input type="password" id="password" name="password" autocomplete="off" required="required" minlength="8" maxlength="25"> 
-                <div id="errorpassword">your error message here</div>
+                <div id="errorpassword"></div><br/><br/>
                 
                 <p class="contact"><label for="repassword">Confirm your password</label></p> 
     			<input type="password" id="repassword" name="repassword" autocomplete="off" required="required" data-equals="password" >    
-               <div id="errorrepassword">your error message here</div>
+               <div id="errorrepassword"></div><br/><br/>
          
          <p>
         <img id="siimage" style="border: 1px solid #000; margin-right: 15px"
@@ -347,7 +346,7 @@
 </p>
      <br/>    
          
-            <input  name="submit" id="submit" tabindex="5"  type="submit" autocomplete="off"> 	 
+            <input  class="buttom" name="submit" id="submit" tabindex="5"  type="submit" autocomplete="off"> 	 
    </form> 
 </div>      
 </div>
