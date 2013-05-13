@@ -52,8 +52,13 @@ class TestController {
 			/*Next 4 lines are used for creating hashed link url*/
 			   
 			$obj_EncryptionDecryption= new EncryptionDecryption();
-			$id=$obj_EncryptionDecryption->encode($this->getTest_id());
-			$time=$obj_EncryptionDecryption->encode($this->getStart_time());
+			$_objCategory->setTest_id("1");
+			$_objCategory->setStart_time($_POST['start_time']);
+			 
+				
+			$id=$obj_EncryptionDecryption->encode($_objCategory->getTest_id());
+			$time=$obj_EncryptionDecryption->encode($_objCategory->getStart_time());
+			
 			$test_link="http://www.skillseeker.com/online-test/start/?id=".$id."&time=".$time;
 			$_POST['test_link']=$test_link; 
 			
@@ -90,11 +95,12 @@ class TestController {
 			$count=count($email_array);
 			for($i=0;$i<$count;$i++)
 			{
-					$mailer->sendMail($email_array[$i],$this->getTest_link());
-			
+				$returnValue = $_objCategory->assignLink($email_array[$i]);
+				$mailer->sendMail($email_array[$i],$_objCategory->getTest_link());
+					 
+							
 			}
 			
-			$returnValue = $_objCategory->assignLink(); // call the addCategory of Category.php
 			if($returnValue )
 			{
 				die("Link assigned Sucessfully.");

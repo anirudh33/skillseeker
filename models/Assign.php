@@ -245,18 +245,16 @@ class Assign extends DBConnection {
 
 	public function AssignTest()
 	{
-		$this->setTest_id("1");
-    	$this->setAdmin_result_type($_POST['admin_view_type']);
+		$this->setAdmin_result_type($_POST['admin_view_type']);
     	$this->setGo_back($_POST['go_back']);
     	$this->setInstruction($_POST['instruction']);
     	$this->setLink_expiration_time($_POST['expire_time']);
     	$this->setPassing_marks($_POST['passing_marks']);
     	$this->setPer_page_question($_POST['number_of_question']);
     	$this->setQuestion_order($_POST['random']);
-    	$this->setStart_time($_POST['start_time']);
     	$this->setStatus('A');
     	$this->setTest_duration($_POST['test_duration']);
-    	$this->setUser_result_type('user_result_type');
+    	$this->setUser_result_type($_POST['user_result_type']);
     	$this->setTest_link($_POST['test_link']);
 		
 		 $data['tables'] = 'test_details';
@@ -291,7 +289,7 @@ class Assign extends DBConnection {
 	}
 	
 
-	public function assignLink()
+	public function assignLink($email)
 	{
 		
 		
@@ -299,13 +297,10 @@ class Assign extends DBConnection {
 		$email_array=explode(",",$_POST['emails']);
 		$data['tables'] = 'assign_details';
 		 $count=count($email_array);
-		 for($i=0;$i<$count;$i++)
-		 {
 		 $insertValue = array('link'=>$this->getTest_link(),
-		 		'email_address'=>$email_array[$i],'status'=>'1',
+		 		'email_address'=>$email,'status'=>'1',
 		 		'created_on'=>date('Y-m-d h:i:s', time()));
 		 $this->_db->insert($data['tables'],$insertValue);
-	 }
 		return true;
 			
 	}
