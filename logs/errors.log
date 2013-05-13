@@ -758,3 +758,4 @@
 [11-May-2013 23:24:35] PHP Warning:  Division by zero in /var/www/skillseeker/trunk/controllers/createTestController.php on line 161
 [11-May-2013 23:24:35] PHP Warning:  Division by zero in /var/www/skillseeker/trunk/controllers/createTestController.php on line 162
 [11-May-2013 23:28:00] PHP Warning:  array_filter() expects parameter 1 to be array, boolean given in /var/www/skillseeker/trunk/controllers/createTestController.php on line 36
+[13-May-2013 03:06:12 UTC] PHP Warning:  PDO::query() [<a href='pdo.query'>pdo.query</a>]: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '8-1-60' for key 'test_question_category_idx' in /var/www/skillseeker/trunk/libraries/PDO/cxpdo.php on line 62
