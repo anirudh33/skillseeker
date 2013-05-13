@@ -12,6 +12,7 @@
     -------------------------------------------------------------------------
 	 1			1.01		Keshi				08/05/2013		added 'INVALID'=>"invalid",
 	 2			1.0			Avni Jain			09/05/2013		added constants for Upload.php,testController.php
+	 3			1.0			Avni jain			13/05/2013		added constant for caretetest.php
     *************************************************************************
 
 */
@@ -63,6 +64,26 @@
                  'DESIGNED'=>"Designed",
                  'OSSCUBECOM'=>"OSSCube.com",
                  'WEBSITE'=>"Website",
+ 				 'ADDONE'=>"Add questions one by one",
+		 		'CATEGORY'=>"Category",
+		 		'INSERTQUES'=>"Insert Question",
+		 		'QUESTION'=>"Question",
+		 		'QUESTIONTYPE'=>"Question Type",
+ 		'MULTIPLECHOICE'=>"multiple choice",
+ 		'TRUEFALSE'=>"true/false",
+ 		'OPTION'=>"Option",
+ 		'ANSWER'=>"Answer",
+ 		'REMOVE'=>"Remove",
+ 		'ADDOPTION'=>"Add Option",
+ 		'SUBMIT'=>"Submit",
+ 		''=>"",
+ 		''=>"",
+ 		''=>"",
+ 		''=>"",
+ 		''=>"",
+ 		''=>"",
+ 		''=>"",
+ 		''=>""
                 );
 ?>
 
