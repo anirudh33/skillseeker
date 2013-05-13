@@ -418,6 +418,88 @@ class User extends DBConnection
         }  
     }
     
+    public function searchUser() {
+    	
+    	$data['columns']	= array('first_name','last_name','email_address');
+    	$data['tables']		= 'user_test_result';
+    	
+    	$data['joins'][] = array(
+    			'table' => 'test',
+    			'type'	=> 'inner',
+    			'conditions' => array('test.user_id' => 'user_id')
+    	);
+    	
+    	$data['joins'][] = array(
+    			'table' => 'test_details',
+    			'type'	=> 'inner',
+    			'conditions' => array('test_details.test_id' => 'test.id')
+    	);
+    	
+		$data['conditions'] = array (array('test.user_id = 1 AND first_name LIKE "%'.$this->_firstName.'%" AND last_name LIKE "%'.$this->_lastName.'%"'),true);
+    	
+    	$result = $this->_db->select($data);
+    	$userResult=array();
+    	
+    	while($row = $result->fetch(PDO::FETCH_ASSOC)) {
+    		$userResult[]=$row;
+    	}
+    	
+    	if($userResult != null)
+    	{
+    		return $userResult;
+    	} else {
+    		$userResult[]="No Records Found";
+    		return $userResult;
+    	}
+    }
     
-    
+    public function getUserResult() {
+    	
+    	$data['joins'][] = array(
+    			'table' => 'test',
+    			'type'	=> 'inner',
+    			'conditions' => array('user_test_result.test_id' => 'test.id')
+    	);
+    	
+    	$data['columns']	= array(
+    							'user_test_result.first_name', 
+    							'user_test_result.last_name',
+    							'user_test_result.email_address',
+    							'user_test_result.test_id',
+    							'user_test_result.marks',
+    							'user_test_result.total_marks',
+    							'test.name',
+    							'test.no_of_questions'
+    						);
+
+    	$data['tables']		= 'test';
+    	
+    	$data['conditions']=array(array('email_address ='.$this->getEmail()),true);
+    	
+    	$result = $this->_db->select($data);
+    	$data;
+    	 
+    	while($row = $result->fetch(PDO::FETCH_ASSOC)) {
+    		$percentage = ($row['marks']/$row['total_marks'])*100;
+    		$data .= "
+    				 	<tr>
+    						<td>{$row['first_name']}</td>
+    						<td>{$row['last_name']}</td>
+    						<td>{$row['name']}</td>
+    						<td>{$percentage}</td>
+    						<td>{$row['marks']}</td>
+    						<td>{$row['no_of_questions']}</td>
+    					</tr>
+    				 ";
+    	}
+    	 
+    	if($data != null)
+    	{
+    		return $data;
+    	} else {
+    		$data .="No Records Found";
+    		return data;
+    	}
+    }
+   
 }

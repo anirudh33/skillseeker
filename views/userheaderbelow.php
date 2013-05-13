@@ -83,7 +83,7 @@
 											<a href="#"><?php echo $lang->BY. " " .$lang->TEST;?></a>
 										</li>
 										<li>
-											<a href="#"><?php echo $lang->SEARCH. " " .$lang->USER;?></a>
+											<a href="index.php?controller=MainController&method=onClickSearch"><?php echo $lang->SEARCH. " " .$lang->USER;?></a>
 										</li>
 										
 									

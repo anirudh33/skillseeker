@@ -174,5 +174,24 @@ class MainController extends AController
 		}
 	}
 	
+	public function handleSearchUser() {
+		$userObj = new User();
+		$userObj->setFirstName($_POST['first_name']);
+		$userObj->setLastName($_POST['last_name']);
+		$result = $userObj->searchUser();
+		$this->showView('/views/SearchUser.php',$result);
+	}
 	
+	public function getUserResult() {
+		$userObj = new User();
+		$userObj->setEmail($_POST['email_address']);
+		$result = $userObj->getUserResult();
+		echo $data;
+	}
+	
+	public function onClickSearch() {
+		$pageName="/views/SearchUser.php";
+		
+		$this->showView($pageName);
+	}
 }

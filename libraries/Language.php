@@ -47,7 +47,4 @@ require_once '/var/www/skillseeker/trunk/languages/lang.'.$langType.".php";
 
 //include_once './languages/lang.'.$langType.".php";
 $lang = new Language($langArr);
-
-//echo '<pre>';
-//print_r($lang);
 ?>
