@@ -9,6 +9,7 @@
 
      <link rel="stylesheet" type="text/css" href="../assets/css/style.css" media="all" />
 <link rel="stylesheet" type="text/css" href="../assets/css/register.css" media="all" />
+<link rel="stylesheet" type="text/css" href="../assets/css/demo.css" media="all" />
     <script type="text/javascript" src="../assets/js/jquery-1.9.1.js"></script>
      <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
  	 <script type="text/javascript" src="../assets/js/registerUser.js"></script>
@@ -41,7 +42,7 @@
                 <div class="clr"></div>
             </div>
 			<header>
-				<h1>Registration Form </h1>
+				<h2 id="registerTag">Registration Form</h2>
             </header>       
       <div  class="form">
     		<form method="post" id="myform" action="index.php?controller=MainController&method=handleRegister"> 
