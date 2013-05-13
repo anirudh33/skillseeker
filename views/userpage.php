@@ -6,26 +6,39 @@
 <meta name="description" content="Place your description here">
 <meta name="keywords" content="put, your, keyword, here">
 <meta name="author" content="Templates.com - website templates provider">
-<link rel="stylesheet" href="<?php echo SITE_URL;?>/assets/css/reset.css" type="text/css" media="all">
-<link rel="stylesheet" href="<?php echo SITE_URL;?>/assets/css/style.css" type="text/css" media="all">
-<link rel="stylesheet" href="<?php echo SITE_URL;?>/assets/css/superfish.css" media="screen">
-<link rel="stylesheet" href="<?php echo SITE_URL;?>/assets/css/newsfeed.css" media="screen">
-<script type="text/javascript" src="<?php echo SITE_URL;?>/assets/js/jquery-1.4.2.min.js" ></script>
-<script type="text/javascript" src="<?php echo SITE_URL;?>/assets/js/cufon-yui.js"></script>
-<script type="text/javascript" src="<?php echo SITE_URL;?>/assets/js/cufon-replace.js"></script>
-<script type="text/javascript" src="<?php echo SITE_URL;?>/assets/js/Myriad_Pro_300.font.js"></script>
-<script type="text/javascript" src="<?php echo SITE_URL;?>/assets/js/Myriad_Pro_400.font.js"></script>
-<script type="text/javascript" src="<?php echo SITE_URL;?>/assets/js/script.js"></script>
+<link rel="stylesheet"
+	href="<?php echo SITE_URL;?>/assets/css/reset.css" type="text/css"
+	media="all">
+<link rel="stylesheet"
+	href="<?php echo SITE_URL;?>/assets/css/style.css" type="text/css"
+	media="all">
+<link rel="stylesheet"
+	href="<?php echo SITE_URL;?>/assets/css/superfish.css" media="screen">
+<link rel="stylesheet"
+	href="<?php echo SITE_URL;?>/assets/css/newsfeed.css" media="screen">
+<script type="text/javascript"
+	src="<?php echo SITE_URL;?>/assets/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript"
+	src="<?php echo SITE_URL;?>/assets/js/cufon-yui.js"></script>
+<script type="text/javascript"
+	src="<?php echo SITE_URL;?>/assets/js/cufon-replace.js"></script>
+<script type="text/javascript"
+	src="<?php echo SITE_URL;?>/assets/js/Myriad_Pro_300.font.js"></script>
+<script type="text/javascript"
+	src="<?php echo SITE_URL;?>/assets/js/Myriad_Pro_400.font.js"></script>
+<script type="text/javascript"
+	src="<?php echo SITE_URL;?>/assets/js/script.js"></script>
 
 
 <script src="js/jquery-1.9.1.min.js"></script>
-		<script src="js/hoverIntent.js"></script>
-		<script src="js/superfish.js"></script>
-		<script src="js/menubar.js"></script>
-		
-		<script type="text/javascript" src="https://www.google.com/jsapi"></script>
-<script src="http://www.google.com/uds/solutions/dynamicfeed/gfdynamicfeedcontrol.js"
-type="text/javascript"></script>
+<script src="js/hoverIntent.js"></script>
+<script src="js/superfish.js"></script>
+<script src="js/menubar.js"></script>
+
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script
+	src="http://www.google.com/uds/solutions/dynamicfeed/gfdynamicfeedcontrol.js"
+	type="text/javascript"></script>
 
 <script type="text/javascript">
 
@@ -206,155 +219,27 @@ google.setOnLoadCallback(load);
 </head>
 
 <body id="page1">
-<div class="wrap">
-   <!-- header -->
-   <header>
- 
-      <div class="container">
-          <h1><a href="#"><?php echo $lang->ONLINE." " .$lang->EXAMINATION;?></a></h1>
-				
-					
-						
-							<ul class="sf-menu" id="example">
-								<li class="current">
-									<a href="#"><?php echo $lang->HOME;?></a>
-									<ul class="follow">
-										<li>
-											<a href="#"><?php echo $lang->PRICING;?></a>
-										</li>
-										<li>
-											<a href="#"><?php echo $lang->FAQ;?></a>
-										</li>
-										<li>
-											<a href="#"><?php echo $lang->CONTACTUS;?></a>
-										</li>
-									</ul>
-									</li>
-							<li class="current">
-									<a href="#">Test</a>
-									<ul class="follow">
-										<li>
-											<a href="javascript:showCategory()" on click="javascript:showCategory()"><?php echo $lang->CATEGORIES;?></a>
-											
-										</li>
-										<li>
-											<a href="#"><?php echo $lang->QUESTION." " .$lang->BANK;?></a>
-											<ul>
-							<li><a href="javascript:void(0)" onclick="openPage('/views/createtest.php')"><?php echo $lang->ADD ." ".$lang->QUESTION." " .$lang->ONE . " " . $lang->BY . " " .$lang->ONE ;?></a></li>
-							<li><a href="javascript:void(0)" onclick="openPage('/views/upload.php')"><?php echo $lang->ADD ." ".$lang->QUESTION." " .$lang->IN . " " . $lang->BULK;?></a></li>
-							
-						</ul>
-											
-										</li>
-										<li>
-											<a href="javascript:void(0)" onclick="showTests();"><?php echo $lang->MY . " " .$lang->TEST;?></a>
-										</li>
-										<li>
-											<a href="#"><?php echo $lang->CERTIFICATES;?></a>
-										</li>
-										<li>
-											<a href="#"><?php echo $lang->CREATE. " " .$lang->TEST;?></a>
-										</li>
-									
-					
-					
-									</ul>
-									</li>
-									
-									
-									
-									
-									
-									
-									
-									
-									
-									
-									
-							<li class="current">
-									<a href="#"><?php echo $lang->ASSIGN;?></a>
-									<ul class="follow">
-										<li>
-											<a href="#"><?php echo $lang->ASSIGN;?></a>
-											
-										</li>
-										<li>
-											<a href="#"><?php echo $lang->VIEW." " .$lang->ASSIGN. " " .$lang->TEST;?></a>
-										</li>
-										
-									
-					
-					
-									</ul>
-									</li>
-			
-						<li class="current">
-									<a href="#"><?php echo $lang->RESULT;?></a>
-									<ul class="follow">
-										<li>
-											<a href="#"><?php echo $lang->BY. " " .$lang->TEST;?></a>
-										</li>
-										<li>
-											<a href="#"><?php echo $lang->SEARCH. " " .$lang->USER;?></a>
-										</li>
-										
-									
-					
-					
-									</ul>
-									</li>
-			
-		</ul>
-	
-			</div>
+	<div class="wrap">
+		<!-- header -->
+		<header>
+  <?php include_once 'headertop.php'; ?>
+   <?php include_once 'userheaderbelow.php'; ?>   
    </header>
-   <br/>
-   <div class="container">
-   
-  
-      <!-- aside -->
-			<aside>
-
-				
-				<br />
-				<br />
+		<br />
+		<div class="container">
 
 
-				<h3><?php echo $lang->CATEGORIES;?></h3>
-				<div id="body">
-<div id="feedControl">Loading...</div>
+			<!-- aside -->
+			 <?php include_once 'userdashboard.php'; ?>   
+
+			<br> <br>
+
+		</div>
+   <?php include_once 'footer.php'; ?>
 </div>
 
-			</aside>
-			<!-- content -->
-			 <section id="content">
-         <div id="banner">
-            <h2><?php echo $lang->PROFESSIONAL;?><span><?php echo $lang->ONLINE." " .$lang->EXAMINATION;?><span><?php echo $lang->SINCE2013;?></span></span></h2>
-         </div><div class="ic"></div></section>
-				
-			<br><br>
-<!--       <section id="content"> -->
-<!--          <div id="banner"> -->
-<!--             <h2>Professional <span>Online Examination <span>Since 2013</span></span></h2> -->
-<!--          </div><div class="ic"></div> -->
-        
-<!--       </section> -->
-   </div>
-</div>
-<footer>
-   <div class="container">
-      <div class="inside">
-         <div class="wrapper">
-      
-            <div class="aligncenter"><h5><span><?php echo $lang->WEBSITE." " .$lang->DESIGNED ." ".$lang->BY;?></span> </h5><a rel="nofollow" href="http://www.osscube.com" class="new_window"><?php echo $lang->OSSCUBECOM;?></a><br>
-         
-          </div>
-         </div>
-      </div>
-   </div>
-</footer>
 
-<script type="text/javascript"> Cufon.now(); </script>
+	<script type="text/javascript"> Cufon.now(); </script>
 </body>
 <script type="text/javascript">
 function showCategory()
