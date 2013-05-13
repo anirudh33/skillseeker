@@ -17,10 +17,13 @@ require_once './libraries/EncryptionDecryption.php';
 require_once './libraries/Mail.php';
 
 
-require_once  '/var/www/skillseeker/trunk/libraries/Language.php';
+require_once  SITE_PATH.'/libraries/Language.php';
 require_once './models/csvModel.php';
 require_once  SITE_PATH.'/models/createTestModel.php';
 require_once  SITE_PATH.'/models/UserTestResult.php';
+
+
+
 
 class TestController {
 	
@@ -143,12 +146,25 @@ class TestController {
 	It returns error message to the view page in case of inappropriate format in csv file in any line*************/ 
 	function upload() 
 	{
+		if(isset($_SESSION['lang'])){
+			$langType=$_SESSION['lang'];
+		}
+		else
+		{
+			$langType='en';
+		}
+		
+		
+		include './languages/lang.'.$langType.".php";
+		
+		$lang = new Language($langArr);
+		
 		/********************** Creation of Model object that is used for insertion of question onto the database*************/ 
 		$objcsvModel=new csvModel();
 		/********************************** if uploaded file type is csv***********************************************************/
 		if($_FILES['questionbank']['type'] == "text/csv")
 		{
-			//echo $lang->ERROR2;die;
+			
 			if(isset($_FILES['questionbank']) && $_FILES['questionbank']['size'] > 0)
 			{
 				
@@ -167,7 +183,9 @@ class TestController {
 					if($row>0)
 					{
 						$num = count($data);
+						//echo $num;die;
 						if($num==9) {
+							//print "ok";die;
 								$id=htmlentities($data[8]);
 								$ques=htmlentities($data[0]);
 								$opt1=htmlentities($data[1]);
@@ -177,7 +195,7 @@ class TestController {
 								$opt5=htmlentities($data[5]);
 								$ans=htmlentities($data[6]);
 								$type=htmlentities($data[7]);
-								$ansarray=array(1,2,3,4,5); // array for options
+								//$ansarray=array(1,2,3,4,5); // array for options
 								if($type=="objective") {
 									$quesType=2;
 									/*************** check for number of options************/
@@ -186,11 +204,11 @@ class TestController {
 										echo $error;
 										continue;
 									}
-									if(!in_array($ans,$ansarray)) {
+									/*if(!in_array($ans,$ansarray)) {
 										$error.="$lang->ERROR7.".$row;
 										echo $error;
 										continue;
-									}
+									}*/
 								}
 								else if($type=="true/false") {
 									$quesType=1;
@@ -210,8 +228,8 @@ class TestController {
 									$error.="$lang->ERROR5.".$row;
 									continue;
 								}
-								$coloumn=array(name,id);
-								$condition=array(id,$id);
+								$coloumn=array("name","id");
+								$condition=array("id",$id);
 								/************* geeting the category id by using model select function*******************/
 								$result=$objcsvModel->select("category",$coloumn,$condition);
 								$cname=$result[0]['name'];
@@ -220,11 +238,12 @@ class TestController {
 								$condition=array('category_id'=>$cid,'question_name'=>$ques,'answer'=>$ans,'question_type'=>$quesType,'status'=>'1','created_on'=>date('Y-m-d h:i:s', time()));
 								$objcsvModel->insert("question_bank",$condition);
 								
-							$coloumn=array(id);
-							$condition=array(question_name,$ques);
+							$coloumn=array("id");
+							$condition=array("question_name","$ques");
 		 					$result=$objcsvModel->select("question_bank",$coloumn,$condition);
 		 					
 		 					$qid=$result[0]['id'];
+		 					echo $qid;
 							/************inserting the option in database by using model insert function********************/
 		 					$condition=array('name'=>$opt1,'question_id'=>$qid,'created_on'=>date('Y-m-d h:i:s', time()));
 		 					$objcsvModel->insert("options",$condition);
@@ -248,7 +267,7 @@ class TestController {
 							continue;
 						}
 					}
-					$row; //incrementing the number of rows
+					$row++; //incrementing the number of rows
 				}
 			}
 		}
@@ -263,6 +282,7 @@ class TestController {
 
 	}
 	function selectCategory() {
+		echo "djfjksd";
 	    $coloumn=array("name","id");
 	    $condition=array("1","1");
 	    $objcsvModel=new csvModel();
@@ -292,7 +312,7 @@ class TestController {
 		} else {
 			$quesType = 1;
 		}
-		for($i = 0; $i < count ( $_POST ['opt'] ); $i) {
+		for($i = 0; $i < count ( $_POST ['opt'] ); $i++) {
 			if ($_POST ['opt'] [$i] == "on") {
 				$ans = $_POST ['opt'] [$i - 1];
 			}
@@ -305,7 +325,7 @@ class TestController {
 		
 		$qid = $result [0] ['id'];
 		
-		for($i = 0; $i < count ( $_POST ['opt'] ); $i) {
+		for($i = 0; $i < count ( $_POST ['opt'] ); $i++) {
 			if ($_POST ['opt'] [$i] != "on") {
 				$condition = array ('name' => $_POST ['opt'] [$i], 'question_id' => $qid, 'created_on' => date ( 'Y-m-d h:i:s', time () ) );
 				$objcsvModel->insert ( "options", $condition );

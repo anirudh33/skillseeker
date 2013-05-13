@@ -22,7 +22,7 @@ class Security
     public function secureMultiLogin($userLoginId)
     {
         $SID=$_COOKIE['PHPSESSID'];
-        $fileName="./tmp/".$userLoginId.".txt";
+        $fileName="./tmp/".str_replace(" ","",$userLoginId).".txt";
 	     if($data=file_get_contents($fileName))
 			{
 				if($data != md5($SID))
@@ -45,13 +45,18 @@ class Security
     public function logSessionId($userLoginId)
     {
     	$SID=$_COOKIE['PHPSESSID'];
-    	$fileName="./tmp/".$userLoginId.".txt";
+    	$fileName="./tmp/".str_replace(" ","",$userLoginId).".txt";
     	if (file_exists($fileName)) {
     		unlink($fileName);
     	}
-    	$file=fopen($fileName,"a");	//mutiple login save
+    	$file=fopen($fileName,"a");	//Log session id of the users
     	fwrite($file,md5($SID));
     	fclose($file);
+    }
+    
+    public function secureMultipleRegister()
+    {
+    	
     }
     
     
