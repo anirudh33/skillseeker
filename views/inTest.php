@@ -4,17 +4,20 @@
 <link rel="stylesheet" href="css/style.css" />
 <script type="text/javascript" src="../misc/prototypes/html/js/jquery-1.9.1.min.js"></script>
 <script type="text/javascript">
-function startTest(){
+$("#questionDisplay").ready(function(){
 	$.ajax({
 		url : "../index.php?controller=TestController&method=getQuestion",
 		type: "post",
 		data: $("#startTestForm").serialize(),
 		success : function(data){
-			
-			$("body").html(data);
+			data = jQuery.parseJSON(data);
+			$.each(data,function(i, value){
+				
+				alert(value);
+			});			
 		}
 		});
-}
+});
 </script>
 </head>
 <body>

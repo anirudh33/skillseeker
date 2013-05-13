@@ -463,17 +463,18 @@ class TestController extends AController {
 //        $file_handler = fopen("inTest.php","r");
 		$_SESSION['allQuestions'] = $userFinalQuestions;
 		
-		$this->showView("/views/inTest.php","",TRUE,TRUE);
+		$this->showView("/views/inTest.php","",FALSE,FALSE);
 		
         //$file_contents = file_get_contents(SITE_PATH."/views/inTest.php");
         
         //echo $file_contents;
 		//print_r($result);
 //		print($questionCount);
-		die;
+//		die;
 	}
-	public function getQuestioin(){
-		
+	public function getQuestion(){
+		$userFinalQuestions = $_SESSION['allQuestions'];
+		echo json_encode($userFinalQuestions[0]);
 	}
 	public function handleUpload()
 	{
