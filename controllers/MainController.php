@@ -104,7 +104,11 @@ class MainController
 	
 		require_once SITE_PATH."/views/container.php";
 	}
-	
+	public function onStartTestClick(){
+		$pageName="giveTest";
+		
+		require_once SITE_PATH."/views/container.php";		
+	}
 	
 	
 	/*

@@ -37,6 +37,11 @@ else if ($pageName=="userPage")
     require_once(SITE_PATH."/views/userpage.php");
    
    
+}else if ($pageName=="giveTest")
+{
+    require_once(SITE_PATH."/views/testStart.php");
+   
+   
 } else {
 	die ();
 }

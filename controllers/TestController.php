@@ -337,6 +337,7 @@ class TestController {
      /**
      * *** This function will be called after user click on start test ****
      */
+
     public function takeTest() {
         $objcsvModel = new csvModel ();
         $objUserTestResult = new UserTestResult();
