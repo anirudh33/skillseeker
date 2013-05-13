@@ -54,7 +54,7 @@ $("#ques").append('<div id='+i+'><tr><td><textarea rows="1" name="opt[]" cols="1
    			
   		     type: "POST",
   		     url: './index.php?controller=TestController&method=createQues',                  //the script to call to get data          
-  		     data: {$("#ques").serialize() } ,                        //you can insert url argumnets here to pass to api.php for example "id=5&parent=6"
+  		     data: $("#ques").serialize()  ,                        //you can insert url argumnets here to pass to api.php for example "id=5&parent=6"
 
   		           
   		     complete: function () {
