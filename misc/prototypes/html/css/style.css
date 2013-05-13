@@ -718,15 +718,19 @@ footer .aligncenter {
 }
 .faqdiv1
 {
+	margin-top:100px;
 	height: 100px;
 	width: 600px;
-
+margin-left: 50px;
+	
 }
 .faqdiv2
 {
 	height:500px;
 	width: 100px;
 	float: left;
+	margin-left: 50px;
+	
 }
 .faqdiv3
 {
@@ -2955,6 +2959,9 @@ input.btTxt {
 	padding: 15px 10px 0 0;
 	color: #000;
 	width: auto
+}
+.bodycolorstyle{
+	background-color:#FAF3F3 ;
 }
 
 button.link {
