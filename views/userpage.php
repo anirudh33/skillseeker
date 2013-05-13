@@ -27,7 +27,144 @@
 <script src="http://www.google.com/uds/solutions/dynamicfeed/gfdynamicfeedcontrol.js"
 type="text/javascript"></script>
 
+<script type="text/javascript">
 
+function editTest(testId)
+{		
+	 $.ajax({
+
+		
+	     type: "POST",
+	     url: '../index.php?controller=AddTest&method=editTestView',                  //the script to call to get data          
+	     data: "testId="+testId ,                        //you can insert url argumnets here to pass to api.php for example "id=5&parent=6"
+
+	           
+	     complete: function () {
+		     
+	       },
+	       error: function(){
+	           
+	       },
+	       success: function(data){
+	
+		$("#content").html(data);
+
+  	    	
+    	                	       }, 
+
+	       });
+}
+function createTest()
+{		 $("#content").html("");
+	$.ajax({
+
+
+	     type: "POST",
+	     url: '../index.php?controller=AddTest&method=createTestView',                  //the script to call to get data          
+	     data: "userId=1" ,                        //you can insert url argumnets here to pass to api.php for example "id=5&parent=6"
+	 
+	           
+	     complete: function () {
+		     
+	       },
+	       error: function(){
+	           
+	       },
+	       success: function(data){
+	    	  
+	     	$("#content").append(data);
+	       }, });
+	
+}
+
+function deleteTest(testId)
+{
+		
+	 $.ajax({
+
+
+	     type: "POST",
+	     url: '../index.php?controller=AddTest&method=deleteTest',                  //the script to call to get data          
+	     data: "testId="+testId ,                        //you can insert url argumnets here to pass to api.php for example "id=5&parent=6"
+
+	           
+	     complete: function () {
+		     
+	       },
+	       error: function(){
+	           
+	       },
+	       success: function(data){
+	    	   showTests();
+//   	    	 $("#random1").val(data);
+  	    	
+    	                	       }, 
+
+	       });
+}
+function createTest()
+{		 $("#content").html("");
+	$.ajax({
+
+
+	     type: "POST",
+	     url: '../index.php?controller=AddTest&method=createTestView',                  //the script to call to get data          
+	     data: "userId=1" ,                        //you can insert url argumnets here to pass to api.php for example "id=5&parent=6"
+	 
+	           
+	     complete: function () {
+		     
+	       },
+	       error: function(){
+	           
+	       },
+	       success: function(data){
+	    	  
+	     	$("#content").append(data);
+	       }, });
+	
+}
+function showTests()
+{
+	alert("hi");
+	$.ajax({
+
+
+	     type: "POST",
+	     url: '../index.php?controller=AddTest&method=fetchAlltests',                  //the script to call to get data          
+	     data: "userId=1" ,                        //you can insert url argumnets here to pass to api.php for example "id=5&parent=6"
+	 
+	           
+	     complete: function () {
+		     
+	       },
+	       error: function(){
+	           
+	       },
+	       success: function(data){
+	    	   $("#content").html("");
+ 	     	var resp=jQuery.parseJSON(data)
+        
+       $.each(resp, function(key,val) {
+
+    	  			if(key%2==0)
+				$("#content").append("<li><h3>"+val+"</h3></li>");
+    	  			else{
+    	  				var testId="";
+        	  		 testId+="<a href='#' onclick='editTest(";
+        	  		 testId+=val+")'>Edit</a><a href='#' onclick='deleteTest("+val+")' style='margin:10px 0px 10px 10px;'>Delete</a>";
+      
+           $("#content").append(testId);
+         
+    	  			}
+              });
+  	       $("#content").append("<br/><a href='#' onclick='createTest();'>Create New Test</a>");
+            
+	       }, });
+	
+} 
+
+</script>
 <script type="text/javascript">
 
 function openPage(str)
@@ -110,7 +247,7 @@ google.setOnLoadCallback(load);
 											
 										</li>
 										<li>
-											<a href="followed.html">My Test</a>
+											<a href="javascript:void(0)" onclick="showTests();">My Test</a>
 										</li>
 										<li>
 											<a href="followed.html">Certificates</a>
