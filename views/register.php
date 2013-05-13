@@ -46,27 +46,27 @@
             </header>       
       <div  class="form">
     		<form method="post" id="myform" action="index.php?controller=MainController&method=handleRegister"> 
-    			<p class="contact"><label for="name">First Name</label></p> 
+    			<p class="contact"><label for="name"><?php echo $lang->FIRSTNAME; ?></label></p> 
     			<input id="name" name="first_name" placeholder="firstname" required="required" tabindex="1" type="text" autocomplete="off"> 
     			 <div id="errorfirstname"> fgthgfhjgy</div><br/><br/>
     			 
     			 
-    			<p class="contact"><label for="name">Last Name</label></p> 
+    			<p class="contact"><label for="name"><?php echo $lang->LASTNAME; ?></label></p> 
     			<input id="name" name="last_name" placeholder="lastname" autocomplete="off" required="required" tabindex="1" type="text"> 
     			  <div id="errorlastname"></div><br/><br/>
     			  
-    			<p class="contact"><label for="email">Email</label></p> 
+    			<p class="contact"><label for="email"><?php echo $lang->EMAIL; ?></label></p> 
     			<input id="email" name="email_address" placeholder="example@domain.com"  type="email"> 
                  <div id="erroremail"></div><br/><br/>
                  
-                <p class="contact"><label for="username">Create a username</label></p> 
+                <p class="contact"><label for="username"><?php echo $lang->USERNAME; ?></label></p> 
     			<input id="username"  name="user_name" placeholder="username" required="required" tabindex="2" type="text" minlength="4" maxlength="25"> 
     			  <div id="errorusername"></div><br/><br/>
     			  
     			 <div id="userresult"></div>
                 
                
-			    <p class="contact"><label for="time zone">Time Zone</label></p>
+			    <p class="contact"><label for="time zone"><?php echo $lang->TIMEZONE; ?></label></p>
             <select class="select-style gender" name="time_zone_id" autocomplete="off">
 <!--             <option value="select">time zone</option> -->
             <option>UTC+05:30 (IST)india</option>
@@ -88,7 +88,7 @@
 							<option>UTC−06:00 — Easter Island</option>
             </select><br/><br/>
                 
-             <p class="contact"><label for="country">Select Country</label></p>
+             <p class="contact"><label for="country"><?php echo $lang->COUNTRY; ?></label></p>
             <select class="select-style gender" name="country_id" autocomplete="off">
 <!--             <option value="select">Country</option> -->
             <option value="United States">United States</option>
@@ -322,11 +322,11 @@
 								<option value="Zimbabwe">Zimbabwe</option>
 								</select></br>
                 
-             <p class="contact"><label for="password">Create a password</label></p> 
+             <p class="contact"><label for="password"><?php echo $lang->PASSWORD; ?></label></p> 
     			<input type="password" id="password" name="password" autocomplete="off" required="required" minlength="8" maxlength="25"> 
                 <div id="errorpassword"></div><br/><br/>
                 
-                <p class="contact"><label for="repassword">Confirm your password</label></p> 
+                <p class="contact"><label for="repassword"><?php echo $lang->REPASSWORD; ?></label></p> 
     			<input type="password" id="repassword" name="repassword" autocomplete="off" required="required" data-equals="password" >    
                <div id="errorrepassword"></div><br/><br/>
          
@@ -344,7 +344,7 @@
 		title="Refresh Image" id ="register_captcha"
 		onclick="document.getElementById('siimage').src = './assets/captcha/securimage_show.php?sid=' + Math.random(); this.blur(); return false"><img
 		src="./assets/captcha/images/refresh.png" alt="Reload Image"
-		align="bottom" border="0"></a><br /> <strong>Enter Code*:</strong><br /><br/>
+		align="bottom" border="0"></a><br /> <strong><?php echo $lang->ENTERCODE; ?></strong><br /><br/>
 	<input type="text" id="captchaText" name="captcha" size="12" maxlength="8" required=""/><br/>
 	<div id="result"></div>
 </p>

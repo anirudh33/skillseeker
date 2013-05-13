@@ -55,6 +55,8 @@ $authType:  Authentication/validation Type (Currently support 26 validation type
 	jpg, gif, bmp, icon, font
 (15) fsize ­ validate file size e.g. fsize=500
 (16) custom   ­ custom validation e.g. custom=/^some regular exp$/ 
+(17) match     to match the two given strings e.g. $match = $value1."#" . $value2;
+                                                  $obj->validator("confirmpassword",$match, 'match','Password does not match');
 	$errorMsg:  Error message to be displayed upon error.
 	Other Functions
 # for internal use...
