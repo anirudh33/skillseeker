@@ -582,12 +582,12 @@ class TestController extends AController {
 			}
 			else
 			{
-				die($returnValue);
+				die(json_encode($returnValue));
 			}
 		}
 		else
 		{
-			echo " Method ". $methodName." doesn't exist ";
+			echo " Method deleteCategory doesn't exist ";
 		}
 	}
 	
@@ -611,7 +611,7 @@ class TestController extends AController {
 		}
 		else
 		{
-			echo " Method ". $methodName." doesn't exist ";
+			echo " Method deleteCategory doesn't exist ";
 		}
 	}
 	

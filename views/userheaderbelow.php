@@ -22,7 +22,7 @@
 									<a href="#">Test</a>
 									<ul class="follow">
 										<li>
-											<a href="javascript:showCategory()" on click="javascript:showCategory()"><?php echo $lang->CATEGORIES;?></a>
+											<a href="javascript:void(0)" onclick="openPage('/views/category.php')"><?php echo $lang->CATEGORIES;?></a>
 											
 										</li>
 										<li>

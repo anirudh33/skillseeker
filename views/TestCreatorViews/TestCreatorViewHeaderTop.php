@@ -206,6 +206,19 @@ function openPage(str)
             }
         }); */
 	}
+	else if(str=="/views/category.php") {
+		$.ajax({
+	        type: "POST",
+	        url: 'index.php?controller=TestController&method=handleCategory',
+	        //data: $("#idForm").serialize(), // serializes the form's elements.
+	        success: function(data)
+	        {
+	        	$('#content').html(' ');
+	            $('#content').html(data);
+	            //alert(data); // show response from the php script.
+	        }
+	      });
+	}
 	else {
 		$.ajax({
 	        type: "POST",

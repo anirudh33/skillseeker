@@ -106,13 +106,13 @@ class Category extends DBConnection
         /* function addCategory to add the category in database */
         public function displayCategory()
         {
-            //$this->setUserId($_SESSION['userId']);
-            //$userId = $this->getUserId();
-            //$this->setStatus('A');
-            //$status = $this->getStatus();
+            $this->setUserId($_SESSION['userId']);
+            $userId = $this->getUserId();
+            $this->setStatus('A');
+            $status = $this->getStatus();
 	   
-	    $userId = 4;
-            $status = 'A';
+// 	    $userId = 4;
+//             $status = 'A';
 	    	$data['columns'] = array('name');
             $data['tables'] = 'category';
             $data['conditions'] = array(array('user_id = '.$userId.' And status ="'.$status.'"'),true);
@@ -171,17 +171,17 @@ class Category extends DBConnection
 	*/
 	public function updateCategory()
 	{
-		// $this->setName($_POST['name']);
-		//$categoryName = $this->getName($_POST['name']);
-		// $this->setUserId($_SESSION['userId']);
-		 //$userId = $this->getUserId();
+		$this->setName($_POST['newCategoryName']);
+		$categoryName = $this->getName($_POST['newCategoryName']);
+		$this->setUserId($_SESSION['userId']);
+		 $userId = $this->getUserId();
 		 
-		// $this->setId($_id);
-		// $id = $this->getId();
-		//$oldCategoryName = $_POST['hiideninputfield'];
-		$oldCategoryName = 'c#';
-		$userId = 2;
-		$categoryName = 'C sharp';
+// 		$this->setId($_id);
+// 		$id = $this->getId();
+		$oldCategoryName = $_POST['oldCategoryName'];
+// 		$oldCategoryName = 'c#';
+// 		$userId = 2;
+// 		$categoryName = 'C sharp';
 		$exist=false;
 		
 		 $data['columns'] = array('id');
@@ -194,9 +194,6 @@ class Category extends DBConnection
 		 {
 		 	$myResult[] = $row;
 		 }
-		 echo "<pre>";
-		 print_r($myResult);
-		 	
 // 		 $this->setId($myResult[0]['id']);
 // 		 $categoryId = $this->getId();
 		 $categoryId = $myResult[0]['id'];
@@ -232,16 +229,16 @@ class Category extends DBConnection
 	*/
 	public function deleteCategory()
 	{
-            // $this->setName($_POST['name']);
-            // $categoryName = $this->getName();
-            // $this->setUserId($_SESSION['userId']);
-            // $userId = $this->getUserId();
-            //$this->setStatus('D');
-            //$status = $this->getStatus();
-             $categoryName='java';
-             $userId =1;
+            $this->setName($_POST['categoryName']);
+            $categoryName = $this->getName();
+            $this->setUserId($_SESSION['userId']);
+            $userId = $this->getUserId();
+            $this->setStatus('D');
+            $status = $this->getStatus();
+//              $categoryName='java';
+//              $userId =1;
+//              $status = 'D';
              $data['tables'] = 'category';
-             $status = 'D';
              $deleteValue = array('status'=>$status);
              $deleteCondition = array('name'=>$categoryName,'user_id'=>$userId);
              $this->_db->update($data['tables'],$deleteValue,$deleteCondition);
