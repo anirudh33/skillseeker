@@ -106,7 +106,7 @@ body {
 {                  
 	width: 340px;
 }
-.recentresult{
+.recentresult{</di
 	background-color: #AACCBB;
 	font-weight: bold;
 	font-size: large;
@@ -358,7 +358,7 @@ fieldset {
 			margin:0;
 		}
 
-
+</di
 /*----- other -----*/
 .img-box { 
 	width:100%; 
@@ -511,7 +511,7 @@ h4 {
 	font-weight:bold;
 }
 
-.link {
+.link {</di
 	position:absolute;
 	right:0;
 	top:159px;
@@ -705,6 +705,16 @@ footer .aligncenter {
 .colorstyle
 {
 	color:#008cc4;
+}
+.quesdiv{
+	height: 400px;
+	width: 600px;
+	margin: 50px 50px 50px 50px;
+}
+.quesdiv1{
+	text-align: center;
+	text-indent: 150px;
+	
 }
 .faqdiv1
 {
