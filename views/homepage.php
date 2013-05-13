@@ -44,6 +44,17 @@ if (isset($_SESSION['username'])) {
 } else {
     ?>
 <script>
+    function homepageview(str)
+    {
+        if(str=="/views/homepage.php")
+        {
+           location.reload();
+        }
+        else
+        {
+    	$('#inside').load(str);
+        }
+    }
  $(document).ready(function() {
 	 
 	 $(".errpass").hide();

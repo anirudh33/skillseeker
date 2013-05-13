@@ -185,7 +185,7 @@ function openPage(str)
 	if(str=="/views/upload.php") {
 	$.ajax({
         type: "POST",
-        url: 'index.php?controller=TestController&method=handleUpload',
+        url: './index.php?controller=TestController&method=loadView&page='+str,
         //data: $("#idForm").serialize(), // serializes the form's elements.
         success: function(data)
         {

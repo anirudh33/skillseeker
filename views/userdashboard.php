@@ -17,4 +17,6 @@
 					</h2>
 				</div>
 				<div class="ic"></div>
+				<div class="inside" id="inside">
+				</div>
 			</section>

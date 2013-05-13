@@ -10,11 +10,11 @@ $('#inside').load(page);
 		</h1>
 		<nav>
 			<ul>
-				<li class="current"><a href="#" class="m1">Home Page</a></li>
-				<li><a href="#" class="m2">About Us</a></li>
-				<li><a href="#" class="m2">FAQs</a></li>
-				<li><a href="#" class="m4" onclick="loadpage('contactus.php')">Contact Us</a></li>
-				<li><a href="#" class="m4">Help</a></li>
+				<li class="current"><a href="#" class="m1" onclick="homepageview('/views/homepage.php')">Home Page</a></li>
+				<li><a href="#" class="m2" onclick="homepageview('/views/aboutus.php')">About Us</a></li>
+				<li><a href="#" class="m2" onclick="homepageview('/views/faq.php')">FAQs</a></li>
+				<li><a href="#" class="m4" onclick="homepageview('/views/contactus.php')">Contact Us</a></li>
+				<li><a href="#" class="m4" onclick="homepageview('/views/helpus.php')">Help</a></li>
 
 			</ul>
 		</nav>
