@@ -20,3 +20,5 @@ $('#inside').load(page);
 		</nav>
 
 	</div>
+	   </header>
+   <br>

@@ -19,7 +19,7 @@
 				<h3>
 					<a href="#">Hi,User</a>&nbsp;&nbsp; <a href="#"><img id="icons"
 						src="<?php echo SITE_URL;?>/assets/images/settings.png"></a>&nbsp;&nbsp;
-					<a href="#">Logout</a>
+					<a href="index.php?controller=TestController&method=logout">Logout</a>
 				</h3>
 			</div>
 

@@ -70,14 +70,21 @@ abstract class AController
      * Starts the processing in every controller with creation of user
      * to showing the respective view
      */
-    public function process ()
-    {
-        $this->createUser();
+//     public function process ()
+//     {
+//         $this->createUser();
         
-        $this->showView();
-    }
+//         $this->showView();
+//     }
 
      /* Shows Views*/
+	/**
+	 * @author anirudh
+	 * @param string $pageName
+	 * @param string $arrPassValue
+	 * @param string $header
+	 * @param string $footer
+	 */
 	public function showView($pageName="/views/homepage.php", $arrPassValue='', $header=true,$footer=true) 
 	{
 		if (isset ( $_SESSION ['lang'] )) {
@@ -89,8 +96,21 @@ abstract class AController
 		$lang = new Language ( $langArr );
 		
 		if ($header == true) {
-		    
+			
+			if (isset ( $_SESSION ['userType'] )) {
+				
+				if ($_SESSION ['userType'] == 'test') {
+					require_once SITE_PATH . '/views/TestCreatorViews/TestCreatorViewHeaderTop.php';
+					require_once SITE_PATH . '/views/headertop.php';
+					require_once SITE_PATH . '/views/userheaderbelow.php';
+				}
+			} else {
+				require_once SITE_PATH . '/views/MainViews/MainViewHeaderTop.php';
+				require_once SITE_PATH . '/views/headertop.php';
+				require_once SITE_PATH . '/views/headerbelow.php';
+			}
 		}
+		
 		if (file_exists ( SITE_PATH . $pageName )) {
 			if (isset ( $arrPassValue )) {
 				$arrData = $arrPassValue;
@@ -98,13 +118,22 @@ abstract class AController
 			require_once SITE_PATH . $pageName;
 		} else {
 			// require_once SITE_PATH."error.php";
-			echo "call error page, file not found:".SITE_PATH . $pageName;
+			echo "call error page, file not found:" . SITE_PATH . $pageName;
 		}
 		
 		if ($footer == true) {
-		    
+			if (isset ( $_SESSION ['userType'] )) {
+				if ($_SESSION ['userType'] == 'test') {
+					require_once SITE_PATH . '/views/footer.php';
+					require_once SITE_PATH . '/views/TestCreatorViews/TestCreatorViewFooter.php';
+				}
+			} else {
+					require_once SITE_PATH . '/views/footer.php';
+					require_once SITE_PATH . '/views/MainViews/MainViewFooter.php';
+				}
+			}
 		}
-	}
+	
 
     /**
      * Invokes UserFactory to create an object of required type
@@ -206,7 +235,7 @@ abstract class AController
     {
 
         session_destroy();
-        header("Location:" . $_SESSION["DOMAIN_PATH"] . "/index.php");
+        header("Location:" . $_SESSION['SITE_PATH'] . "/index.php");
     }
 }
 ?>
