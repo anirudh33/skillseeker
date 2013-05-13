@@ -182,7 +182,7 @@ function showTests()
 
 function openPage(str)
 {
-	
+	if(str=="/views/upload.php") {
 	$.ajax({
         type: "POST",
         url: 'index.php?controller=TestController&method=handleUpload',
@@ -205,7 +205,35 @@ function openPage(str)
                 $('#content').html('<h1>NO Page Found</h1>');
             }
         }); */
-}
+	}
+	else {
+		$.ajax({
+	        type: "POST",
+	        url: 'index.php?controller=TestController&method=handleQuesUpload',
+	        //data: $("#idForm").serialize(), // serializes the form's elements.
+	        success: function(data)
+	        {
+	        	$('#content').html(' ');
+	            $('#content').html(data);
+	            //alert(data); // show response from the php script.
+	        }
+	      });
+	   /*  $.post('index.php',{'controller':'TestController','method':'loadview'},function(data,status){
+	            if(status == "success")
+	            {
+	                $('#content').html(' ');
+	                $('#content').html(data);
+	            }
+	            if(status == "error")
+	            {
+	                $('#content').html('<h1>NO Page Found</h1>');
+	            }
+	        }); */
+		}
+		
+	}
+
+
 
 function load() {
 var feed ="http://feeds.bbci.co.uk/news/world/rss.xml";

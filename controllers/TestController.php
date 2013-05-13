@@ -479,4 +479,8 @@ class TestController extends AController {
 	{
 		$this->showView('/views/upload.php','',false,false);
 	}
+	public function handleQuesUpload()
+	{
+		$this->showView('/views/createtest.php','',false,false);
+	}
 }
