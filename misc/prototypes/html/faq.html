@@ -1,3 +1,40 @@
+<head>
+<link rel="stylesheet" href="css/style.css" />
+<title>Faq page</title>
+<script type="text/javascript" src="js/jquery-1.4.2.min.js" ></script>
+<script type="text/javascript">
+function LoadPageDiv(page)
+{
+	$('#faqdiv').load(page);
+	}
+</script>
+
+</head>
+<body>
+<div class="faqdiv1">
+<form action="#">
 <h2>
-put your code for fetch FAQ.
-</h2>
+Search FAQ / Help</h2>
+<input type="text" size="20"/><br/><br/>
+<input type="button" value="search" class="btn">
+</form>
+</div>
+<div class="faqdiv2">
+<br/>
+<br/>
+<br/>
+
+<ul >
+<li class="instructiontr"><a href="#" onclick="loadpage('');">FAQ</a></li>
+<li class="instructiontr"><a href="#" onclick="loadpage('');">Getting started</a></li>
+<li class="instructiontr"><a href="#" onclick="loadpage('');">Create / edit</a></li>
+<li class="instructiontr"><a href="#" onclick="loadpage('');">Assign tests</a></li>
+<li class="instructiontr"><a href="#" onclick="loadpage('');">Result</a></li>
+<li class="instructiontr"><a href="#" onclick="loadpage('');">Users</a></li>
+<li class="instructiontr"><a href="#" onclick="loadpage('');">Contact Us</a></li>
+</ul>
+</div>
+<div class="faqdiv3" id="faqdiv">
+put your code here
+</div>
+</body>

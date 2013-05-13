@@ -698,9 +698,32 @@ footer .aligncenter {
 	height: 50px;
 	
 }
+.instructiontr1{
+	height: 30px;
+	
+}
 .colorstyle
 {
 	color:#008cc4;
+}
+.faqdiv1
+{
+	height: 100px;
+	width: 600px;
+
+}
+.faqdiv2
+{
+	height:500px;
+	width: 100px;
+	float: left;
+}
+.faqdiv3
+{
+	height:500px;width: 500px;float: left;
+	text-align: justify;
+	text-indent: 50px;
+	margin-top: 20px;
 }
 	
 /*----------------------*/
