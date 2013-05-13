@@ -26,6 +26,31 @@ require_once  SITE_PATH.'/models/UserTestResult.php';
 
 
 class TestController extends AController {
+	/**
+	 *@author debanshu
+	 *View all marks of all the user on basis of test name
+	*/
+	public function fetch(){
+		//print_r($_REQUEST['test_id']);die;
+		//echo "hi";die;
+		require_once './models/ResultUser.php';
+		$objResult = new Result();
+		$objResult->setTestId($_REQUEST['test_id']);
+		$value = $objResult->viewResult();
+		echo json_encode($value);die;
+	}
+	/**
+	 *@author debanshu
+	 *View all the test name that is created by an particular user
+	*/	
+	
+	public function resultView(){
+		require_once './models/ResultUser.php';
+		$objResult = new Result();
+		$objResult->setUserId($_SESSION['userId']);
+		$value = $objResult->ResultUser();
+		echo json_encode($value);die;
+		}
 	
 	public function loadView()
 	{

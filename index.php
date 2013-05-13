@@ -28,13 +28,17 @@ require_once SITE_PATH . '/controllers/TestController.php';
 if (isset ( $_REQUEST ['controller'] )) {
 		
 		if (isset ( $_REQUEST ["method"] )) {
-			
+		
 			// Creating object of controller to initiate the process
 			$object = new $_REQUEST ["controller"] ();
 			//print $_REQUEST ["method"];die;
 			if (method_exists ( $object, $_REQUEST ["method"] )) {
-				
+			
 				$object->$_REQUEST ["method"] ();
+				if($_REQUEST ["method"]=='fetch')
+				{
+					echo $_REQUEST ["method"];
+				}
 			}
 
 	}
