@@ -106,7 +106,23 @@ class CreateTest extends DBConnection
 		 	$temp[]=$values;
 		 return $temp;
 	}
-	
+
+	public function fetchTestQuestionCategories($testId) {
+		$data ['columns'] = array (
+				'category_id',
+				'no_of_questions' 
+		);
+		$data ['tables'] = 'test_question_category';
+		$data ['conditions'] = array (
+				array (
+						'test_id ="' . $testId . '" AND status="1"' 
+				),
+				true 
+		);
+		$result = $this->_db->select ( $data );
+		return $result->fetchAll ( PDO::FETCH_ASSOC );
+	}	
+
 	public function addTest()
 	{
 		$userId=1;

@@ -102,11 +102,10 @@ class MainController extends AController
 		$this->showView($pageName);
 	}
 	public function onStartTestClick(){
-		$pageName="/views/testStart.php";
+		$pageName="giveTest";
 		
 		require_once SITE_PATH."/views/container.php";		
 	}
-	
 	
 	/*
 	 * Shows respective User Panel (Admin/Test taker/Test creator) depending on user type logged in

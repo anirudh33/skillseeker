@@ -353,14 +353,14 @@ class TestController extends AController {
         $objcsvModel = new csvModel ();
         $objUserTestResult = new UserTestResult();
         
-        $_POST ['firstName'] = 'firstName';
+//        $_POST ['firstName'] = 'firstName';
         $objUserTestResult->setFirstName($_POST ['firstName']);
-        $_POST ['lastName'] = 'lastName';
+//        $_POST ['lastName'] = 'lastName';
         $objUserTestResult->setLastName($_POST ['lastName']);
-        $_POST ['email'] = 'test@1234.com';
+//        $_POST ['email'] = 'test@1234.com';
         $objUserTestResult->setEmailAddress($_POST ['email']);
 
-        echo "<pre/>";
+//        echo "<pre/>";
 /* This section of code will verify user eligibility
  * {
  * 		$coloumn = array("link");
@@ -389,6 +389,7 @@ class TestController extends AController {
         $userQuestions = array();
         $userQuestionsID = array();
         $userQuestionsAnswers = array();
+        $userFinalQuestions = array();
         
         /* Count the number of questions */
         foreach($result as $key => $value){
@@ -423,16 +424,16 @@ class TestController extends AController {
             foreach($questions as $key => $value ){
                 $userQuestions[] = array_rand($value,$categoryQuestionsCount[$key]);
             }
-            
-            
-            
+                        
 //            $condition = array("category_id = $category[0]");
 //            $questions = $objcsvModel->fetchData('question_bank', $column, $condition);
 
             foreach($userQuestions as $key => $value){
-                foreach($value as $inKey => $inValue){
+                foreach($value as $inKey => $inValue){                	
                     $userQuestionsID[] = $questions[$key][$inValue]['id'];
                     $userQuestionsAnswers[] = $questions[$key][$inValue]['answer'];
+                    
+                    $userFinalQuestions[] = $questions[$key][$inValue];                    
                 }
             }
             if(count($userQuestionsID) == $totalQuestion){
@@ -441,18 +442,13 @@ class TestController extends AController {
                 $dateTime = new DateTime();
                 $objUserTestResult->setCreatedOn($dateTime->format("Y-m-d G:i:s"));
             }
-            /* Following line will insert user
-             * first name
-             * last name
-             * email
-             * questions allocated
-             * answers
-             * total marks
-             *  
-             */
             $objUserTestResult->insertIntoTest();
-            
+            foreach($userFinalQuestions as $key => $value){
+            	unset($userFinalQuestions[$key]['answer']);
+            }
+//            print_r($userFinalQuestions);
 //            print_r($userQuestions);
+//            die;
 //            print_r($userQuestionsID);
 //            print_r($userQuestionsAnswers);
 //            print_r($questions);
@@ -460,9 +456,19 @@ class TestController extends AController {
 //           print_r($categoryQuestions);
 //            echo "yes";
         }
+//        $file_handler = fopen("inTest.php","r");
+		$_SESSION['allQuestions'] = $userFinalQuestions;
+		
+		$this->showView("/views/inTest.php","",TRUE,TRUE);
+		
+        //$file_contents = file_get_contents(SITE_PATH."/views/inTest.php");
         
-		print_r($result);
+        //echo $file_contents;
+		//print_r($result);
 //		print($questionCount);
 		die;
+	}
+	public function getQuestioin(){
+		
 	}
 }

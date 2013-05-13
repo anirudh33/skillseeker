@@ -463,7 +463,7 @@ class UserTestResult extends DBConnection
         $insertData['correct_answers'] = $this->getCorrectAnswers();
         $insertData['created_on'] = $this->getCreatedOn();
 //        $insertData[''] =
-        print_r($insertData);
+//        print_r($insertData);
 //         die;
         $this->_db->insert('user_test_result',$insertData);
     }

@@ -789,3 +789,4 @@
 [13-May-2013 04:18:54 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /var/www/skillseeker/trunk/libraries/initiateuser.php:165) in /var/www/skillseeker/trunk/libraries/initiateuser.php on line 165
 [13-May-2013 04:18:54 UTC] PHP Warning:  require_once(/var/www/skillseeker/trunk) [<a href='function.require-once'>function.require-once</a>]: failed to open stream: Success in /var/www/skillseeker/trunk/controllers/MainController.php on line 54
 [13-May-2013 04:18:54 UTC] PHP Fatal error:  require_once() [<a href='function.require'>function.require</a>]: Failed opening required '/var/www/skillseeker/trunk' (include_path='.:/usr/share/php:/usr/share/pear') in /var/www/skillseeker/trunk/controllers/MainController.php on line 54
+[13-May-2013 07:12:17 UTC] PHP Fatal error:  Cannot redeclare MainController::onStartTestClick() in /var/www/skillseeker/trunk/controllers/MainController.php on line 109
