@@ -19,8 +19,9 @@ require_once 'models/Registration.php';
 require_once  SITE_PATH.'/models/AModel.php';
 require_once  SITE_PATH.'/libraries/initiateuser.php';
 require_once  SITE_PATH.'/controllers/TestController.php';
+require_once  SITE_PATH.'/controllers/AController.php';
 
-class MainController 
+class MainController extends AController
 {
     private $_objAmodel;
     public function __construct()
@@ -48,7 +49,7 @@ class MainController
             $objSecurity= new Security();
             $objSecurity->logSessionId($username);
             
-            $this->showView ("userPage");
+            $this->showUserPanel();
         }
         else {
             require_once(SITE_PATH);
@@ -88,24 +89,20 @@ class MainController
 		$this->setCustomMessage ( "ErrorMessage", $_message );
 	}
 	
-	 /* Shows Home page */
-	public function showView($pageName="MainPage") {
-		//$lang = Language::getinstance ();
-	    require_once SITE_PATH."/views/container.php";
-	}
+	
 	
 	public function onRegisterClick()  {
-		$pageName="RegisterPage";
+		$pageName="/views/register.php";
 		
-		require_once SITE_PATH."/views/container.php";
+		$this->showView($pageName);
 	}
 	public function onAssigntestClick()  {
-		$pageName="AssignTest";
+		$pageName="/views/assigntest.php";
 	
-		require_once SITE_PATH."/views/container.php";
+		$this->showView($pageName);
 	}
 	public function onStartTestClick(){
-		$pageName="giveTest";
+		$pageName="/views/testStart.php";
 		
 		require_once SITE_PATH."/views/container.php";		
 	}

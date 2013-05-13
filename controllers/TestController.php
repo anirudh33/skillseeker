@@ -25,16 +25,27 @@ require_once  SITE_PATH.'/models/UserTestResult.php';
 
 
 
-class TestController {
+class TestController extends AController {
 	
 	public function loadView()
 	{
 	   // print_r($_REQUEST);die;
 	    require_once(SITE_PATH.$_REQUEST['page']);
-	}
-	public function process()
-	{
-		require_once(SITE_PATH."/views/userpage.php");
+	}	
+	/**
+	 *@author anirudh
+	 *All the after login procedure goes here 
+	 *Currently which panel to show that code goes here
+	 */
+	public function process() {
+		if ($_SESSION ['userType'] == 'test') {
+			
+			$this->showView('/views/userpage.php');			
+		} elseif ($_SESSION ['userType'] == 'TestTaker') {
+			$this->showView('/views/TestTakerMain.php');					
+		} else {
+			$this->showView('/views/AdminPanel.php');
+		}
 	}
 	/* 
 	 * 

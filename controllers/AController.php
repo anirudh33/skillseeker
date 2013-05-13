@@ -53,18 +53,18 @@ abstract class AController
      */
     public function __construct ()
     {
-        $authObject = new Authenticate();
-        $authObject->checkIPExists();
+        //$authObject = new Authenticate();
+       // $authObject->checkIPExists();
         
-        $authObject->setRequiredType($this->getRequiredType());
-        if ($authObject->isValidUser() != 1) {
+//         $authObject->setRequiredType($this->getRequiredType());
+//         if ($authObject->isValidUser() != 1) {
             
-            $_SESSION["ErrorMessage"] .= $authObject->getMessage() . "<br>";
+//             $_SESSION["ErrorMessage"] .= $authObject->getMessage() . "<br>";
             
-            header("Location:" . $_SESSION["DOMAIN_PATH"] . "/index.php?msg=" . 
-            $authObject->getMessage() . "");
-        }
-    }
+//             header("Location:" . $_SESSION["DOMAIN_PATH"] . "/index.php?msg=" . 
+//             $authObject->getMessage() . "");
+//         }
+     }
 
     /**
      * Starts the processing in every controller with creation of user
@@ -77,13 +77,32 @@ abstract class AController
         $this->showView();
     }
 
-    /**
-     * Shows the mainpanel of user(Admin/Student/Teacher)
-     */
-    public function showView ()
-    {
-        $this->showProfile();
-    }
+     /* Shows Views*/
+	public function showView($pageName="/views/homepage.php", $arrPassValue='', $header=true,$footer=true) 
+	{
+		if (isset ( $_SESSION ['lang'] )) {
+			$langType = $_SESSION ['lang'];
+		} else {
+			$langType = 'en';
+		}
+		require SITE_PATH . '/languages/lang.' . $langType . ".php";
+		$lang = new Language ( $langArr );
+		
+		if ($header == true) {
+		}
+		if (file_exists ( SITE_PATH . $pageName )) {
+			if (isset ( $arrPassValue )) {
+				$arrData = $arrPassValue;
+			}
+			require_once SITE_PATH . $pageName;
+		} else {
+			// require_once SITE_PATH."error.php";
+			echo "call error page, file not found:".SITE_PATH . $pageName;
+		}
+		
+		if ($footer == true) {
+		}
+	}
 
     /**
      * Invokes UserFactory to create an object of required type

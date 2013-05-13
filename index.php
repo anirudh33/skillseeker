@@ -19,6 +19,7 @@ require_once getcwd().'/libraries/constants.php';
 require_once SITE_PATH . '/libraries/Language.php';
 require_once SITE_PATH . '/libraries/Security.php';
 //echo "====".$lang->USERNAME;
+require_once  SITE_PATH.'/controllers/AController.php';
 require_once SITE_PATH . '/controllers/MainController.php';
 require_once SITE_PATH . '/controllers/createTestController.php';
 require_once SITE_PATH . '/controllers/TestController.php';
@@ -37,6 +38,9 @@ if (isset ( $_REQUEST ['controller'] )) {
 			}
 
 	}
+}elseif (isset($_SESSION['username'])) {
+	$object = new MainController ();
+	$object->showUserPanel();
 }
 else{
 /* Showing the main view */
