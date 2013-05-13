@@ -664,7 +664,15 @@ footer .aligncenter {
 	#newsletter-form a.fright:hover {
 		border-color:#fff;
 	}
-
+.instructiontr{
+	height: 50px;
+	
+}
+.colorstyle
+{
+	color:#008cc4;
+}
+	
 /*----------------------*/
 
 #contacts-form { clear:right; width:100%; overflow:hidden;}
