@@ -240,7 +240,7 @@ class User extends DBConnection
         	$obj->validator("password",$values['password'], 'required#minlength=8#maxlength=25','Password Required#Password atleast 8 characters long#Password should not be more than 25 characters long');
         	if(true){
         		$match = $values['password'] ."#" . $values['repassword'];
-        		echo $match;
+        		
         		$obj->validator("confirmpassword",$match, 'match','Password does not match');
         	}
         	$this->setPassword($values['password']);
@@ -250,7 +250,7 @@ class User extends DBConnection
         {
         	//$obj = new validate();
         	$s=$values['password']."#".$values['repassword'];
-        	$obj->validator("repassword",$s , 'match#','Password doesnot match#password');
+        	$obj->validator("repassword",$s , 'match','Password doesnot match#password');
         
         	//$error=$obj->result();
         	//print_r($error);

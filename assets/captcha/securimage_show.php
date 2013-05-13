@@ -49,6 +49,19 @@
 require_once dirname(__FILE__) . '/securimage.php';
 
 $img = new Securimage();
+if(isset($_REQUEST['number']))
+{
+	$a=$img->check($_REQUEST['number']);
+	
+	if($a <> 1)
+	{
+		echo "0";
+	}
+	else if($a == 1)
+	{
+		echo "1";
+	}
+}
 
 // You can customize the image by making changes below, some examples are included - remove the "//" to uncomment
 
@@ -68,7 +81,7 @@ $img = new Securimage();
 // rand(128, 255)); // random signature color
 
 // see securimage.php for more options that can be set
-
+else {
 $img->show();  // outputs the image and content headers to the browser
-// alternate use:
+}// alternate use:
 // $img->show('/path/to/background_image.jpg');

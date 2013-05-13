@@ -791,6 +791,7 @@ class Securimage
     {
         $this->code_entered = $code;
         $this->validate();
+      
         return $this->correct_code;
     }
 

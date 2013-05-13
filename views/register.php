@@ -6,47 +6,66 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7; IE=EmulateIE9">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
-    <link rel="stylesheet" type="text/css" href="./assets/css/captcha.css" media="all" />
-    <link rel="stylesheet" type="text/css" href="./assets/css/demo.css" media="all" />
+
+     <link rel="stylesheet" type="text/css" href="../assets/css/style.css" media="all" />
+
     <script type="text/javascript" src="../assets/js/jquery-1.9.1.js"></script>
      <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
- 	
+ 	 <script type="text/javascript" src="../assets/js/registerUser.js"></script>
 	   <script src="http://cdn.jquerytools.org/1.2.7/full/jquery.tools.min.js"></script>
           <script src="<?php echo SITE_URL?>/assets/js/validate.js"></script>
 	  <script>
+
 	  $(document).ready(function() {
 	    $("#datepicker").datepicker();
+	    $("#errorfirstname").css("display","none");
+	    $("#errorlastname").css("display","none");
+	    $("#erroremail").css("display","none");
+	    $("#errorusername").css("display","none");
+	    $("#errordisplayname").css("display","none");
+	    $("#errorrepass").css("display","none");
+	    $("#errorpass").css("display","none");
 	  });
+	  
 	  </script>
+
 	  
 </head>
 <body>
 <div class="container">
 			<!-- freshdesignweb top bar -->
-            
+             <div class="freshdesignweb-top">
+                
+                <div class="clr"></div>
+            </div>
 			<header>
 				<h1>Registration Form </h1>
             </header>       
       <div  class="form">
     		<form method="post" id="myform" action="index.php?controller=MainController&method=handleRegister"> 
     			<p class="contact"><label for="name">First Name</label></p> 
-    			<input id="name" name="first_name" placeholder="firstname" required="required" tabindex="1" type="text"> 
+    			<input id="name" name="first_name" placeholder="firstname" required="required" tabindex="1" type="text" autocomplete="off"> 
+    			 <div id="errorfirstname">your error message here</div>
+    			 
     			 
     			<p class="contact"><label for="name">Last Name</label></p> 
-    			<input id="name" name="last_name" placeholder="lastname" required="required" tabindex="1" type="text"> 
-    			 
+    			<input id="name" name="last_name" placeholder="lastname" autocomplete="off" required="required" tabindex="1" type="text"> 
+    			  <div id="errorlastname">your error message here</div>
+    			  
     			<p class="contact"><label for="email">Email</label></p> 
     			<input id="email" name="email_address" placeholder="example@domain.com"  type="email"> 
-                
+                 <div id="erroremail">your error message here</div>
+                 
                 <p class="contact"><label for="username">Create a username</label></p> 
     			<input id="username"  name="user_name" placeholder="username" required="required" tabindex="2" type="text" minlength="4" maxlength="25"> 
-    			 
-    			
+    			  <div id="errorusername">your error message here</div>
+    			  
+    			 <div id="userresult"></div>
                 
                
 			    <p class="contact"><label for="time zone">Time Zone</label></p>
-            <select class="select-style gender" name="time_zone_id">
-            <option value="select">time zone</option>
+            <select class="select-style gender" name="time_zone_id" autocomplete="off">
+<!--             <option value="select">time zone</option> -->
             <option>UTC+05:30 (IST)india</option>
 							<option>UTC+08:00 (HKT)Honkong</option>
 							<option>UTC+13:00 — Phoenix Islands)</option>
@@ -67,8 +86,8 @@
             </select><br><br>
                 
              <p class="contact"><label for="country">Select Country</label></p>
-            <select class="select-style gender" name="country_id">
-            <option value="select">Country</option>
+            <select class="select-style gender" name="country_id" autocomplete="off">
+<!--             <option value="select">Country</option> -->
             <option value="United States">United States</option>
 								<option value="United Kingdom">United Kingdom</option>
 								<option value="Australia">Australia</option>
@@ -301,11 +320,12 @@
 								</select></br>
                 
              <p class="contact"><label for="password">Create a password</label></p> 
-    			<input type="password" id="password" name="password" required="required" minlength="8" maxlength="25"> 
+    			<input type="password" id="password" name="password" autocomplete="off" required="required" minlength="8" maxlength="25"> 
+                <div id="errorpassword">your error message here</div>
                 
                 <p class="contact"><label for="repassword">Confirm your password</label></p> 
-    			<input type="password" id="repassword" name="repassword" required="required" data-equals="password" >    
-               
+    			<input type="password" id="repassword" name="repassword" autocomplete="off" required="required" data-equals="password" >    
+               <div id="errorrepassword">your error message here</div>
          
          <p>
         <img id="siimage" style="border: 1px solid #000; margin-right: 15px"
@@ -327,7 +347,7 @@
 </p>
      <br/>    
          
-            <input  name="submit" id="submit" tabindex="5"  type="submit"> 	 
+            <input  name="submit" id="submit" tabindex="5"  type="submit" autocomplete="off"> 	 
    </form> 
 </div>      
 </div>

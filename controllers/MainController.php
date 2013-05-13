@@ -136,6 +136,8 @@ class MainController extends AController
 			$userObj = new Registration();
 		
 			$userObj->registerUser($_POST);
+			header ( "Location:" . $_SESSION ["DOMAIN_PATH"] . "/index.php" );
+			//echo "successful";
 	}
 
 	public function logout() 
