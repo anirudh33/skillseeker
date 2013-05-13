@@ -724,6 +724,7 @@ footer .aligncenter {
 	text-align: justify;
 	text-indent: 50px;
 	margin-top: 20px;
+	border:1px dotted black;
 }
 	
 /*----------------------*/
