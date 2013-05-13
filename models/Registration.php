@@ -26,6 +26,9 @@ class Registration extends DBConnection
 		$registrationObj = new User();
 		
 		$userArray = $registrationObj->GenerateArray($data, "INSERT");
+		$createdon=date ( 'Y-m-d h:i:s', time () );
+		
+		$userArray['created_on']=$createdon;
 		
 		$result = $this->_db ->insert('users', $userArray);
 		 
