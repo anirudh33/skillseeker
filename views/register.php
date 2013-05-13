@@ -35,8 +35,11 @@
 </head>
 <body>
 <div class="container">
-			<!-- freshdesignweb top bar -->
-            
+			
+             <div class="freshdesignweb-top">
+                
+                <div class="clr"></div>
+            </div>
 			<header>
 				<h1>Registration Form </h1>
             </header>       
