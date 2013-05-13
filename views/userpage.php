@@ -185,7 +185,7 @@ function openPage(str)
 	
 	$.ajax({
         type: "POST",
-        url: 'index.php?controller=TestController&method=loadView&page='+str,
+        url: 'index.php?controller=TestController&method=handleUpload',
         //data: $("#idForm").serialize(), // serializes the form's elements.
         success: function(data)
         {

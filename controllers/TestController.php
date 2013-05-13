@@ -290,6 +290,10 @@ class TestController extends AController {
 			// to send error back to the view page(upload.php) ,if Exists.
 			header("Location:".SITE_URL."/views/upload.php?cid=$error");
 		}
+		else 
+		{
+			header("Location:".SITE_URL."/views/upload.php");
+		}
 
 	}
 	function selectCategory() {
@@ -470,5 +474,9 @@ class TestController extends AController {
 	}
 	public function getQuestioin(){
 		
+	}
+	public function handleUpload()
+	{
+		$this->showView('/views/upload.php','',false,false);
 	}
 }

@@ -22,16 +22,9 @@ $("#category").html($.trim(data));
 });
         function addRow1() {
             //alert("bdfjhd");
-         var inp = $("#name");
-            //var inp=("#name").val();
-            //alert(inp);
-         if (inp.val().length > 0) {
+       
          $("#ques1").show();
-         }
-         else {
-             alert("Plz Enter Test Name!!!");
-         }
-
+         
         }
         function addRow() {
             i ++;
@@ -50,9 +43,9 @@ $("#ques").append('<div id='+i+'><tr><td><textarea rows="1" name="opt[]" cols="1
 <body id="createtestbody">
 <div></div>
 <form action="./index.php?controller=TestController&method=createQues" method="post">
-<h2>Create Test</h2>
-Name:<br/>
-<input type="text" name="name" id="name" size="10"><br/>
+<h2>Add questions one by one: </h2>
+<br/>
+
 <br />
 
 Category <select name="category" id="category">
@@ -60,7 +53,7 @@ Category <select name="category" id="category">
 </select>
 <br/>
 
-<INPUT type="button" class="btn" value="Create Test" onclick="addRow1()" />
+<INPUT type="button" class="btn" value="Add" onclick="addRow1()" />
 
 <div id="ques1" style="display: none;">
 <!-- <INPUT type="button" id="btn" value="Create Question" onclick="addRow()" /> -->
