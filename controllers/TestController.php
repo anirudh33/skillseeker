@@ -484,4 +484,111 @@ class TestController extends AController {
 	{
 		$this->showView('/views/createtest.php','',false,false);
 	}
+	
+	/**
+	 * @author Sanchit 
+	 */
+	public function handleCategory()
+	{
+		$this->showView("category");
+	}
+	
+	/* function creates object of Category class and calls the addCategory method of Category class */
+	public function handleAddCategory()
+	{
+	
+		require_once './models/Category.php';
+		$_objCategory = new Category();
+		//$methodName = $_REQUEST["method"];
+		if(method_exists($_objCategory,'addCategory'))
+		{
+			$returnValue = $_objCategory->addCategory(); // call the addCategory of Category.php
+			if($returnValue != "error")
+			{
+				die($returnValue);
+			}
+			else
+			{
+				die($returnValue);
+			}
+		}
+		else
+		{
+			echo " Method ". $methodName." doesn't exist ";
+		}
+	}
+	
+	/* function creates object of Category class and calls the updateCategory method of Category class */
+	public function handleUpdateCategory()
+	{
+		require_once './models/Category.php';
+		$_objCategory = new Category();
+		// $methodName = $_REQUEST["method"];
+		if(method_exists($_objCategory,'updateCategory'))
+		{
+			$returnValue = $_objCategory->updateCategory(); // call the updateCategory of Category.php
+			if($returnValue != "error")
+			{
+				die($returnValue);
+			}
+			else
+			{
+				die($returnValue);
+			}
+		}
+		else
+		{
+			echo " Method ". $methodName." doesn't exist ";
+		}
+	}
+	
+	/* function creates object of Category class and calls the deleteCategory method of Category class */
+	public function handleDeleteCategory()
+	{
+		require_once './models/Category.php';
+		$_objCategory = new Category();
+		// $methodName = $_REQUEST["method"];
+		if(method_exists($_objCategory,'deleteCategory'))
+		{
+			$returnValue = $_objCategory->deleteCategory(); // call the deleteCategory of Category.php
+			if(is_string($returnValue))
+			{
+				die($returnValue);
+			}
+			else
+			{
+				die($returnValue);
+			}
+		}
+		else
+		{
+			echo " Method ". $methodName." doesn't exist ";
+		}
+	}
+	
+	/* function creates object of Category class and calls the displayCategory method of Category class */
+	public function handleDisplayCategory()
+	{
+		require_once './models/Category.php';
+		$_objCategory = new Category();
+		//$methodName = $_REQUEST["method"];
+		if(method_exists($_objCategory,'displayCategory'))
+		{
+			$returnValue = $_objCategory->displayCategory(); // call the displayCategory of Category.php
+			if(is_null($returnValue))
+			{
+				die();
+			}
+			else
+			{
+				die(json_encode($returnValue));
+			}
+		}
+		else
+		{
+			echo " Method ". $methodName." doesn't exist ";
+		}
+	}
+	
+	
 }
