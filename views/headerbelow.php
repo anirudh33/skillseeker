@@ -8,6 +8,7 @@
 				<li><a href="#" class="m2">About Us</a></li>
 				<li><a href="#" class="m2">FAQs</a></li>
 				<li><a href="#" class="m4">Contact Us</a></li>
+				<li><a href="#" class="m4">Help</a></li>
 
 			</ul>
 		</nav>

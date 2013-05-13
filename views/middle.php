@@ -58,26 +58,25 @@
 					</h2>
 				</div>
 				<div class="ic"></div>
-				<div class="inside">
-					<h2>
-						Recent <span>Articles</span>
+				<div class="inside" id="inside">
+				<h2>Recent <span>Articles</span>
 					</h2>
 					<ul class="list">
-						<li><span><img src="images/icon1.png"></span>
+						<li><span><img src="<?php echo SITE_URL;?>/assets/images/icon1.png"></span>
 							<h4>About Online Examination</h4>
 							<p align="justify">Eque porro quisquam est, qui dolorem ipsum
 								quia dolor sit amet, consectetur, adipisci velit, sed quia non
 								numquam eius modi tempo- ra incidunt ut labore.Equeporro quisq
 								uam est, qui dolorem ipsum quia dolor sit amet, consectetur,
 								adipisci velit.</p></li>
-						<li><span><img src="images/icon2.png"></span>
+						<li><span><img src="<?php echo SITE_URL;?>/assets/images/icon2.png"></span>
 							<h4>Branch Office</h4>
 							<p align="justify">Eque porro quisquam est, qui dolorem ipsum
 								quia dolor sit amet, consectetur, adipisci velit, sed quia non
 								numquam eius modi tempo- ra incidunt ut labore.Equeporro quisq
 								uam est, qui dolorem ipsum quia dolor sit amet, consectetur,
 								adipisci velit.</p></li>
-						<li class="last"><span><img src="images/icon3.png"></span>
+						<li class="last"><span><img src="<?php echo SITE_URL;?>/assets/images/icon3.png"></span>
 							<h4>Student’s Time</h4>
 							<p align="justify">Eque porro quisquam est, qui dolorem ipsum
 								quia dolor sit amet, consectetur, adipisci velit, sed quia non

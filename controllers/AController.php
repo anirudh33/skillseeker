@@ -89,6 +89,7 @@ abstract class AController
 		$lang = new Language ( $langArr );
 		
 		if ($header == true) {
+		    
 		}
 		if (file_exists ( SITE_PATH . $pageName )) {
 			if (isset ( $arrPassValue )) {
@@ -101,6 +102,7 @@ abstract class AController
 		}
 		
 		if ($footer == true) {
+		    
 		}
 	}
 

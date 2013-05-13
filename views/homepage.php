@@ -68,7 +68,7 @@ if (isset($_SESSION['username'])) {
    <?php include_once 'headerbelow.php'; ?>
    </header>
    <br />
-		<?php include_once 'middle.php'; ?>
+<?php include_once 'middle.php'; ?>
 	
 	<?php include_once 'footer.php'; ?>
 </div>
