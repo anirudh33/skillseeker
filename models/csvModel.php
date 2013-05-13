@@ -7,6 +7,11 @@
     Version                     -  1.0
     Created by                  -  Avni Jain 
     Created on                  -  May 03, 2013
+    ***************************** Update Log ********************************
+    Sr.NO.		Version		Updated by           Updated on          Description
+    -------------------------------------------------------------------------
+    1            1.0        Prateek Saini        May 11, 2013        Added Methods for Fetching Data 
+    *************************************************************************    
 */
 
 //shift to users model

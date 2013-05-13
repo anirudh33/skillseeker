@@ -430,6 +430,15 @@ class TestController {
                 $dateTime = new DateTime();
                 $objUserTestResult->setCreatedOn($dateTime->format("Y-m-d G:i:s"));
             }
+            /* Following line will insert user
+             * first name
+             * last name
+             * email
+             * questions allocated
+             * answers
+             * total marks
+             *  
+             */
             $objUserTestResult->insertIntoTest();
             
 //            print_r($userQuestions);

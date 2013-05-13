@@ -211,49 +211,49 @@ google.setOnLoadCallback(load);
    <header>
  
       <div class="container">
-          <h1><a href="#">Online Examination</a></h1>
+          <h1><a href="#"><?php echo $lang->ONLINE." " .$lang->EXAMINATION;?></a></h1>
 				
 					
 						
 							<ul class="sf-menu" id="example">
 								<li class="current">
-									<a href="followed.html">Home</a>
+									<a href="#"><?php echo $lang->HOME;?></a>
 									<ul class="follow">
 										<li>
-											<a href="followed.html">Pricing</a>
+											<a href="#"><?php echo $lang->PRICING;?></a>
 										</li>
 										<li>
-											<a href="followed.html">FAQ</a>
+											<a href="#"><?php echo $lang->FAQ;?></a>
 										</li>
 										<li>
-											<a href="followed.html">Contact Us</a>
+											<a href="#"><?php echo $lang->CONTACTUS;?></a>
 										</li>
 									</ul>
 									</li>
 							<li class="current">
-									<a href="followed.html">Test</a>
+									<a href="#">Test</a>
 									<ul class="follow">
 										<li>
-											<a href="javascript:showCategory()" on click="javascript:showCategory()">Categories</a>
+											<a href="javascript:showCategory()" on click="javascript:showCategory()"><?php echo $lang->CATEGORIES;?></a>
 											
 										</li>
 										<li>
-											<a href="followed.html">Question Bank</a>
+											<a href="#"><?php echo $lang->QUESTION." " .$lang->BANK;?></a>
 											<ul>
-							<li><a href="javascript:void(0)" onclick="openPage('/views/createtest.php')">Add questions one by one</a></li>
-							<li><a href="javascript:void(0)" onclick="openPage('/views/upload.php')">Add questions in bulk</a></li>
+							<li><a href="javascript:void(0)" onclick="openPage('/views/createtest.php')"><?php echo $lang->ADD ." ".$lang->QUESTION." " .$lang->ONE . " " . $lang->BY . " " .$lang->ONE ;?></a></li>
+							<li><a href="javascript:void(0)" onclick="openPage('/views/upload.php')"><?php echo $lang->ADD ." ".$lang->QUESTION." " .$lang->IN . " " . $lang->BULK;?></a></li>
 							
 						</ul>
 											
 										</li>
 										<li>
-											<a href="javascript:void(0)" onclick="showTests();">My Test</a>
+											<a href="javascript:void(0)" onclick="showTests();"><?php echo $lang->MY . " " .$lang->TEST;?></a>
 										</li>
 										<li>
-											<a href="followed.html">Certificates</a>
+											<a href="#"><?php echo $lang->CERTIFICATES;?></a>
 										</li>
 										<li>
-											<a href="followed.html">Create Test</a>
+											<a href="#"><?php echo $lang->CREATE. " " .$lang->TEST;?></a>
 										</li>
 									
 					
@@ -272,14 +272,14 @@ google.setOnLoadCallback(load);
 									
 									
 							<li class="current">
-									<a href="followed.html">Assign</a>
+									<a href="#"><?php echo $lang->ASSIGN;?></a>
 									<ul class="follow">
 										<li>
-											<a href="followed.html">Assign</a>
+											<a href="#"><?php echo $lang->ASSIGN;?></a>
 											
 										</li>
 										<li>
-											<a href="followed.html">View Assign Test</a>
+											<a href="#"><?php echo $lang->VIEW." " .$lang->ASSIGN. " " .$lang->TEST;?></a>
 										</li>
 										
 									
@@ -289,13 +289,13 @@ google.setOnLoadCallback(load);
 									</li>
 			
 						<li class="current">
-									<a href="followed.html">Result</a>
+									<a href="#"><?php echo $lang->RESULT;?></a>
 									<ul class="follow">
 										<li>
-											<a href="followed.html">By Test</a>
+											<a href="#"><?php echo $lang->BY. " " .$lang->TEST;?></a>
 										</li>
 										<li>
-											<a href="followed.html">Search User</a>
+											<a href="#"><?php echo $lang->SEARCH. " " .$lang->USER;?></a>
 										</li>
 										
 									
@@ -320,7 +320,7 @@ google.setOnLoadCallback(load);
 				<br />
 
 
-				<h3>Categories</h3>
+				<h3><?php echo $lang->CATEGORIES;?></h3>
 				<div id="body">
 <div id="feedControl">Loading...</div>
 </div>
@@ -329,7 +329,7 @@ google.setOnLoadCallback(load);
 			<!-- content -->
 			 <section id="content">
          <div id="banner">
-            <h2>Professional <span>Online Examination <span>Since 2013</span></span></h2>
+            <h2><?php echo $lang->PROFESSIONAL;?><span><?php echo $lang->ONLINE." " .$lang->EXAMINATION;?><span><?php echo $lang->SINCE2013;?></span></span></h2>
          </div><div class="ic"></div></section>
 				
 			<br><br>
@@ -346,7 +346,7 @@ google.setOnLoadCallback(load);
       <div class="inside">
          <div class="wrapper">
       
-            <div class="aligncenter"><h5><span>Website designed by</span> </h5><a rel="nofollow" href="http://www.osscube.com" class="new_window">OSSCube.com</a><br>
+            <div class="aligncenter"><h5><span><?php echo $lang->WEBSITE." " .$lang->DESIGNED ." ".$lang->BY;?></span> </h5><a rel="nofollow" href="http://www.osscube.com" class="new_window"><?php echo $lang->OSSCUBECOM;?></a><br>
          
           </div>
          </div>
