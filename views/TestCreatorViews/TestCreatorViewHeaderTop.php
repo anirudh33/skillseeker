@@ -28,6 +28,8 @@
 	src="<?php echo SITE_URL;?>/assets/js/Myriad_Pro_400.font.js"></script>
 <script type="text/javascript"
 	src="<?php echo SITE_URL;?>/assets/js/script.js"></script>
+<script type="text/javascript"
+	src="<?php echo SITE_URL;?>/assets/js/functions.js"></script>
 
 
 <script src="js/jquery-1.9.1.min.js"></script>
@@ -68,8 +70,11 @@ function editTest(testId)
 	       });
 }
 function createTest()
-{		 $("#content").html("");
-	$.ajax({
+{
+alert("vcs<hcaj");
+		 $("#content").html("");
+	
+		$.ajax({
 
 
 	     type: "POST",
@@ -85,7 +90,7 @@ function createTest()
 	       },
 	       success: function(data){
 	    	  
-	     	$("#content").append(data);
+	     	$("#content").append($.trim(data));
 	       }, });
 	
 }
@@ -115,28 +120,7 @@ function deleteTest(testId)
 
 	       });
 }
-function createTest()
-{		 $("#content").html("");
-	$.ajax({
 
-
-	     type: "POST",
-	     url: '../index.php?controller=AddTest&method=createTestView',                  //the script to call to get data          
-	     data: "userId=1" ,                        //you can insert url argumnets here to pass to api.php for example "id=5&parent=6"
-	 
-	           
-	     complete: function () {
-		     
-	       },
-	       error: function(){
-	           
-	       },
-	       success: function(data){
-	    	  
-	     	$("#content").append(data);
-	       }, });
-	
-}
 function showTests()
 {
 	alert("hi");

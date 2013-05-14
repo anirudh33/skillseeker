@@ -156,10 +156,11 @@ $this->setUsername ( $fieldUsername );
 
 if ($this->exists ( $this->encryptPassword ( $this->getPassword () ) , $this->getUsername ()) == 1) {
 $this->setSession ();
-//echo "me";die;
+
 return 1;
 
 } else {
+
 $msg = "Login Failed username or password does not exist";
 //$this->setCustomMessage ( "ErrorMessage", $msg );
 header ( "Location:" . $_SESSION ["DOMAIN_PATH"] . "/index.php?msg=$msg" );	

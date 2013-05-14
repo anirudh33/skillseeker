@@ -21,57 +21,14 @@ src='http://localhost/skillseeker/trunk/misc/prototypes/html/js/jquery.tools.min
 
 <script language="javascript">
 var i=0;
-$(document).ready(function() {
-
-$('#category').load('./index.php?controller=TestController&method=selectCategory', function(data) {
-	//alert(data);
-$("#category").html($.trim(data));
-
+$(document).ready(function() 
+{
+	$('#category').load('./index.php?controller=TestController&method=selectCategory', function(data) 
+	{
+		$("#category").html($.trim(data));
+	});
 });
-
-
-});
-        function addRow1() {
-            //alert("bdfjhd");
-       
-         $("#ques1").show();
-         
-        }
-        function addRow() {
-            i ++;
-$("#ques").append('<div id='+i+'><tr><td><textarea rows="1" name="opt[]" cols="10"></textarea></td><td><input type="radio" name="opt[]"/></td><td><a href="javascript:void(0)" onclick="removerow()"><img src="../assets/images/delete1.png" height="34px" alt="halo"/></a></td></tr></div>');
-
-        }
-        function addMore() {
-         $("#more").show();
-         }
-        function removerow(i) {
-         alert(i);
-         }
-       function createtest() {
-    	   $.ajax({
-
-   			
-  		     type: "POST",
-  		     url: './index.php?controller=TestController&method=createQues',                  //the script to call to get data          
-  		     data: $("#ques").serialize()  ,                        //you can insert url argumnets here to pass to api.php for example "id=5&parent=6"
-
-  		           
-  		     complete: function () {
-  			     
-  		       },
-  		       error: function(){
-  		           
-  		       },
-  		       success: function(data){
-  			alert(data);
-  			//$("#content").html(data);
-
-  	  	    	
-  	    	                	       }, 
-
-  		       });
-       }
+        
         </script>
 </head>
 <body id="createtestbody">
@@ -118,6 +75,8 @@ $("#ques").append('<div id='+i+'><tr><td><textarea rows="1" name="opt[]" cols="1
 <th><?php echo $lang->ANSWER; ?></th>
 <th><?php echo $lang->REMOVE; ?></th>
 </tr>
-<INPUT type="button" class="btn" value="dbfjjd" onclick="createtest()"/>
-<td bordercolor=""><INPUT type="submit" class="btn" value="<?php echo $lang->SUBMIT; ?>" /></td>
 </table>
+<div id="more" style="display: none;">Add Ajax code here to add more question</div>
+	<INPUT type="button" class="btn" value="submit" onclick="insertTest()"/>
+	<INPUT type="button" class="btn" value="Add More Questions" onclick="addMore()" />
+	</div>

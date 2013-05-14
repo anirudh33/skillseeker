@@ -13,34 +13,6 @@ require_once '/var/www/skillseeker/trunk/libraries/constants.php';
 <script type="text/javascript" src="<?php echo SITE_URL;?>/assets/js/jquery.tools.min.js"></script>
 
 <script>
-
-function assignLink()
-{
-	document.getElementById("assign_btn").disabled = true; 
-$.ajax({
-		
-		type: "POST",
-	    url: '../index.php?controller=TestController&method=handleassignLink',  
-	     data: $('#assignlinkform').serialize(),
-	       success: function(data){
-	    	$('#Directlink1').hide();
-	    	$("#result").html(data);
-	    	document.getElementById("assign_btn").disabled = false; 
-	    	
-	     }
-	  });
-} 
-
-function fetchLink()
-{	
-		$.ajax({
-		type: "POST",
-	    url: '../index.php?controller=TestController&method=handleFetchLink&test_id='+<?php echo $test_id;?>,  
-	       success: function(data){
-				$("#link").append('<td ><input type="text" name="link" value="'+data+'" readonly/></td>');
-	    	 }
-		  });
-} 
 fetchLink();
 </script>
 </head>

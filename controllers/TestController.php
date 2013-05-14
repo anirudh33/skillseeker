@@ -340,8 +340,8 @@ class TestController extends AController {
             //die($a);
     }
     function createQues() {
-        echo "<pre>";
-        print_r ( $_POST );
+        //echo "<pre>";
+        //print_r ( $_POST );
         $objcsvModel = new csvModel ();
         $opArray = $_POST ['opt'];
         if (! in_array ( "on", $opArray )) {
@@ -357,6 +357,7 @@ class TestController extends AController {
                 $ans = $_POST ['opt'] [$i - 1];
             }
         }
+	//echo $ans; die;
         $condition = array ('category_id' => $_POST ['category'], 'question_name' => $_POST ['question'], 'answer' => $ans, 'question_type' => $quesType, 'status' => '1', 'created_on' => date ( 'Y-m-d h:i:s', time () ) );
         $objcsvModel->insert ( "question_bank", $condition );
         $coloumn = array ("id" );
@@ -371,7 +372,7 @@ class TestController extends AController {
                 $objcsvModel->insert ( "options", $condition );
             }
         }
-        header ( "Location:" . SITE_URL . "/views/createtest.php?cid='Your question has been saved'" );
+        die("Your Question have been Upload!!!");
     }
    
      /**

@@ -6,7 +6,7 @@
     Description                 -  English Language file for start
     Version                     -  1.0
     Created by                  -  Mohit K. Singh 
-    Created on                  -  May 03, 2013
+    Created on                  -  May 03, 2013ate
 	***************************** Update Log ********************************
 	Sr.NO.		Version		Updated by           Updated on          Description
     -------------------------------------------------------------------------
@@ -64,11 +64,11 @@
                  'DESIGNED'=>"Designed",
                  'OSSCUBECOM'=>"OSSCube.com",
                  'WEBSITE'=>"Website",
- 				 'ADDONE'=>"Add questions one by one",
-		 		'CATEGORY'=>"Category",
-		 		'INSERTQUES'=>"Insert Question",
-		 		'QUESTION'=>"Question",
-		 		'QUESTIONTYPE'=>"Question Type",
+ 		 'ADDONE'=>"Add questions one by one",
+		 'CATEGORY'=>"Category",
+		 'INSERTQUES'=>"Insert Question",
+		 'QUESTION'=>"Question",
+		 'QUESTIONTYPE'=>"Question Type",
  		'MULTIPLECHOICE'=>"multiple choice",
  		'TRUEFALSE'=>"true/false",
  		'OPTION'=>"Option",
@@ -77,20 +77,19 @@
  		'ADDOPTION'=>"Add Option",
  		'FIRSTNAME'=>"First Name",
  		'LASTNAME'=>"Last Name",
- 		'USERNAME'=>" Create a UserName ",
- 		'PASSWORD'=>" Create a Password ",
  		'REPASSWORD'=>" Re Enter your Password ",
  		'TIMEZONE'=>"Enter the Time Zone",
  		'COUNTRY'=>"Enter the country",
  		'SUBMIT'=>"Submit",
- 		''=>"",
- 		''=>"",
- 		''=>"",
- 		''=>"",
- 		''=>"",
- 		''=>"",
- 		''=>"",
- 		''=>""
+ 		'UPDATE'=>"Update",
+ 		'DELETE'=>"Delete",
+ 		'DISPLAY'=>"Display", 
+ 		'CATEGORY'=>"CATEGORIES",
+ 		'HOMEPAGE'=>"Home Page",
+ 		'ABOUTUS'=>"About Us",
+ 		'CONATCTUS'=>"Contact Us",
+ 		'HELP'=>"Help",
+		'LOGOUT'=>"Log Out"
                 );
 ?>
 

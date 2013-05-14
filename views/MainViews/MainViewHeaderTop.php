@@ -24,6 +24,8 @@
 	src="<?php echo SITE_URL;?>/assets/js/Myriad_Pro_400.font.js"></script>
 <script type="text/javascript"
 	src="<?php echo SITE_URL;?>/assets/js/script.js"></script>
+<script type="text/javascript"
+	src="<?php echo SITE_URL;?>/assets/js/functions.js"></script>
 <!--[if lt IE 7]>
      <link rel="stylesheet" href="css/ie/ie6.css" type="text/css" media="screen">
      <script type="text/javascript" src="js/ie_png.js"></script>
@@ -35,21 +37,47 @@
   	<script type="text/javascript" src="js/html5.js"></script>
   <![endif]-->
 </head>
+<?php 
+/*
+
+ **************************** Creation Log *******************************
+File Name                   -  MainViewHeaderTop.php
+Project Name                -  SkillSeeker
+Description                 -  Script for error Message for invalid login.
+Version                     -  1.0
+Created by                  -  Amber Sharma
+Created on                  -  May 13, 2013
+
+*/
+?>
 <script>
- $(document).ready(function() {
-	 
-	 $(".errpass").hide();
-	$(".header2").hide();
-	 
- <?php
-    if (isset($_REQUEST['msg'])) {
-        ?>
-	 $(".errpass").show();
-	 <?php
-    }
-    unset($_REQUEST['msg']);
-    ?>
- });
+$(document).ready(function() 
+{
+$(".errpass").hide();
+$(".header2").hide();
+<?php
+    if (isset($_REQUEST['msg'])) 
+	{
+?>
+		$(".errpass").show();
+<?php
+    	}
+	else if(isset($_REQUEST['user']))
+	{
+?>
+		$(".errpass").show();
+		$(".errpass").html(<?php echo "'".$_REQUEST['user']."'"?>);
+<?php	
+	}
+	else if(isset($_REQUEST['password']))
+	{
+?>
+		$(".errpass").show();
+		$(".errpass").html(<?php echo "'".$_REQUEST['password']."'"?>);
+<?php
+    	}
+?>
+});
  </script>
 
 <body id="page1">

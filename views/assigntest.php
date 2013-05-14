@@ -12,47 +12,34 @@ require_once '/var/www/skillseeker/trunk/libraries/constants.php';
 <script type="text/javascript" src="<?php echo SITE_URL;?>/assets/js/jquery.tools.min.js"></script>
 
 <script>
-
-function assignTest()
-{
-$.ajax({
-
-		type: "POST",
-	    url: '../index.php?controller=TestController&method=handleassignTest',  
-	     data: $('#assigntestform').serialize(),
-	       success: function(data){
-	    	$('#Directlink1').hide();
-		    $("#result").append(data);
-	     }
-	  });
-} 
-
 $(document).ready(function()
-        {
-	 
-$('#Registeruser').hide();
-     $('#Directlink').hide();
-     $('#Directlink1').hide();
-     $("#datepicker").datepicker();
-     
-   });
-        function useRegister()
-        {
-             $('#Directlink').hide();
-            $('#Registeruser').show();
-        }
-        function useLink()
-        {
-            $('#Registeruser').hide();
-            $('#Directlink').show();
-        }
-        function createLink()
-        {
-            $('#linkpage').hide();
-             $('#Directlink').hide();
+{
+	$('#Registeruser').hide();
+	$('#Directlink').hide();
+	$('#Directlink1').hide();
+	$("#datepicker").datepicker();
+});
+
+function useRegister()
+{
+        $('#Directlink').hide();
+        $('#Registeruser').show();
+}
+
+function useLink()
+{
+        $('#Registeruser').hide();
+        $('#Directlink').show();
+}
+
+function createLink()
+{
+        $('#linkpage').hide();
+        $('#Directlink').hide();
         $('#Directlink1').show();
-        }
-        </script>
+}
+        
+</script>
 </head>
 <body id="assigntestbody">
 <h2>Test Name:</h2>

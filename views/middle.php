@@ -1,3 +1,16 @@
+<?php 
+/*
+
+ **************************** Creation Log *******************************
+File Name                   -  middle.php
+Project Name                -  SkillSeeker
+Description                 -  Login and Language Specification
+Version                     -  1.0
+Created by                  -  Amber Sharma
+Created on                  -  May 10, 2013
+
+*/
+?>
 <div class="container">
 			<!-- aside -->
 			<aside>
@@ -20,7 +33,7 @@
 				<h2 id="login">Login</h2>
 				<form method="post"
 					action="index.php?controller=MainController&method=handleLogin">
-					<label class="homelabel" for="un"><?php if(isset($lang)) {echo $lang->USERNAME;}?></label>
+					<label class="homelabel" for="un"><?php echo $lang->USERNAME;?></label>
 					<input id="un" class="textinput homelogin" type="text"
 						name="userName"> <br /> <label class="homelabel" for="pw"><?php echo $lang->PASSWORD;?></label>
 					<input id="pw" class="textinput homelogin" type="password"
@@ -33,16 +46,16 @@
 				<br /> <br />
 
 
-				<h3>Categories</h3>
+				<h3><?php echo $lang->CATEGORY;?></h3>
 				<ul class="categories">
 					<li><span><a
-							href="index.php?controller=MainController&method=handleAddCategory">ADD</a></span></li>
+							href="index.php?controller=MainController&method=handleAddCategory"><?php echo $lang->ADD;?></a></span></li>
 					<li><span><a
-							href="index.php?controller=MainController&method=handleUpdateCategory">UPDATE</a></span></li>
+							href="index.php?controller=MainController&method=handleUpdateCategory"><?php echo $lang->UPDATE;?></a></span></li>
 					<li><span><a
-							href="index.php?controller=MainController&method=handleDeleteCategory">DELETE</a></span></li>
+							href="index.php?controller=MainController&method=handleDeleteCategory"><?php echo $lang->DELETE;?></a></span></li>
 					<li><span><a
-							href="index.php?controller=MainController&method=handleDisplayCategory">DISPLAY</a></span></li>
+							href="index.php?controller=MainController&method=handleDisplayCategory"><?php echo $lang->DISPLAY;?></a></span></li>
 					<li><span><a href="#">Loreum</a></span></li>
 					<li><span><a href="#">Loreum Information</a></span></li>
 					<li><span><a href="#">Loreum</a></span></li>

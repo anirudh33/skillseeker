@@ -20,6 +20,7 @@ require_once  SITE_PATH.'/models/AModel.php';
 require_once  SITE_PATH.'/libraries/initiateuser.php';
 require_once  SITE_PATH.'/controllers/TestController.php';
 require_once  SITE_PATH.'/controllers/AController.php';
+require_once SITE_PATH.'/libraries/validate.php';
 
 class MainController extends AController
 {
@@ -30,31 +31,45 @@ class MainController extends AController
     }
     
     /* Starts login procedure by fetching username, password from POST */
-    public function handleLogin() {
-         
-        //$authObject = new Authenticate ();
-        //var_dump($authObject);
+    public function handleLogin() 
+	{
+        
         /* Validate username password */
+		$obj = new validate();
+		$obj->validator("userName",$_POST ["userName"], 'required#username#maxlength=25','Username Required# Username is not valid#Username should not be more than 25 chracter long');
+		$obj->validator("password",$_POST ["password"], 'required#minlength=5#maxlength=25','Password Required#Password should not be less than 5 characters long#Password should not be more than 25 chracter long');
         //$authObject->validateLogin ();
-    
-        /* Getting rid of sql injection */
-        $username = mysql_real_escape_string ( $_POST ["userName"] );
-        $password = mysql_real_escape_string ( $_POST ["password"] );
-        $objInitiateUser = new InitiateUser ();
-        $a=$objInitiateUser->login ( $username, $password) ;
-    //echo $a;die;
-        if ($a == 1) {
-            /* Visitor date, ip, email logged */
-            //$authObject->logIP ();
-            $objSecurity= new Security();
-            $objSecurity->logSessionId($username);
-            
-            $this->showUserPanel();
-        }
-        else {
-            require_once(SITE_PATH);
-        }
-    }
+    		$error=$obj->result();
+		if(!empty($error['userName']))
+		{			
+			header("Location:index.php?user=".$error['userName']);
+		}
+		else if(!empty($error['password']))
+		{
+			header("Location:index.php?password=".$error['password']);
+		}
+		else
+		{
+        		/* Getting rid of sql injection */
+        		$username = $_POST ["userName"];
+        		$password = $_POST ["password"];
+        		$objInitiateUser = new InitiateUser ();
+        		$a=$objInitiateUser->login ( $username, $password) ;
+    			//echo $a;die;
+        		if ($a == 1) 
+			{
+            			/* Visitor date, ip, email logged */
+            			//$authObject->logIP ();
+            			$objSecurity= new Security();
+            			$objSecurity->logSessionId($username);
+            			$this->showUserPanel();
+        		}
+        		else 
+			{
+            			require_once(SITE_PATH);
+        		}
+		}
+    	}
     
    
     
@@ -69,7 +84,7 @@ class MainController extends AController
 	
 	 /* Gets the value of variable private $_authenticationStatus */
 	public function getAuthenticationStatus() {
-	    echo $this->_authenticationStatus;
+	  
 		return $this->_authenticationStatus;
 	}
 	

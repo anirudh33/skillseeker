@@ -797,3 +797,78 @@
 [13-May-2013 10:32:49 UTC] PHP Warning:  PDO::query() [<a href='pdo.query'>pdo.query</a>]: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'user_id' in 'where clause' in /var/www/skillseeker/trunk/libraries/PDO/cxpdo.php on line 110
 [13-May-2013 10:32:49 UTC] PHP Fatal error:  Call to a member function fetch() on a non-object in /var/www/skillseeker/trunk/controllers/createTestController.php on line 118
 [13-May-2013 10:32:58 UTC] PHP Notice:  Undefined index: SITE_PATH in /var/www/skillseeker/trunk/controllers/AController.php on line 238
+[14-May-2013 12:35:28] PHP Notice:  Undefined variable: lang in /var/www/skillseeker/trunk/views/createtest.php on line 80
+[14-May-2013 12:35:28] PHP Notice:  Trying to get property of non-object in /var/www/skillseeker/trunk/views/createtest.php on line 80
+[14-May-2013 12:35:28] PHP Notice:  Undefined variable: lang in /var/www/skillseeker/trunk/views/createtest.php on line 85
+[14-May-2013 12:35:28] PHP Notice:  Trying to get property of non-object in /var/www/skillseeker/trunk/views/createtest.php on line 85
+[14-May-2013 12:35:28] PHP Notice:  Undefined variable: lang in /var/www/skillseeker/trunk/views/createtest.php on line 90
+[14-May-2013 12:35:28] PHP Notice:  Trying to get property of non-object in /var/www/skillseeker/trunk/views/createtest.php on line 90
+[14-May-2013 12:35:28] PHP Notice:  Undefined variable: lang in /var/www/skillseeker/trunk/views/createtest.php on line 95
+[14-May-2013 12:35:28] PHP Notice:  Trying to get property of non-object in /var/www/skillseeker/trunk/views/createtest.php on line 95
+[14-May-2013 12:35:28] PHP Notice:  Undefined variable: lang in /var/www/skillseeker/trunk/views/createtest.php on line 99
+[14-May-2013 12:35:28] PHP Notice:  Trying to get property of non-object in /var/www/skillseeker/trunk/views/createtest.php on line 99
+[14-May-2013 12:35:28] PHP Notice:  Undefined variable: lang in /var/www/skillseeker/trunk/views/createtest.php on line 103
+[14-May-2013 12:35:28] PHP Notice:  Trying to get property of non-object in /var/www/skillseeker/trunk/views/createtest.php on line 103
+[14-May-2013 12:35:28] PHP Notice:  Undefined variable: lang in /var/www/skillseeker/trunk/views/createtest.php on line 104
+[14-May-2013 12:35:28] PHP Notice:  Trying to get property of non-object in /var/www/skillseeker/trunk/views/createtest.php on line 104
+[14-May-2013 12:35:28] PHP Notice:  Undefined variable: lang in /var/www/skillseeker/trunk/views/createtest.php on line 105
+[14-May-2013 12:35:28] PHP Notice:  Trying to get property of non-object in /var/www/skillseeker/trunk/views/createtest.php on line 105
+[14-May-2013 12:35:28] PHP Notice:  Undefined variable: lang in /var/www/skillseeker/trunk/views/createtest.php on line 114
+[14-May-2013 12:35:28] PHP Notice:  Trying to get property of non-object in /var/www/skillseeker/trunk/views/createtest.php on line 114
+[14-May-2013 12:35:28] PHP Notice:  Undefined variable: lang in /var/www/skillseeker/trunk/views/createtest.php on line 117
+[14-May-2013 12:35:28] PHP Notice:  Trying to get property of non-object in /var/www/skillseeker/trunk/views/createtest.php on line 117
+[14-May-2013 12:35:28] PHP Notice:  Undefined variable: lang in /var/www/skillseeker/trunk/views/createtest.php on line 118
+[14-May-2013 12:35:28] PHP Notice:  Trying to get property of non-object in /var/www/skillseeker/trunk/views/createtest.php on line 118
+[14-May-2013 12:35:28] PHP Notice:  Undefined variable: lang in /var/www/skillseeker/trunk/views/createtest.php on line 119
+[14-May-2013 12:35:28] PHP Notice:  Trying to get property of non-object in /var/www/skillseeker/trunk/views/createtest.php on line 119
+[14-May-2013 12:38:36] PHP Parse error:  syntax error, unexpected T_EXIT, expecting ',' or ';' in /var/www/skillseeker/trunk/controllers/TestController.php on line 364
+[14-May-2013 12:52:44] PHP Notice:  Undefined variable: ans in /var/www/skillseeker/trunk/controllers/TestController.php on line 365
+[14-May-2013 12:52:44] PHP Notice:  Undefined variable: lang in /var/www/skillseeker/trunk/views/createtest.php on line 80
+[14-May-2013 12:52:44] PHP Notice:  Trying to get property of non-object in /var/www/skillseeker/trunk/views/createtest.php on line 80
+[14-May-2013 12:52:44] PHP Notice:  Undefined variable: lang in /var/www/skillseeker/trunk/views/createtest.php on line 85
+[14-May-2013 12:52:44] PHP Notice:  Trying to get property of non-object in /var/www/skillseeker/trunk/views/createtest.php on line 85
+[14-May-2013 12:52:44] PHP Notice:  Undefined variable: lang in /var/www/skillseeker/trunk/views/createtest.php on line 90
+[14-May-2013 12:52:44] PHP Notice:  Trying to get property of non-object in /var/www/skillseeker/trunk/views/createtest.php on line 90
+[14-May-2013 12:52:44] PHP Notice:  Undefined variable: lang in /var/www/skillseeker/trunk/views/createtest.php on line 95
+[14-May-2013 12:52:44] PHP Notice:  Trying to get property of non-object in /var/www/skillseeker/trunk/views/createtest.php on line 95
+[14-May-2013 12:52:44] PHP Notice:  Undefined variable: lang in /var/www/skillseeker/trunk/views/createtest.php on line 99
+[14-May-2013 12:52:44] PHP Notice:  Trying to get property of non-object in /var/www/skillseeker/trunk/views/createtest.php on line 99
+[14-May-2013 12:52:44] PHP Notice:  Undefined variable: lang in /var/www/skillseeker/trunk/views/createtest.php on line 103
+[14-May-2013 12:52:44] PHP Notice:  Trying to get property of non-object in /var/www/skillseeker/trunk/views/createtest.php on line 103
+[14-May-2013 12:52:44] PHP Notice:  Undefined variable: lang in /var/www/skillseeker/trunk/views/createtest.php on line 104
+[14-May-2013 12:52:44] PHP Notice:  Trying to get property of non-object in /var/www/skillseeker/trunk/views/createtest.php on line 104
+[14-May-2013 12:52:44] PHP Notice:  Undefined variable: lang in /var/www/skillseeker/trunk/views/createtest.php on line 105
+[14-May-2013 12:52:44] PHP Notice:  Trying to get property of non-object in /var/www/skillseeker/trunk/views/createtest.php on line 105
+[14-May-2013 12:52:44] PHP Notice:  Undefined variable: lang in /var/www/skillseeker/trunk/views/createtest.php on line 114
+[14-May-2013 12:52:44] PHP Notice:  Trying to get property of non-object in /var/www/skillseeker/trunk/views/createtest.php on line 114
+[14-May-2013 12:52:44] PHP Notice:  Undefined variable: lang in /var/www/skillseeker/trunk/views/createtest.php on line 117
+[14-May-2013 12:52:44] PHP Notice:  Trying to get property of non-object in /var/www/skillseeker/trunk/views/createtest.php on line 117
+[14-May-2013 12:52:44] PHP Notice:  Undefined variable: lang in /var/www/skillseeker/trunk/views/createtest.php on line 118
+[14-May-2013 12:52:44] PHP Notice:  Trying to get property of non-object in /var/www/skillseeker/trunk/views/createtest.php on line 118
+[14-May-2013 12:52:44] PHP Notice:  Undefined variable: lang in /var/www/skillseeker/trunk/views/createtest.php on line 119
+[14-May-2013 12:52:44] PHP Notice:  Trying to get property of non-object in /var/www/skillseeker/trunk/views/createtest.php on line 119
+[14-May-2013 12:54:58] PHP Notice:  Undefined variable: ans in /var/www/skillseeker/trunk/controllers/TestController.php on line 365
+[14-May-2013 12:54:58] PHP Notice:  Undefined variable: lang in /var/www/skillseeker/trunk/views/createtest.php on line 80
+[14-May-2013 12:54:58] PHP Notice:  Trying to get property of non-object in /var/www/skillseeker/trunk/views/createtest.php on line 80
+[14-May-2013 12:54:58] PHP Notice:  Undefined variable: lang in /var/www/skillseeker/trunk/views/createtest.php on line 85
+[14-May-2013 12:54:58] PHP Notice:  Trying to get property of non-object in /var/www/skillseeker/trunk/views/createtest.php on line 85
+[14-May-2013 12:54:58] PHP Notice:  Undefined variable: lang in /var/www/skillseeker/trunk/views/createtest.php on line 90
+[14-May-2013 12:54:58] PHP Notice:  Trying to get property of non-object in /var/www/skillseeker/trunk/views/createtest.php on line 90
+[14-May-2013 12:54:58] PHP Notice:  Undefined variable: lang in /var/www/skillseeker/trunk/views/createtest.php on line 95
+[14-May-2013 12:54:58] PHP Notice:  Trying to get property of non-object in /var/www/skillseeker/trunk/views/createtest.php on line 95
+[14-May-2013 12:54:58] PHP Notice:  Undefined variable: lang in /var/www/skillseeker/trunk/views/createtest.php on line 99
+[14-May-2013 12:54:58] PHP Notice:  Trying to get property of non-object in /var/www/skillseeker/trunk/views/createtest.php on line 99
+[14-May-2013 12:54:58] PHP Notice:  Undefined variable: lang in /var/www/skillseeker/trunk/views/createtest.php on line 103
+[14-May-2013 12:54:58] PHP Notice:  Trying to get property of non-object in /var/www/skillseeker/trunk/views/createtest.php on line 103
+[14-May-2013 12:54:58] PHP Notice:  Undefined variable: lang in /var/www/skillseeker/trunk/views/createtest.php on line 104
+[14-May-2013 12:54:58] PHP Notice:  Trying to get property of non-object in /var/www/skillseeker/trunk/views/createtest.php on line 104
+[14-May-2013 12:54:58] PHP Notice:  Undefined variable: lang in /var/www/skillseeker/trunk/views/createtest.php on line 105
+[14-May-2013 12:54:58] PHP Notice:  Trying to get property of non-object in /var/www/skillseeker/trunk/views/createtest.php on line 105
+[14-May-2013 12:54:58] PHP Notice:  Undefined variable: lang in /var/www/skillseeker/trunk/views/createtest.php on line 114
+[14-May-2013 12:54:58] PHP Notice:  Trying to get property of non-object in /var/www/skillseeker/trunk/views/createtest.php on line 114
+[14-May-2013 12:54:58] PHP Notice:  Undefined variable: lang in /var/www/skillseeker/trunk/views/createtest.php on line 117
+[14-May-2013 12:54:58] PHP Notice:  Trying to get property of non-object in /var/www/skillseeker/trunk/views/createtest.php on line 117
+[14-May-2013 12:54:58] PHP Notice:  Undefined variable: lang in /var/www/skillseeker/trunk/views/createtest.php on line 118
+[14-May-2013 12:54:58] PHP Notice:  Trying to get property of non-object in /var/www/skillseeker/trunk/views/createtest.php on line 118
+[14-May-2013 12:54:58] PHP Notice:  Undefined variable: lang in /var/www/skillseeker/trunk/views/createtest.php on line 119
+[14-May-2013 12:54:58] PHP Notice:  Trying to get property of non-object in /var/www/skillseeker/trunk/views/createtest.php on line 119
