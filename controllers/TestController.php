@@ -1,7 +1,3 @@
-
-
-
-
 <?php
 /*
  **************************** Creation Log *******************************
@@ -618,7 +614,5 @@ class TestController extends AController {
 			echo " Method deleteCategory doesn't exist ";
 		}
 	}
-	
-	
 }
 

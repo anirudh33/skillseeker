@@ -184,9 +184,9 @@ class MainController extends AController
 	
 	public function getUserResult() {
 		$userObj = new User();
-		$userObj->setEmail($_POST['email_address']);
+		$userObj->setEmail($_REQUEST['email']);
 		$result = $userObj->getUserResult();
-		echo $data;
+		echo trim($result);
 	}
 	
 	public function onClickSearch() {

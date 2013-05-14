@@ -4,21 +4,25 @@ require_once SITE_PATH . '/libraries/Language.php';
 <!DOCTYPE html>
 <html>
 <head>
+<style type="text/css">
+div.search_result table,div.search_result th,div.search_result tr,div.search_result td {
+	border: 1px solid black;
+	padding: 5px;
+}
+</style>
 <script type="text/javascript" src="../assets/js/jquery-1.9.1.js"></script>
 <script>
-		function getUserResult()
-		{	var email_address = $('#view_result').val();
+		function getUserResult(email_address)
+		{	
 			$.ajax({
 		     type: "POST",
 		     url: '../index.php?controller=MainController&method=getUserResult',          
-		     data: "email_address = " +email_address ,                       
-	     	complete: function () {
-		     
-	        },
+		     data: "email=" +email_address ,                       
 	        error: function(){
-	           
+	           alert("error");
 	        },
 	        success: function(data){  
+	        	$("#search_result").html("");
 	     		$("#test_result").html(data);
 	        }, 
 	   });
@@ -28,7 +32,7 @@ require_once SITE_PATH . '/libraries/Language.php';
 <body>
 	<div>
 		<h2>Search User Result</h2>
-		<div id="search_user">
+		<div class="search_user">
 			<form method="post"
 				action="index.php?controller=MainController&method=handleSearchUser">
 				<label>First Name</label> <input type="text" name="first_name"> <label>Last
@@ -36,27 +40,41 @@ require_once SITE_PATH . '/libraries/Language.php';
 					type="submit" value="Search"><br />
 			</form>
 		</div>
-		<div id="search_result">
+		<div class="search_result" id="search_result">
 			<table>
 			<?php
-			
-			if (isset ( $arrPassValue ) && !empty($arrPassValue)) {
-				foreach ( $arrPassValue as $key => $value ) {
-					echo "<tr>";
-					foreach ( $value as $key1 => $value1 ) {
-						?>
+if (isset ( $arrPassValue ) && ! empty ( $arrPassValue )) {
+    ?>
+			    <tr>
+					<th>First Name</th>
+					<th>Last Name</th>
+					<th>Email Address</th>
+					<th>Result</th>
+				</tr>
+			    <?php
+    foreach ( $arrPassValue as $key => $value ) {
+        echo "<tr>";
+        foreach ( $value as $key1 => $value1 ) {
+            ?>
 							<td><?php echo $value1 ?></td>
 						<?php
-					}
-					echo "<td><input type='hidden' id='view_result' value='{$arrPassValue[$key]['email_address']}'><a href='javascript:void(0)' onclick='getUserResult();'>View Result</a></td>";
-					echo "</tr>";
-				}
-			}
-			?>
+        }
+        echo "<td><a href='javascript:void(0)' onclick=\"getUserResult('{$arrPassValue[$key]['email_address']}');\">View Result</a></td>";
+        echo "</tr>";
+    }
+} elseif (empty ( $arrPassValue )) {
+    ?>
+			    <tr>
+					<td><?php echo "No Records Found"?></td>
+				</tr>
+			    <?php
+}
+?>
 			</table>
 		</div>
-		<div id="user_result">
+		<div class="search_result" id="user_result">
 			<table id="test_result">
+			    
 			</table>
 		</div>
 	</div>

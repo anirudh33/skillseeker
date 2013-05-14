@@ -17,12 +17,9 @@
 <script type="text/javascript" src="<?php echo SITE_URL;?>/assets/js/script.js"></script>
 </head>
 <body id="page1">
-
    <!-- header -->
    <header>
- 
-      <div class="container">
-      
+      <div class="container">     
            <h1><a href="#"></a></h1>
 				<nav>
 					<ul>
@@ -33,15 +30,5 @@
 
 					</ul>
 				</nav>
-
 		</div>
-   </header>
-  
-   
-			
-			
-			
-			
-			
-       
-        
+   </header>   

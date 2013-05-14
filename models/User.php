@@ -448,7 +448,6 @@ class User extends DBConnection
     	{
     		return $userResult;
     	} else {
-    		$userResult[]="No Records Found";
     		return $userResult;
     	}
     }
@@ -465,22 +464,26 @@ class User extends DBConnection
     							'user_test_result.first_name', 
     							'user_test_result.last_name',
     							'user_test_result.email_address',
-    							'user_test_result.test_id',
+    							'test.name',
     							'user_test_result.marks',
     							'user_test_result.total_marks',
     							'test.name',
     							'test.no_of_questions'
     						);
-
-    	$data['tables']		= 'test';
     	
-    	$data['conditions']=array(array('email_address ='.$this->getEmail()),true);
+    	$data['tables']		= 'user_test_result';
+    	$data['conditions']=array(array('email_address ="'. $this->getEmail().'"'),true);
     	
     	$result = $this->_db->select($data);
-    	$data;
-    	 
+    	$data = "";
     	while($row = $result->fetch(PDO::FETCH_ASSOC)) {
-    		$percentage = ($row['marks']/$row['total_marks'])*100;
+    	    if($row['total_marks'] > 0 )
+    	    {
+    		    $percentage = ($row['marks']/$row['total_marks'])*100;
+    	    } else 
+    	    {
+    	        $percentage = "0";
+    	    }
     		$data .= "
     				 	<tr>
     						<td>{$row['first_name']}</td>
@@ -493,9 +496,19 @@ class User extends DBConnection
     				 ";
     	}
     	 
-    	if($data != null)
+    	if($data != "")
     	{
-    		return $data;
+    	    $preData = "
+    	        <tr>
+			        <th>First Name</th>
+			        <th>Last Name</th>
+			        <th>Test Name</th>
+			        <th>Score</th>
+			        <th>Total Marks</th>
+			        <th>Total No. of Questions</th>
+			    </tr>
+    	    ";
+    		return $preData.$data;
     	} else {
     		$data .="No Records Found";
     		return data;

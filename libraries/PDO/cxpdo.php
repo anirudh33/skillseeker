@@ -104,7 +104,7 @@ class cxpdo extends PDO {
 		. (!empty($data['order']) ? $this->order_by($data['order']) : '')
 		. (!empty($data['limit']) ? $this->limit($data['limit'], (!empty($data['offset']) ? $data['offset'] : '')) : '');
 
- 			echo $query;
+ 	    //echo $query;
 		//Return the results -or a query string?
 		
 		return $return ? $this->query($query) : $query;
@@ -429,7 +429,7 @@ class db {
     * @return object (PDO)
     * @access public
     */
-    function instance($config=null) {
+    static function instance($config=null) {
         
     	//If there is NO instance already
         if (!self::$instance) {
@@ -445,7 +445,7 @@ class db {
      * Function: connect
      * Connects to the SQL database.
     */
-    function connect($config=null) {
+      static function connect($config=null) {
         
         //global $config;
         if(!$config) { return; }
