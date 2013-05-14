@@ -14,7 +14,7 @@ Sr.NO.		Version		Updated by           Updated on          Description
 *************************************************************************
 
 */
-require_once '/var/www/skillseeker/trunk/libraries/constants.php';
+require_once SITE_PATH .'/libraries/constants.php';
 require_once 'class.phpmailer.php';// path to the PHPMailer class
 require_once 'class.smtp.php';// path to the smtp class
 class Mailer {

@@ -42,7 +42,7 @@ else
 {
 	$langType='en';
 }
-require_once '/var/www/skillseeker/trunk/languages/lang.'.$langType.".php";
+require_once SITE_PATH .'/languages/lang.'.$langType.".php";
 
 
 //include_once './languages/lang.'.$langType.".php";
