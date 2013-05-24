@@ -89,7 +89,8 @@
  		'ABOUTUS'=>"About Us",
  		'CONATCTUS'=>"Contact Us",
  		'HELP'=>"Help",
-		'LOGOUT'=>"Log Out"
+		'LOGOUT'=>"Log Out",
+ 		'ERROR9'=>"Question already exists in row"
                 );
 ?>
 

@@ -201,11 +201,13 @@ public function handleassignTest()
                                     if(empty($opt3)&&empty($opt4)&&empty($opt5)) {
                                         $error.="$lang->ERROR2 .".$row;
                                         echo $error;
+                                        $row++;
                                         continue;
                                     }
                                     if(!in_array($ans,$ansarray)) {
                                         $error.="$lang->ERROR7.".$row;
                                         echo $error;
+                                        $row++;
                                         continue;
                                     }
                                 }
@@ -215,17 +217,30 @@ public function handleassignTest()
                                     if(!empty($opt3)&&!empty($opt4)&&!empty($opt5)) {
                                         $error.="$lang->ERROR3.".$row;
                                         echo $error;
+                                        $row++;
                                         continue;
                                     }
                                     if($opt1!="true"||$opt1="false"||$opt2!="true"||$opt3="false") {
                                         $error.="$lang->ERROR4.".$row;
                                         echo $error;
+                                        $row++;
                                         continue;
                                     }
                                 }
                                 else {
                                     $error.="$lang->ERROR5.".$row;
+                                    $row++;
                                     continue;
+                                }
+                                /**********Checking for the uniquness of question**********/
+                                $coloumn=array("id");
+                                $condition=array("question_name",$ques);
+                                $result=$objcsvModel->select("question_bank",$coloumn,$condition);
+                                if(!empty($result)) {
+                                	$error.="$lang->ERROR9.".$row;
+                                	$row++;
+                                	
+                                	continue;
                                 }
                                 $coloumn=array("name","id");
                                 $condition=array("id",$id);
@@ -263,6 +278,7 @@ public function handleassignTest()
                         else {
                         /*************** if number of values are not vaild in csv*************************/
                             $error.="$lang->ERROR8 .".$row;
+                            $row++;
                             continue;
                         }
                     }

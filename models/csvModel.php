@@ -45,6 +45,7 @@ class csvModel extends DBConnection
 		
 		$myResult=array();		
 	}
+	
 	public function fetchData($table,$column,$condition)
 	{
 		$data['columns']	= $column;
