@@ -2,7 +2,8 @@
 require_once SITE_PATH . '/libraries/Language.php';
 ?>
 <style type="text/css">
-div.search_result table,div.search_result th,div.search_result tr,div.search_result td {
+div.search_result table,div.search_result th,div.search_result tr,div.search_result td
+	{
 	border: 1px solid black;
 	padding: 5px;
 }
@@ -11,6 +12,7 @@ div.search_result table,div.search_result th,div.search_result tr,div.search_res
 <script>
 		function getUserResult(email_address)
 		{	
+
 			$.ajax({
 		     type: "POST",
 		     url: '../index.php?controller=MainController&method=getUserResult',          
@@ -27,7 +29,7 @@ div.search_result table,div.search_result th,div.search_result tr,div.search_res
 	</script>
 <section id="content">
 	<div>
-		<h2>Search User Result</h2>
+		<h2 id="labelSearchUser">Search User Result</h2>
 		<div class="search_user">
 			<form method="post"
 				action="index.php?controller=MainController&method=handleSearchUser">
@@ -58,10 +60,10 @@ if (isset ( $arrPassValue ) && ! empty ( $arrPassValue )) {
         echo "<td><a href='javascript:void(0)' onclick=\"getUserResult('{$arrPassValue[$key]['email_address']}');\">View Result</a></td>";
         echo "</tr>";
     }
-} elseif (empty ( $arrPassValue )) {
+} elseif (isset($arrPassValue) && empty($arrPassValue)) {
     ?>
 			    <tr>
-					<td><?php echo "No Records Found"?></td>
+					<td id="abs"><?php echo "No Records Found"?></td>
 				</tr>
 			    <?php
 }
@@ -69,8 +71,8 @@ if (isset ( $arrPassValue ) && ! empty ( $arrPassValue )) {
 			</table>
 		</div>
 		<div class="search_result" id="user_result">
-			<table id="test_result">
-			    
+			<table id="test_result" class="cufon cufon-canvas">
+
 			</table>
 		</div>
 	</div>

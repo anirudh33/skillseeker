@@ -448,6 +448,7 @@ class User extends DBConnection
     	{
     		return $userResult;
     	} else {
+    		//$userResult[] = "<tr><td>No Records Found</td></tr>";
     		return $userResult;
     	}
     }
@@ -500,12 +501,12 @@ class User extends DBConnection
     	{
     	    $preData = "
     	        <tr>
-			        <th>First Name</th>
-			        <th>Last Name</th>
-			        <th>Test Name</th>
-			        <th>Score</th>
-			        <th>Total Marks</th>
-			        <th>Total No. of Questions</th>
+			        <th><h2>First Name</h2></th>
+			        <th><h2>Last Name</h2></th>
+			        <th><h2>Test Name</h2></th>
+			        <th><h2>Score</h2></th>
+			        <th><h2>Total Marks</h2></th>
+			        <th><h2>Total No. of Questions</h2></th>
 			    </tr>
     	    ";
     		return $preData.$data;

@@ -3737,3 +3737,19 @@ embed {
 	width:650px;
 	margin:30px;
 }
+#test_result
+{
+	width:650px;
+	margin:30px;
+	
+}
+.search_user
+{
+	margin:20px;!important
+	
+}
+#labelSearchUser
+{
+	font-size:20px;
+	text-align:center;
+}

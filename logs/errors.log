@@ -910,3 +910,12 @@
 [24-May-2013 03:59:41 UTC] PHP Notice:  Trying to get property of non-object in /var/www/skillseeker/trunk/views/createtest.php on line 75
 [24-May-2013 03:59:41 UTC] PHP Notice:  Undefined variable: lang in /var/www/skillseeker/trunk/views/createtest.php on line 76
 [24-May-2013 03:59:41 UTC] PHP Notice:  Trying to get property of non-object in /var/www/skillseeker/trunk/views/createtest.php on line 76
+[24-May-2013 09:05:54 UTC] PHP Warning:  Invalid argument supplied for foreach() in /var/www/skillseeker/trunk/views/SearchUser.php on line 54
+[24-May-2013 09:09:26 UTC] PHP Warning:  Invalid argument supplied for foreach() in /var/www/skillseeker/trunk/views/SearchUser.php on line 60
+[24-May-2013 09:10:18 UTC] PHP Warning:  Invalid argument supplied for foreach() in /var/www/skillseeker/trunk/views/SearchUser.php on line 60
+[24-May-2013 09:10:26 UTC] PHP Warning:  Invalid argument supplied for foreach() in /var/www/skillseeker/trunk/views/SearchUser.php on line 60
+[24-May-2013 09:11:20 UTC] PHP Parse error:  syntax error, unexpected '{' in /var/www/skillseeker/trunk/views/SearchUser.php on line 69
+[24-May-2013 09:11:39 UTC] PHP Warning:  Invalid argument supplied for foreach() in /var/www/skillseeker/trunk/views/SearchUser.php on line 61
+[24-May-2013 09:12:10 UTC] PHP Warning:  Invalid argument supplied for foreach() in /var/www/skillseeker/trunk/views/SearchUser.php on line 61
+[24-May-2013 09:12:48 UTC] PHP Warning:  Invalid argument supplied for foreach() in /var/www/skillseeker/trunk/views/SearchUser.php on line 61
+[24-May-2013 09:16:54 UTC] PHP Warning:  Invalid argument supplied for foreach() in /var/www/skillseeker/trunk/views/SearchUser.php on line 55

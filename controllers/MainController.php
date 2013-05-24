@@ -197,7 +197,7 @@ class MainController extends AController
 			$result = $userObj->searchUser();
 			$this->showView('/views/SearchUser.php',$result);
 		} else {
-			$this->showView('/views/SearchUser.php',array());
+			$this->showView('/views/SearchUser.php',array("false"));
 		}
 		
 	}
