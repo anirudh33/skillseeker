@@ -466,6 +466,14 @@ class UserTestResult extends DBConnection
 //        print_r($insertData);
 //         die;
         $this->_db->insert('user_test_result',$insertData);
+        $this->setId($this->_db->getLastInsertId());
+    }
+    public function updateTest(){
+        $answers = implode(",", $this->getAnswers());
+        $data = array('answers' => $answers);
+        //print_r("id".$this->getId());
+        $where = array('id' => $this->getId());        
+        $this->_db->update('user_test_result', $data, $where);
     }
 }
 ?>

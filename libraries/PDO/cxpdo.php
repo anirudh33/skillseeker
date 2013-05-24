@@ -182,8 +182,15 @@ class cxpdo extends PDO {
 
 		return $items;
 	}
+	/**
+	 * To get last insert id 
+	 * @return string
+	 */
 
-
+	function getLastInsertId()
+	{
+	    return $this->lastInsertId();
+	}
 	/**
 	 * Creates a table list from an array
 	 */

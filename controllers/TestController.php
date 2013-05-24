@@ -359,6 +359,7 @@ public function handleassignTest()
    
      /**
      * *** This function will be called after user click on start test ****
+     * @author Prateek Saini
      */
 
     public function takeTest() {
@@ -402,6 +403,7 @@ public function handleassignTest()
         $userQuestionsID = array();
         $userQuestionsAnswers = array();
         $userFinalQuestions = array();
+        $userSubmitAnswers = array();
         
         /* Count the number of questions */
         foreach($result as $key => $value){
@@ -455,8 +457,12 @@ public function handleassignTest()
                 $objUserTestResult->setCreatedOn($dateTime->format("Y-m-d G:i:s"));
             }
             $objUserTestResult->insertIntoTest();
+            $runningTestid = $objUserTestResult->getId();
+            $_SESSION['runningTest'] = $runningTestid;
+            
             foreach($userFinalQuestions as $key => $value){
-            	unset($userFinalQuestions[$key]['answer']);
+            	$userFinalQuestions[$key]['answer'] = "";
+            	$userSubmitAnswers[] = "NULL";
             }
 //            print_r($userFinalQuestions);
 //            die;
@@ -470,9 +476,11 @@ public function handleassignTest()
 //            echo "yes";
         }
 //        $file_handler = fopen("inTest.php","r");
+//        print_r($userSubmitAnswers);
+//        die;
 		$_SESSION['allQuestions'] = $userFinalQuestions;
 		$_SESSION['questionPointer'] = 0;
-		
+		$_SESSION['submittedAnswers'] = $userSubmitAnswers; 
 		$this->showView("/views/inTest.php","",FALSE,FALSE);
 		
         //$file_contents = file_get_contents(SITE_PATH."/views/inTest.php");
@@ -482,14 +490,34 @@ public function handleassignTest()
 //		print($questionCount);
 //		die;
 	}
+	/**
+	 * @author Prateek Saini
+	 */
 	public function getQuestion(){
 		$userFinalQuestions = $_SESSION['allQuestions'];
 		$pointer = $_POST['questionPointer'];
 		$questionCount = $_SESSION['questionPointer'];
+		$userSubmitAnswers = $_SESSION['submittedAnswers']; 
+		$objUserTestResult = new UserTestResult();
+		$objUserTestResult->setId($_SESSION['runningTest']);
 		//print($this->questionCount);
 		//print($pointer);
 			
 		if($pointer == "next"){
+		    $userFinalQuestions[$questionCount]['answer'] = $_POST['option'];
+		    $userSubmitAnswers[$questionCount] = $_POST['option'];
+		    $objUserTestResult->setAnswers($userSubmitAnswers);
+		    $objUserTestResult->updateTest();
+		    
+		    //print_r($userSubmitAnswers);
+		    
+// 		    print_r($userFinalQuestions[$questionCount]['answer']);
+// 		    print_r($_POST);
+ 		    //die;
+ 		    
+		    
+		    //print_r($userSubmitAnswers);
+		    //die;
 			if($questionCount < (count($userFinalQuestions)-1)){
 				$questionCount++;
 		}
@@ -501,15 +529,25 @@ public function handleassignTest()
 			echo json_encode($userFinalQuestions[$questionCount]);
 		}
 		else if($pointer == "previous"){
+		    //print_r($userSubmitAnswers);
+		    
 			if($questionCount > 0){
 				$questionCount--;
-			}			
+			}
+			$userFinalQuestions[$questionCount]['answer'] = $_POST['option'];
+			$userSubmitAnswers[$questionCount] = $_POST['option'];
+			$objUserTestResult->setAnswers($userSubmitAnswers);
+			$objUserTestResult->updateTest();
 			echo json_encode($userFinalQuestions[$questionCount]);			
 		}
 		else{
 			echo json_encode($userFinalQuestions[$questionCount]);
 		}
 		$_SESSION['questionPointer'] = $questionCount;
+		$_SESSION['allQuestions'] = $userFinalQuestions;
+		$_SESSION['submittedAnswers'] = $userSubmitAnswers;
+		//$runningTestid = $objUserTestResult->getId();
+		//$_SESSION['runningTest'] = $runningTestid;		
 	}
 	
 	public function handleUpload()

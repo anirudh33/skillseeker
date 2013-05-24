@@ -15,7 +15,13 @@ $("#questionDisplay").ready(function(){
 		}
 		});
 });
-
+$questionCount = 0;
+$option = 0;
+function select1($id){
+// 	alert($id);
+// 	alert($("#"+$id).val());
+	$option = $id;
+}
 function getQuestion(data){
 	$("#questionDisplay").html("");
 	$.each(data,function(i, value){
@@ -25,19 +31,26 @@ function getQuestion(data){
 		if(i == "options"){
 			$("#questionDisplay").append("<div>");
 			$.each(value,function(j, invalue){
-				$("#questionDisplay > div").append("<input type = \"radio\" name = \"option"+data['id']+
-						"\" value = \""+invalue['id']+"\"/>"+invalue['name']);
+				$str = "<input type = \"radio\" name = \"option"+data['id']+
+				"\" "+
+				" onClick = select1(\""+invalue['name']+"\") ";
+				
+				if(invalue['name'] == data['answer']){
+					$str += " checked ";
+				}
+				$str += "value = \""+invalue['id']+"\"/>"+invalue['name'];
+				$("#questionDisplay > div").append($str);
 			});
 			$("#questionDisplay").append("</div>");
 		}
-	});	
+	});
 }
 
 function nextQuestion(pointer){
 	$.ajax({
 		url : "../index.php?controller=TestController&method=getQuestion",
 		type: "post",
-		data: "&questionPointer="+pointer,
+		data: "&questionPointer="+pointer+"&option="+$option,
 		success : function(data){
 			if(data == "max"){
 				$("#confirmNow").html("<input type = \"button\" value='Confirm Finish' id='confirmFinishButton'/>");
@@ -49,6 +62,10 @@ function nextQuestion(pointer){
 		}
 		});
 }
+
+$(function(){
+	
+});
 </script>
 </head>
 <body>
