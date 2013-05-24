@@ -202,62 +202,63 @@ class User extends DBConnection
 
     // values the post value from form
     public function GenerateArray($values,$type) {    	
-    	$obj = new validate();
-        if(array_key_exists('id',$values))
-        {
-            $this->setId($values['id']);
-        }
-        if(array_key_exists('first_name',$values))
-        {
-            $obj->validator("first_name",$values['first_name'], 'required#alphabets','FirstName Required#FirstName should only contain alphabets');
-          //  $error=$obj->result();
-            
-          //  if(isset($error))
-           // {
-             // print_r($error); die;
-          // }
-          // else {
-            $this->setFirstName($values['first_name']);
-          //  }
-        }
-        if(array_key_exists('last_name',$values))
-        {
-            $obj->validator("last_name",$values['last_name'], 'required#alphabets','LastName Required#LastName should only contain alphabets');
-            $this->setLastName($values['last_name']);
-        }
-        if(array_key_exists('user_name',$values))
-        {
-            $obj->validator("user_name",$values['user_name'], 'required#username#minlength=4#maxlength=25','UserName Required#UserName should start with an alphabet#UserName atleast 4 characters long#UserName should not be more than 25 characters long');
-            $this->setUserName($values['user_name']);
-        }
-        if(array_key_exists('email_address',$values))
-        { 
-        	$obj->validator("email_address",$values['email_address'], 'required#email','Email Required#Email Please enter valid email address');
-            $this->setEmail($values['email_address']);
-        }
-        if(array_key_exists('password',$values) && array_key_exists('repassword',$values) )
-        {   
-        	$obj->validator("password",$values['password'], 'required#minlength=8#maxlength=25','Password Required#Password atleast 8 characters long#Password should not be more than 25 characters long');
-        	if(true){
-        		$match = $values['password'] ."#" . $values['repassword'];
-        		
-        		$obj->validator("confirmpassword",$match, 'match','Password does not match');
-        	}
-        	$this->setPassword($values['password']);
-        }
+    	
         
-        if(array_key_exists('repassword',$values))
-        {
-        	//$obj = new validate();
-        	$s=$values['password']."#".$values['repassword'];
-        	$obj->validator("repassword",$s , 'match','Password doesnot match#password');
-        
-        	//$error=$obj->result();
-        	//print_r($error);
-        	//$this->setPassword($values['password']);
-        }
-        
-        
+    	if(array_key_exists('id',$values))
+    	{
+    		$this->setId($values['id']);
+    	}
+    	if(array_key_exists('first_name',$values))
+    	{
+    		//$obj->validator("first_name",$values['first_name'], 'required#alphabets','FirstName Required#FirstName should only contain alphabets');
+    		//  $error=$obj->result();
+    	
+    		//  if(isset($error))
+    		// {
+    		// print_r($error); die;
+    			// }
+    			// else {
+    			$this->setFirstName($values['first_name']);
+    			//  }
+    	}
+    	if(array_key_exists('last_name',$values))
+    	{
+    		//$obj->validator("last_name",$values['last_name'], 'required#alphabets','LastName Required#LastName should only contain alphabets');
+    		$this->setLastName($values['last_name']);
+    	}
+    	if(array_key_exists('user_name',$values))
+    	{
+    		//$obj->validator("user_name",$values['user_name'], 'required#username#minlength=4#maxlength=25','UserName Required#UserName should start with an alphabet#UserName atleast 4 characters long#UserName should not be more than 25 characters long');
+    		$this->setUserName($values['user_name']);
+    	}
+    	if(array_key_exists('email_address',$values))
+    	{
+    		//$obj->validator("email_address",$values['email_address'], 'required#email','Email Required#Email Please enter valid email address');
+    		$this->setEmail($values['email_address']);
+    	}
+    	if(array_key_exists('password',$values) && array_key_exists('repassword',$values) )
+    	{
+    		//$obj->validator("password",$values['password'], 'required#minlength=8#maxlength=25','Password Required#Password atleast 8 characters long#Password should not be more than 25 characters long');
+    		//if(true){
+    			//$match = $values['password'] ."#" . $values['repassword'];
+    	
+    			//$obj->validator("confirmpassword",$match, 'match','Password does not match');
+    		//}
+    		$this->setPassword($values['password']);
+    	}
+    	
+    	//if(array_key_exists('repassword',$values))
+    	//{
+    		//$obj = new validate();
+    		//$s=$values['password']."#".$values['repassword'];
+    		//$obj->validator("repassword",$s , 'match','Password doesnot match#password');
+    	
+    		//$error=$obj->result();
+    		//print_r($error);
+    		//$this->setPassword($values['password']);
+    	//}
+    	
+    	
         
         
         if(array_key_exists('time_zone_id',$values))
@@ -403,19 +404,8 @@ class User extends DBConnection
         {
             $userFormArray["updated_on"] = $this->getUpdatedOn();
         }
-
-     $error=$obj->result();
-    
-     if ($error==false){
-     	
-       return $userFormArray;
-        }
-        else{
-        echo "<pre>";
-        print_r($error);
-        die;
-       
-        }  
+        return $userFormArray;
+     
     }
     
     public function searchUser() {

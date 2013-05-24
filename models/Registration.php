@@ -22,10 +22,10 @@ class Registration extends DBConnection
 	public function registerUser($data)
 	{
 		
-	
 		$registrationObj = new User();
 		
 		$userArray = $registrationObj->GenerateArray($data, "INSERT");
+		
 		$createdon=date ( 'Y-m-d h:i:s', time () );
 		
 		$userArray['created_on']=$createdon;

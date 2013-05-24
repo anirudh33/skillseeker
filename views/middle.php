@@ -26,6 +26,7 @@ Created on                  -  May 10, 2013
 					start creating online tests today. <a class="blocklink"
 						href="index.php?controller=MainController&method=onRegisterClick">Register
 						free</a>
+						<div class="message"></div>
 				</p>
 				<div class="line-separator"></div>
 				<br>

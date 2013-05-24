@@ -54,6 +54,7 @@ Created on                  -  May 13, 2013
 $(document).ready(function() 
 {
 $(".errpass").hide();
+$(".message").hide();
 $(".header2").hide();
 <?php
     if (isset($_REQUEST['msg'])) 
@@ -76,6 +77,13 @@ $(".header2").hide();
 		$(".errpass").html(<?php echo "'".$_REQUEST['password']."'"?>);
 <?php
     	}
+    	else if(isset($_REQUEST['reg']))
+    	{
+    		?>
+    			$(".message").show();
+    			$(".message").html(<?php echo "'".$_REQUEST['reg']."'"?>);
+    	<?php
+    	    	}
 ?>
 });
  </script>

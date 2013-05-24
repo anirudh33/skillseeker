@@ -147,12 +147,54 @@ class MainController extends AController
 	/* Called when user submits the registration form */
 	public function handleRegister() 
 	{	
-		
+		//print_r($_REQUEST);
+			$obj = new validate();
+			$obj->validator("first_name",$_REQUEST['first_name'], 'required#alphabets','FirstName Required#FirstName should only contain alphabets');
+			$obj->validator("last_name",$_REQUEST['last_name'], 'required#alphabets','LastName Required#LastName should only contain alphabets');
+			$obj->validator("user_name",$_REQUEST['user_name'], 'required#username#minlength=4#maxlength=25','UserName Required#UserName should start with an alphabet#UserName atleast 4 characters long#UserName should not be more than 25 characters long');
+			$obj->validator("email_address",$_REQUEST['email_address'], 'required#email','Email Required#Email Please enter valid email address');
+			$obj->validator("password",$_REQUEST['password'], 'required#minlength=8#maxlength=25','Password Required#Password atleast 8 characters long#Password should not be more than 25 characters long');
+			$match = $_REQUEST['password'] ."#" . $_REQUEST['repassword'];
+			$obj->validator("confirmpassword",$match, 'match','Password does not match');
+			//$s=$_REQUEST['password']."#".$_REQUEST['repassword'];
+			$error=$obj->result();
+			
+			if(!empty($error))
+			{
+				
+				//$error=serialize($error);
+				$this->showView("/views/register.php",$error);die;
+				//header("Location:index.php?controller=MainController&method=onRegisterClick&error=".$error);
+				//return $error;
+			}
+			/* if(!empty($error['first_name']))
+			{
+				header("Location:index.php?controller=MainController&method=onRegisterClick&fname=".$error['first_name']);
+			}
+			else if(!empty($error['last_name']))
+			{
+				header("Location:index.php?controller=MainController&method=onRegisterClick&lname=".$error['last_name']);
+			}
+			else if(!empty($error['user_name']))
+			{
+				header("Location:index.php?controller=MainController&method=onRegisterClick&user=".$error['user_name']);
+			}
+			else if(!empty($error['email_address']))
+			{
+				header("Location:index.php?controller=MainController&method=onRegisterClick&email=".$error['email_address']);
+			}
+			else if(!empty($error['password']))
+			{
+				header("Location:index.php?controller=MainController&method=onRegisterClick&pass=".$error['password']);
+			} */
+			else {
+				
 			$userObj = new Registration();
-		
 			$userObj->registerUser($_POST);
-			header ( "Location:" . $_SESSION ["DOMAIN_PATH"] . "/index.php" );
-			//echo "successful";
+			header ( "Location:" . $_SESSION ["DOMAIN_PATH"] . "/index.php?reg=Register Successful" );
+			
+			}
+			
 	}
 
 	public function logout() 

@@ -1,361 +1,446 @@
+<?php ?>
 <!DOCTYPE html>
 <html>
 <head>
 
 <title>Registration</title>
-	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7; IE=EmulateIE9">
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+<meta http-equiv="X-UA-Compatible"
+	content="IE=EmulateIE7; IE=EmulateIE9">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
 
-     <link rel="stylesheet" type="text/css" href="../assets/css/style.css" media="all" />
-<link rel="stylesheet" type="text/css" href="../assets/css/register.css" media="all" />
-<link rel="stylesheet" type="text/css" href="../assets/css/demo.css" media="all" />
-    <script type="text/javascript" src="../assets/js/jquery-1.9.1.js"></script>
-     <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
- 	 <script type="text/javascript" src="../assets/js/registerUser.js"></script>
-	   <script src="http://cdn.jquerytools.org/1.2.7/full/jquery.tools.min.js"></script>
-          <script src="<?php echo SITE_URL?>/assets/js/validate.js"></script>
-          <script src="<?php echo SITE_URL?>/assets/js/functions.js"></script>
-	  <script>
+<link rel="stylesheet" type="text/css" href="<?php echo SITE_URL;?>/assets/css/style.css"
+	media="all" />
+<link rel="stylesheet" type="text/css" href="<?php echo SITE_URL;?>/assets/css/register.css"
+	media="all" />
 
-	  $(document).ready(function() {
-			
-	  
-	    $("#errorfirstname").hide();
-	    $("#errorlastname").css("display","none");
-	    $("#erroremail").css("display","none");
-	    $("#errorusername").css("display","none");
-	    $("#errordisplayname").css("display","none");
-	    $("#errorrepass").css("display","none");
-	    $("#errorpass").css("display","none");
-	    $("#datepicker").datepicker();
+<script type="text/javascript"
+	src="<?php echo SITE_URL;?>/assets/js/jquery-1.4.2.min.js"></script>
+	<script type="text/javascript"
+	src="<?php echo SITE_URL;?>/assets/js/registerUser.js"></script>
+<script type="text/javascript"
+	src="<?php echo SITE_URL;?>/assets/js/cufon-yui.js"></script>
+<script type="text/javascript"
+	src="<?php echo SITE_URL;?>/assets/js/cufon-replace.js"></script>
+<script type="text/javascript"
+	src="<?php echo SITE_URL;?>/assets/js/Myriad_Pro_300.font.js"></script>
+<script type="text/javascript"
+	src="<?php echo SITE_URL;?>/assets/js/Myriad_Pro_400.font.js"></script>
+<script type="text/javascript"
+	src="<?php echo SITE_URL;?>/assets/js/script.js"></script>
+<script type="text/javascript"
+	src="<?php echo SITE_URL;?>/assets/js/functions.js"></script>
+	
+
+<script>
+
+	  $(document).ready(function() 
+			  {
+		  
+		 
+	  //alert("jkdfhsdjk");
+	    $(".errorfirstname").hide();
+	    $(".errorlastname").hide();
+	    $(".erroremail").hide();
+	    $(".errorusername").hide();
+	    $(".errordisplayname").hide();
+	    $(".errorrepass").hide();
+	    $(".errorpass").hide();
+	    //$("#datepicker").datepicker();
+	    
+	    <?php
+	    //echo "<pre>";
+	    //print_r($_REQUEST);
+			if (isset ( $arrData ['user_name'] )) 
+			{
+		?>
+				$(".errorusername").show();
+		    	$(".errorusername").html(<?php echo '"'.$arrData['user_name'].'"';?>);
+	    <?php
+			} 
+			if (isset ( $arrData ['first_name'] )) 
+			{
+				//echo  $error ['fname'] ;
+		?>
+	    		$(".errorfirstname").show();
+	    		$(".errorfirstname").html(<?php echo '"'.$arrData['first_name'].'"';?>);
+	    <?php
+			} 
+			 if (isset ( $arrData ['last_name'] )) 
+			{
+		?>
+	    		$(".errorlastname").show();
+	    		$(".errorlastname").html(<?php echo '"'.$arrData['last_name'].'"'?>);
+	    <?php
+			} 
+			 if (isset ( $arrData ['email_address'] )) 
+			{
+		?>
+	    	    $(".erroremail").show();
+	    	    $(".erroremail").html(<?php echo '"'.$arrData['email_address'].'"'?>);
+	    <?php
+			} 
+			 if (isset ( $arrData ['password'] )) 
+			{
+		?>
+				$(".errorpass").show();
+				$(".errorpass").html(<?php echo '"'.$arrData['password'].'"'?>);
+		<?php
+			}
+		?>
 	  });
 	  
 	  </script>
 
-	  
+
 </head>
+
 <body>
 
-<div class="container inside" id="inside">
+	<div class="container">
+
+		<div class="freshdesignweb-top">
+
+			<div class="clr"></div>
+		</div>
+		<header>
 			
-             <div class="freshdesignweb-top">
-                
-                <div class="clr"></div>
-            </div>
-			<header>
 				<h2 id="registerTag">Registration Form</h2>
-            </header>       
-      <div  class="form">
-    		<form method="post" id="myform" action="index.php?controller=MainController&method=handleRegister"> 
-    			<p class="contact"><label for="name"><?php echo $lang->FIRSTNAME; ?></label></p> 
-    			<input id="name" name="first_name" placeholder="firstname" required="required" tabindex="1" type="text" autocomplete="off"> 
-    			 <div id="errorfirstname"> fgthgfhjgy</div><br/><br/>
-    			 
-    			 
-    			<p class="contact"><label for="name"><?php echo $lang->LASTNAME; ?></label></p> 
-    			<input id="name" name="last_name" placeholder="lastname" autocomplete="off" required="required" tabindex="1" type="text"> 
-    			  <div id="errorlastname"></div><br/><br/>
-    			  
-    			<p class="contact"><label for="email"><?php echo $lang->EMAIL; ?></label></p> 
-    			<input id="email" name="email_address" placeholder="example@domain.com"  type="email" required="required"> 
-                 <div id="erroremail"></div><br/><br/>
-                 
-                <p class="contact"><label for="username"><?php echo $lang->USERNAME; ?></label></p> 
-    			<input id="username"  name="user_name" placeholder="username" required="required" tabindex="2" type="text" minlength="4" maxlength="25"> 
-    			  <div id="errorusername"></div><br/><br/>
-    			  
-    			 <div id="userresult"></div>
-                
-               
-			    <p class="contact"><label for="time zone"><?php echo $lang->TIMEZONE; ?></label></p>
-            <select class="select-style gender" name="time_zone_id" autocomplete="off">
-<!--             <option value="select">time zone</option> -->
-            <option>UTC+05:30 (IST)india</option>
-							<option>UTC+08:00 (HKT)Honkong</option>
-							<option>UTC+13:00 — Phoenix Islands)</option>
-							<option>UTC−08:00 — Pitcairn Islands</option>
-							<option>UTC−04:00 (AST) — Labrador</option>
-							<option>UTC−04:00 — northwestern Greenland</option>
-							<option>UTC+05:00 — western Kazakhstan</option>
-							<option>UTC−10:00 — Cook Islands</option>
-							<option>UTC−04:00 (Brasília time −1) — , Mato Grosso do
-								Sul, Rondônia,</option>
-							<option>UTC+06:00 — eastern Kazakhstan</option>
-							<option>UTC+07:00 (Western Indonesian Standard Time)</option>
-							<option>UTC+01:00 (CET) — main territory of Spain</option>
-							<option>UTC−08:00 (Zone 3 or Northwest Zone) — the state
-								of Baja California</option>
-							<option>UTC+08:00 (HKT)</option>
-							<option>UTC−06:00 — Easter Island</option>
-            </select><br/><br/>
-                
-             <p class="contact"><label for="country"><?php echo $lang->COUNTRY; ?></label></p>
-            <select class="select-style gender" name="country_id" autocomplete="off">
-<!--             <option value="select">Country</option> -->
-            <option value="United States">United States</option>
-								<option value="United Kingdom">United Kingdom</option>
-								<option value="Australia">Australia</option>
-								<option value="Canada">Canada</option>
-								<option value="France">France</option>
-								<option value="New Zealand">New Zealand</option>
-								<option value="India">India</option>
-								<option value="Brazil">Brazil</option>
-								<option value="----">----</option>
-								<option value="Afghanistan">Afghanistan</option>
-								<option value="Åland Islands">Åland Islands</option>
-								<option value="Albania">Albania</option>
-								<option value="Algeria">Algeria</option>
-								<option value="American Samoa">American Samoa</option>
-								<option value="Andorra">Andorra</option>
-								<option value="Angola">Angola</option>
-								<option value="Anguilla">Anguilla</option>
-								<option value="Antarctica">Antarctica</option>
-								<option value="Antigua and Barbuda">Antigua and
-									Barbuda</option>
-								<option value="Argentina">Argentina</option>
-								<option value="Armenia">Armenia</option>
-								<option value="Aruba">Aruba</option>
-								<option value="Austria">Austria</option>
-								<option value="Azerbaijan">Azerbaijan</option>
-								<option value="Bahamas">Bahamas</option>
-								<option value="Bahrain">Bahrain</option>
-								<option value="Bangladesh">Bangladesh</option>
-								<option value="Barbados">Barbados</option>
-								<option value="Belarus">Belarus</option>
-								<option value="Belgium">Belgium</option>
-								<option value="Belize">Belize</option>
-								<option value="Benin">Benin</option>
-								<option value="Bermuda">Bermuda</option>
-								<option value="Bhutan">Bhutan</option>
-								<option value="Bolivia">Bolivia</option>
-								<option value="Bosnia and Herzegovina">Bosnia and
-									Herzegovina</option>
-								<option value="Botswana">Botswana</option>
-								<option value="British Indian Ocean Territory">British
-									Indian Ocean Territory</option>
-								<option value="Brunei Darussalam">Brunei Darussalam</option>
-								<option value="Bulgaria">Bulgaria</option>
-								<option value="Burkina Faso">Burkina Faso</option>
-								<option value="Burundi">Burundi</option>
-								<option value="Cambodia">Cambodia</option>
-								<option value="Cameroon">Cameroon</option>
-								<option value="Cape Verde">Cape Verde</option>
-								<option value="Cayman Islands">Cayman Islands</option>
-								<option value="Central African Republic">Central
-									African Republic</option>
-								<option value="Chad">Chad</option>
-								<option value="Chile">Chile</option>
-								<option value="China">China</option>
-								<option value="Colombia">Colombia</option>
-								<option value="Comoros">Comoros</option>
-								<option value="Democratic Republic of the Congo">Democratic
-									Republic of the Congo</option>
-								<option value="Republic of the Congo">Republic of the
-									Congo</option>
-								<option value="Cook Islands">Cook Islands</option>
-								<option value="Costa Rica">Costa Rica</option>
-								<option value="C&ocirc;te d'Ivoire">C&ocirc;te
-									d'Ivoire</option>
-								<option value="Croatia">Croatia</option>
-								<option value="Cuba">Cuba</option>
-								<option value="Cyprus">Cyprus</option>
-								<option value="Czech Republic">Czech Republic</option>
-								<option value="Denmark">Denmark</option>
-								<option value="Djibouti">Djibouti</option>
-								<option value="Dominica">Dominica</option>
-								<option value="Dominican Republic">Dominican Republic</option>
-								<option value="East Timor">East Timor</option>
-								<option value="Ecuador">Ecuador</option>
-								<option value="Egypt">Egypt</option>
-								<option value="El Salvador">El Salvador</option>
-								<option value="Equatorial Guinea">Equatorial Guinea</option>
-								<option value="Eritrea">Eritrea</option>
-								<option value="Estonia">Estonia</option>
-								<option value="Ethiopia">Ethiopia</option>
-								<option value="Faroe Islands">Faroe Islands</option>
-								<option value="Fiji">Fiji</option>
-								<option value="Finland">Finland</option>
-								<option value="Gabon">Gabon</option>
-								<option value="Gambia">Gambia</option>
-								<option value="Georgia">Georgia</option>
-								<option value="Germany">Germany</option>
-								<option value="Ghana">Ghana</option>
-								<option value="Gibraltar">Gibraltar</option>
-								<option value="Greece">Greece</option>
-								<option value="Grenada">Grenada</option>
-								<option value="Guatemala">Guatemala</option>
-								<option value="Guinea">Guinea</option>
-								<option value="Guinea-Bissau">Guinea-Bissau</option>
-								<option value="Guyana">Guyana</option>
-								<option value="Haiti">Haiti</option>
-								<option value="Honduras">Honduras</option>
-								<option value="Hong Kong">Hong Kong</option>
-								<option value="Hungary">Hungary</option>
-								<option value="Iceland">Iceland</option>
-								<option value="Indonesia">Indonesia</option>
-								<option value="Iran">Iran</option>
-								<option value="Iraq">Iraq</option>
-								<option value="Ireland">Ireland</option>
-								<option value="Israel">Israel</option>
-								<option value="Italy">Italy</option>
-								<option value="Jamaica">Jamaica</option>
-								<option value="Japan">Japan</option>
-								<option value="Jordan">Jordan</option>
-								<option value="Kazakhstan">Kazakhstan</option>
-								<option value="Kenya">Kenya</option>
-								<option value="Kiribati">Kiribati</option>
-								<option value="North Korea">North Korea</option>
-								<option value="South Korea">South Korea</option>
-								<option value="Kuwait">Kuwait</option>
-								<option value="Kyrgyzstan">Kyrgyzstan</option>
-								<option value="Laos">Laos</option>
-								<option value="Latvia">Latvia</option>
-								<option value="Lebanon">Lebanon</option>
-								<option value="Lesotho">Lesotho</option>
-								<option value="Liberia">Liberia</option>
-								<option value="Libya">Libya</option>
-								<option value="Liechtenstein">Liechtenstein</option>
-								<option value="Lithuania">Lithuania</option>
-								<option value="Luxembourg">Luxembourg</option>
-								<option value="Macedonia">Macedonia</option>
-								<option value="Madagascar">Madagascar</option>
-								<option value="Malawi">Malawi</option>
-								<option value="Malaysia">Malaysia</option>
-								<option value="Maldives">Maldives</option>
-								<option value="Mali">Mali</option>
-								<option value="Malta">Malta</option>
-								<option value="Marshall Islands">Marshall Islands</option>
-								<option value="Mauritania">Mauritania</option>
-								<option value="Mauritius">Mauritius</option>
-								<option value="Mexico">Mexico</option>
-								<option value="Micronesia">Micronesia</option>
-								<option value="Moldova">Moldova</option>
-								<option value="Monaco">Monaco</option>
-								<option value="Mongolia">Mongolia</option>
-								<option value="Montenegro">Montenegro</option>
-								<option value="Morocco">Morocco</option>
-								<option value="Mozambique">Mozambique</option>
-								<option value="Myanmar">Myanmar</option>
-								<option value="Namibia">Namibia</option>
-								<option value="Nauru">Nauru</option>
-								<option value="Nepal">Nepal</option>
-								<option value="Netherlands">Netherlands</option>
-								<option value="Netherlands Antilles">Netherlands
-									Antilles</option>
-								<option value="Nicaragua">Nicaragua</option>
-								<option value="Niger">Niger</option>
-								<option value="Nigeria">Nigeria</option>
-								<option value="Norway">Norway</option>
-								<option value="Oman">Oman</option>
-								<option value="Pakistan">Pakistan</option>
-								<option value="Palau">Palau</option>
-								<option value="Palestine">Palestine</option>
-								<option value="Panama">Panama</option>
-								<option value="Papua New Guinea">Papua New Guinea</option>
-								<option value="Paraguay">Paraguay</option>
-								<option value="Peru">Peru</option>
-								<option value="Philippines">Philippines</option>
-								<option value="Poland">Poland</option>
-								<option value="Portugal">Portugal</option>
-								<option value="Puerto Rico">Puerto Rico</option>
-								<option value="Qatar">Qatar</option>
-								<option value="Romania">Romania</option>
-								<option value="Russia">Russia</option>
-								<option value="Rwanda">Rwanda</option>
-								<option value="Saint Kitts and Nevis">Saint Kitts and
-									Nevis</option>
-								<option value="Saint Lucia">Saint Lucia</option>
-								<option value="Saint Vincent and the Grenadines">Saint
-									Vincent and the Grenadines</option>
-								<option value="Samoa">Samoa</option>
-								<option value="San Marino">San Marino</option>
-								<option value="Sao Tome and Principe">Sao Tome and
-									Principe</option>
-								<option value="Saudi Arabia">Saudi Arabia</option>
-								<option value="Senegal">Senegal</option>
-								<option value="Serbia">Serbia</option>
-								<option value="Seychelles">Seychelles</option>
-								<option value="Sierra Leone">Sierra Leone</option>
-								<option value="Singapore">Singapore</option>
-								<option value="Slovakia">Slovakia</option>
-								<option value="Slovenia">Slovenia</option>
-								<option value="Solomon Islands">Solomon Islands</option>
-								<option value="Somalia">Somalia</option>
-								<option value="South Africa">South Africa</option>
-								<option value="Spain">Spain</option>
-								<option value="Sri Lanka">Sri Lanka</option>
-								<option value="Sudan">Sudan</option>
-								<option value="Suriname">Suriname</option>
-								<option value="Swaziland">Swaziland</option>
-								<option value="Sweden">Sweden</option>
-								<option value="Switzerland">Switzerland</option>
-								<option value="Syria">Syria</option>
-								<option value="Taiwan">Taiwan</option>
-								<option value="Tajikistan">Tajikistan</option>
-								<option value="Tanzania">Tanzania</option>
-								<option value="Thailand">Thailand</option>
-								<option value="Togo">Togo</option>
-								<option value="Tonga">Tonga</option>
-								<option value="Trinidad and Tobago">Trinidad and
-									Tobago</option>
-								<option value="Tunisia">Tunisia</option>
-								<option value="Turkey">Turkey</option>
-								<option value="Turkmenistan">Turkmenistan</option>
-								<option value="Tuvalu">Tuvalu</option>
-								<option value="Uganda">Uganda</option>
-								<option value="Ukraine">Ukraine</option>
-								<option value="United Arab Emirates">United Arab
-									Emirates</option>
-								<option value="United States Minor Outlying Islands">United
-									States Minor Outlying Islands</option>
-								<option value="Uruguay">Uruguay</option>
-								<option value="Uzbekistan">Uzbekistan</option>
-								<option value="Vanuatu">Vanuatu</option>
-								<option value="Vatican City">Vatican City</option>
-								<option value="Venezuela">Venezuela</option>
-								<option value="Vietnam">Vietnam</option>
-								<option value="Virgin Islands, British">Virgin
-									Islands, British</option>
-								<option value="Virgin Islands, U.S.">Virgin Islands,
-									U.S.</option>
-								<option value="Yemen">Yemen</option>
-								<option value="Zambia">Zambia</option>
-								<option value="Zimbabwe">Zimbabwe</option>
-								</select></br>
-                
-             <p class="contact"><label for="password"><?php echo $lang->PASSWORD; ?></label></p> 
-    			<input type="password" id="password" name="password" autocomplete="off" required="required" minlength="8" maxlength="25"> 
-                <div id="errorpassword"></div><br/><br/>
-                
-                <p class="contact"><label for="repassword"><?php echo $lang->REPASSWORD; ?></label></p> 
-    			<input type="password" id="repassword" name="repassword" autocomplete="off" required="required" data-equals="password" >    
-               <div id="errorrepassword"></div><br/><br/>
-         
-         <p>
-        <img id="siimage" style="border: 1px solid #000; margin-right: 15px"
-		src="./assets/captcha/securimage_show.php?sid=<?php echo md5(uniqid()) ?>"
-		alt="CAPTCHA Image" align="left">
-	<object type="application/x-shockwave-flash"
-		data="captcha/securimage_play.swf?bgcol=#ffffff&amp;icon_file=./assets/captcha/images/audio_icon.png&amp;audio_file=./assets/captcha/securimage_play.php"
-		height="32" width="32">
-		<param name="movie"
-			value="captcha/securimage_play.swf?bgcol=#ffffff&amp;icon_file=./assets/captcha/images/audio_icon.png&amp;audio_file=./assets/captcha/securimage_play.php" />
-	</object>
-	&nbsp; <a tabindex="-1" style="border-style: none;" href="#"
-		title="Refresh Image" id ="register_captcha"
-		onclick="document.getElementById('siimage').src = './assets/captcha/securimage_show.php?sid=' + Math.random(); this.blur(); return false"><img
-		src="./assets/captcha/images/refresh.png" alt="Reload Image"
-		align="bottom" border="0"></a><br /> <strong><?php echo $lang->ENTERCODE; ?></strong><br /><br/>
-	<input type="text" id="captchaText" name="captcha" size="12" maxlength="8" required=""/><br/>
-	<div id="result"></div>
-</p>
-     <br/>    
-         
-            <input  class="buttom" name="submit" id="submit" tabindex="5"  type="submit" autocomplete="off"> 	 
-   </form> 
-</div>      
-</div>
+		</header>
+		<div class="form">
+			<form method="post" id="myform"
+				action="index.php?controller=MainController&method=handleRegister">
+				<p class="contact">
+					<label for="name"><?php echo $lang->FIRSTNAME; ?></label>
+				</p>
+				<input id="name" name="first_name" placeholder="firstname"
+					required="required" tabindex="1" type="text" autocomplete="off">
+				<div class="errorfirstname">fgthgfhjgy</div>
+				<br /> <br />
+
+
+				<p class="contact">
+					<label for="name"><?php echo $lang->LASTNAME; ?></label>
+				</p>
+				<input id="name" name="last_name" placeholder="lastname"
+					autocomplete="off" required="required" tabindex="1" type="text">
+				<div class="errorlastname"></div>
+				<br /> <br />
+
+				<p class="contact">
+					<label for="email"><?php echo $lang->EMAIL; ?></label>
+				</p>
+				<input id="email" name="email_address"
+					placeholder="example@domain.com" type="email" required="required">
+				<div class="erroremail"></div>
+				<br /> <br />
+
+				<p class="contact">
+					<label for="username"><?php echo $lang->USERNAME; ?></label>
+				</p>
+				<input id="username" name="user_name" placeholder="username"
+					required="required" tabindex="2" type="text" minlength="4"
+					maxlength="25">
+				<div class="errorusername"></div>
+				<br /> <br />
+
+				<div id="userresult"></div>
+
+
+				<p class="contact">
+					<label for="time zone"><?php echo $lang->TIMEZONE; ?></label>
+				</p>
+				<select class="select-style gender" name="time_zone_id"
+					autocomplete="off">
+					<!--             <option value="select">time zone</option> -->
+					<option>UTC+05:30 (IST)india</option>
+					<option>UTC+08:00 (HKT)Honkong</option>
+					<option>UTC+13:00 — Phoenix Islands)</option>
+					<option>UTC−08:00 — Pitcairn Islands</option>
+					<option>UTC−04:00 (AST) — Labrador</option>
+					<option>UTC−04:00 — northwestern Greenland</option>
+					<option>UTC+05:00 — western Kazakhstan</option>
+					<option>UTC−10:00 — Cook Islands</option>
+					<option>UTC−04:00 (Brasília time −1) — , Mato Grosso do Sul,
+						Rondônia,</option>
+					<option>UTC+06:00 — eastern Kazakhstan</option>
+					<option>UTC+07:00 (Western Indonesian Standard Time)</option>
+					<option>UTC+01:00 (CET) — main territory of Spain</option>
+					<option>UTC−08:00 (Zone 3 or Northwest Zone) — the state of Baja
+						California</option>
+					<option>UTC+08:00 (HKT)</option>
+					<option>UTC−06:00 — Easter Island</option>
+				</select><br /> <br />
+
+				<p class="contact">
+					<label for="country"><?php echo $lang->COUNTRY; ?></label>
+				</p>
+				<select class="select-style gender" name="country_id"
+					autocomplete="off">
+					<!--             <option value="select">Country</option> -->
+					<option value="United States">United States</option>
+					<option value="United Kingdom">United Kingdom</option>
+					<option value="Australia">Australia</option>
+					<option value="Canada">Canada</option>
+					<option value="France">France</option>
+					<option value="New Zealand">New Zealand</option>
+					<option value="India">India</option>
+					<option value="Brazil">Brazil</option>
+					<option value="----">----</option>
+					<option value="Afghanistan">Afghanistan</option>
+					<option value="Åland Islands">Åland Islands</option>
+					<option value="Albania">Albania</option>
+					<option value="Algeria">Algeria</option>
+					<option value="American Samoa">American Samoa</option>
+					<option value="Andorra">Andorra</option>
+					<option value="Angola">Angola</option>
+					<option value="Anguilla">Anguilla</option>
+					<option value="Antarctica">Antarctica</option>
+					<option value="Antigua and Barbuda">Antigua and Barbuda</option>
+					<option value="Argentina">Argentina</option>
+					<option value="Armenia">Armenia</option>
+					<option value="Aruba">Aruba</option>
+					<option value="Austria">Austria</option>
+					<option value="Azerbaijan">Azerbaijan</option>
+					<option value="Bahamas">Bahamas</option>
+					<option value="Bahrain">Bahrain</option>
+					<option value="Bangladesh">Bangladesh</option>
+					<option value="Barbados">Barbados</option>
+					<option value="Belarus">Belarus</option>
+					<option value="Belgium">Belgium</option>
+					<option value="Belize">Belize</option>
+					<option value="Benin">Benin</option>
+					<option value="Bermuda">Bermuda</option>
+					<option value="Bhutan">Bhutan</option>
+					<option value="Bolivia">Bolivia</option>
+					<option value="Bosnia and Herzegovina">Bosnia and Herzegovina</option>
+					<option value="Botswana">Botswana</option>
+					<option value="British Indian Ocean Territory">British Indian Ocean
+						Territory</option>
+					<option value="Brunei Darussalam">Brunei Darussalam</option>
+					<option value="Bulgaria">Bulgaria</option>
+					<option value="Burkina Faso">Burkina Faso</option>
+					<option value="Burundi">Burundi</option>
+					<option value="Cambodia">Cambodia</option>
+					<option value="Cameroon">Cameroon</option>
+					<option value="Cape Verde">Cape Verde</option>
+					<option value="Cayman Islands">Cayman Islands</option>
+					<option value="Central African Republic">Central African Republic</option>
+					<option value="Chad">Chad</option>
+					<option value="Chile">Chile</option>
+					<option value="China">China</option>
+					<option value="Colombia">Colombia</option>
+					<option value="Comoros">Comoros</option>
+					<option value="Democratic Republic of the Congo">Democratic
+						Republic of the Congo</option>
+					<option value="Republic of the Congo">Republic of the Congo</option>
+					<option value="Cook Islands">Cook Islands</option>
+					<option value="Costa Rica">Costa Rica</option>
+					<option value="C&ocirc;te d'Ivoire">C&ocirc;te d'Ivoire</option>
+					<option value="Croatia">Croatia</option>
+					<option value="Cuba">Cuba</option>
+					<option value="Cyprus">Cyprus</option>
+					<option value="Czech Republic">Czech Republic</option>
+					<option value="Denmark">Denmark</option>
+					<option value="Djibouti">Djibouti</option>
+					<option value="Dominica">Dominica</option>
+					<option value="Dominican Republic">Dominican Republic</option>
+					<option value="East Timor">East Timor</option>
+					<option value="Ecuador">Ecuador</option>
+					<option value="Egypt">Egypt</option>
+					<option value="El Salvador">El Salvador</option>
+					<option value="Equatorial Guinea">Equatorial Guinea</option>
+					<option value="Eritrea">Eritrea</option>
+					<option value="Estonia">Estonia</option>
+					<option value="Ethiopia">Ethiopia</option>
+					<option value="Faroe Islands">Faroe Islands</option>
+					<option value="Fiji">Fiji</option>
+					<option value="Finland">Finland</option>
+					<option value="Gabon">Gabon</option>
+					<option value="Gambia">Gambia</option>
+					<option value="Georgia">Georgia</option>
+					<option value="Germany">Germany</option>
+					<option value="Ghana">Ghana</option>
+					<option value="Gibraltar">Gibraltar</option>
+					<option value="Greece">Greece</option>
+					<option value="Grenada">Grenada</option>
+					<option value="Guatemala">Guatemala</option>
+					<option value="Guinea">Guinea</option>
+					<option value="Guinea-Bissau">Guinea-Bissau</option>
+					<option value="Guyana">Guyana</option>
+					<option value="Haiti">Haiti</option>
+					<option value="Honduras">Honduras</option>
+					<option value="Hong Kong">Hong Kong</option>
+					<option value="Hungary">Hungary</option>
+					<option value="Iceland">Iceland</option>
+					<option value="Indonesia">Indonesia</option>
+					<option value="Iran">Iran</option>
+					<option value="Iraq">Iraq</option>
+					<option value="Ireland">Ireland</option>
+					<option value="Israel">Israel</option>
+					<option value="Italy">Italy</option>
+					<option value="Jamaica">Jamaica</option>
+					<option value="Japan">Japan</option>
+					<option value="Jordan">Jordan</option>
+					<option value="Kazakhstan">Kazakhstan</option>
+					<option value="Kenya">Kenya</option>
+					<option value="Kiribati">Kiribati</option>
+					<option value="North Korea">North Korea</option>
+					<option value="South Korea">South Korea</option>
+					<option value="Kuwait">Kuwait</option>
+					<option value="Kyrgyzstan">Kyrgyzstan</option>
+					<option value="Laos">Laos</option>
+					<option value="Latvia">Latvia</option>
+					<option value="Lebanon">Lebanon</option>
+					<option value="Lesotho">Lesotho</option>
+					<option value="Liberia">Liberia</option>
+					<option value="Libya">Libya</option>
+					<option value="Liechtenstein">Liechtenstein</option>
+					<option value="Lithuania">Lithuania</option>
+					<option value="Luxembourg">Luxembourg</option>
+					<option value="Macedonia">Macedonia</option>
+					<option value="Madagascar">Madagascar</option>
+					<option value="Malawi">Malawi</option>
+					<option value="Malaysia">Malaysia</option>
+					<option value="Maldives">Maldives</option>
+					<option value="Mali">Mali</option>
+					<option value="Malta">Malta</option>
+					<option value="Marshall Islands">Marshall Islands</option>
+					<option value="Mauritania">Mauritania</option>
+					<option value="Mauritius">Mauritius</option>
+					<option value="Mexico">Mexico</option>
+					<option value="Micronesia">Micronesia</option>
+					<option value="Moldova">Moldova</option>
+					<option value="Monaco">Monaco</option>
+					<option value="Mongolia">Mongolia</option>
+					<option value="Montenegro">Montenegro</option>
+					<option value="Morocco">Morocco</option>
+					<option value="Mozambique">Mozambique</option>
+					<option value="Myanmar">Myanmar</option>
+					<option value="Namibia">Namibia</option>
+					<option value="Nauru">Nauru</option>
+					<option value="Nepal">Nepal</option>
+					<option value="Netherlands">Netherlands</option>
+					<option value="Netherlands Antilles">Netherlands Antilles</option>
+					<option value="Nicaragua">Nicaragua</option>
+					<option value="Niger">Niger</option>
+					<option value="Nigeria">Nigeria</option>
+					<option value="Norway">Norway</option>
+					<option value="Oman">Oman</option>
+					<option value="Pakistan">Pakistan</option>
+					<option value="Palau">Palau</option>
+					<option value="Palestine">Palestine</option>
+					<option value="Panama">Panama</option>
+					<option value="Papua New Guinea">Papua New Guinea</option>
+					<option value="Paraguay">Paraguay</option>
+					<option value="Peru">Peru</option>
+					<option value="Philippines">Philippines</option>
+					<option value="Poland">Poland</option>
+					<option value="Portugal">Portugal</option>
+					<option value="Puerto Rico">Puerto Rico</option>
+					<option value="Qatar">Qatar</option>
+					<option value="Romania">Romania</option>
+					<option value="Russia">Russia</option>
+					<option value="Rwanda">Rwanda</option>
+					<option value="Saint Kitts and Nevis">Saint Kitts and Nevis</option>
+					<option value="Saint Lucia">Saint Lucia</option>
+					<option value="Saint Vincent and the Grenadines">Saint Vincent and
+						the Grenadines</option>
+					<option value="Samoa">Samoa</option>
+					<option value="San Marino">San Marino</option>
+					<option value="Sao Tome and Principe">Sao Tome and Principe</option>
+					<option value="Saudi Arabia">Saudi Arabia</option>
+					<option value="Senegal">Senegal</option>
+					<option value="Serbia">Serbia</option>
+					<option value="Seychelles">Seychelles</option>
+					<option value="Sierra Leone">Sierra Leone</option>
+					<option value="Singapore">Singapore</option>
+					<option value="Slovakia">Slovakia</option>
+					<option value="Slovenia">Slovenia</option>
+					<option value="Solomon Islands">Solomon Islands</option>
+					<option value="Somalia">Somalia</option>
+					<option value="South Africa">South Africa</option>
+					<option value="Spain">Spain</option>
+					<option value="Sri Lanka">Sri Lanka</option>
+					<option value="Sudan">Sudan</option>
+					<option value="Suriname">Suriname</option>
+					<option value="Swaziland">Swaziland</option>
+					<option value="Sweden">Sweden</option>
+					<option value="Switzerland">Switzerland</option>
+					<option value="Syria">Syria</option>
+					<option value="Taiwan">Taiwan</option>
+					<option value="Tajikistan">Tajikistan</option>
+					<option value="Tanzania">Tanzania</option>
+					<option value="Thailand">Thailand</option>
+					<option value="Togo">Togo</option>
+					<option value="Tonga">Tonga</option>
+					<option value="Trinidad and Tobago">Trinidad and Tobago</option>
+					<option value="Tunisia">Tunisia</option>
+					<option value="Turkey">Turkey</option>
+					<option value="Turkmenistan">Turkmenistan</option>
+					<option value="Tuvalu">Tuvalu</option>
+					<option value="Uganda">Uganda</option>
+					<option value="Ukraine">Ukraine</option>
+					<option value="United Arab Emirates">United Arab Emirates</option>
+					<option value="United States Minor Outlying Islands">United States
+						Minor Outlying Islands</option>
+					<option value="Uruguay">Uruguay</option>
+					<option value="Uzbekistan">Uzbekistan</option>
+					<option value="Vanuatu">Vanuatu</option>
+					<option value="Vatican City">Vatican City</option>
+					<option value="Venezuela">Venezuela</option>
+					<option value="Vietnam">Vietnam</option>
+					<option value="Virgin Islands, British">Virgin Islands, British</option>
+					<option value="Virgin Islands, U.S.">Virgin Islands, U.S.</option>
+					<option value="Yemen">Yemen</option>
+					<option value="Zambia">Zambia</option>
+					<option value="Zimbabwe">Zimbabwe</option>
+				</select></br>
+
+				<p class="contact">
+					<label for="password"><?php echo $lang->PASSWORD; ?></label>
+				</p>
+				<input type="password" id="password" name="password"
+					autocomplete="off" required="required" minlength="8" maxlength="25">
+				<div class="errorpassword"></div>
+				<br /> <br />
+
+				<p class="contact">
+					<label for="repassword"><?php echo $lang->REPASSWORD; ?></label>
+				</p>
+				<input type="password" id="repassword" name="repassword"
+					autocomplete="off" required="required" data-equals="password">
+				<div class="errorrepassword"></div>
+				<br /> <br />
+
+				<p>
+					<img id="siimage"
+						style="border: 1px solid #000; margin-right: 15px"
+						src="./assets/captcha/securimage_show.php?sid=<?php echo md5(uniqid()) ?>"
+						alt="CAPTCHA Image" align="left">
+					<object type="application/x-shockwave-flash"
+						data="captcha/securimage_play.swf?bgcol=#ffffff&amp;icon_file=./assets/captcha/images/audio_icon.png&amp;audio_file=./assets/captcha/securimage_play.php"
+						height="32" width="32">
+						<param name="movie"
+							value="captcha/securimage_play.swf?bgcol=#ffffff&amp;icon_file=./assets/captcha/images/audio_icon.png&amp;audio_file=./assets/captcha/securimage_play.php" />
+					</object>
+					&nbsp; <a tabindex="-1" style="border-style: none;" href="#"
+						title="Refresh Image" id="register_captcha"
+						onclick="document.getElementById('siimage').src = './assets/captcha/securimage_show.php?sid=' + Math.random(); this.blur(); return false"><img
+						src="./assets/captcha/images/refresh.png" alt="Reload Image"
+						align="bottom" border="0"></a><br /> <strong><?php echo $lang->ENTERCODE; ?></strong><br />
+					<br /> <input type="text" id="captchaText" name="captcha" size="12"
+						maxlength="8" required="" /><br />
+				
+				
+				<div id="result"></div>
+				</p>
+				<br /> <input class="buttom" name="submit" id="submit" tabindex="5"
+					type="submit" autocomplete="off">
+			</form>
+		</div>
+	</div>
 
 </body>
 </html>
