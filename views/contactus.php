@@ -9,7 +9,7 @@ function contact()
 $.ajax({
 
 		type: "POST",
-	    url: '../index.php?controller=MainController&method=handleContact',  
+	    url: '../index.php?controller=MainController&method=handleContactSubmit',  
 	     data: $('#contactform').serialize(),
 	       success: function(data){
 	    	$('#Directlink1').hide();

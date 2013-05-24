@@ -217,5 +217,12 @@ class MainController extends AController
 		$pageName="/views/contactus.php";
 		$this->showView($pageName,array(),array(),false,false);
 	}
+	public function handleContactSubmit(){
+	
+		$mailer = new Mailer();
+		$subject=$_REQUEST['username']."   ".$_REQUEST['subject'];
+		$mailer->sendMail($_REQUEST['email'],$subject);
+		 
+	}
 	
 }
