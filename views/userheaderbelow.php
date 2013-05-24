@@ -84,7 +84,7 @@
 		<br /> <br />
 
 
-		<h3><?php echo $lang->CATEGORIES;?></h3>
+		<h3><?php //echo $lang->CATEGORIES;?></h3>
 		<div id="body">
 			<div id="feedControl">Loading...</div>
 		</div>

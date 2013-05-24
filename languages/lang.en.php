@@ -84,7 +84,7 @@
  		'UPDATE'=>"Update",
  		'DELETE'=>"Delete",
  		'DISPLAY'=>"Display", 
- 		'CATEGORY'=>"CATEGORIES",
+ 		'CATEGORY'=>"CATEGORY",
  		'HOMEPAGE'=>"Home Page",
  		'ABOUTUS'=>"About Us",
  		'CONATCTUS'=>"Contact Us",
