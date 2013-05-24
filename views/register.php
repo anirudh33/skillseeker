@@ -15,6 +15,7 @@
  	 <script type="text/javascript" src="../assets/js/registerUser.js"></script>
 	   <script src="http://cdn.jquerytools.org/1.2.7/full/jquery.tools.min.js"></script>
           <script src="<?php echo SITE_URL?>/assets/js/validate.js"></script>
+          <script src="<?php echo SITE_URL?>/assets/js/functions.js"></script>
 	  <script>
 
 	  $(document).ready(function() {
@@ -35,7 +36,8 @@
 	  
 </head>
 <body>
-<div class="container">
+
+<div class="container inside" id="inside">
 			
              <div class="freshdesignweb-top">
                 
