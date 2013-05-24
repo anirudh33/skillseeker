@@ -81,12 +81,12 @@ function assignLink()
   	});
 } 
 
-function fetchLink()
+function fetchLink(id)
 {	
 	$.ajax
 	({
 		type: "POST",
-	    	url: 'index.php?controller=TestController&method=handleFetchLink&test_id='+<?php echo $test_id;?>,  
+	    	url: '../index.php?controller=TestController&method=handleFetchLink&test_id='+id,  
 	       	success: function(data)
 		{
 			$("#link").append('<td ><input type="text" name="link" value="'+data+'" readonly/></td>');

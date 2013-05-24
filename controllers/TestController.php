@@ -543,7 +543,7 @@ class TestController extends AController {
 	 */
 	public function handleCategory()
 	{
-		$this->showView("category");
+		$this->showView("/views/category.php",array(),false,false);
 	}
 	
 	/* function creates object of Category class and calls the addCategory method of Category class */
