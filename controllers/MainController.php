@@ -195,9 +195,9 @@ class MainController extends AController
 			$userObj->setFirstName($_POST['first_name']);
 			$userObj->setLastName($_POST['last_name']);
 			$result = $userObj->searchUser();
-			$this->showView('/views/SearchUser.php',$result);
+			$this->showView('/views/SearchUser.php',$result,false,false);
 		} else {
-			$this->showView('/views/SearchUser.php');
+			$this->showView('/views/SearchUser.php',array(),false,false);
 		}
 		
 	}
@@ -212,7 +212,7 @@ class MainController extends AController
 	public function onClickSearch() {
 		$pageName="/views/SearchUser.php";
 		
-		$this->showView($pageName);
+		$this->showView($pageName,array());
 	}
 	public function showHome()
 	{

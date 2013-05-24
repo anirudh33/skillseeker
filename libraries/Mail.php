@@ -27,8 +27,8 @@ class Mailer {
 	$mail->Host = "ssl://smtp.gmail.com";
 	$mail->Port = 465;
 	$mail->SMTPAuth = true; // turn on SMTP authentication
-	$mail->Username = ""; // SMTP username
-	$mail->Password = ""; // SMTP password
+	$mail->Username = "mohit.singh@osscube.com"; // SMTP username
+	$mail->Password = "iloveujesus9"; // SMTP password
  
 	$mail->From     = "SkillSeeker";
 	$mail->AddAddress($address);  
