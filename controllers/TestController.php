@@ -21,7 +21,7 @@ require_once  SITE_PATH.'/libraries/Language.php';
 require_once './models/csvModel.php';
 require_once  SITE_PATH.'/models/createTestModel.php';
 require_once  SITE_PATH.'/models/UserTestResult.php';
-
+require_once  SITE_PATH.'/libraries/EncryptionDecryption.php';
 
 
 
@@ -372,6 +372,9 @@ public function handleassignTest()
 //        $_POST ['email'] = 'test@1234.com';
         $objUserTestResult->setEmailAddress($_POST ['email']);
 
+//        $objEncryptionDecryption = new EncryptionDecryption();
+//        $tmp1 = $objEncryptionDecryption->decode($_REQUEST['id']);
+//        print($tmp1);
 //        echo "<pre/>";
 /* This section of code will verify user eligibility
  * {

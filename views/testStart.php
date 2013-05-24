@@ -5,11 +5,11 @@
 <title>Test Start</title>
 <script type="text/javascript" src="../misc/prototypes/html/js/jquery-1.9.1.min.js"></script>
 <script type="text/javascript">
-function startTest(){
+function startTest(id){
 	$.ajax({
 		url : "../index.php?controller=TestController&method=takeTest",
 		type: "post",
-		data: $("#startTestForm").serialize(),
+		data: $("#startTestForm").serialize()+"&id="+id,
 		success : function(data){
 			
 			$("body").html(data);
@@ -27,7 +27,7 @@ function startTest(){
 <tr class="instructiontr"><td>Last Name:</td><td><input type="text" name="lastName" size="20"/></td></tr>
 <tr class="instructiontr"><td>Email:</td><td><input type="text" name="email" size="20"/></td></tr>
 <tr class="instructiontr"></tr class="instructiontr">
-<td><input type="button" value="submit" class="btn" onClick = "startTest()"/>
+<td><input type="button" value="submit" class="btn" onClick = "startTest('<?php echo $_GET['id']?>')"/>
 </td></tr></table>
 </form>
 </body>
