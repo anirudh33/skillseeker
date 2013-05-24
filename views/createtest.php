@@ -75,8 +75,11 @@ $(document).ready(function()
 <th><?php echo $lang->ANSWER; ?></th>
 <th><?php echo $lang->REMOVE; ?></th>
 </tr>
+<tr>
+<INPUT type="button" class="btn" value="submit" onclick="insertTest()"/>
+</tr>
+
 </table>
-<div id="more" style="display: none;">Add Ajax code here to add more question</div>
-	<INPUT type="button" class="btn" value="submit" onclick="insertTest()"/>
-	<INPUT type="button" class="btn" value="Add More Questions" onclick="addMore()" />
+	
+	
 	</div>

@@ -35,7 +35,7 @@ function addRow1()
 function addRow() 
 {
         i ++;
-	$("#ques").append('<div id='+i+'><tr><td><textarea rows="1" name="opt[]" cols="10"></textarea></td><td><input type="radio" name="opt[]"/></td><td><a href="javascript:void(0)" onclick="removerow()"><img src="../assets/images/delete1.png" height="34px" alt="halo"/></a></td></tr></div>');
+	$("#ques").append('<div id='+i+'><tr><td><textarea rows="1" name="opt[]" cols="10"></textarea></td><td><input type="radio" name="opt[]"/></td><td><a href="javascript:void(0)" class="remove-btn" ><img src="../assets/images/delete1.png" height="34px" alt="halo"/></a></td></tr></div>');
 }
         
 
@@ -43,11 +43,10 @@ function addMore()
 {
         $("#more").show();
 }
+$(".remove-btn").live('click',function() {
+    $(this).parent().remove();
+});
 
-function removerow(i) 
-{
-        alert(i);
-}
 
 function insertTest() 
 {
