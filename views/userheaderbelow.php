@@ -5,7 +5,7 @@
 						
 							<ul class="sf-menu" id="example">
 								<li class="current">
-									<a href="#"><?php echo $lang->HOME;?></a>
+									<a href="index.php?controller=MainController&method=showHome"><?php echo $lang->HOME;?></a>
 									<ul class="follow">
 										<li>
 											<a href="#"><?php echo $lang->PRICING;?></a>
