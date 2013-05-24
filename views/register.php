@@ -56,7 +56,7 @@
     			  <div id="errorlastname"></div><br/><br/>
     			  
     			<p class="contact"><label for="email"><?php echo $lang->EMAIL; ?></label></p> 
-    			<input id="email" name="email_address" placeholder="example@domain.com"  type="email"> 
+    			<input id="email" name="email_address" placeholder="example@domain.com"  type="email" required="required"> 
                  <div id="erroremail"></div><br/><br/>
                  
                 <p class="contact"><label for="username"><?php echo $lang->USERNAME; ?></label></p> 
