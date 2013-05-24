@@ -122,6 +122,7 @@ function assignTest(testId)
 	           
 	       },
 	       success: function(data){
+		       //alert("mohit");
 	    	   $("#content").html(data);
     	                	       }, 
 

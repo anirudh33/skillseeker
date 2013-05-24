@@ -5,14 +5,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Category</title>
 <script language="javascript">
-$(document).ready(function()
-{
+//$(document).ready(function()
+//{
 
 	$("#createNewCategoryDiv").hide();
 	$("#showEditDiv").hide();
 	$("#showDeleteDiv").hide();
 	displayCategory();
-});
+//});
 function showEdit(abc)
 {
 	$('#createNewCategoryDiv').hide();
