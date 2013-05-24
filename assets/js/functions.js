@@ -138,7 +138,7 @@ function fetchValues(val)
 
 function fetchResult()
 {
-	alert("hi");
+	
 	$.ajax
 	({
 		type: "POST",
