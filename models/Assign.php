@@ -18,7 +18,37 @@ class Assign extends DBConnection {
 		private $_createdOn;
 		private $_updatedOn;
 		private $_status;
+		private $_emailcheck;
+		private  $_emails;
 		/**
+	 * @return the $_emails
+	 */
+	public function getEmails() {
+		return $this->_emails;
+	}
+
+		/**
+	 * @param field_type $_emails
+	 */
+	public function setEmails($_emails) {
+		$this->_emails = $_emails;
+	}
+
+	/**
+	 * @return the $_emailcheck
+	 */
+	public function getEmailcheck() {
+		return $this->_emailcheck;
+	}
+
+		/**
+	 * @param field_type $_emailcheck
+	 */
+	public function setEmailcheck($_emailcheck) {
+		$this->_emailcheck = $_emailcheck;
+	}
+
+	/**
 	 * @return the $_id
 	 */
 	public function getId() {
@@ -242,7 +272,12 @@ class Assign extends DBConnection {
 		$this->_status = $_status;
 	}
 
-
+	/*
+	 *
+	* created by-------Mohit Gupta
+	* This function is responsible to save setting  for a test in Database.
+	*/
+	
 	public function AssignTest()
 	{
 		$this->setAdmin_result_type($_POST['admin_view_type']);
@@ -256,6 +291,8 @@ class Assign extends DBConnection {
     	$this->setTest_duration($_POST['test_duration']);
     	$this->setUser_result_type($_POST['user_result_type']);
     	$this->setTest_link($_POST['test_link']);
+    	$this->setEmailcheck($_POST['opt']); 
+    	$this->setEmails($_POST['emails']);
 		
 		 $data['tables'] = 'test_details';
 		 $insertValue = array('test_id'=>$this->getTest_id(),
@@ -271,40 +308,13 @@ class Assign extends DBConnection {
 		 		'question_order'=>$this->getQuestion_order(),
 		 		'status'=>$this->getStatus(),
 		 		'test_link'=>$this->getTest_link(),
-		 		'created_on'=>date('Y-m-d h:i:s', time()));
+		 		'email_check'=>$this->getEmailcheck(),
+		 		'emails'=>$this->getEmails(),
+		 		 'created_on'=>date('Y-m-d h:i:s', time()));
 		 $this->_db->insert($data['tables'],$insertValue);
 		 return "true";
 	}
 
-	public function fetchLink($test_id)
-	{
-		$this->setTest_id($test_id);
-		$data['columns']	= array('test_link');
-		$data['tables'] = 'test_details';
-		$data['conditions']=array(array('test_id ="'.$this->getTest_id().'"'),true);
-		$result=$this->_db->select($data);
-		$row=$result->fetch(PDO::FETCH_ASSOC);
-		return $row;
-		 
-	}
-	
-
-	public function assignLink($email)
-	{
-		
-		
-		$this->setTest_link($_POST['link']);
-		$email_array=explode(",",$_POST['emails']);
-		$data['tables'] = 'assign_details';
-		 $count=count($email_array);
-		 $insertValue = array('link'=>$this->getTest_link(),
-		 		'email_address'=>$email,'status'=>'1',
-		 		'created_on'=>date('Y-m-d h:i:s', time()));
-		 $this->_db->insert($data['tables'],$insertValue);
-		return true;
-			
-	}
-	
 	
 }
 

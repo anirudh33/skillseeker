@@ -79,101 +79,64 @@ class TestController extends AController {
      * These settings are useful when test is started.
     */
    
-    public function handleassignTest()
-    {
-         
+public function handleassignTest()
+	{
+		 
+	
+		require_once './models/Assign.php';
+		$_objCategory = new Assign();
+		 
+		if(method_exists($_objCategory,'AssignTest'))
+		{
+			/*Next 4 lines are used for creating hashed link url*/
+			   
+			$obj_EncryptionDecryption= new EncryptionDecryption();
+			
+			
+			
+			$_objCategory->setTest_id($_REQUEST['test_id']);
+			$_objCategory->setStart_time($_POST['start_time']);
+			 
+				
+			$id=$obj_EncryptionDecryption->encode($_objCategory->getTest_id());
+			$time=$obj_EncryptionDecryption->encode($_objCategory->getStart_time());
+			
+			$test_link="http://www.skillseeker.com/online-test/start/?id=".$id."&time=".$time;
+			$_POST['test_link']=$test_link; 
+			$returnValue = $_objCategory->AssignTest(); // call the addCategory of Category.php
+				
+			$mailer = new Mailer();
+			$email_array=explode(",",$_POST['emails']);
+			$count=count($email_array);
+			for($i=0;$i<$count;$i++)
+			{
+				$subject="Your link is ".$_objCategory->getTest_link();
+				$mailer->sendMail($email_array[$i],$subject);
+			}
+			
+			if($returnValue)
+			{
+				die("Test assigned Sucessfully.");
+			}
+			else
+			{
+				die("Test not assigned.Check it out.");
+			}
+		}
+		else
+		{
+			die("Method ". $methodName." doesn't exist ");
+		}
+	}
+	
+	
+	public function createAssignView()
+	{
+		require_once  SITE_PATH.'/views/assigntest.php';
+	}
    
-        require_once './models/Assign.php';
-        $_objCategory = new Assign();
-         
-        if(method_exists($_objCategory,'AssignTest'))
-        {
-            /*Next 4 lines are used for creating hashed link url*/
-              
-            $obj_EncryptionDecryption= new EncryptionDecryption();
-            $_objCategory->setTest_id("1");
-            $_objCategory->setStart_time($_POST['start_time']);
-             
-               
-            $id=$obj_EncryptionDecryption->encode($_objCategory->getTest_id());
-            $time=$obj_EncryptionDecryption->encode($_objCategory->getStart_time());
-           
-            $test_link="http://www.skillseeker.com/online-test/start/?id=".$id."&time=".$time;
-            $_POST['test_link']=$test_link;
-           
-           
-            $returnValue = $_objCategory->AssignTest(); // call the addCategory of Category.php
-            if($returnValue )
-            {
-                die("Test assigned Sucessfully.");
-            }
-            else
-            {
-                die("Test not assigned.Check it out.");
-            }
-        }
-        else
-        {
-            die("Method ". $methodName." doesn't exist ");
-        }
-    }
    
    
-    public function handleassignLink()
-    {
-           
-   
-        require_once './models/Assign.php';
-        $_objCategory = new Assign();
-           
-        if(method_exists($_objCategory,'assignLink'))
-        {
-           
-            $mailer = new Mailer();
-            $email_array=explode(",",$_POST['emails']);
-            $count=count($email_array);
-            for($i=0;$i<$count;$i++)
-            {
-                $returnValue = $_objCategory->assignLink($email_array[$i]);
-                $mailer->sendMail($email_array[$i],$_objCategory->getTest_link());
-                     
-                           
-            }
-           
-            if($returnValue )
-            {
-                die("Link assigned Sucessfully.");
-            }
-            else
-            {
-                die("Link not assigned.Check it out.");
-            }
-        }
-        else
-        {
-            die("Method ". $methodName." doesn't exist ");
-        }
-    }
-   
-    public function handleFetchLink()
-    {   
-        $value=$_REQUEST['test_id'];
-        require_once './models/Assign.php';
-        $_objCategory = new Assign();
-           
-        if(method_exists($_objCategory,'fetchLink'))
-        {
-            $returnValue = $_objCategory->fetchLink($value);
-            if($returnValue )
-            {
-                die($returnValue['test_link']);
-            }
-        }
-        else
-        {
-            die("Method ". $methodName." doesn't exist ");
-        }
-    }
    
    
    

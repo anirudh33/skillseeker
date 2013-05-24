@@ -4,6 +4,7 @@
 <title>Manage Test</title>
 <script	src='http://localhost/skillseeker/trunk/misc/prototypes/html/js/jquery.tools.min.js'></script>
 <script language="javascript">
+var testName="";
 function updateTest()
 {
 
@@ -11,13 +12,13 @@ function updateTest()
 
 
          type: "POST",
-         url: '../index.php?controller=AddTest&method=editTest',                  //the script to call to get data          
+         url: './index.php?controller=AddTest&method=editTest',                  //the script to call to get data          
          data: $("#edittestandcategories").serialize(),                        //you can insert url argumnets here to pass to api.php for example "id=5&parent=6"
 
                
        
            success: function(data){
-        
+        $("#updatetest").html("Test updated sucessfully.");
 
 
         
@@ -58,13 +59,14 @@ $(document).ready(function()
 
 
              type: "POST",
-             url: '../index.php?controller=AddTest&method=testNameAvailability',                  //the script to call to get data          
+             url: './index.php?controller=AddTest&method=testNameAvailability',                  //the script to call to get data          
              data: "testName="+$("#testName").val() ,                        //you can insert url argumnets here to pass to api.php for example "id=5&parent=6"
 
                    
            
                success: function(data){
-              if(data==0)
+              if(data==1 ||$("#testName").val()==testName){}
+              else
         	{
         	alert('name already exists');
         	$("#testName").val("");
@@ -89,7 +91,7 @@ $(document).ready(function()
 
 
           	     type: "POST",
-          	     url: '../index.php?controller=AddTest&method=fetchCategories',                  //the script to call to get data          
+          	     url: './index.php?controller=AddTest&method=fetchCategories',                  //the script to call to get data          
           	     data: "userId=1" ,                        //you can insert url argumnets here to pass to api.php for example "id=5&parent=6"
 
           	           
@@ -145,7 +147,7 @@ $(document).ready(function()
 
 
           	     type: "POST",
-          	     url: '../index.php?controller=AddTest&method=fetchTestName',                  //the script to call to get data          
+          	     url: './index.php?controller=AddTest&method=fetchTestName',                  //the script to call to get data          
           	     data: "testId="+$("#testId").val() ,                        //you can insert url argumnets here to pass to api.php for example "id=5&parent=6"
 
           	           
@@ -158,6 +160,7 @@ $(document).ready(function()
           	       success: function(data){
 
 						$("#testName").val(data);
+						testName=data;
               	                	       }, 
 
           	       });
@@ -169,7 +172,7 @@ $(document).ready(function()
 
 
           	     type: "POST",
-          	     url: '../index.php?controller=AddTest&method=fetchQuestionCategory',                  //the script to call to get data          
+          	     url: './index.php?controller=AddTest&method=fetchQuestionCategory',                  //the script to call to get data          
           	     data: "testId="+$("#testId").val() ,                        //you can insert url argumnets here to pass to api.php for example "id=5&parent=6"
 
           	           
@@ -196,7 +199,7 @@ $(document).ready(function()
 
 
 	          	     type: "POST",
-	          	     url: '../index.php?controller=AddTest&method=fetchNoOfQuestion',                  //the script to call to get data          
+	          	     url: './index.php?controller=AddTest&method=fetchNoOfQuestion',                  //the script to call to get data          
 	          	     data: "testId="+$("#testId").val() ,                        //you can insert url argumnets here to pass to api.php for example "id=5&parent=6"
 
 	          	           
@@ -225,20 +228,18 @@ $(document).ready(function()
         	fetchNoOfQuestion();
 
 
-
-
-
-
-        	
-        	  
         	});
+
+        $("#editbutton").mouseover(function(){
+        	uniqueTestName();
+      	}); 
 		
         </script>
        
 
 </head>
 
-<body>
+<body id="updatetest">
 
     <form action="#" name="edittestandcategories" id="edittestandcategories" >     
 <div id="manageTestContainerDiv" >
@@ -249,7 +250,7 @@ $(document).ready(function()
   
 		<label>Test Name</label><br/>
 		<input type="text" name="testName" id="testName" size="10"
-			onblur="uniqueTestName();"><br /> 
+			onblur="uniqueTestName();" required="required" ><br /> 
 			<input type="text" name="testId" id="testId" size="10" style="display: none;" value="<?php echo $_REQUEST['testId']?>">
 		<br/><label>Choose the Category</label><br>
 		<select
@@ -302,23 +303,9 @@ Allows ordering and grouping questions by category.<br>
     </div>
     <div> <input type="button"  name="editbutton" id="editbutton" value="Edit Test" onclick="updateTest();" /></div>
     </form>
-    <h3>Assign Test</h3>
-        <a class="aTagManageTest" href="#" onclick=show("assignTest");>Assign This Test</a><br/>
-        <div id="assignTest">
-        Once you've finished creating your test you need to Assign your test either to a registered user group, or by creating a direct link / embed code. This enables the test to be taken by your users.
-You can come back at anytime to edit this test via the Tests section, even after you have assigned it, and changes will take effect immediately.<br>
-        <input type="button" name="assignTestButton" value="Assign Test"/>
-        </div>
    
-        <h3>Delete Test</h3>
-        <a class="aTagManageTest" href="#" onclick=show("deleteTest");>Delete This Test</a><br/>
-        <div id="deleteTest">
-        <label>Test Name:</label><br>
-        Deleting this test is permanent. If the test is currently assigned to any group, it will not be deleted. First remove the test from your groups via the Assign section.<br>
-        <input type="button" class='btn' name="deleteTestButton" value="Delete Test"/>
-        </div>
     
-    </div>
+    
   
 </body>
 </html>

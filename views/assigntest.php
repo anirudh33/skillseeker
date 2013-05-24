@@ -6,10 +6,14 @@ require_once '/var/www/skillseeker/trunk/libraries/constants.php';
 <title>Registration</title>
 
 <link rel="stylesheet" href="<?php echo SITE_URL;?>/assets/css/style.css" type="text/css" media="all">
+<link rel="stylesheet" href="<?php echo SITE_URL;?>/assets/css/ui.css" type="text/css" media="all">
+
 <script type="text/javascript" src="<?php echo SITE_URL;?>/assets/js/jquery-1.4.2.min.js" ></script>
 <script type="text/javascript" src="<?php echo SITE_URL;?>/assets/js/script.js"></script>
-<script type="text/javascript" src="<?php echo SITE_URL;?>/assets/js/register.js"></script>
 <script type="text/javascript" src="<?php echo SITE_URL;?>/assets/js/jquery.tools.min.js"></script>
+<script type="text/javascript" src="<?php echo SITE_URL;?>/assets/js/register.js"></script>
+<script type="text/javascript" src="<?php echo SITE_URL;?>/assets/js/jquery-ui-timepicker-addon.js"></script>
+
 
 <script>
 $(document).ready(function()
@@ -22,20 +26,48 @@ $(document).ready(function()
 
 function useRegister()
 {
-        $('#Directlink').hide();
-        $('#Registeruser').show();
-}
+	document.getElementById("assign_btn").disabled = true; 
+$.ajax({
 
-function useLink()
-{
-        $('#Registeruser').hide();
-        $('#Directlink').show();
-}
+		type: "POST",
+	    url: './index.php?controller=TestController&method=handleassignTest',  
+	     data: $('#assigntestform').serialize(),
+	       success: function(data){
+	    	$('#Directlink1').hide();
+		    $("#result").html(data);
+		    document.getElementById("assign_btn").disabled = false;
+	     }
+	  });
+} 
 
-function createLink()
-{
-        $('#linkpage').hide();
-        $('#Directlink').hide();
+$(document).ready(function()
+        {
+	 
+$('#Registeruser').hide();
+     $('#Directlink').hide();
+     $('#Directlink1').hide();
+     $('#datetime').datetimepicker({
+			timeFormat: 'HH:mm:ss',
+			stepHour: 2,
+			stepMinute: 10,
+			stepSecond: 10
+		});
+     
+   });
+        function useRegister()
+        {
+             $('#Directlink').hide();
+            $('#Registeruser').show();
+        }
+        function useLink()
+        {
+            $('#Registeruser').hide();
+            $('#Directlink').show();
+        }
+        function createLink()
+        {
+            $('#linkpage').hide();
+             $('#Directlink').hide();
         $('#Directlink1').show();
 }
         
@@ -75,7 +107,8 @@ put your code to show Registered user groups
 <tr ></tr>
 <tr><td><h3>Test Availability</h3></td></tr>
 <tr><td>
-Start Time:<br><input type="datetime" name="start_time"/></td><td> Link Expiration Time:<input type="datetime" name="expire_time" /></td></tr>
+Start Time:<br><input type="text"  id="datetime" value="" name="start_time"/></td>
+<td> Link Expiration Time:<input type="text"  id="datetime" value="" name="expire_time" /></td></tr>
 <tr ></tr>
 <tr><td><h3>Choose what user will see after completion</h3></td></tr>
 <tr ><td><input type="radio" name="user_result_type" value="1">No score, questions or feedback</td></tr>
@@ -104,6 +137,8 @@ Start Time:<br><input type="datetime" name="start_time"/></td><td> Link Expirati
 </td></tr>
 <tr ></tr>
 <tr><td><h3>Test Duration</h3></td><td><input type="number"  name="test_duration"> </td></tr>
+<input type="hidden"  value="<?php echo $_REQUEST['test_id'];?>" name="test_id" >
+
 <tr ></tr>
 <tr><td><h3>Allow users to go back during test</h3></td></tr>
 <tr ><td><input type="radio" name="go_back" value="0">Off</td></tr>
@@ -114,7 +149,16 @@ Start Time:<br><input type="datetime" name="start_time"/></td><td> Link Expirati
 <tr><td><h3>Show 'Brief test settings' before each test starts</h3></td></tr>
 <tr ><td><input type="radio" name="instruction" value="0">Off</td></tr>
 <tr ><td><input type="radio" name="instruction" value="1">On</td></tr><tr ></tr>
-<tr><td><input type="button" value="save" class="btn" onclick="assignTest()"></td></tr>
+<tr ></tr>
+<tr><td><h3>Want to store Email Id or not</h3></td></tr>
+<tr ><td><input type="radio" name="opt" value="0">Off</td></tr>
+<tr ><td><input type="radio" name="opt" value="1">On</td></tr>
+<tr ></tr>
+<tr><td><h3>Emails of All Users(to whom u want to assign this test)</h3></td><td><input type="text"  name="emails"> </td></tr>
+<tr ></tr>
+
+<tr><td><input type="button" value="save" class="btn" id="assign_btn" onclick="assignTest()"></td></tr>
+
 </table>
 
 </form>

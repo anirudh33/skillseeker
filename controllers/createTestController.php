@@ -220,7 +220,7 @@ class AddTest
 	}
 	public function createTestView()
 	{
-		require_once  SITE_PATH.'/views/createtest.php';
+		require_once  SITE_PATH.'/views/addtest.php';
 	}
 	public function editTestView()
 	{

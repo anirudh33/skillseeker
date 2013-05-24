@@ -19,7 +19,7 @@ require_once 'class.phpmailer.php';// path to the PHPMailer class
 require_once 'class.smtp.php';// path to the smtp class
 class Mailer {
 
-   function sendMail($address,$subject)
+   function sendMail($address="skillseeker@gmail.com",$subject)
    {
 	$mail = new PHPMailer();  
 	$mail->IsSMTP();  // telling the class to use SMTP
@@ -33,8 +33,8 @@ class Mailer {
 	$mail->From     = "SkillSeeker";
 	$mail->AddAddress($address);  
  
-	$mail->Subject  = "Welcome to SkillSeeker";
-	$mail->Body     = "Your test link is ".$subject.".";
+	$mail->Subject  = "SkillSeeker";
+	$mail->Body     = $subject;
  
 	if(!$mail->Send()) 
 	{
