@@ -172,29 +172,31 @@ function showTests()
 
 function openPage(str)
 {
+	
 	if(str=="/views/upload.php") {
+		
 	$.ajax({
         type: "POST",
-        url: './index.php?controller=TestController&method=loadView&page='+str,
-        //data: $("#idForm").serialize(), // serializes the form's elements.
+        url: 'index.php?controller=TestController&method=handleUpload',
         success: function(data)
         {
         	$('#content').html(' ');
             $('#content').html(data);
-            //alert(data); // show response from the php script.
         }
       });
-   /*  $.post('index.php',{'controller':'TestController','method':'loadview'},function(data,status){
-            if(status == "success")
-            {
-                $('#content').html(' ');
-                $('#content').html(data);
-            }
-            if(status == "error")
-            {
-                $('#content').html('<h1>NO Page Found</h1>');
-            }
-        }); */
+	}
+	else if(str=="/views/category.php") {
+		$.ajax({
+	        type: "POST",
+	        url: 'index.php?controller=TestController&method=handleCategory',
+	        //data: $("#idForm").serialize(), // serializes the form's elements.
+	        success: function(data)
+	        {
+	        	$('#content').html(' ');
+	            $('#content').html(data);
+	            //alert(data); // show response from the php script.
+	        }
+	      });
 	}
 	else {
 		$.ajax({
@@ -208,20 +210,8 @@ function openPage(str)
 	            //alert(data); // show response from the php script.
 	        }
 	      });
-	   /*  $.post('index.php',{'controller':'TestController','method':'loadview'},function(data,status){
-	            if(status == "success")
-	            {
-	                $('#content').html(' ');
-	                $('#content').html(data);
-	            }
-	            if(status == "error")
-	            {
-	                $('#content').html('<h1>NO Page Found</h1>');
-	            }
-	        }); */
-		}
-		
 	}
+}
 
 
 

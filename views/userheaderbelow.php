@@ -30,7 +30,7 @@
 				<li><a href="javascript:void(0)" onclick="showTests();"><?php echo $lang->MY . " " .$lang->TEST;?></a>
 				</li>
 				<li><a href="#"><?php echo $lang->CERTIFICATES;?></a></li>
-				<li><a href="#"><?php echo $lang->CREATE. " " .$lang->TEST;?></a></li>
+				<li><a href="#"  onclick="createTest();"><?php echo $lang->CREATE. " " .$lang->TEST;?></a></li>
 
 
 
