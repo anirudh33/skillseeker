@@ -422,11 +422,15 @@ public function handleassignTest()
             foreach($category as $key => $value){
                 $condition = array("category_id = $value");
                 $tempQuestions = $objcsvModel->fetchData('question_bank', $column, $condition);
-                
-                foreach($tempQuestions as $inKey => $inValue){
-                    $inCondition = array("question_id = $inValue[id]");
+                                
+                foreach($tempQuestions as $inKey => $inValue){                    
+                    $inCondition = array("question_id = $inValue[id]");                    
                     $tempOptions = $objcsvModel->fetchData("options", $inColumn, $inCondition);
-                    shuffle($tempOptions);                    
+                    
+                    foreach($tempOptions as $key => $value ){
+                        $tempOptions[$key]['name'] = html_entity_decode($tempOptions[$key]['name']);
+                    }
+                    shuffle($tempOptions);
                     $tempQuestions[$inKey] += array("options" => $tempOptions); 
                 }
                 
@@ -444,7 +448,7 @@ public function handleassignTest()
             foreach($userQuestions as $key => $value){
                 foreach($value as $inKey => $inValue){                	
                     $userQuestionsID[] = $questions[$key][$inValue]['id'];
-                    $userQuestionsAnswers[] = $questions[$key][$inValue]['answer'];
+                    $userQuestionsAnswers[] = html_entity_decode($questions[$key][$inValue]['answer']);
                     
                     $userFinalQuestions[] = $questions[$key][$inValue];                    
                 }
@@ -461,6 +465,7 @@ public function handleassignTest()
             
             foreach($userFinalQuestions as $key => $value){
             	$userFinalQuestions[$key]['answer'] = "";
+            	$userFinalQuestions[$key]['queno'] = $key + 1; 
             	$userSubmitAnswers[] = "NULL";
             }
 //            print_r($userFinalQuestions);
@@ -479,7 +484,8 @@ public function handleassignTest()
 //        die;
 		$_SESSION['allQuestions'] = $userFinalQuestions;
 		$_SESSION['questionPointer'] = 0;
-		$_SESSION['submittedAnswers'] = $userSubmitAnswers; 
+		$_SESSION['submittedAnswers'] = $userSubmitAnswers;
+		$_SESSION['maxQuestions'] = count($userFinalQuestions);
 		$this->showView("/views/inTest.php","",FALSE,FALSE);
 		
         //$file_contents = file_get_contents(SITE_PATH."/views/inTest.php");
@@ -504,7 +510,7 @@ public function handleassignTest()
 			
 		if($pointer == "next"){
 		    $userFinalQuestions[$questionCount]['answer'] = $_POST['option'];
-		    $userSubmitAnswers[$questionCount] = $_POST['option'];
+		    $userSubmitAnswers[$questionCount] = htmlentities($_POST['option']);
 		    $objUserTestResult->setAnswers($userSubmitAnswers);
 		    $objUserTestResult->updateTest();
 		    
@@ -512,11 +518,12 @@ public function handleassignTest()
 		    
 // 		    print_r($userFinalQuestions[$questionCount]['answer']);
 // 		    print_r($_POST);
- 		    //die;
+//  		    die;
  		    
 		    
 		    //print_r($userSubmitAnswers);
 		    //die;
+		    //$_POST['option'] = "";
 			if($questionCount < (count($userFinalQuestions)-1)){
 				$questionCount++;
 		}
@@ -528,15 +535,21 @@ public function handleassignTest()
 			echo json_encode($userFinalQuestions[$questionCount]);
 		}
 		else if($pointer == "previous"){
+// 		    		    print_r($_POST);
+// 		    die;
+// 		    if($_POST['option']){
+		        
+// 		    }
+		    $userFinalQuestions[$questionCount]['answer'] = $_POST['option'];
+		    $userSubmitAnswers[$questionCount] = htmlentities($_POST['option']);
+		    $objUserTestResult->setAnswers($userSubmitAnswers);
+		    $objUserTestResult->updateTest();		    
 		    //print_r($userSubmitAnswers);
 		    
 			if($questionCount > 0){
 				$questionCount--;
 			}
-			$userFinalQuestions[$questionCount]['answer'] = $_POST['option'];
-			$userSubmitAnswers[$questionCount] = $_POST['option'];
-			$objUserTestResult->setAnswers($userSubmitAnswers);
-			$objUserTestResult->updateTest();
+
 			echo json_encode($userFinalQuestions[$questionCount]);			
 		}
 		else{

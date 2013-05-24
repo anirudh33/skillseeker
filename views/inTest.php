@@ -17,25 +17,43 @@ $("#questionDisplay").ready(function(){
 });
 $questionCount = 0;
 $option = 0;
-function select1($id){
+$questions = "";
+function select1($value){
 // 	alert($id);
 // 	alert($("#"+$id).val());
-	$option = $id;
+//	alert($questions);
+
+	$.each($questions,function(i, value){
+		if($value == value['id']){
+			$option = value['name'];
+		}
+	});
+
+	//$option = $invalue['name'];
+}
+function krEncodeEntities(s){
+	return $("<div/>").text(s).html();
+}
+function krDencodeEntities(s){
+	return $("<div/>").html(s).text();
 }
 function getQuestion(data){
 	$("#questionDisplay").html("");
 	$.each(data,function(i, value){
 		if(i == "question_name"){
+			$("#questionDisplay").append("Question "+data['queno']+"</br>");
 			$("#questionDisplay").append("<p>"+value+"</p>");
 		}
 		if(i == "options"){
 			$("#questionDisplay").append("<div>");
+			$questions = value; 
 			$.each(value,function(j, invalue){
 				$str = "<input type = \"radio\" name = \"option"+data['id']+
 				"\" "+
-				" onClick = select1(\""+invalue['name']+"\") ";
-				
+				" onClick = \"select1('"+invalue['id']+"') \"";
+
 				if(invalue['name'] == data['answer']){
+					$option = invalue['name']; 
 					$str += " checked ";
 				}
 				$str += "value = \""+invalue['id']+"\"/>"+invalue['name'];
@@ -61,6 +79,7 @@ function nextQuestion(pointer){
 			}
 		}
 		});
+	$option = "NULL";
 }
 
 $(function(){
@@ -69,6 +88,7 @@ $(function(){
 </script>
 </head>
 <body>
+<div id = "totalQuestions"><h2>Total Questions <?php echo $_SESSION['maxQuestions']; ?></h2></div>
 <div id = "questionDisplay"></div>
 <table>
 <tr class="instructiontr">
