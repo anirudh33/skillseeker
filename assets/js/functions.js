@@ -53,7 +53,7 @@ function insertTest()
 {
     	$.ajax({
 			type: "POST",
-  		     	url: './index.php?controller=TestController&method=createQues',                  //the script to call to get data          
+  		     	url: 'index.php?controller=TestController&method=createQues',                  //the script to call to get data          
   		     	data: $("#ques").serialize()  ,                        //Form Elements are Serialized here
   		        success: function(data)
 			{
@@ -70,7 +70,7 @@ function assignLink()
 	$.ajax
 	({
 		type: "POST",
-	    	url: '../index.php?controller=TestController&method=handleassignLink',  
+	    	url: 'index.php?controller=TestController&method=handleassignLink',  
 	     	data: $('#assignlinkform').serialize(),
 	       	success: function(data)
 		{
@@ -86,7 +86,7 @@ function fetchLink()
 	$.ajax
 	({
 		type: "POST",
-	    	url: '../index.php?controller=TestController&method=handleFetchLink&test_id='+<?php echo $test_id;?>,  
+	    	url: 'index.php?controller=TestController&method=handleFetchLink&test_id='+<?php echo $test_id;?>,  
 	       	success: function(data)
 		{
 			$("#link").append('<td ><input type="text" name="link" value="'+data+'" readonly/></td>');
@@ -102,7 +102,7 @@ function assignTest()
 	$.ajax
 	({
 		type: "POST",
-		url: '../index.php?controller=TestController&method=handleassignTest',
+		url: 'index.php?controller=TestController&method=handleassignTest',
 		data: $('#assigntestform').serialize(),
 		success: function(data)
 		{
@@ -119,7 +119,7 @@ function fetchValues(val)
 	$.ajax
 	({
 		type: "POST",
-		url: '../index.php?controller=TestController&method=fetch&test_id='+val,
+		url: 'index.php?controller=TestController&method=fetch&test_id='+val,
 		success: function(data)
 		{
 			$("#add2").html(data);
@@ -138,10 +138,11 @@ function fetchValues(val)
 
 function fetchResult()
 {
+	alert("hi");
 	$.ajax
 	({
 		type: "POST",
-		url: '../index.php?controller=TestController&method=resultView',
+		url: 'index.php?controller=TestController&method=resultView',
 		success: function(data)
 		{
 			$("#add2").show();

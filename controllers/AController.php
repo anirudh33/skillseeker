@@ -87,6 +87,7 @@ abstract class AController
 	 */
 	public function showView($pageName="/views/homepage.php", $arrPassValue='', $header=true,$footer=true) 
 	{
+		//echo "dbnvjksw";die;
 		if (isset ( $_SESSION ['lang'] )) {
 			$langType = $_SESSION ['lang'];
 		} else {

@@ -80,7 +80,7 @@
 									<a href="#"><?php echo $lang->RESULT;?></a>
 									<ul class="follow">
 										<li>
-											<a href="#"><?php echo $lang->BY. " " .$lang->TEST;?></a>
+											<a href="index.php?controller=TestController&method=handleResultByTest" onclick="openPage('/views/bytest.php')"><?php echo $lang->BY. " " .$lang->TEST;?></a>
 										</li>
 										<li>
 											<a href="index.php?controller=MainController&method=onClickSearch"><?php echo $lang->SEARCH. " " .$lang->USER;?></a>

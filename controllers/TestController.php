@@ -45,7 +45,7 @@ class TestController extends AController {
     */   
    
     public function resultView(){
-        require_once './models/ResultUser.php';
+        require_once SITE_PATH.'/models/ResultUser.php';
         $objResult = new Result();
         $objResult->setUserId($_SESSION['userId']);
         $value = $objResult->ResultUser();
@@ -641,6 +641,11 @@ class TestController extends AController {
 		{
 			echo " Method deleteCategory doesn't exist ";
 		}
+	}
+	
+	public function handleResultByTest()
+	{
+		$this->showView('/views/bytest.php');
 	}
 }
 
