@@ -313,11 +313,14 @@ class TestController extends AController {
         if($error!="")
         {
             // to send error back to the view page(upload.php) ,if Exists.
-            header("Location:".SITE_URL."/views/upload.php?cid=$error");
+            //header("Location:".SITE_URL."/views/upload.php?cid=$error");
+            echo("error in file");
+            header("Location:".SITE_URL."/views/error.php?cid=$error");
         }
         else
         {
-            header("Location:".SITE_URL."/views/upload.php");
+            //header("Location:".SITE_URL."/views/upload.php");
+            echo("Your file has been uploded");
         }
 
     }
