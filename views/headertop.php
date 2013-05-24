@@ -1,6 +1,6 @@
 
 	<div class="header">
-		<a href="index.php?controller=MainController&method=showHome"><img id="osscube"
+		<a href="<?php echo SITE_URL;?>"><img id="osscube"
 			src="<?php echo SITE_URL;?>/assets/images/osscube.png"></a>
 
 

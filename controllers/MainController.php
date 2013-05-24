@@ -214,11 +214,5 @@ class MainController extends AController
 		
 		$this->showView($pageName,array());
 	}
-	public function showHome()
-	{
-		$pageName="/views/userpage.php";
-		
-		$this->showView($pageName);
-				
-	}
+	
 }
