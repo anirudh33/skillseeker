@@ -27,12 +27,10 @@ var min = input.attr("minlength");
 
 return value.length >= min ? true : {
 en: "Please provide at least " +min+ " character" + (min > 1 ? "s" : ""),
-fi: "Kent&auml;n minimipituus on " +min+ " merkki&auml;"
 };
 });
     $.tools.validator.localizeFn("[type=time]", {
 en: 'Please supply a valid time',
-fi: 'Virheellinen aika'
 });
     $("#myform").validator({
 position: 'bottom left',

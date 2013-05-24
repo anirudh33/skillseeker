@@ -631,5 +631,10 @@ public function handleassignTest()
 	{
 		$this->showView('/views/bytest.php');
 	}
+	
+	public function handleResultcontactus()
+	{
+		$this->showView('/views/contactus.php');
+	}
 }
 

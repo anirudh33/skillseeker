@@ -15,7 +15,7 @@
  */
 
 require_once 'models/Registration.php';
-
+require_once SITE_PATH.'/libraries/Mail.php';
 require_once  SITE_PATH.'/models/AModel.php';
 require_once  SITE_PATH.'/libraries/initiateuser.php';
 require_once  SITE_PATH.'/controllers/TestController.php';
