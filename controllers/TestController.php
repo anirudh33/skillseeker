@@ -382,7 +382,7 @@ class TestController extends AController {
     public function takeTest() {
         $objcsvModel = new csvModel ();
         $objUserTestResult = new UserTestResult();
-       
+        
 //        $_POST ['firstName'] = 'firstName';
         $objUserTestResult->setFirstName($_POST ['firstName']);
 //        $_POST ['lastName'] = 'lastName';
@@ -393,11 +393,11 @@ class TestController extends AController {
 //        echo "<pre/>";
 /* This section of code will verify user eligibility
  * {
- *         $coloumn = array("link");
- *         $condition=array("email_address = \"$_POST[email]\"");
- *         //print_r($condition);
- *         //die;
- *         $result = $objcsvModel->fetchData("assign_details",$coloumn,$condition);
+ * 		$coloumn = array("link");
+ * 		$condition=array("email_address = \"$_POST[email]\"");
+ * 		//print_r($condition);
+ * 		//die;
+ * 		$result = $objcsvModel->fetchData("assign_details",$coloumn,$condition);
  *      if($link == $result['link'] ){
  *      }
  * }
@@ -405,12 +405,12 @@ class TestController extends AController {
         $testId = 1;
         $objUserTestResult->setTestId($testId);
         $objcreateTestModel = new CreateTest();
-       
+        
         /* This will fetch all the categories and their question from DB*/
         $result = $objcreateTestModel->fetchTestQuestionCategories($testId);
-       
-        $objcreateTestModel->setId($testId);       
-       
+        
+        $objcreateTestModel->setId($testId);        
+        
         $totalQuestion = $objcreateTestModel->noOfQuestion();
         $questionCount = 0;
         $category = array();
@@ -420,50 +420,50 @@ class TestController extends AController {
         $userQuestionsID = array();
         $userQuestionsAnswers = array();
         $userFinalQuestions = array();
-       
+        
         /* Count the number of questions */
         foreach($result as $key => $value){
             $category[] = $value['category_id'];
             $categoryQuestionsCount[] = $value['no_of_questions'];
             $questionCount += $value['no_of_questions'];
         }
-       
+        
         //print($totalQuestion);
-       
-               
+        
+                
         if($totalQuestion == $questionCount){
             $column = array("id","question_name","answer");
             $inColumn = array("id","name");
-           
-           
+            
+            
             foreach($category as $key => $value){
                 $condition = array("category_id = $value");
                 $tempQuestions = $objcsvModel->fetchData('question_bank', $column, $condition);
-               
+                
                 foreach($tempQuestions as $inKey => $inValue){
                     $inCondition = array("question_id = $inValue[id]");
                     $tempOptions = $objcsvModel->fetchData("options", $inColumn, $inCondition);
-                    shuffle($tempOptions);                   
-                    $tempQuestions[$inKey] += array("options" => $tempOptions);
+                    shuffle($tempOptions);                    
+                    $tempQuestions[$inKey] += array("options" => $tempOptions); 
                 }
-               
+                
                 shuffle($tempQuestions);
                 $questions[] = $tempQuestions;
             }
-           
+            
             foreach($questions as $key => $value ){
                 $userQuestions[] = array_rand($value,$categoryQuestionsCount[$key]);
             }
-                       
+                        
 //            $condition = array("category_id = $category[0]");
 //            $questions = $objcsvModel->fetchData('question_bank', $column, $condition);
 
             foreach($userQuestions as $key => $value){
-                foreach($value as $inKey => $inValue){                   
+                foreach($value as $inKey => $inValue){                	
                     $userQuestionsID[] = $questions[$key][$inValue]['id'];
                     $userQuestionsAnswers[] = $questions[$key][$inValue]['answer'];
-                   
-                    $userFinalQuestions[] = $questions[$key][$inValue];                   
+                    
+                    $userFinalQuestions[] = $questions[$key][$inValue];                    
                 }
             }
             if(count($userQuestionsID) == $totalQuestion){
@@ -474,9 +474,10 @@ class TestController extends AController {
             }
             $objUserTestResult->insertIntoTest();
             foreach($userFinalQuestions as $key => $value){
-                unset($userFinalQuestions[$key]['answer']);
+            	unset($userFinalQuestions[$key]['answer']);
             }
 //            print_r($userFinalQuestions);
+//            die;
 //            print_r($userQuestions);
 //            die;
 //            print_r($userQuestionsID);
@@ -487,12 +488,13 @@ class TestController extends AController {
 //            echo "yes";
         }
 //        $file_handler = fopen("inTest.php","r");
-        $_SESSION['allQuestions'] = $userFinalQuestions;
-       
-        $this->showView("/views/inTest.php","",FALSE,FALSE);
-       
+		$_SESSION['allQuestions'] = $userFinalQuestions;
+		$_SESSION['questionPointer'] = 0;
+		
+		$this->showView("/views/inTest.php","",FALSE,FALSE);
+		
         //$file_contents = file_get_contents(SITE_PATH."/views/inTest.php");
-       
+        
         //echo $file_contents;
 		//print_r($result);
 //		print($questionCount);
@@ -500,7 +502,32 @@ class TestController extends AController {
 	}
 	public function getQuestion(){
 		$userFinalQuestions = $_SESSION['allQuestions'];
-		echo json_encode($userFinalQuestions[0]);
+		$pointer = $_POST['questionPointer'];
+		$questionCount = $_SESSION['questionPointer'];
+		//print($this->questionCount);
+		//print($pointer);
+			
+		if($pointer == "next"){
+			if($questionCount < (count($userFinalQuestions)-1)){
+				$questionCount++;
+		}
+		if($questionCount==count($userFinalQuestions)){
+			echo "max";
+			return;
+		}
+			//print($questionCount);
+			echo json_encode($userFinalQuestions[$questionCount]);
+		}
+		else if($pointer == "previous"){
+			if($questionCount > 0){
+				$questionCount--;
+			}			
+			echo json_encode($userFinalQuestions[$questionCount]);			
+		}
+		else{
+			echo json_encode($userFinalQuestions[$questionCount]);
+		}
+		$_SESSION['questionPointer'] = $questionCount;
 	}
 	public function handleUpload()
 	{
