@@ -129,7 +129,7 @@ class MainController extends AController
 	{
 	    //echo"jghjhgjh";
 		$controllerName = ucfirst ( $_SESSION ["userType"] ) . "Controller";
-		print $controllerName;
+		//print $controllerName;
 		$objController = new $controllerName ();
 		
 		$objController->process ();
