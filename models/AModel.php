@@ -18,6 +18,64 @@
 require_once './libraries/DBconnect.php';
 class AModel extends DBConnection
 {
+	
+	private $faq_category;
+	
+	private $faq_question;
+	private $faq_answer;
+	public function getFaq_category() {
+		return $this->faq_category;
+	}
+	
+	
+	
+	
+	public function getFaq_question() {
+		return $this->faq_question;
+	}
+	
+	/**
+	 * @return the $faq_answer
+	 */
+	public function getFaq_answer() {
+		return $this->faq_answer;
+	}
+	
+	/**
+	 * @param field_type $faqcategory_id
+	 */
+	public function setFaq_category($faq_category) {
+		$this->faq_category = $faq_category;
+	}
+	
+	/**
+	 * @param field_type $faqid
+	 */
+	
+	
+	
+	/**
+	 * @param field_type $faq_question
+	 */
+	public function setFaq_question($faq_question) {
+		$this->faq_question = $faq_question;
+	}
+	
+	/**
+	 * @param field_type $faq_answer
+	 */
+	public function setFaq_answer($faq_answer) {
+		$this->faq_answer = $faq_answer;
+	}
+	
+	public function fetchfaq()
+	{
+		$data['columns']	= array('faq_question','faq_answer');
+		$data['tables']		= 'faqs';
+		$data['conditions']=array(array('faq_category ="'.$this->faq_category.'"'),true);
+		return $result=$this->_db->select($data);
+	}
+	
     public function __construct()
     {
     	parent::__construct();

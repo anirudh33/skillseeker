@@ -212,6 +212,19 @@ function openPage(str)
 	        }
 	      });
 	}
+	else if(str=="/views/faq.php") {
+		$.ajax({
+	        type: "POST",
+	        url: 'index.php?controller=MainController&method=handleFAQ',
+	        //data: $("#idForm").serialize(), // serializes the form's elements.
+	        success: function(data)
+	        {
+	        	$('#content').html(' ');
+	            $('#content').html(data);
+	            //alert(data); // show response from the php script.
+	        }
+	      });
+	}
 	else if(str=="/views/bytest.php") {
 		$.ajax({
 	        type: "POST",

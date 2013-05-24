@@ -224,5 +224,28 @@ class MainController extends AController
 		$mailer->sendMail($_REQUEST['email'],$subject);
 		 
 	}
+	public function handleFAQ()
+	{
+		//echo "hii ";
+		require_once  SITE_PATH.'/views/faq.php';
+	
+	}
+	public function fetchFAQ()
+	{
+		$faq_category=$_REQUEST['faq_category'];
+		$this->_objAmodel->setFaq_category($faq_category);
+		$result=$this->_objAmodel->fetchfaq();
+		$tmp=array();
+		$i=0;
+		while($row = $result->fetch(PDO::FETCH_ASSOC))
+		{
+			foreach($row as $key=>$values)
+			{
+				$tmp[]=$values;
+			}
+		}
+		echo json_encode($tmp);
+	
+	}
 	
 }
