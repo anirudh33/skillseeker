@@ -231,7 +231,7 @@ class TestController extends AController {
                                 $opt5=htmlentities($data[5]);
                                 $ans=htmlentities($data[6]);
                                 $type=htmlentities($data[7]);
-                                //$ansarray=array(1,2,3,4,5); // array for options
+                                $ansarray=array($opt1,$opt2,$opt3,$opt4,$opt5); // array for options
                                 if($type=="objective") {
                                     $quesType=2;
                                     /*************** check for number of options************/
@@ -240,11 +240,11 @@ class TestController extends AController {
                                         echo $error;
                                         continue;
                                     }
-                                    /*if(!in_array($ans,$ansarray)) {
+                                    if(!in_array($ans,$ansarray)) {
                                         $error.="$lang->ERROR7.".$row;
                                         echo $error;
                                         continue;
-                                    }*/
+                                    }
                                 }
                                 else if($type=="true/false") {
                                     $quesType=1;
@@ -299,7 +299,7 @@ class TestController extends AController {
                         }
                         else {
                         /*************** if number of values are not vaild in csv*************************/
-                            $error="$lang->ERROR8 .".$row;
+                            $error.="$lang->ERROR8 .".$row;
                             continue;
                         }
                     }
@@ -308,7 +308,7 @@ class TestController extends AController {
             }
         }
         else {
-            $error=$lang->ERROR6;
+            $error.=$lang->ERROR6;
         }
         if($error!="")
         {
@@ -325,7 +325,7 @@ class TestController extends AController {
 
     }
     function selectCategory() {
-        echo "djfjksd";
+        //echo "djfjksd";
         $coloumn=array("name","id");
         $condition=array("1","1");
         $objcsvModel=new csvModel();
