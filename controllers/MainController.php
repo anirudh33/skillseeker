@@ -191,10 +191,15 @@ class MainController extends AController
 	
 	public function handleSearchUser() {
 		$userObj = new User();
-		$userObj->setFirstName($_POST['first_name']);
-		$userObj->setLastName($_POST['last_name']);
-		$result = $userObj->searchUser();
-		$this->showView('/views/SearchUser.php',$result);
+		if((isset($_POST['first_name']) AND $_POST['first_name'] != "") || (isset($_POST['last_name']) AND  $_POST['last_name'] != "")) {
+			$userObj->setFirstName($_POST['first_name']);
+			$userObj->setLastName($_POST['last_name']);
+			$result = $userObj->searchUser();
+			$this->showView('/views/SearchUser.php',$result);
+		} else {
+			$this->showView('/views/SearchUser.php');
+		}
+		
 	}
 	
 	public function getUserResult() {
