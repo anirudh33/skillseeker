@@ -71,7 +71,6 @@ function editTest(testId)
 }
 function createTest()
 {
-alert("vcs<hcaj");
 		 $("#content").html("");
 	
 		$.ajax({
@@ -123,7 +122,6 @@ function deleteTest(testId)
 
 function showTests()
 {
-	alert("hi");
 	$.ajax({
 
 
@@ -196,6 +194,19 @@ function openPage(str)
 		$.ajax({
 	        type: "POST",
 	        url: 'index.php?controller=TestController&method=handleResultByTest',
+	        //data: $("#idForm").serialize(), // serializes the form's elements.
+	        success: function(data)
+	        {
+	        	$('#content').html(' ');
+	            $('#content').html(data);
+	            //alert(data); // show response from the php script.
+	        }
+	      });
+	}
+	else if(str=="/views/contactus.php") {
+		$.ajax({
+	        type: "POST",
+	        url: 'index.php?controller=MainController&method=handleContact',
 	        //data: $("#idForm").serialize(), // serializes the form's elements.
 	        success: function(data)
 	        {

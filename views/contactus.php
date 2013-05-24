@@ -2,7 +2,6 @@
 require_once '/var/www/skillseeker/trunk/libraries/constants.php';
 ?>
 
-<h2 class="cufon cufon-canvas">Contact Us</h2>
 <script type="text/javascript">
 
 function contact()

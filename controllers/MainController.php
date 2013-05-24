@@ -213,5 +213,9 @@ class MainController extends AController
 		$pageName="/views/SearchUser.php";
 		$this->showView($pageName,array(),array(),false,false);
 	}
+	public function handleContact() {
+		$pageName="/views/contactus.php";
+		$this->showView($pageName,array(),array(),false,false);
+	}
 	
 }
