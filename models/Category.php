@@ -108,7 +108,7 @@ class Category extends DBConnection
         {
             $this->setUserId($_SESSION['userId']);
             $userId = $this->getUserId();
-            $this->setStatus('A');
+            $this->setStatus('1');
             $status = $this->getStatus();
 	   
 // 	    $userId = 4;
@@ -122,6 +122,7 @@ class Category extends DBConnection
             {
                 $myResult[] = $row;
             }
+           
             if(count($myResult) > 0)
             {
                 return $myResult;
@@ -139,7 +140,7 @@ class Category extends DBConnection
             $categoryName = $this->getName();
             $this->setUserId($_SESSION['userId']);
             $userId = $this->getUserId();
-            $this->setStatus('A');
+            $this->setStatus('1');
             $status = $this->getStatus();
 	    //$categoryName="c#";
 	    //$userId = 2;
@@ -233,7 +234,7 @@ class Category extends DBConnection
             $categoryName = $this->getName();
             $this->setUserId($_SESSION['userId']);
             $userId = $this->getUserId();
-            $this->setStatus('D');
+            $this->setStatus('0');
             $status = $this->getStatus();
 //              $categoryName='java';
 //              $userId =1;
