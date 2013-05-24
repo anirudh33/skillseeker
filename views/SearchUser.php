@@ -37,15 +37,15 @@ div.search_result table,div.search_result th,div.search_result tr,div.search_res
 			</form>
 		</div>
 		<div class="search_result" id="search_result">
-			<table>
+			<table id="searchUserTable">
 			<?php
 if (isset ( $arrPassValue ) && ! empty ( $arrPassValue )) {
     ?>
 			    <tr>
-					<th>First Name</th>
-					<th>Last Name</th>
-					<th>Email Address</th>
-					<th>Result</th>
+					<th><h2>First Name</h2></th>
+					<th><h2>Last Name</h2></th>
+					<th><h2>Email Address</h2></th>
+					<th><h2>Result</h2></th>
 				</tr>
 			    <?php
     foreach ( $arrPassValue as $key => $value ) {

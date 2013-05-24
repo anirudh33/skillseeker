@@ -543,7 +543,8 @@ header nav {
 {
 			color:#454545;
 			text-decoration:none;
-			display:block;
+		print_r($result);
+ 	die;	display:block;
 			float:left;
 			text-align:center;
 			padding:18px 0 20px 0;
@@ -3729,4 +3730,10 @@ img {
 }
 embed { 
 	vertical-align:top;
+}
+#searchUserTable
+{
+	//border:2px solid red;
+	width:650px;
+	margin:30px;
 }
