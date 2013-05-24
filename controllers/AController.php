@@ -235,7 +235,7 @@ abstract class AController
     {
 
         session_destroy();
-        header("Location:" . $_SESSION['SITE_PATH'] . "/index.php");
+        header("Location:" . SITE_URL. "/index.php");
     }
 }
 ?>

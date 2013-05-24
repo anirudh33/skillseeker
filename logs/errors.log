@@ -872,3 +872,17 @@
 [14-May-2013 12:54:58] PHP Notice:  Trying to get property of non-object in /var/www/skillseeker/trunk/views/createtest.php on line 118
 [14-May-2013 12:54:58] PHP Notice:  Undefined variable: lang in /var/www/skillseeker/trunk/views/createtest.php on line 119
 [14-May-2013 12:54:58] PHP Notice:  Trying to get property of non-object in /var/www/skillseeker/trunk/views/createtest.php on line 119
+[24-May-2013 03:30:21 UTC] PHP Notice:  Undefined index: userName in /var/www/skillseeker/trunk/controllers/MainController.php on line 39
+[24-May-2013 03:30:21 UTC] PHP Notice:  Undefined index: password in /var/www/skillseeker/trunk/controllers/MainController.php on line 40
+[24-May-2013 03:30:21 UTC] PHP Notice:  Undefined index: userName in /var/www/skillseeker/trunk/controllers/MainController.php on line 54
+[24-May-2013 03:30:21 UTC] PHP Notice:  Undefined index: password in /var/www/skillseeker/trunk/controllers/MainController.php on line 55
+[24-May-2013 03:30:21 UTC] PHP Notice:  Undefined index: DOMAIN_PATH in /var/www/skillseeker/trunk/libraries/initiateuser.php on line 166
+[24-May-2013 03:30:21 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /var/www/skillseeker/trunk/controllers/MainController.php:39) in /var/www/skillseeker/trunk/libraries/initiateuser.php on line 166
+[24-May-2013 03:30:21 UTC] PHP Warning:  require_once(/var/www/skillseeker/trunk) [<a href='function.require-once'>function.require-once</a>]: failed to open stream: Success in /var/www/skillseeker/trunk/controllers/MainController.php on line 69
+[24-May-2013 03:30:21 UTC] PHP Fatal error:  require_once() [<a href='function.require'>function.require</a>]: Failed opening required '/var/www/skillseeker/trunk' (include_path='.:/usr/share/php:/usr/share/pear') in /var/www/skillseeker/trunk/controllers/MainController.php on line 69
+[24-May-2013 03:30:32 UTC] PHP Notice:  Undefined index: DOMAIN_PATH in /var/www/skillseeker/trunk/libraries/initiateuser.php on line 166
+[24-May-2013 03:30:32 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /var/www/skillseeker/trunk/libraries/initiateuser.php:166) in /var/www/skillseeker/trunk/libraries/initiateuser.php on line 166
+[24-May-2013 03:30:32 UTC] PHP Warning:  require_once(/var/www/skillseeker/trunk) [<a href='function.require-once'>function.require-once</a>]: failed to open stream: Success in /var/www/skillseeker/trunk/controllers/MainController.php on line 69
+[24-May-2013 03:30:32 UTC] PHP Fatal error:  require_once() [<a href='function.require'>function.require</a>]: Failed opening required '/var/www/skillseeker/trunk' (include_path='.:/usr/share/php:/usr/share/pear') in /var/www/skillseeker/trunk/controllers/MainController.php on line 69
+[24-May-2013 03:35:41 UTC] PHP Notice:  Undefined index: SITE_PATH in /var/www/skillseeker/trunk/controllers/AController.php on line 238
+[24-May-2013 03:35:41 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /var/www/skillseeker/trunk/controllers/AController.php:238) in /var/www/skillseeker/trunk/controllers/AController.php on line 238
