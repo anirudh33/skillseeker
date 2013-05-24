@@ -1,15 +1,15 @@
-<aside>
+<!-- <aside> -->
 
 
-	<br /> <br />
+<!-- 	<br /> <br /> -->
 
 
 	<h3><?php echo $lang->CATEGORIES;?></h3>
-	<div id="body">
-		<div id="feedControl">Loading...</div>
-	</div>
+<!-- 	<div id="body"> -->
+<!-- 		<div id="feedControl">Loading...</div> -->
+<!-- 	</div> -->
 
-</aside>
+<!-- </aside> -->
 <!-- content -->
 <section id="content">
 	<div id="banner">
@@ -19,7 +19,7 @@
 	<div class="ic"></div>
 </section>
 
-<br>
-<br>
+<!-- <br> -->
+<!-- <br> -->
 
-</div>
+<!-- </div> -->

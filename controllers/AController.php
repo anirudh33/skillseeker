@@ -104,6 +104,7 @@ abstract class AController
 					require_once SITE_PATH . '/views/TestCreatorViews/TestCreatorViewHeaderTop.php';
 					require_once SITE_PATH . '/views/headertop.php';
 					require_once SITE_PATH . '/views/userheaderbelow.php';
+					
 				}
 			} else {
 				require_once SITE_PATH . '/views/MainViews/MainViewHeaderTop.php';
