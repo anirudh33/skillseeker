@@ -192,6 +192,32 @@ function openPage(str)
 	        }
 	      });
 	}
+	else if(str=="/views/bytest.php") {
+		$.ajax({
+	        type: "POST",
+	        url: 'index.php?controller=TestController&method=handleResultByTest',
+	        //data: $("#idForm").serialize(), // serializes the form's elements.
+	        success: function(data)
+	        {
+	        	$('#content').html(' ');
+	            $('#content').html(data);
+	            //alert(data); // show response from the php script.
+	        }
+	      });
+	}
+	else if(str=="/views/SearchUser.php") {
+		$.ajax({
+	        type: "POST",
+	        url: 'index.php?controller=MainController&method=onClickSearch',
+	        //data: $("#idForm").serialize(), // serializes the form's elements.
+	        success: function(data)
+	        {
+	        	$('#content').html(' ');
+	            $('#content').html(data);
+	            //alert(data); // show response from the php script.
+	        }
+	      });
+	}
 	else {
 		$.ajax({
 	        type: "POST",

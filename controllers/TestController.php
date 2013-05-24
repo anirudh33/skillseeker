@@ -629,7 +629,7 @@ public function handleassignTest()
 	
 	public function handleResultByTest()
 	{
-		$this->showView('/views/bytest.php');
+		$this->showView('/views/bytest.php',array(),false,false);
 	}
 	
 	public function handleResultcontactus()

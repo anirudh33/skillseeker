@@ -1,9 +1,6 @@
 <?php
 require_once SITE_PATH . '/libraries/Language.php';
 ?>
-<!DOCTYPE html>
-<html>
-<head>
 <style type="text/css">
 div.search_result table,div.search_result th,div.search_result tr,div.search_result td {
 	border: 1px solid black;
@@ -28,8 +25,7 @@ div.search_result table,div.search_result th,div.search_result tr,div.search_res
 	   });
 }
 	</script>
-</head>
-<body>
+<section id="content">
 	<div>
 		<h2>Search User Result</h2>
 		<div class="search_user">
@@ -78,5 +74,4 @@ if (isset ( $arrPassValue ) && ! empty ( $arrPassValue )) {
 			</table>
 		</div>
 	</div>
-</body>
-</html>
+</section>
