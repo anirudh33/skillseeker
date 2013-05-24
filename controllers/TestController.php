@@ -13,7 +13,7 @@ Sr.NO.        Version        Updated by           Updated on          Descriptio
 2            1.0        Prateek Saini        May 11, 2013        Added Methods for Taking Test
 -------------------------------------------------------------------------
 */
-require_once './libraries/EncryptionDecryption.php';
+require_once SITE_PATH.'/libraries/EncryptionDecryption.php';
 require_once './libraries/Mail.php';
 
 
@@ -91,8 +91,7 @@ public function handleassignTest()
 			/*Next 4 lines are used for creating hashed link url*/
 			   
 			$obj_EncryptionDecryption= new EncryptionDecryption();
-			
-			
+
 			
 			$_objCategory->setTest_id($_REQUEST['test_id']);
 			$_objCategory->setStart_time($_POST['start_time']);

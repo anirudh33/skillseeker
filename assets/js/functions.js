@@ -96,7 +96,7 @@ function fetchLink(id)
 
 //JavaScript Functions for Assign Test Page
 
-function assignTest()
+function submitAssignTest()
 {
 	$.ajax
 	({

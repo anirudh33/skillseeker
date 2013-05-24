@@ -1,5 +1,10 @@
 how to use
 
+first run these commands
+
+sudo apt-get install php5-mcrypt
+sudo service apache2 restart
+
 require once the class
 
 then following code

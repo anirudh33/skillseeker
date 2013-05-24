@@ -157,7 +157,7 @@ Start Time:<br><input type="text"  id="datetime" value="" name="start_time"/></t
 <tr><td><h3>Emails of All Users(to whom u want to assign this test)</h3></td><td><input type="text"  name="emails"> </td></tr>
 <tr ></tr>
 
-<tr><td><input type="button" value="save" class="btn" id="assign_btn" onclick="assignTest()"></td></tr>
+<tr><td><input type="button" value="save" class="btn" id="assign_btn" onclick="submitAssignTest()"></td></tr>
 
 </table>
 
