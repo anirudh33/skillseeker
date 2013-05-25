@@ -414,18 +414,18 @@ class User extends DBConnection
     	$data['tables']		= 'user_test_result';
     	
     	$data['joins'][] = array(
-    			'table' => 'test',
+    			'table' => 'test_details',
     			'type'	=> 'inner',
-    			'conditions' => array('test.user_id' => 'user_id')
+    			'conditions' => array('test_details.test_id' => 'user_test_result.test_id')
     	);
     	
     	$data['joins'][] = array(
-    			'table' => 'test_details',
+    			'table' => 'test',
     			'type'	=> 'inner',
     			'conditions' => array('test_details.test_id' => 'test.id')
     	);
     	
-		$data['conditions'] = array (array('test.user_id = 1 AND first_name LIKE "%'.$this->_firstName.'%" AND last_name LIKE "%'.$this->_lastName.'%"'),true);
+		$data['conditions'] = array (array('test.user_id = '.$_SESSION['userId'].' AND first_name LIKE "%'.$this->_firstName.'%" AND last_name LIKE "%'.$this->_lastName.'%"'),true);
     	
     	$result = $this->_db->select($data);
     	$userResult=array();
