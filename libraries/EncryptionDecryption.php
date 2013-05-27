@@ -10,7 +10,8 @@ Created on                  -  May 10, 2013
 ***************************** Update Log ********************************
 Sr.NO.		Version		Updated by           Updated on          Description
 -------------------------------------------------------------------------
-
+2            1.0        Prateek Saini           May 25, 2013    Changes in create key Hash method and 
+                                                                Decryption Method.
 *************************************************************************
 **/
 class EncryptionDecryption
@@ -18,11 +19,10 @@ class EncryptionDecryption
     private $skey;
     
     private function createKey() {
-    
-        $password = 1;
-        $salt = "rs2s0e1k3etieealmkle".mktime();
-        $hash = hash_hmac("md5", $password, $salt);
-        $this->skey = pack('H*', $hash);
+
+        $salt = "r#s2s0e1k&3etieealmkl#e";
+        $hash = mhash(MHASH_SHA224,$salt); 
+        $this->skey = pack('H*', bin2hex($hash));
     }
     
     private function safe_b64encode($string) {
@@ -56,6 +56,7 @@ class EncryptionDecryption
     public function decode($value){
     
         if(!$value){return false;}
+        $this->createKey();
         $crypttext = $this->safe_b64decode($value);
         $iv_size = mcrypt_get_iv_size(MCRYPT_RIJNDAEL_256, MCRYPT_MODE_ECB);
         $iv = mcrypt_create_iv($iv_size, MCRYPT_RAND);

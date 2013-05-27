@@ -10,7 +10,7 @@ Created on                  -  May 7, 2013
 ***************************** Update Log ********************************
 Sr.NO.        Version        Updated by           Updated on          Description
 1            1.0        Mohit Gupta             May 10, 2013        Added Link Manipulation Methods
-2            1.0        Prateek Saini        May 11, 2013        Added Methods for Taking Test
+2            1.0        Prateek Saini           May 11, 2013        Added Methods for Taking Test
 -------------------------------------------------------------------------
 */
 require_once SITE_PATH.'/libraries/EncryptionDecryption.php';
@@ -22,7 +22,7 @@ require_once './models/csvModel.php';
 require_once  SITE_PATH.'/models/createTestModel.php';
 require_once  SITE_PATH.'/models/UserTestResult.php';
 require_once  SITE_PATH.'/libraries/EncryptionDecryption.php';
-
+require_once  SITE_PATH.'/models/Assign.php';
 
 
 class TestController extends AController {
@@ -364,17 +364,26 @@ public function handleassignTest()
     public function takeTest() {
         $objcsvModel = new csvModel ();
         $objUserTestResult = new UserTestResult();
+        $objAssignModel = new Assign();
         
-//        $_POST ['firstName'] = 'firstName';
-        $objUserTestResult->setFirstName($_POST ['firstName']);
-//        $_POST ['lastName'] = 'lastName';
-        $objUserTestResult->setLastName($_POST ['lastName']);
-//        $_POST ['email'] = 'test@1234.com';
-        $objUserTestResult->setEmailAddress($_POST ['email']);
+        $objUserTestResult->setFirstName(htmlentities($_POST ['firstName']));
+        $objUserTestResult->setLastName(htmlentities($_POST ['lastName']));
+        $objUserTestResult->setEmailAddress(htmlentities($_POST ['email']));
 
-//        $objEncryptionDecryption = new EncryptionDecryption();
-//        $tmp1 = $objEncryptionDecryption->decode($_REQUEST['id']);
-//        print($tmp1);
+        //        $_POST ['firstName'] = 'firstName';
+        //        $_POST ['lastName'] = 'lastName';
+        //        $_POST ['email'] = 'test@1234.com';
+        
+       $objEncryptionDecryption = new EncryptionDecryption();       
+       $tmp1 = $objEncryptionDecryption->decode($_POST['id']);
+       print($tmp1);
+       
+       
+       //print ($_POST['id']);
+       //       $tmp1 = $objEncryptionDecryption->encode($_REQUEST['id']);
+       //       print($tmp1);
+           
+// 0b-uizyo5K_pPBaqZO0nxQU0O2L36bHGbxaL7YDg62Q       
 //        echo "<pre/>";
 /* This section of code will verify user eligibility
  * {
@@ -387,7 +396,12 @@ public function handleassignTest()
  *      }
  * }
  */
-        $testId = 1;
+        $testDetailId = 1;
+        $objAssignModel->setId($testDetailId);
+        $objAssignModel->getData();
+        
+        $testId = $objAssignModel->getTest_id();
+        
         $objUserTestResult->setTestId($testId);
         $objcreateTestModel = new CreateTest();
         
@@ -451,7 +465,8 @@ public function handleassignTest()
             foreach($userQuestions as $key => $value){
                 foreach($value as $inKey => $inValue){                	
                     $userQuestionsID[] = $questions[$key][$inValue]['id'];
-                    $userQuestionsAnswers[] = html_entity_decode($questions[$key][$inValue]['answer']);
+                    
+                    $userQuestionsAnswers[] = $questions[$key][$inValue]['answer'];
                     
                     $userFinalQuestions[] = $questions[$key][$inValue];                    
                 }
@@ -489,6 +504,9 @@ public function handleassignTest()
 		$_SESSION['questionPointer'] = 0;
 		$_SESSION['submittedAnswers'] = $userSubmitAnswers;
 		$_SESSION['maxQuestions'] = count($userFinalQuestions);
+		$_SESSION['goBack'] = $objAssignModel->getGo_back();
+		$_SESSION['perPageQuestion'] = $objAssignModel->getPer_page_question();
+
 		$this->showView("/views/inTest.php","",FALSE,FALSE);
 		
         //$file_contents = file_get_contents(SITE_PATH."/views/inTest.php");
@@ -508,6 +526,8 @@ public function handleassignTest()
 		$userSubmitAnswers = $_SESSION['submittedAnswers']; 
 		$objUserTestResult = new UserTestResult();
 		$objUserTestResult->setId($_SESSION['runningTest']);
+		$maxQuestions = $_SESSION['maxQuestions'];
+		$perPageQuestion = $_SESSION['perPageQuestion'];
 		//print($this->questionCount);
 		//print($pointer);
 			
@@ -530,10 +550,10 @@ public function handleassignTest()
 			if($questionCount < (count($userFinalQuestions)-1)){
 				$questionCount++;
 		}
-		if($questionCount==count($userFinalQuestions)){
-			echo "max";
-			return;
-		}
+// 		if($questionCount==count($userFinalQuestions)){
+// 			echo "max";
+// 			return;
+// 		}
 			//print($questionCount);
 			echo json_encode($userFinalQuestions[$questionCount]);
 		}
@@ -545,19 +565,29 @@ public function handleassignTest()
 // 		    }
 		    $userFinalQuestions[$questionCount]['answer'] = $_POST['option'];
 		    $userSubmitAnswers[$questionCount] = htmlentities($_POST['option']);
+		    
 		    $objUserTestResult->setAnswers($userSubmitAnswers);
 		    $objUserTestResult->updateTest();		    
 		    //print_r($userSubmitAnswers);
 		    
-			if($questionCount > 0){
+		    if($questionCount == $maxQuestions-1){		        
+
+		            $questionCount--;
+
+// 		            print($questionCount);
+	        
+		    }else if($questionCount > 0){
 				$questionCount--;
-			}
+			}else if($questionCount <= 0){
+			    $questionCount = 0;
+			}			
 
 			echo json_encode($userFinalQuestions[$questionCount]);			
 		}
 		else{
 			echo json_encode($userFinalQuestions[$questionCount]);
 		}
+		
 		$_SESSION['questionPointer'] = $questionCount;
 		$_SESSION['allQuestions'] = $userFinalQuestions;
 		$_SESSION['submittedAnswers'] = $userSubmitAnswers;

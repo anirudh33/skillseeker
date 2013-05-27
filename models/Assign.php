@@ -315,7 +315,50 @@ class Assign extends DBConnection {
 		 return "true";
 	}
 
-	
+	/**
+	 * @author Prateek Saini
+	 * 
+	 * This function will retrieve all the information 
+	 * related to test from test_details table.  
+	 */
+	public function getData(){
+	    $data ['columns'] = array (
+	            'test_id',
+	            'test_start_time',
+	            'test_duration',
+	            'emails',
+	            'instructions',
+	            'passing_marks',
+	            'per_page_question',
+	            'link_expire_time',
+	            'question_order',
+	            'go_back',
+	            'email_check'
+	    );
+	    $data ['tables'] = 'test_details';
+	    $data ['conditions'] = array (
+	            array (
+	                    'id ="' . $this->_id . '" AND status="1"'
+	            ),
+	            true
+	    );
+	    $result = $this->_db->select ( $data );
+	    $resultSet = $result->fetchAll ( PDO::FETCH_ASSOC );
+
+	    if(!empty($resultSet)){
+            $this->setTest_id($resultSet[0]['test_id']);
+            $this->setStart_time($resultSet[0]['test_start_time']);
+            $this->setTest_duration($resultSet[0]['test_duration']);
+            $this->setEmails($resultSet[0]['emails']);
+            $this->setInstruction($resultSet[0]['instructions']);
+            $this->setPassing_marks($resultSet[0]['passing_marks']);
+            $this->setPer_page_question($resultSet[0]['per_page_question']);	    
+            $this->setLink_expiration_time($resultSet[0]['link_expire_time']);
+            $this->setQuestion_order($resultSet[0]['question_order']);
+            $this->setGo_back($resultSet[0]['go_back']);
+            $this->setEmailcheck($resultSet[0]['email_check']);
+	    }
+	}
 }
 
 ?>
