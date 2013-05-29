@@ -11,25 +11,28 @@ $("#questionDisplay").ready(function(){
 		data: "&questionPointer=",
 		success : function(data){
 			data = jQuery.parseJSON(data);
-			clearQuestionDisplay();
+			getQuestion(data);
+// 			clearQuestionDisplay();
 
-			if($perPageQuestion > 1){
-				if($questionCount == 1){
-					getQuestion(data);
-				}				
-    			nextQuestion('next');			
-			}
-			else{
-				getQuestion(data);
-			}
+// 			if($perPageQuestion > 1){
+// 				if($questionCount == 1){
+// 					getQuestion(data);
+// 				}				
+//     			nextQuestion('next');			
+// 			}
+// 			else{
+// 				getQuestion(data);
+// 			}
 		}
 		});
 });
 $maxQuestion = <?php echo $_SESSION['maxQuestions']; ?>;
 $perPageQuestion = <?php echo $_SESSION['perPageQuestion']; ?>;
+$maxPages = <?php echo $_SESSION['numberOfPages']; ?>;
 $currQuestionsStart = 1;
 $currQuestionsEND = 0;
 $questionCount = 1;
+$pageCount = 1;
 $option = 0;
 $questions = "";
 $dispQuestion = 0;
@@ -55,39 +58,43 @@ function clearQuestionDisplay(){
 
 function getQuestion(data){
 	
-	//$.each(data,function(i, value){
+	$.each(data,function(i, value){
+		//alert(i);
 		//if(i == "question_name"){
-			$("#questionDisplay").append("Question "+data['queno']+"</br>");
-			$("#questionDisplay").append("<p>"+data['question_name']+"</p>");
+			$("#questionDisplay").append("Question "+value['queno']+"</br>");
+			$("#questionDisplay").append("<p>"+value['question_name']+"</p>");
 		//}
 		//if(i == "options"){
-			$("#questionDisplay").append("<div id = \""+data['id']+"\">");
+			$("#questionDisplay").append("<div id = \""+value['id']+"\">");
 			//$questions = data['options'];//value;
 			 
-			$.each(data['options'],function(j, invalue){
-				$str = "<input type = \"radio\" name = \"option"+data['id']+
+			$.each(value['options'],function(j, invalue){
+				$str = "<input type = \"radio\" name = \"option"+value['id']+
 				"\" "+
 				" onClick = \"select1('"+invalue['id']+"') \"";
 
-				if(invalue['name'] == data['answer']){
+				if(invalue['name'] == value['answer']){
 					$option = invalue['name']; 
 					$str += " checked ";
 				}
 				$str += "value = \""+invalue['id']+"\"/>"+invalue['name'];
-				$("#questionDisplay > [id="+data['id']+"]").append($str);
-				$("#questionDisplay > [id="+data['id']+"]").append("</br>");
+				$("#questionDisplay > [id="+value['id']+"]").append($str);
+				$("#questionDisplay > [id="+value['id']+"]").append("</br>");
 			});
 			$("#questionDisplay").append("</div>");
 			$("#questionDisplay").append("</br>");
 		//}
-	//});
-	if($questionCount == 1 && $dispPage == 1){
+	});
+	if($pageCount == 1){
 		$("#prevButton").hide();
 	}
+// 	else if($questionCount == $perPageQuestion){
+// 		$("#prevButton").hide();
+// 	}
 	else{
 		$("#prevButton").show();
 	}
-	if($questionCount == $maxQuestion){
+	if($pageCount == $maxPages){
 		$("#nxtButton").hide();
 		$("#confirmFinish").show();
 	}
@@ -98,26 +105,37 @@ function getQuestion(data){
 
 function nextQuestion(pointer){
 
-	if($questionCount != 1 || $perPageQuestion == 1){
+//	if($questionCount != 1 || $perPageQuestion == 1){
 		clearQuestionDisplay();
-	}
-	if($questionCount == 1 && $perPageQuestion == 1){
-		$currQuestionsEND++;
-	}
-	//if($questionCount == 1){
-	if(pointer == 'next'){
-		$currQuestionsEND += $perPageQuestion;
-		$dispPage++;
-	}
-	if(pointer == 'previous'){
-		$currQuestionsStart -= $perPageQuestion;
-		if($questionCount == $maxQuestion && $perPageQuestion != 1){
-			$questionCount -= $perPageQuestion;
-		}else if($currQuestionsStart <= 0){
-			$currQuestionsStart = $perPageQuestion;
-		}
-		$dispPage--;		
-	}
+//	}
+// 	if($questionCount == 1 && $perPageQuestion == 1){
+// 		$currQuestionsEND++;
+// 	}
+// 	//if($questionCount == 1){
+// 	if(pointer == 'next'){
+// 		$currQuestionsEND += $perPageQuestion;
+// 		$dispPage++;
+// 	}
+// 	if(pointer == 'previous'){
+// 		$tempCount = $questionCount % $perPageQuestion;
+		//alert($tempCount);
+		//alert($perPageQuestion);
+		//alert($questionCount);
+// 		$questionCount = $questionCount - $tempCount - $perPageQuestion;
+// 		$currQuestionsStart = $questionCount;
+// 		$currQuestionsEND = $currQuestionsStart + $perPageQuestion;
+		//$questionCount =  $tempCount + $perPageQuestion;
+		//alert($questionCount);		
+// 	}
+// 	if(pointer == 'previous'){
+// 		$currQuestionsStart -= $perPageQuestion;
+// 		if($questionCount == $maxQuestion && $perPageQuestion != 1){
+// 			$questionCount -= $perPageQuestion;
+// 		}else if($currQuestionsStart <= 0){
+// 			$currQuestionsStart = $perPageQuestion;
+// 		}
+// 		$dispPage--;		
+// 	}
 
 	if($currQuestionsEND >= $maxQuestion){
 		$currQuestionsEND = $maxQuestion;
@@ -126,30 +144,30 @@ function nextQuestion(pointer){
 		$currQuestionsEND = 0;
 		$currQuestionsStart = 1;
 	}
-	else if($currQuestionsStart <= 0 && $currQuestionsEND <= 0){
-		$currQuestionsEND = 0;
-		$currQuestionsStart = 1;
-	}
+// 	else if($currQuestionsStart <= 0 && $currQuestionsEND <= 0){
+// 		$currQuestionsEND = 0;
+// 		$currQuestionsStart = 1;
+// 	}
 	//}
 	//else{
 	//	$currQuestionsEND += $perPageQuestion;
 	//}
-	while($currQuestionsStart < $currQuestionsEND){			    
+	//while($currQuestionsStart < $currQuestionsEND){			    
 	    	
 	if(pointer == 'next'){
-		if($questionCount == $maxQuestion){
+		if($pageCount == $maxPages+1){
 			//alert("You Have Cheated !!!");
 		}
 		else{
-			$questionCount++;
+			$pageCount++;
 		}		
 	}
 	else if(pointer == 'previous'){
-		if($questionCount == 1){
+		if($pageCount == 0){
 			//alert("You Have Cheated !!!");
 		}
 		else{
-			$questionCount--;
+			$pageCount--;
 		}		
 	}
 	if($questionCount >= 1 && $questionCount <= $maxQuestion){	
@@ -170,16 +188,19 @@ function nextQuestion(pointer){
     	$option = "NULL";
 	}
 	//alert($currQuestionsStart);
-	if(pointer == 'next'){
-	    $currQuestionsStart++;
-	}
-	else if(pointer == 'previous')
-		$currQuestionsEND--;
-	if($currQuestionsEND == 1){
-		$currQuestionsEND = 0;
-	}
-	}
+// 	if(pointer == 'next'){
+// 	    $currQuestionsStart++;
+// 	}
+// 	else if(pointer == 'previous')
+// 		$currQuestionsStart++;
+// 	pointer = 'next'
+		//$currQuestionsEND--;
+	//if($currQuestionsEND == 1){
+		//$currQuestionsEND = 0;
+	//}
+	//}
 	//alert($dispQuestion);
+	//alert($questionCount);
 }
 
 $(function(){

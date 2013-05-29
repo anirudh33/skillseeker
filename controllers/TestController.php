@@ -503,10 +503,41 @@ public function handleassignTest()
 		$_SESSION['allQuestions'] = $userFinalQuestions;
 		$_SESSION['questionPointer'] = 0;
 		$_SESSION['submittedAnswers'] = $userSubmitAnswers;
-		$_SESSION['maxQuestions'] = count($userFinalQuestions);
-		$_SESSION['goBack'] = $objAssignModel->getGo_back();
-		$_SESSION['perPageQuestion'] = $objAssignModel->getPer_page_question();
-
+		
+		$numberOfQuestions = count($userFinalQuestions);
+		$perPageQuestions = $objAssignModel->getPer_page_question();
+		$numberOfPages = 0;
+		$paging  = array();
+		$pointer = 0;
+		
+		if(($numberOfQuestions % $perPageQuestions) == 0){
+		    $numberOfPages  = $numberOfQuestions / $perPageQuestions;
+		}
+		else{
+		    $numberOfPages  = intval(($numberOfQuestions / $perPageQuestions))+1;
+		}
+		
+// 		print($numberOfPages);
+		
+		for($i = 0 ;$i < $numberOfPages ; $i++  ){
+		    for($j = 0; $j < $perPageQuestions && $pointer < $numberOfQuestions ;$j++ ){
+		        $paging[] = "";
+		        $paging[$i] = $paging[$i].$pointer.",";
+		        $pointer++;
+		    }
+		    $paging[$i] = substr($paging[$i], 0,strlen($paging[$i])-1);
+		}
+		
+// 		print_r($paging);
+// 		die;
+		
+		
+		$_SESSION['maxQuestions'] = $numberOfQuestions;
+		$_SESSION['goBack'] = $objAssignModel->getGo_back();		
+		$_SESSION['perPageQuestion'] = $perPageQuestions;
+		$_SESSION['paging'] = $paging;
+		$_SESSION['numberOfPages'] = $numberOfPages;
+		 
 		$this->showView("/views/inTest.php","",FALSE,FALSE);
 		
         //$file_contents = file_get_contents(SITE_PATH."/views/inTest.php");
@@ -528,14 +559,16 @@ public function handleassignTest()
 		$objUserTestResult->setId($_SESSION['runningTest']);
 		$maxQuestions = $_SESSION['maxQuestions'];
 		$perPageQuestion = $_SESSION['perPageQuestion'];
+		$paging = $_SESSION['paging'];
+		
 		//print($this->questionCount);
 		//print($pointer);
 			
 		if($pointer == "next"){
-		    $userFinalQuestions[$questionCount]['answer'] = $_POST['option'];
-		    $userSubmitAnswers[$questionCount] = htmlentities($_POST['option']);
-		    $objUserTestResult->setAnswers($userSubmitAnswers);
-		    $objUserTestResult->updateTest();
+// 		    $userFinalQuestions[$questionCount]['answer'] = $_POST['option'];
+// 		    $userSubmitAnswers[$questionCount] = htmlentities($_POST['option']);
+// 		    $objUserTestResult->setAnswers($userSubmitAnswers);
+// 		    $objUserTestResult->updateTest();
 		    
 		    //print_r($userSubmitAnswers);
 		    
@@ -547,15 +580,30 @@ public function handleassignTest()
 		    //print_r($userSubmitAnswers);
 		    //die;
 		    //$_POST['option'] = "";
-			if($questionCount < (count($userFinalQuestions)-1)){
+// 			if($questionCount < (count($userFinalQuestions)-1)){
+// 				$questionCount++;
+
+			if($questionCount <= $perPageQuestion){
 				$questionCount++;
-		}
+		    }
+// 		    print($questionCount);
 // 		if($questionCount==count($userFinalQuestions)){
 // 			echo "max";
 // 			return;
 // 		}
 			//print($questionCount);
-			echo json_encode($userFinalQuestions[$questionCount]);
+			
+		    $questionsPointers = explode(',',$paging[$questionCount]);
+		    $sendData = array();
+		    //print_r($questionsPointers);
+		    //die;
+		    foreach($questionsPointers as $key => $value){
+		        $test = "sendData".$key;
+		        $sendData[] = $userFinalQuestions[$value];
+		    }
+//   		    print_r($sendData);
+//   		    die;
+			echo json_encode($sendData);
 		}
 		else if($pointer == "previous"){
 // 		    		    print_r($_POST);
@@ -563,29 +611,66 @@ public function handleassignTest()
 // 		    if($_POST['option']){
 		        
 // 		    }
-		    $userFinalQuestions[$questionCount]['answer'] = $_POST['option'];
-		    $userSubmitAnswers[$questionCount] = htmlentities($_POST['option']);
+// 		    $userFinalQuestions[$questionCount]['answer'] = $_POST['option'];
+// 		    $userSubmitAnswers[$questionCount] = htmlentities($_POST['option']);
 		    
-		    $objUserTestResult->setAnswers($userSubmitAnswers);
-		    $objUserTestResult->updateTest();		    
-		    //print_r($userSubmitAnswers);
+// 		    $objUserTestResult->setAnswers($userSubmitAnswers);
+// 		    $objUserTestResult->updateTest();		    
+// 		    //print_r($userSubmitAnswers);
 		    
-		    if($questionCount == $maxQuestions-1){		        
+//		    if($questionCount == $maxQuestions-1){		        
 
-		            $questionCount--;
+// 		            $questionCount--;
 
-// 		            print($questionCount);
+// // 		            print($questionCount);
 	        
-		    }else if($questionCount > 0){
-				$questionCount--;
-			}else if($questionCount <= 0){
-			    $questionCount = 0;
-			}			
+// 		    //}else 
+// 		    if($questionCount > 0){
+// 		        $tempCount = $questionCount % $perPageQuestion;
+// 		        $questionCount -= ($tempCount + $perPageQuestion);
+// 		        //print($questionCount);
+// 			//	$questionCount--;
+// 			}else if($questionCount <= 0){
+// 			    $questionCount = 0;
+// 			}			
 
-			echo json_encode($userFinalQuestions[$questionCount]);			
+		    if($questionCount > 0){
+		        $questionCount--;
+		    }
+// 		    if($questionCount == 0){
+// 		        $questionCount = 1;
+// 		    }
+// 			echo json_encode($userFinalQuestions[$questionCount]);			
+		    $questionsPointers = explode(',',$paging[$questionCount]);
+		    $sendData = array();
+// 		    print_r($questionCount);
+// 		    die;
+		    foreach($questionsPointers as $key => $value){
+		        $test = "sendData".$key;
+		        $sendData[] = $userFinalQuestions[$value];
+		    }
+		    //   		    print_r($sendData);
+		    //   		    die;
+		    echo json_encode($sendData);
 		}
 		else{
-			echo json_encode($userFinalQuestions[$questionCount]);
+// 		    if($questionCount == 0){
+// 		        $questionsPointers = explode(',',$paging[0]);
+// 		    }
+// 		    else{
+		    $questionsPointers = explode(',',$paging[$questionCount]);
+// 		    }
+		    $sendData = array();
+		    //print_r($questionsPointers);
+		    //die;
+		    foreach($questionsPointers as $key => $value){
+		        $test = "sendData".$key;
+		        $sendData[] = $userFinalQuestions[$value];
+		    }
+// 		     		    print_r($sendData);
+// 		     		    die;
+		    echo json_encode($sendData);		    
+//			echo json_encode($userFinalQuestions[$questionCount]);
 		}
 		
 		$_SESSION['questionPointer'] = $questionCount;
