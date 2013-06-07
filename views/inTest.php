@@ -12,6 +12,7 @@ $("#questionDisplay").ready(function(){
 		success : function(data){
 			data = jQuery.parseJSON(data);
 			getQuestion(data);
+			setTable();
 // 			clearQuestionDisplay();
 
 // 			if($perPageQuestion > 1){
@@ -41,7 +42,21 @@ $markCounter = 0;
 $marked = new Array(<?php echo $_SESSION['maxQuestions']; ?>);
 $questionPage = new Array(<?php echo $_SESSION['maxQuestions']; ?>);
 
-function select1($optionID,$questionID){
+
+function setTable(){
+	for($i = 1 ; $i <= $maxQuestion ; $i++ ){
+	$("#allQuestions").append("Question "+$i);
+	$markInput = "<input id = \"answered"+$i+"\" disabled = \"true\" type = \"checkbox\" onClick = \"markQuestion("+$i+")\"";
+//		if($marked[value['queno']] == 1){
+//			$markInput += " checked ";
+//		}
+	$markInput += "/>";							
+	$("#allQuestions").append($markInput);
+	$("#allQuestions").append("</br>");
+	}
+}
+
+function select1($optionID,$questionID,$custonQuestionID){
 // 	alert($value);
 // 	alert($("#"+$id).val());
 //	alert($questions[0]);
@@ -57,6 +72,8 @@ function select1($optionID,$questionID){
 	    		type: "post",
 	    		data: "&questionID="+$questionID+"&option="+$option,
 	    		success : function(data){
+
+		    		$("#answered"+$custonQuestionID).prop("checked",true);
 		    		//alert("done");
 // 	    			if(data == "max"){
 // 	    				$("#confirmNow").html("<input type = \"button\" value='Confirm Finish' id='confirmFinishButton'/>");
@@ -130,6 +147,15 @@ function getQuestion(data){
 			$("#questionDisplay").append($markInput);
 			$("#questionDisplay").append("</br>");
 			$("#questionDisplay").append("<p>"+value['question_name']+"</p>");
+
+// 			$("#allQuestions").append("Question "+value['queno']);			
+// 			$markInput = "<input id = \"answered"+value['queno']+"\" disabled = \"true\" type = \"checkbox\" onClick = \"markQuestion("+value['queno']+")\"";
+// // 			if($marked[value['queno']] == 1){
+// // 				$markInput += " checked ";
+// // 			}
+// 			$markInput += "/>";
+// 			$("#allQuestions").append("</br>");						
+// 			$("#allQuestions").append($markInput);
 		//}
 		//if(i == "options"){
 			$("#questionDisplay").append("<div id = \""+value['id']+"\">");
@@ -140,7 +166,7 @@ function getQuestion(data){
 				"\" "+
 				"id = \"option"+invalue['id']+
 				"\" "+
-				" onClick = \"select1('"+invalue['id']+"','"+value['id']+"') \"";
+				" onClick = \"select1('"+invalue['id']+"','"+value['id']+"','"+value['queno']+"') \"";
 
 				if(invalue['name'] == value['answer']){
 					$option = invalue['name']; 
@@ -297,11 +323,12 @@ function finish(){
 </style>
 </head>
 <body>
-<div id = "totalQuestions"><h2>Total Questions <?php echo $_SESSION['maxQuestions']; ?></h2>
+<div id = "totalQuestions" style = "float : left; width:300px;"><h2>Total Questions <?php echo $_SESSION['maxQuestions']; ?></h2>
 <h3>Question Marked <div id = "markedQuestion"></div></h3>
 <h3>Marked <div id = "elementMarked"></div></h3>
 </div>
-<div id = "questionDisplay"></div>
+<div id = "questionWrapper" style = "float : left;width:400px;">
+<div id = "questionDisplay" ></div>
 <table>
 <tr class="instructiontr">
 <td><div class = "minWidth">
@@ -313,6 +340,8 @@ function finish(){
 <td><div class = "minWidth"><input id = "nxtButton" type="button" value="Next" onClick = "nextQuestion('next')" class="btn"></div></td>
 </tr>
 </table>
+</div>
+<div id = "allQuestions"></div>
 <!-- <a href="#" onclick="function()">Display All Question</a> -->
 <div id = "confirmNow"></div>
 </body>
