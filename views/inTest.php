@@ -34,20 +34,43 @@ $currQuestionsEND = 0;
 $questionCount = 1;
 $pageCount = 1;
 $option = 0;
-$questions = "";
+$questions = new Array();
 $dispQuestion = 0;
 $dispPage = 1;
+$markCounter = 0;
+$marked = new Array(<?php echo $_SESSION['maxQuestions']; ?>);
+$questionPage = new Array(<?php echo $_SESSION['maxQuestions']; ?>);
 
-function select1($value){
-// 	alert($id);
+function select1($optionID,$questionID){
+// 	alert($value);
 // 	alert($("#"+$id).val());
-//	alert($questions);
+//	alert($questions[0]);
 
-	$.each($questions,function(i, value){
-		if($value == value['id']){
-			$option = value['name'];
-		}
-	});
+// 	$.each($questions,function(i, value){
+// 		alert(value['id']);
+// 		if($value == value['id']){			
+			$option = $("#option"+$optionID).val();
+// 			alert($option);
+			$.ajax({
+				async: false,
+	    		url : "../index.php?controller=TestController&method=setQuestionOption",
+	    		type: "post",
+	    		data: "&questionID="+$questionID+"&option="+$option,
+	    		success : function(data){
+		    		//alert("done");
+// 	    			if(data == "max"){
+// 	    				$("#confirmNow").html("<input type = \"button\" value='Confirm Finish' id='confirmFinishButton'/>");
+// 	    			}
+// 	    			else{
+// 	    				data = jQuery.parseJSON(data);
+// 	    				getQuestion(data);
+// 	    			}
+ 	    		}
+ 	    		});
+			
+			
+// 		}
+// 	});
 
 	//$option = $invalue['name'];
 }
@@ -56,28 +79,74 @@ function clearQuestionDisplay(){
 	$("#questionDisplay").html("");
 }
 
+function markQuestion($questionID){	
+	if($("#"+$questionID).prop("checked")){
+		$marked[$questionID] = 1;
+		$questionPage[$questionID] = $pageCount;
+		$markCounter++;		
+	}
+	else{
+		$marked[$questionID] = 0;
+		$markCounter--;				
+	}
+	$("#markedQuestion").html("");
+	$.each($marked,function(i,value){
+		if(value > 0){
+		$("#markedQuestion").append("<input type = \"button\" onClick = \"getMarkedQuestion("+i+")\" value = \"Q"+i+"\" /> ");		
+		$("#markedQuestion").append(" ");
+		}
+		});
+	$("#elementMarked").html($markCounter);
+}
+
+function getMarkedQuestion($questionID){
+	//alert($questionPage[$questionID]);
+	if($questionPage[$questionID] > $pageCount){
+    	while($questionPage[$questionID] > $pageCount){
+    		clearQuestionDisplay();
+    		nextQuestion('next');
+    	}
+	}
+	else{
+    	while($questionPage[$questionID] < $pageCount){
+    		clearQuestionDisplay();
+    		nextQuestion('previous');
+    	}
+	}
+}
+
 function getQuestion(data){
 	
 	$.each(data,function(i, value){
 		//alert(i);
 		//if(i == "question_name"){
-			$("#questionDisplay").append("Question "+value['queno']+"</br>");
+			$("#questionDisplay").append("Question "+value['queno']);
+			$("#questionDisplay").append("</br>");
+			$markInput = "<input id = \""+value['queno']+"\" type = \"checkbox\" onClick = \"markQuestion("+value['queno']+")\"";
+			if($marked[value['queno']] == 1){
+				$markInput += " checked ";
+			}
+			$markInput += "/> Mark";
+			$("#questionDisplay").append($markInput);
+			$("#questionDisplay").append("</br>");
 			$("#questionDisplay").append("<p>"+value['question_name']+"</p>");
 		//}
 		//if(i == "options"){
 			$("#questionDisplay").append("<div id = \""+value['id']+"\">");
-			//$questions = data['options'];//value;
+			//$questions[i] = value['options'];//value;
 			 
 			$.each(value['options'],function(j, invalue){
 				$str = "<input type = \"radio\" name = \"option"+value['id']+
 				"\" "+
-				" onClick = \"select1('"+invalue['id']+"') \"";
+				"id = \"option"+invalue['id']+
+				"\" "+
+				" onClick = \"select1('"+invalue['id']+"','"+value['id']+"') \"";
 
 				if(invalue['name'] == value['answer']){
 					$option = invalue['name']; 
 					$str += " checked ";
 				}
-				$str += "value = \""+invalue['id']+"\"/>"+invalue['name'];
+				$str += "value = '"+invalue['name']+"'/>"+invalue['name'];
 				$("#questionDisplay > [id="+value['id']+"]").append($str);
 				$("#questionDisplay > [id="+value['id']+"]").append("</br>");
 			});
@@ -172,9 +241,10 @@ function nextQuestion(pointer){
 	}
 	if($questionCount >= 1 && $questionCount <= $maxQuestion){	
     	$.ajax({
+        	async: false,
     		url : "../index.php?controller=TestController&method=getQuestion",
     		type: "post",
-    		data: "&questionPointer="+pointer+"&option="+$option,
+    		data: "&questionPointer="+pointer,
     		success : function(data){
     			if(data == "max"){
     				$("#confirmNow").html("<input type = \"button\" value='Confirm Finish' id='confirmFinishButton'/>");
@@ -227,7 +297,10 @@ function finish(){
 </style>
 </head>
 <body>
-<div id = "totalQuestions"><h2>Total Questions <?php echo $_SESSION['maxQuestions']; ?></h2></div>
+<div id = "totalQuestions"><h2>Total Questions <?php echo $_SESSION['maxQuestions']; ?></h2>
+<h3>Question Marked <div id = "markedQuestion"></div></h3>
+<h3>Marked <div id = "elementMarked"></div></h3>
+</div>
 <div id = "questionDisplay"></div>
 <table>
 <tr class="instructiontr">
@@ -240,7 +313,7 @@ function finish(){
 <td><div class = "minWidth"><input id = "nxtButton" type="button" value="Next" onClick = "nextQuestion('next')" class="btn"></div></td>
 </tr>
 </table>
-<a href="#" onclick="function()">Display All Question</a>
+<!-- <a href="#" onclick="function()">Display All Question</a> -->
 <div id = "confirmNow"></div>
 </body>
 </html>

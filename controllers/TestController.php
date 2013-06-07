@@ -376,7 +376,7 @@ public function handleassignTest()
         
        $objEncryptionDecryption = new EncryptionDecryption();       
        $tmp1 = $objEncryptionDecryption->decode($_POST['id']);
-       print($tmp1);
+//        print($tmp1);
        
        
        //print ($_POST['id']);
@@ -560,126 +560,103 @@ public function handleassignTest()
 		$maxQuestions = $_SESSION['maxQuestions'];
 		$perPageQuestion = $_SESSION['perPageQuestion'];
 		$paging = $_SESSION['paging'];
-		
-		//print($this->questionCount);
-		//print($pointer);
-			
-		if($pointer == "next"){
-// 		    $userFinalQuestions[$questionCount]['answer'] = $_POST['option'];
-// 		    $userSubmitAnswers[$questionCount] = htmlentities($_POST['option']);
-// 		    $objUserTestResult->setAnswers($userSubmitAnswers);
-// 		    $objUserTestResult->updateTest();
-		    
-		    //print_r($userSubmitAnswers);
-		    
-// 		    print_r($userFinalQuestions[$questionCount]['answer']);
-// 		    print_r($_POST);
-//  		    die;
- 		    
-		    
-		    //print_r($userSubmitAnswers);
-		    //die;
-		    //$_POST['option'] = "";
-// 			if($questionCount < (count($userFinalQuestions)-1)){
-// 				$questionCount++;
 
-			if($questionCount <= $perPageQuestion){
-				$questionCount++;
-		    }
-// 		    print($questionCount);
-// 		if($questionCount==count($userFinalQuestions)){
-// 			echo "max";
-// 			return;
-// 		}
-			//print($questionCount);
-			
-		    $questionsPointers = explode(',',$paging[$questionCount]);
+		if($pointer == "next"){
+
 		    $sendData = array();
-		    //print_r($questionsPointers);
-		    //die;
-		    foreach($questionsPointers as $key => $value){
-		        $test = "sendData".$key;
-		        $sendData[] = $userFinalQuestions[$value];
-		    }
-//   		    print_r($sendData);
-//   		    die;
+			if($perPageQuestion > 1){
+			    if($questionCount <= $perPageQuestion){
+			        $questionCount++;
+			    }
+			    $questionsPointers = explode(',',$paging[$questionCount]);
+			    foreach($questionsPointers as $key => $value){
+			        $test = "sendData".$key;
+			        $sendData[] = $userFinalQuestions[$value];
+			    }
+			}
+			else{
+			    $questionCount++;
+			    $questionsPointers = $paging[$questionCount];
+			    $sendData[] = $userFinalQuestions[$questionsPointers];
+			}
+
 			echo json_encode($sendData);
 		}
 		else if($pointer == "previous"){
-// 		    		    print_r($_POST);
-// 		    die;
-// 		    if($_POST['option']){
-		        
-// 		    }
-// 		    $userFinalQuestions[$questionCount]['answer'] = $_POST['option'];
-// 		    $userSubmitAnswers[$questionCount] = htmlentities($_POST['option']);
-		    
-// 		    $objUserTestResult->setAnswers($userSubmitAnswers);
-// 		    $objUserTestResult->updateTest();		    
-// 		    //print_r($userSubmitAnswers);
-		    
-//		    if($questionCount == $maxQuestions-1){		        
-
-// 		            $questionCount--;
-
-// // 		            print($questionCount);
-	        
-// 		    //}else 
-// 		    if($questionCount > 0){
-// 		        $tempCount = $questionCount % $perPageQuestion;
-// 		        $questionCount -= ($tempCount + $perPageQuestion);
-// 		        //print($questionCount);
-// 			//	$questionCount--;
-// 			}else if($questionCount <= 0){
-// 			    $questionCount = 0;
-// 			}			
 
 		    if($questionCount > 0){
 		        $questionCount--;
 		    }
-// 		    if($questionCount == 0){
-// 		        $questionCount = 1;
-// 		    }
-// 			echo json_encode($userFinalQuestions[$questionCount]);			
-		    $questionsPointers = explode(',',$paging[$questionCount]);
 		    $sendData = array();
-// 		    print_r($questionCount);
-// 		    die;
-		    foreach($questionsPointers as $key => $value){
-		        $test = "sendData".$key;
-		        $sendData[] = $userFinalQuestions[$value];
+		    if($perPageQuestion > 1){
+		        $questionsPointers = explode(',',$paging[$questionCount]);
+		        foreach($questionsPointers as $key => $value){
+		            $test = "sendData".$key;
+		            $sendData[] = $userFinalQuestions[$value];
+		        }
 		    }
-		    //   		    print_r($sendData);
-		    //   		    die;
+		    else{
+		        $questionsPointers = $paging[$questionCount];
+		        $sendData[] = $userFinalQuestions[$questionsPointers];
+		    }
+		    
 		    echo json_encode($sendData);
 		}
 		else{
-// 		    if($questionCount == 0){
-// 		        $questionsPointers = explode(',',$paging[0]);
-// 		    }
-// 		    else{
-		    $questionsPointers = explode(',',$paging[$questionCount]);
-// 		    }
+
 		    $sendData = array();
-		    //print_r($questionsPointers);
-		    //die;
-		    foreach($questionsPointers as $key => $value){
-		        $test = "sendData".$key;
-		        $sendData[] = $userFinalQuestions[$value];
+		    if($perPageQuestion > 1){
+		        $questionsPointers = explode(',',$paging[$questionCount]);
+		        foreach($questionsPointers as $key => $value){
+		            $test = "sendData".$key;
+		            $sendData[] = $userFinalQuestions[$value];
+		        }
 		    }
-// 		     		    print_r($sendData);
-// 		     		    die;
+		    else{
+		        $questionsPointers = $paging[$questionCount];
+		        $sendData[] = $userFinalQuestions[$questionsPointers];
+		    }
+
 		    echo json_encode($sendData);		    
-//			echo json_encode($userFinalQuestions[$questionCount]);
+
 		}
 		
 		$_SESSION['questionPointer'] = $questionCount;
 		$_SESSION['allQuestions'] = $userFinalQuestions;
 		$_SESSION['submittedAnswers'] = $userSubmitAnswers;
-		//$runningTestid = $objUserTestResult->getId();
-		//$_SESSION['runningTest'] = $runningTestid;		
+	
 	}
 	
+	
+	public function setQuestionOption(){
+	    $userFinalQuestions = $_SESSION['allQuestions'];
+	    $userSubmitAnswers = $_SESSION['submittedAnswers'];
+	    
+	    $questionID = $_POST['questionID'];
+	    $option = $_POST['option'];
+	    
+	    foreach($userFinalQuestions as $key => $value){
+	            if(array_key_exists("id", $value)){
+	            if($value['id'] == $questionID){
+	                $questionID = $key;
+	            }	            
+	        }
+	    }
+	    	    
+	    $objUserTestResult = new UserTestResult();
+	    $objUserTestResult->setId($_SESSION['runningTest']);
+	    	    
+	    $userFinalQuestions[$questionID]['answer'] = $_POST['option'];
+	    $userSubmitAnswers[$questionID] = htmlentities($_POST['option']);
+	    
+	    //print_r($userSubmitAnswers);
+
+	    $objUserTestResult->setAnswers($userSubmitAnswers);
+	    $objUserTestResult->updateTest();
+	    
+	    $_SESSION['allQuestions'] = $userFinalQuestions;
+	    $_SESSION['submittedAnswers'] = $userSubmitAnswers;	    
+	}
 	public function handleUpload()
 	{
 		$this->showView('/views/upload.php','',false,false);
