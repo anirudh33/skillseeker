@@ -375,9 +375,9 @@ public function handleassignTest()
         //        $_POST ['email'] = 'test@1234.com';
         
        $objEncryptionDecryption = new EncryptionDecryption();       
-       $tmp1 = $objEncryptionDecryption->decode($_POST['id']);
+       $queryTestId = $objEncryptionDecryption->decode($_POST['id']);
 //        print($tmp1);
-       
+//        die;
        
        //print ($_POST['id']);
        //       $tmp1 = $objEncryptionDecryption->encode($_REQUEST['id']);
@@ -396,7 +396,7 @@ public function handleassignTest()
  *      }
  * }
  */
-        $testDetailId = 1;
+        $testDetailId = $queryTestId;
         $objAssignModel->setId($testDetailId);
         $objAssignModel->getData();
         
@@ -411,6 +411,8 @@ public function handleassignTest()
         $objcreateTestModel->setId($testId);        
         
         $totalQuestion = $objcreateTestModel->noOfQuestion();
+        $testDuration = $objAssignModel->getTest_duration();
+        
         $questionCount = 0;
         $category = array();
         $categoryQuestionsCount = array();
@@ -537,6 +539,7 @@ public function handleassignTest()
 		$_SESSION['perPageQuestion'] = $perPageQuestions;
 		$_SESSION['paging'] = $paging;
 		$_SESSION['numberOfPages'] = $numberOfPages;
+		$_SESSION['testDuration'] = $testDuration;
 		 
 		$this->showView("/views/inTest.php","",FALSE,FALSE);
 		

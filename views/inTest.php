@@ -2,7 +2,10 @@
 <html>
 <head>
 <link rel="stylesheet" href="css/style.css" />
-<script type="text/javascript" src="../misc/prototypes/html/js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript"
+	src="../misc/prototypes/html/js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript"
+	src="../assets/js/jquery.countdown.min.js"></script>
 <script type="text/javascript">
 $("#questionDisplay").ready(function(){
 	$.ajax({
@@ -13,6 +16,23 @@ $("#questionDisplay").ready(function(){
 			data = jQuery.parseJSON(data);
 			getQuestion(data);
 			setTable();
+			var currentDate = new Date();
+			//alert(<?php echo $_SESSION['testDuration']; ?>);
+			  $('div#clockTimer').countdown(<?php echo $_SESSION['testDuration']; ?> *  60 * 1000+ currentDate.valueOf(), function(event) {
+			    $this = $(this);
+			    switch(event.type) {
+			      case "seconds":
+			      case "minutes":
+			      case "hours":
+			        $this.find('span#'+event.type).html(event.value);
+			        break;
+			      case "finished":
+			        $this.fadeTo('slow', .5);
+			        break;
+			    }
+			  });
+
+			
 // 			clearQuestionDisplay();
 
 // 			if($perPageQuestion > 1){
@@ -314,35 +334,68 @@ function finish(){
 }
 </script>
 <style type="text/css">
-#confirmFinish{
-	display : none;
+#confirmFinish {
+	display: none;
 }
-.minWidth{
+
+.minWidth {
 	min-width: 85px;
 }
+div#clockTimer { color: white; }
+div#clockTimer p { background: #333; float: left; height: 40px; width: 40px; }
+div#clockTimer p span { display: block; font-size: 30px; font-weight: bold; padding: 3px 0 0; }
+div#clockTimer div.space { color: #ccc; display: block; line-height: 1.7em; font-size: 40px; float: left; height: 48px; width: 15px; }
 </style>
 </head>
 <body>
-<div id = "totalQuestions" style = "float : left; width:300px;"><h2>Total Questions <?php echo $_SESSION['maxQuestions']; ?></h2>
-<h3>Question Marked <div id = "markedQuestion"></div></h3>
-<h3>Marked <div id = "elementMarked"></div></h3>
-</div>
-<div id = "questionWrapper" style = "float : left;width:400px;">
-<div id = "questionDisplay" ></div>
-<table>
-<tr class="instructiontr">
-<td><div class = "minWidth">
+	<div id="totalQuestions" style="float: left; width: 300px;">
+		<h2>Total Questions <?php echo $_SESSION['maxQuestions']; ?></h2>
+		<h3>
+			Question Marked
+			<div id="markedQuestion"></div>
+		</h3>
+		<h3>
+			Marked
+			<div id="elementMarked"></div>
+		</h3>
+		<div id="clockTimer">
+			<p>
+				<span id="hours"></span>
+			</p>
+			<div class="space">:</div>
+			<p>
+				<span id="minutes"></span>
+			</p>
+			<div class="space">:</div>
+			<p>
+				<span id="seconds"></span>
+			</p>
+		</div>
+	</div>
+	<div id="questionWrapper" style="float: left; width: 400px;">
+		<div id="questionDisplay"></div>
+		<table>
+			<tr class="instructiontr">
+				<td><div class="minWidth">
 <?php if($_SESSION['goBack'] == 1){ ?>
-<input id = "prevButton" type="button" value="Previous" onClick = "nextQuestion('previous')" class="btn"></div>
+<input id="prevButton" type="button" value="Previous"
+							onClick="nextQuestion('previous')" class="btn">
+					</div>
 <?php }?>
 </td>
-<td><div class = "minWidth"><input id = "confirmFinish" type="button" value="Confirm Finish" onClick = "confirmFinish()" class="btn"></div></td>
-<td><div class = "minWidth"><input id = "nxtButton" type="button" value="Next" onClick = "nextQuestion('next')" class="btn"></div></td>
-</tr>
-</table>
-</div>
-<div id = "allQuestions"></div>
-<!-- <a href="#" onclick="function()">Display All Question</a> -->
-<div id = "confirmNow"></div>
+				<td><div class="minWidth">
+						<input id="confirmFinish" type="button" value="Confirm Finish"
+							onClick="confirmFinish()" class="btn">
+					</div></td>
+				<td><div class="minWidth">
+						<input id="nxtButton" type="button" value="Next"
+							onClick="nextQuestion('next')" class="btn">
+					</div></td>
+			</tr>
+		</table>
+	</div>
+	<div id="allQuestions"></div>
+	<!-- <a href="#" onclick="function()">Display All Question</a> -->
+	<div id="confirmNow"></div>
 </body>
 </html>
