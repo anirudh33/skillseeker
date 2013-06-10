@@ -784,5 +784,11 @@ public function handleassignTest()
 	{
 		$this->showView('/views/contactus.php');
 	}
+	
+	public function fetchResult() {
+	    require_once './models/UserTestResult.php';
+	    $_objUserTestResult = new UserTestResult();
+	    $_objUserTestResult->result();
+	}
 }
 

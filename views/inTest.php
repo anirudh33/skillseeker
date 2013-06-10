@@ -329,7 +329,16 @@ function confirmFinish(){
 function finish(){
 	$value = confirm("Do yoy want to submit !!!");
 	if($value == true){
-		//alert("ok");
+		
+		$.ajax({
+        	async: false,
+    		url : "../index.php?controller=TestController&method=fetchResult",
+    		type: "post",
+    		data: "",
+    		success : function(data){
+    			
+    		}
+    		});
 	}
 }
 </script>

@@ -475,5 +475,10 @@ class UserTestResult extends DBConnection
         $where = array('id' => $this->getId());        
         $this->_db->update('user_test_result', $data, $where);
     }
+    
+    public function result() {
+        echo "aaa";
+        die;
+    }
 }
 ?>
