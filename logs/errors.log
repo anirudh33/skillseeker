@@ -919,3 +919,5 @@
 [24-May-2013 09:12:10 UTC] PHP Warning:  Invalid argument supplied for foreach() in /var/www/skillseeker/trunk/views/SearchUser.php on line 61
 [24-May-2013 09:12:48 UTC] PHP Warning:  Invalid argument supplied for foreach() in /var/www/skillseeker/trunk/views/SearchUser.php on line 61
 [24-May-2013 09:16:54 UTC] PHP Warning:  Invalid argument supplied for foreach() in /var/www/skillseeker/trunk/views/SearchUser.php on line 55
+[10-Jun-2013 07:51:28 UTC] PHP Fatal error:  Can't use method return value in write context in /var/www/skillseeker/trunk/models/UserTestResult.php on line 530
+[10-Jun-2013 07:54:15 UTC] PHP Warning:  PDO::query() [<a href='pdo.query'>pdo.query</a>]: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'skillseeker.posts' doesn't exist in /var/www/skillseeker/trunk/libraries/PDO/cxpdo.php on line 86

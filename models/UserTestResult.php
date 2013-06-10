@@ -34,7 +34,23 @@ class UserTestResult extends DBConnection
     private $_status;
     private $_createdOn;
     private $_updatedOn;
-    
+    private $_result;
+	/**
+     * @return the $_result
+     */
+    public function getResult()
+    {
+        return $this->_result;
+    }
+
+	/**
+     * @param field_type $_result
+     */
+    public function setResult($_result)
+    {
+        $this->_result = $_result;
+    }
+
 	/**
      * @return the $_id
      */
@@ -476,9 +492,75 @@ class UserTestResult extends DBConnection
         $this->_db->update('user_test_result', $data, $where);
     }
     
-    public function result() {
-        echo "aaa";
+    public function result($id) {
+        $this->setId($id);
+       $data['columns']	= array();
+       $data['tables']	= 'user_test_result';
+       $data['conditions']		= array('id' => $this->getId());
+       $result = $this->_db->select($data);
+
+       $myResult=array();
+       while ($row = $result->fetch(PDO::FETCH_ASSOC))
+       {
+           $myResult[]=$row;
+       }
+       $this->setResult($myResult);
+    }
+    
+    public function performance()
+    {
+        $this->setUserCorrectQuestion("");
+        $this->setUserCorrectAnswers("");
+        $this->setUserIncorrectQuestion("");
+        $this->setUserIncorrectAnswers("");
+        $this->setMarks(0);
+        
+        $arrayData = $this->getResult();
+//         print_r($arrayData);
+        
+        $arrayQuestion = explode(',', $arrayData[0]["questions"]);
+        $arrayAnswers = explode(',', $arrayData[0]["answers"]);
+        $arrayCorrectAnswers = explode(',', $arrayData[0]["correct_answers"]);
+        
+        for($i=0; $i < count($arrayAnswers) ; $i++)
+        {            
+            if( html_entity_decode($arrayAnswers[$i]) == html_entity_decode($arrayCorrectAnswers[$i])  )
+            {
+                // if check to be placed for negative
+                $temp = $this->getMarks();
+                $this->setMarks($temp++);
+                $this->setUserCorrectQuestion($this->getUserCorrectQuestion().$arrayQuestion[$i].",");
+                $this->setUserCorrectAnswers($this->getUserCorrectAnswers().$arrayCorrectAnswers[$i].",");                
+            }
+            else
+           {
+                // if check to be placed for negative
+//                $temp = $this->getMarks();
+//                 $this->setMarks($temp--);
+               $this->setUserIncorrectQuestion($this->getUserIncorrectQuestion().$arrayQuestion[$i].",");
+               $this->setUserIncorrectAnswers($this->getUserIncorrectAnswers().$arrayAnswers[$i].",");
+            }
+        }
+        
+        // removing the last comma from strings
+        
+        $this->setUserCorrectQuestion(trim($this->getUserCorrectQuestion(),','));
+        $this->setUserCorrectAnswers(trim($this->getUserCorrectAnswers(),','));
+        $this->setUserIncorrectQuestion(trim($this->getUserIncorrectQuestion(),','));
+        $this->setUserIncorrectAnswers(trim($this->getUserIncorrectAnswers(),','));
+        
+        $data = array('user_correct_question' => $this->getUserCorrectQuestion(),
+                'user_correct_answers' => $this->getUserCorrectAnswers(),
+                'user_incorrect_question' => $this->getUserIncorrectQuestion(),
+                'user_incorrect_answers' => $this->getUserIncorrectAnswers(),
+                'marks' => $this->getMarks()
+        );
+        $where = array('id' => $this->getId());
+         print_r($data);
+        $result = $this->_db->update('user_test_result', $data, $where);
+        
         die;
     }
+    
 }
 ?>

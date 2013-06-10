@@ -788,7 +788,9 @@ public function handleassignTest()
 	public function fetchResult() {
 	    require_once './models/UserTestResult.php';
 	    $_objUserTestResult = new UserTestResult();
-	    $_objUserTestResult->result();
+	    $_objUserTestResult->result($_SESSION['runningTest']);
+	    $result = $_objUserTestResult->performance();
+
 	}
 }
 
